@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Here are some favorites</comment>
+
+<entry key="museum">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,museum" 
+			+ "where event.place=museum.name"</entry>
+
+<entry key="zoo">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,zoo" 
+			+ "where event.place=zoo.name"</entry>
+
+<entry key="park">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,park" 
+			+ "where event.place=park.name"</entry>
+
+<entry key="theater">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,theater" 
+			+ "where event.place=theater.name"</entry>
+
+<entry key="stadium">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,stadium" 
+			+ "where event.place=stadium.name"</entry>
+
+<entry key="largebusiness">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,largebusiness" 
+			+ "where event.place=largebusiness.name"</entry>
+
+<entry key="touristattraction">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,touristattraction" 
+			+ "where event.place=touristattraction.name"</entry>
+
+<entry key="traditionalmarket">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,traditionalmarket" 
+			+ "where event.place=traditionalmarket.name"</entry>
+	
+<entry key="selec_login">"select userId from user "+" where userName = ? "+"and password=?";</entry>
+
+</properties>

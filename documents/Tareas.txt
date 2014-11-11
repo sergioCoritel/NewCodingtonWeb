@@ -1,0 +1,12 @@
+Base de Datos -> Agustín
+Diagrama de Clases -> Esther (Está hecho, revisar)
+Diagramas de Usos -> Marloon y Sergio (Está hecho, revisar)
+Test de Escenario -> Pedro (Está hecho, revisar)
+Test Validacion --> JuanMa
+DAOS -> Bea y Juan
+Test de JUnit -> 
+Test de Condiciones ->
+Adaptar Código de la Navegación ->
+Conexiones a Base de Datos -> 
+Modificar Visualización de la Página -> 
+
