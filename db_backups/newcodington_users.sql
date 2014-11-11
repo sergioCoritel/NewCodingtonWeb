@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `firstname` varchar(45) DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('1','JohnDoe','1234','John','Doe','77223344A','Johnsmith@gmail.com','111222333','C/ Velazquez 22',1),('2','Mark','5678','Mark','David','77554422B','Markdavid@gmail.com','555666777','C/ Ibiza 44',0),('3','Mike','0987','Mike','Swan','77889911C','Mikeswan@gmail.com','889955222','C/ Soria 21',0);
+INSERT INTO `users` VALUES (1,'JohnDoe','1234','John','Doe','77223344A','Johnsmith@gmail.com','111222333','C/ Velazquez 22',1),(2,'Mark','5678','Mark','David','77554422B','Markdavid@gmail.com','555666777','C/ Ibiza 44',0),(3,'Mike','0987','Mike','Swan','77889911C','Mikeswan@gmail.com','889955222','C/ Soria 21',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:21
+-- Dump completed on 2014-11-11  6:16:16

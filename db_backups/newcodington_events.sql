@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `events` (
-  `id` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `start` timestamp NULL DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES ('1','Partido','Un partido de futbol','2014-12-31 18:00:00','1','2014-12-31 20:00:00',75.5,300,'Stadium');
+INSERT INTO `events` VALUES (1,'Partido','Un partido de futbol','2014-12-31 18:00:00','1','2014-12-31 20:00:00',75.5,300,'Stadium');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:24
+-- Dump completed on 2014-11-11  6:16:22

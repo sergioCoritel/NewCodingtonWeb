@@ -25,14 +25,16 @@ DROP TABLE IF EXISTS `theater`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `theater` (
-  `id_theater` int(11) NOT NULL,
+  `placetypeid` int(11) NOT NULL,
+  `placeId` int(11) NOT NULL DEFAULT '5',
   `name` varchar(45) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `workinghours` varchar(45) DEFAULT NULL,
   `zone` varchar(45) DEFAULT NULL,
   `image` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_theater`)
+  `building` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`placetypeid`,`placeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:20
+-- Dump completed on 2014-11-11  6:16:16

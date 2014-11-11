@@ -25,10 +25,11 @@ DROP TABLE IF EXISTS `events_places`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `events_places` (
-  `idevents_places` int(11) NOT NULL,
-  `id_events` int(11) DEFAULT NULL,
-  `id_places` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idevents_places`)
+  `event_id` int(11) NOT NULL,
+  `place_type_id` int(11) NOT NULL DEFAULT '0',
+  `place_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`event_id`,`place_type_id`,`place_id`),
+  CONSTRAINT `events_places_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:22
+-- Dump completed on 2014-11-11  6:16:18

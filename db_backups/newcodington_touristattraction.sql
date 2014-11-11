@@ -18,31 +18,33 @@ USE `newcodington`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `touristatraction`
+-- Table structure for table `touristattraction`
 --
 
-DROP TABLE IF EXISTS `touristatraction`;
+DROP TABLE IF EXISTS `touristattraction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `touristatraction` (
-  `id_thouristatraction` int(11) NOT NULL,
+CREATE TABLE `touristattraction` (
+  `placeId` int(11) NOT NULL,
+  `placetypeid` int(11) NOT NULL DEFAULT '6',
   `name` varchar(45) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `workinghours` varchar(45) DEFAULT NULL,
   `zone` varchar(45) DEFAULT NULL,
   `image` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_thouristatraction`)
+  `building` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`placeId`,`placetypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `touristatraction`
+-- Dumping data for table `touristattraction`
 --
 
-LOCK TABLES `touristatraction` WRITE;
-/*!40000 ALTER TABLE `touristatraction` DISABLE KEYS */;
-/*!40000 ALTER TABLE `touristatraction` ENABLE KEYS */;
+LOCK TABLES `touristattraction` WRITE;
+/*!40000 ALTER TABLE `touristattraction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `touristattraction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:24
+-- Dump completed on 2014-11-11  6:16:21

@@ -28,7 +28,11 @@ CREATE TABLE `events_users` (
   `ideu` int(11) NOT NULL,
   `iduser` int(11) DEFAULT NULL,
   `idevent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ideu`)
+  PRIMARY KEY (`ideu`),
+  KEY `iduser` (`iduser`),
+  KEY `idevent` (`idevent`),
+  CONSTRAINT `events_users_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `users` (`id`),
+  CONSTRAINT `events_users_ibfk_2` FOREIGN KEY (`idevent`) REFERENCES `events` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +42,6 @@ CREATE TABLE `events_users` (
 
 LOCK TABLES `events_users` WRITE;
 /*!40000 ALTER TABLE `events_users` DISABLE KEYS */;
-INSERT INTO `events_users` VALUES (1,1,1);
 /*!40000 ALTER TABLE `events_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:19
+-- Dump completed on 2014-11-11  6:16:15
