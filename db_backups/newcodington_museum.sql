@@ -25,14 +25,16 @@ DROP TABLE IF EXISTS `museum`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `museum` (
-  `id_museum` int(11) NOT NULL,
+  `placeId` int(11) NOT NULL,
+  `placetypeid` int(11) NOT NULL DEFAULT '2',
   `name` varchar(45) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `workinghours` varchar(45) DEFAULT NULL,
   `zone` varchar(45) DEFAULT NULL,
   `image` blob,
-  PRIMARY KEY (`id_museum`)
+  `building` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`placeId`,`placetypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-07  5:59:22
+-- Dump completed on 2014-11-11  6:16:18
