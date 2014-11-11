@@ -4,6 +4,11 @@ import java.sql.SQLException;
 
 import com.newcodingtoncity.model.daos.UserDAO;
 
+/**
+ * 
+ * @author Esther Guerrero Santana
+ *
+ */
 public abstract class User {
 	
 	private int userId;
@@ -106,9 +111,12 @@ public abstract class User {
 		this.address = address;
 	}
 	
-	public boolean login(String user, String pass) throws SQLException{
+	/* falta devovler generar y devovler una sesion en lugar de un boolean*/
+	/**
+	 */
+	public boolean login() throws SQLException, ClassNotFoundException{
 		
-		return user_dao.ValidationLogin(user, pass);
+		return user_dao.ValidationLogin(this);
 	
 	}
 	
@@ -116,12 +124,22 @@ public abstract class User {
 	
 	public abstract void searchEvent();
 	
-	public boolean updatePassword(){
-		return false;	
+	/*Seguimos devolviendo la sesion*/
+	/**
+	 * 
+	 * @param new_pass
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public boolean updatePassword(String new_pass) throws SQLException, ClassNotFoundException{
+		
+		return user_dao.updateDAOPassword(this, new_pass);
 	}
 	
-	public boolean updateInfo(){
-		return false;	
+	public boolean updateInfo() throws SQLException, ClassNotFoundException{
+		
+		return user_dao.updateDAOInfo(this);	
 	}
 
 
