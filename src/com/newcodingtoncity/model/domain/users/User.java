@@ -53,9 +53,16 @@ public abstract class User {
 		this.address = address;
 	}
 	
-	public User() {
-		
-		
+	public User() {	
+		this.userId = 0;
+		this.userName ="";
+		this.password = "";
+		this.firstName = "";
+		this.lastName = "";
+		this.dni = "";
+		this.email = "";
+		this.phoneNumber = "";
+		this.address = "";
 	}
 
 	public void setUserId(int id) {
@@ -113,9 +120,13 @@ public abstract class User {
 	
 	/* falta devovler generar y devovler una sesion en lugar de un boolean*/
 	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
 	public boolean login() throws SQLException, ClassNotFoundException{
-		
+		user_dao = new UserDAO();
 		return user_dao.ValidationLogin(this);
 	
 	}
@@ -137,6 +148,12 @@ public abstract class User {
 		return user_dao.updateDAOPassword(this, new_pass);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public boolean updateInfo() throws SQLException, ClassNotFoundException{
 		
 		return user_dao.updateDAOInfo(this);	
