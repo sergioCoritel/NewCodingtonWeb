@@ -12,20 +12,17 @@ public class CodingtonConnectToDB {
 	private static String dbUser = "root";
 	private static String dbPassword = "abcd1234";
 	
-	// New instance of Connection
-	private static Connection connection = null;
-
 	// Opening connection with MYSQL database
 	public static Connection createConnection() throws ClassNotFoundException,
 			SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection(
+		Connection connection = DriverManager.getConnection(
 				"jdbc:mysql://localhost/codingtondb", dbUser, dbPassword);
 		return connection;
 	}
 
 	// Closing connection
-	public static void closeConnection() throws SQLException {
+	public static void closeConnection(Connection connection) throws SQLException {
 		connection.close();
 	}
 }
