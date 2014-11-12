@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-
-import com.newcodingtoncity.model.domain.Event;
-import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
+import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
 	// JDBC API classes for data persistence
 		private Connection connection = null;
