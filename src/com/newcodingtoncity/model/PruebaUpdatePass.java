@@ -5,21 +5,22 @@ import java.sql.SQLException;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
 
-public class Prueba {
+public class PruebaUpdatePass {
 
 	/**
 	 * @param args
+	 * @throws ClassNotFoundException 
 	 * @throws SQLException 
 	 */
-	public static void main(String[] args) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		User user = new Visitor();
 		boolean reg;
-		String u = "Mark";
-		String p = "5678";
+		String new_pass="1234";
 		
-		reg = user.login(u, p);
+		user.setUserName("Mark");
+		user.setPassword("5678");
+		
+		reg = user.updatePassword(new_pass);
 		
 		System.out.print(reg);
 	}
