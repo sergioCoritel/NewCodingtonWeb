@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
+import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.mappers.EventMapper;
 
 
 
-public class EventsDAO {
+public class EventDAO implements IEventDAO {
 
 	// JDBC API classes for data persistence
 	private Connection connection = null;
