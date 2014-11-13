@@ -37,140 +37,72 @@ public class EventDAO implements IEventDAO {
 
 	private static String traditionalMarketEventsQuery = DatabaseHelper.getQuery("traditionalmarket");
 
-	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
+	public EventDAO(Connection connection) {
+		this.connection = connection;
+	}
+	
+	public ArrayList<Event> requestEventList(String sqlQuery) throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(museumEventsQuery);
+		statement = connection.prepareStatement(sqlQuery);
+		
 		resultSet = statement.executeQuery();
 		ArrayList<Event> eventList = new ArrayList<Event>();
 
 		while (resultSet.next()) {
 			Event event = EventMapper.map(resultSet);
-
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
+	}
+	
+	
+	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
+	SQLException {
+		
+		return requestEventList(museumEventsQuery);
 	}
 
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(zooEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(zooEventsQuery);
 	}
 	
 	public ArrayList<Event> showParkEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(parkEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(parkEventsQuery);
 	}
 	
 	public ArrayList<Event> showTheaterEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(theaterEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(theaterEventsQuery);
 	}
 	
 	public ArrayList<Event> showStadiumEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(stadiumEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(stadiumEventsQuery);
 	}
 	
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(largeBusinessEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(largeBusinessEventsQuery);
 	}
 	
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(touristAttractionEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+		
+		return requestEventList(touristAttractionEventsQuery);
 	}
 	
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException,
 	SQLException {
-		connection = CodingtonConnectToDB.createConnection();
-		statement = connection.prepareStatement(traditionalMarketEventsQuery);
-		resultSet = statement.executeQuery();
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-
-			eventList.add(event); 
-		}
-		resultSet.close();
-		CodingtonConnectToDB.closeConnection(connection);
-		return eventList;
+	
+		return requestEventList(traditionalMarketEventsQuery);
 	}
 
 }
