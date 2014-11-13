@@ -27,6 +27,8 @@
 <entry key="traditionalmarket">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,traditionalmarket" 
 			+ "where event.place=traditionalmarket.name"</entry>
 	
-<entry key="selec_login">"select userId from user "+" where userName = ? "+"and password=?";</entry>
+<entry key="selec_login">select id from users where username = ? and password =?</entry>
+	<entry key="change_pass">update users set password = ? "+" where id = ?</entry>
+	<entry key="change_info">update users set firstname = ? "+" lastname = ? "+" dni = ? "+" email = ? "+" phonenumber = ? "+" adress = ? "+"where id = ?;</entry>
 
 </properties>

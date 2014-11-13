@@ -50,7 +50,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 
@@ -67,7 +67,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -84,7 +84,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -101,7 +101,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -118,7 +118,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -135,7 +135,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -152,7 +152,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 	
@@ -169,7 +169,7 @@ public class EventDAO implements IEventDAO {
 			eventList.add(event); 
 		}
 		resultSet.close();
-		CodingtonConnectToDB.closeConnection();
+		CodingtonConnectToDB.closeConnection(connection);
 		return eventList;
 	}
 
