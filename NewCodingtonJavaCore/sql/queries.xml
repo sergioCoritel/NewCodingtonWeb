@@ -3,29 +3,21 @@
 <properties>
 <comment>Here are some favorites</comment>
 
-<entry key="museum">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,museum" 
-			+ "where event.place=museum.name"</entry>
+<entry key="museum">SELECT events.*, museum.* FROM events, events_places, museum WHERE events.id = events_places.event_id AND events_places.placetypeid = 2 AND events_places.place_id =  museum.placeId</entry>
 
-<entry key="zoo">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,zoo" 
-			+ "where event.place=zoo.name"</entry>
+<entry key="zoo">SELECT events.*, zoo.* FROM events, events_places, zoo WHERE events.id = events_places.event_id AND events_places.placetypeid = 8 AND events_places.place_id =  zoo.placeId</entry>
 
-<entry key="park">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,park" 
-			+ "where event.place=park.name"</entry>
+<entry key="park">SELECT events.*, park.* FROM events, events_places, park WHERE events.id = events_places.event_id AND events_places.placetypeid = 3 AND events_places.place_id =  park.placeId</entry>
 
-<entry key="theater">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,theater" 
-			+ "where event.place=theater.name"</entry>
+<entry key="theater">SELECT events.*, theater.* FROM events, events_places, theater WHERE events.id = events_places.event_id AND events_places.placetypeid = 5 AND events_places.place_id =  theater.placeId</entry>
 
-<entry key="stadium">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,stadium" 
-			+ "where event.place=stadium.name"</entry>
+<entry key="stadium">SELECT events.*, stadium.* FROM events, events_places, stadium WHERE events.id = events_places.event_id AND events_places.placetypeid = 4 AND events_places.place_id =  stadium.placeId</entry>
 
-<entry key="largebusiness">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,largebusiness" 
-			+ "where event.place=largebusiness.name"</entry>
+<entry key="largebusiness">SELECT events.*, largebusiness.* FROM events, events_places, largebusiness WHERE events.id = events_places.event_id AND events_places.placetypeid = 1 AND events_places.place_id =  largebusiness.placeId</entry>
 
-<entry key="touristattraction">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,touristattraction" 
-			+ "where event.place=touristattraction.name"</entry>
+<entry key="touristattraction">SELECT events.*, touristattraction.* FROM events, events_places, touristattraction WHERE events.id = events_places.event_id AND events_places.placetypeid = 6 AND events_places.place_id =  touristattraction.placeId</entry>
 
-<entry key="traditionalmarket">"select event.id, event.name, event.description, event.start,event.end, event.type, event.ticketprice, event.seatsavailable,event.place from event,traditionalmarket" 
-			+ "where event.place=traditionalmarket.name"</entry>
+<entry key="traditionalmarket">SELECT events.*, traditionalmarket.* FROM events, events_places, traditionalmarket WHERE events.id = events_places.event_id AND events_places.placetypeid = 7 AND events_places.place_id =  traditionalmarket.placeId</entry>
 	
 <entry key="selec_login">select id from users where username = ? and password =?</entry>
 	<entry key="change_pass">update users set password = ? "+" where id = ?</entry>
