@@ -131,9 +131,6 @@ public abstract class User {
 	
 	}
 	
-	public abstract void viewEvents();
-	
-	public abstract void searchEvent();
 	
 	/*Seguimos devolviendo la sesion*/
 	/**
@@ -144,8 +141,12 @@ public abstract class User {
 	 * @throws ClassNotFoundException
 	 */
 	public boolean updatePassword(String new_pass) throws SQLException, ClassNotFoundException{
+		user_dao = new UserDAO();
+		if(user_dao.updateDAOPassword(this, new_pass)!=0){
+			return true;
+		}
 		
-		return user_dao.updateDAOPassword(this, new_pass);
+		return false;
 	}
 	
 	/**
@@ -155,9 +156,18 @@ public abstract class User {
 	 * @throws ClassNotFoundException
 	 */
 	public boolean updateInfo() throws SQLException, ClassNotFoundException{
+		user_dao = new UserDAO();
+		if(user_dao.updateDAOInfo(this)!=0){
+			return true;
+		}
 		
-		return user_dao.updateDAOInfo(this);	
+		return false;	
 	}
+	
+	
+	public abstract void viewEvents();
+	
+	public abstract void searchEvent();
 
 
 }

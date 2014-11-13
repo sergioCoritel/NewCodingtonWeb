@@ -14,7 +14,7 @@ public class PruebaUpdateInfo {
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		User user = new Visitor();
-		boolean reg;
+		boolean reg=false;
 		
 		user.setUserId(2);
 		user.setFirstName("Mark");

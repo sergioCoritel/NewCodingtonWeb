@@ -21,8 +21,8 @@
 
 <entry key="traditionalmarket">SELECT events.*, traditionalmarket.* FROM events, events_places, traditionalmarket WHERE events.id = events_places.event_id AND events_places.placetypeid = 7 AND events_places.place_id =  traditionalmarket.placeId</entry>
 	
-<entry key="selec_login">select id from users where username = ? and password =?</entry>
-	<entry key="change_pass">update users set password = ? "+" where id = ?</entry>
-	<entry key="change_info">update users set firstname = ? "+" lastname = ? "+" dni = ? "+" email = ? "+" phonenumber = ? "+" adress = ? "+"where id = ?;</entry>
+<entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
+	<entry key="change_pass">update users set password = ? where id = ?</entry>
+	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phonenumber = ?, address = ? where id = ?;</entry>
 
 </properties>

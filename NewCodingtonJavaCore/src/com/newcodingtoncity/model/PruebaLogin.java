@@ -15,12 +15,10 @@ public class PruebaLogin {
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
 		User user = new Visitor();
-		boolean reg=true;
-		
-		
-		
-		user.setUserName("JohnDoe");
-		user.setPassword("1234");
+		boolean reg=false;
+
+		user.setUserName("Mark");
+		user.setPassword("5678");
 		
 		reg = user.login();
 		

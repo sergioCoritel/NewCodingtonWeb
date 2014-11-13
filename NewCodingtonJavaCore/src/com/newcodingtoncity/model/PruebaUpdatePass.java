@@ -14,11 +14,12 @@ public class PruebaUpdatePass {
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		User user = new Visitor();
-		boolean reg;
+		boolean reg = false;
 		String new_pass="1234";
 		
 		user.setUserName("Mark");
-		user.setPassword("5678");
+		user.setPassword("1234");
+		user.setUserId(2);
 		
 		reg = user.updatePassword(new_pass);
 		
