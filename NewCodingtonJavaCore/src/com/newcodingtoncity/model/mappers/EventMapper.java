@@ -13,9 +13,12 @@ public class EventMapper {
 			event.setEventId(resultSet.getInt("id"));
 			event.setEventName(resultSet.getString("name"));
 			event.setDescription(resultSet.getString("description"));
-			event.setTicketPrice(resultSet.getInt("ticketprice"));
-			event.setSeatsAvailable(resultSet.getInt("seatsavailable"));
-			switch (resultSet.getInt("placetypeid")) {
+			event.setStart(resultSet.getString("start"));
+			event.setEnd(resultSet.getString("end"));
+			event.setTicketPrice(resultSet.getInt("ticket_price"));
+			event.setSeatsAvailable(resultSet.getInt("seats_available"));
+			event.setSeatsTotal(resultSet.getInt("seats_total"));
+			switch (resultSet.getInt("place_type_id")) {
 			case 1:
 				event.setPlace(LargeBusinessMapper.map(resultSet));
 				break;

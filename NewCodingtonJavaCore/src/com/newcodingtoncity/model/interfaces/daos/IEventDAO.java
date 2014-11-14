@@ -15,4 +15,5 @@ public interface IEventDAO {
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException, SQLException;
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException, SQLException;
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException, SQLException;
+	public Event showEventById (int id) throws ClassNotFoundException, SQLException;
 }
