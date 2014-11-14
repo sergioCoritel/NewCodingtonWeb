@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.newcodingtoncity.model.domain.Event;
-import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.mappers.EventMapper;
@@ -36,6 +35,8 @@ public class EventDAO implements IEventDAO {
 	private static String touristAttractionEventsQuery = DatabaseHelper.getQuery("touristattraction");
 
 	private static String traditionalMarketEventsQuery = DatabaseHelper.getQuery("traditionalmarket");
+	
+	private static String eventByIdQuery = DatabaseHelper.getQuery("eventbyid");
 
 	public EventDAO(Connection connection) {
 		this.connection = connection;
@@ -103,6 +104,15 @@ public class EventDAO implements IEventDAO {
 	SQLException {
 	
 		return requestEventList(traditionalMarketEventsQuery);
+	}
+	
+	public Event showEventById (int id) throws ClassNotFoundException, SQLException{
+		statement = connection.prepareStatement(eventByIdQuery);
+		statement.setInt(1,id);
+		resultSet = statement.executeQuery();
+		Event event = EventMapper.map(resultSet);
+		resultSet.close();
+		return event;
 	}
 
 }

@@ -10,11 +10,12 @@ public class Event {
 	private int eventId;
 	private String eventName;
 	private String description;
-	private int duration;
+	private String start;
+	private String end;
 	private String eventType;
-	private String schedule;
 	private int ticketPrice;
 	private int seatsAvailable;
+	private int seatsTotal;
 	private Place place;
 	
 	/**
@@ -32,15 +33,15 @@ public class Event {
 	public Event(){}
 	
 	public Event(int eventId, String eventName, String description,
-			int duration, String eventType, String schedule, int ticketPrice,
+			String start, String end, String eventType, int ticketPrice,
 			int seatsAvailable, Place place) {
 		super();
 		this.eventId = eventId;
 		this.eventName = eventName;
 		this.description = description;
-		this.duration = duration;
+		this.start = start;
 		this.eventType = eventType;
-		this.schedule = schedule;
+		this.end = end;
 		this.ticketPrice = ticketPrice;
 		this.seatsAvailable = seatsAvailable;
 		this.place = place;
@@ -59,23 +60,23 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getDuration() {
-		return duration;
+	public String getStart() {
+		return start;
 	}
-	public void setDuration(int duration) {
-		this.duration = duration;
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
 	}
 	public String getEventType() {
 		return eventType;
 	}
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
-	}
-	public String getSchedule() {
-		return schedule;
-	}
-	public void setSchedule(String schedule) {
-		this.schedule = schedule;
 	}
 	public int getTicketPrice() {
 		return ticketPrice;
@@ -95,11 +96,21 @@ public class Event {
 	public void setSeatsAvailable(int seatsAvailable) {
 		this.seatsAvailable = seatsAvailable;
 	}
+	public int getSeatsTotal() {
+		return seatsTotal;
+	}
+	public void setSeatsTotal(int seatsTotal) {
+		this.seatsTotal = seatsTotal;
+	}
 	public Place getPlace() {
 		return place;
 	}
 	public void setPlace(Place place) {
 		this.place = place;
 	}
+
+	
+
+
 	
 }
