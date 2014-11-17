@@ -62,13 +62,13 @@ public class VisitTest extends TestCase {
 		assertEquals("El userName coincide", USERNAME, visitor.getUserName() );
 	}
 	
-	/*
+	
 	@Test
 	public void testSetUserName() {
 		String userName;
 		
 		//Check minimum length for userName(6).
-		userName = "Javier";
+		userName = "Jose";
 		visitor.setUserName(userName);
 		assertEquals(userName, visitor.getUserName());
 		
@@ -77,7 +77,7 @@ public class VisitTest extends TestCase {
 		visitor.setUserName(userName);
 		assertEquals(userName, visitor.getUserName());
 		
-		//Check userName length out of maximum range.
+		/*//Check userName length out of maximum range.
 		userName = "JavierJavier10";
 		this.checkSet(userName, USERNAME);
 		
@@ -87,8 +87,8 @@ public class VisitTest extends TestCase {
 		
 		//Check userName is NULL.
 		userName = null;
-		this.checkSet(userName, USERNAME);
-	}*/
+		this.checkSet(userName, USERNAME);*/
+	}
 	
 	
 	@Test
