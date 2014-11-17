@@ -2,6 +2,7 @@ package com.newcodingtoncity.model;
 
 import java.sql.SQLException;
 
+import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
 
@@ -14,15 +15,14 @@ public class PruebaLogin {
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
+		UserDAO user_dao = new UserDAO();
 		User user = new Visitor();
-		boolean reg=true;
+		boolean reg=false;
+
+		user.setUserName("Mark");
+		user.setPassword("5678");
 		
-		
-		
-		user.setUserName("JohnDoe");
-		user.setPassword("1234");
-		
-		reg = user.login();
+		reg = user_dao.login(user);
 		
 		System.out.println(reg);
 	}

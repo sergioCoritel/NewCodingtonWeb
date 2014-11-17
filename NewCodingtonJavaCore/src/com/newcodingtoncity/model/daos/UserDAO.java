@@ -10,47 +10,38 @@ import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
-
-public class UserDAO implements IUserDAO {
-
+public class UserDAO implements IUserDAO{
 
 	// JDBC API classes for data persistence
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-	/**
-	 * 
-	 * @param user
-	 * @param pass
-	 * @return boolean
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public boolean ValidationLogin(User u) throws SQLException, ClassNotFoundException{
 
-		//int userId = 0;
+	@Override
+	public boolean login(User u) throws SQLException, ClassNotFoundException{
+
+		int userId = 0;
 
 		try{		    		
 
 			connection = CodingtonConnectToDB.createConnection();
-			String login  = DatabaseHelper.getQuery("selec_login");
-			System.out.println(login);
-
-			statement = connection.prepareStatement(login);
+			String sql  = DatabaseHelper.getQuery("selec_login");
+			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, u.getUserName());
 			statement.setString(2, u.getPassword());
 
-			resultSet = statement.executeQuery(); 
-			System.out.println(" resultSet "+ resultSet.toString());
-			//while (resultSet.next())
+			resultSet = statement.executeQuery();
 
-			//userId = resultSet.getInt(1);  
-			//u.setUserId(userId);
+			while (resultSet.next()){
+				userId = resultSet.getInt(1);
+			}
+
+			u.setUserId(userId);
 
 		} catch (Exception ee) {
-			System.out.println("ValidationLogin: "+ ee.getMessage());
+			System.out.println("ValidationLogin1: "+ ee.getMessage());
 			return false;
 
 		} finally {
@@ -65,11 +56,11 @@ public class UserDAO implements IUserDAO {
 				}
 
 				if (connection != null) {
-					//CodingtonConnectToDB.closeConnection();
+					CodingtonConnectToDB.closeConnection(connection);
 					connection = null;
 				}
 			}catch (Exception ee) {
-				System.out.println(" returnUserId "+ ee.getMessage());
+				System.out.println(" ValidationLogin2: "+ ee.getMessage());
 				return false;
 			}
 
@@ -79,37 +70,34 @@ public class UserDAO implements IUserDAO {
 
 	}	
 
-	/**
-	 * 
-	 * @param user
-	 * @param pass
-	 * @return userId
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public int returnUserId(User u) throws SQLException, ClassNotFoundException{
 
-		int userId = 0;
 
-		try{		    		
+	@Override
+	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
+
+		int affectedRows = 0;
+
+		try{
 
 			connection = CodingtonConnectToDB.createConnection();
-			String login  = DatabaseHelper.getQuery("selec_login");
-			System.out.println(login);
-			statement = connection.prepareStatement(login);
-			statement.setString(1, u.getUserName());
-			statement.setString(2, u.getPassword());	             
-			resultSet = statement.executeQuery(); 
-			//while (resultSet.next())
-			userId = resultSet.getInt(1);  
-			u.setUserId(userId);
+			String sql  = DatabaseHelper.getQuery("change_pass");
+			statement = connection.prepareStatement(sql);
 
-		} catch (Exception ee) {
-			System.out.println(" returnUserId "+ ee.getMessage());
-			return userId;
+			statement.setString(1, new_pass);
+			statement.setInt(2, u.getUserId());
 
-		} finally {
+			affectedRows = statement.executeUpdate();
+
+		}catch (Exception ee) {
+
+			System.out.println(" updateDAOPassword 1: "+ ee.getMessage());
+			return 0;
+
+
+		}finally {
+
 			try {
+
 				if (resultSet != null) {
 					resultSet.close(); 
 					resultSet = null;
@@ -120,68 +108,30 @@ public class UserDAO implements IUserDAO {
 				}
 
 				if (connection != null) {
-					//CodingtonConnectToDB.closeConnection();
+					CodingtonConnectToDB.closeConnection(connection);
 					connection = null;
 				}
+
 			}catch (Exception ee) {
-				System.out.println(" returnUserId "+ ee.getMessage());
-				userId = -1;
-				return userId;
+				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
+				return 0;
 			}
 		}
 
-		return userId;
-	}  
+		return affectedRows;
+
+	}
+
 	@Override
-	public boolean ValidationLogin(String user, String pass)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public int updateInfo(User u) throws SQLException, ClassNotFoundException{
 
-
-
-
-
-
-	/**
-	 * 
-	 * @param user
-	 * @param old_pass
-	 * @param new_pass
-	 * @return boolean
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public boolean updateDAOPassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
+		int affectedRows = 0;
 
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();			
-			String select  = DatabaseHelper.getQuery("change_pass");	              
-			statement = connection.prepareStatement(select);
-			statement.setString(1, new_pass);
-			statement.setInt(2, u.getUserId());	             
-			resultSet = statement.executeQuery(); 
-
-		}catch(Exception ee) {
-			System.out.println(" updateDAOPassword "+ ee);		    	
-			return false;
-
-		}	
-
-		return true;
-
-	}
-
-
-	public boolean updateDAOInfo(User u) throws SQLException, ClassNotFoundException{
-
-		try{
-
-			connection = CodingtonConnectToDB.createConnection();			
-			String select  = DatabaseHelper.getQuery("change_info");	              
-			statement = connection.prepareStatement(select);
+			String sql  = DatabaseHelper.getQuery("change_info");	              
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getFirstName());
 			statement.setString(2, u.getLastName());
 			statement.setString(3, u.getDni());
@@ -189,15 +139,84 @@ public class UserDAO implements IUserDAO {
 			statement.setString(5, u.getPhoneNumber());
 			statement.setString(6, u.getAddress());
 			statement.setInt(7, u.getUserId());
-			resultSet = statement.executeQuery(); 
+			affectedRows = statement.executeUpdate(); 
 
 		}catch(Exception ee) {
-			System.out.println(" updateDAOInfo "+ ee);		    	
-			return false;
+			System.out.println(" updateDAOInfo "+ ee.getMessage());		    	
+			return affectedRows;
+
+		}finally {
+
+			try {
+
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+
+				if (connection != null) {
+					CodingtonConnectToDB.closeConnection(connection);
+					connection = null;
+				}
+
+			}catch (Exception ee) {
+				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
+				return affectedRows;
+			}
+		}
+
+		return affectedRows;
+	}
+
+	@Override
+	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException{
+
+		int affectedRows = 0, userId=0;
+
+		try{
+
+			connection = CodingtonConnectToDB.createConnection();			
+			String sql  = DatabaseHelper.getQuery("isAcountExists");	              
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, u.getUserName());
+			statement.setString(2, u.getEmail());
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()){
+				userId = resultSet.getInt(1);
+			}
+			
+			if(userId!=0){
+				return affectedRows;
+			}
+			
+			
+			sql  = DatabaseHelper.getQuery("registerUser");	              
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, u.getUserId()); /*Falta una función que autoamticamente asigne un ID*/
+			statement.setString(2, u.getUserName());
+			statement.setString(3, u.getPassword());
+			statement.setString(4, u.getFirstName());
+			statement.setString(5, u.getLastName());
+			statement.setString(6, u.getDni());
+			statement.setString(7, u.getEmail());
+			statement.setString(8, u.getPhoneNumber());
+			statement.setString(9, u.getAddress());
+			statement.setInt(10, 0);
+			
+			affectedRows = statement.executeUpdate(); 
+
+		}catch(Exception ee) {
+			System.out.println(" registerNewVisitor "+ ee.getMessage());		    	
+			return affectedRows;
 
 		}
 
-		return true;
+		return affectedRows;
 	}
 
 }
