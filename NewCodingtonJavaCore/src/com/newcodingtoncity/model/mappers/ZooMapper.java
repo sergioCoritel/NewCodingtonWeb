@@ -1,13 +1,15 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.places.Zoo;
+import com.newcodingtoncity.model.helper.ConvertImage;
 
 public class ZooMapper {
 
-	public static Zoo map(ResultSet resultSet){
+	public static Zoo map(ResultSet resultSet) throws IOException{
 		Zoo zoo = new Zoo();
 		try {
 			zoo.setId(resultSet.getInt("id_zoo"));
@@ -15,7 +17,7 @@ public class ZooMapper {
 			zoo.setCapacity(resultSet.getInt("capacity"));
 			zoo.setPlaceDescription(resultSet.getString("description"));
 			zoo.setWorkingHours(resultSet.getString("workinghours"));
-			zoo.setImage(resultSet.getString("image"));
+			zoo.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

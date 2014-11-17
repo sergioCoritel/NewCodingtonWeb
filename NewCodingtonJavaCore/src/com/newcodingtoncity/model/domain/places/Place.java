@@ -1,5 +1,7 @@
 package com.newcodingtoncity.model.domain.places;
 
+import java.io.File;
+
 
 /**
  * Place POJO class for domain model 
@@ -14,7 +16,7 @@ public abstract class Place {
 	private String workingHours;
 	public enum Zone{NORTH, SOUTH};
 	private Zone zone;
-	private String image;
+	private File image;
 
 	
 	/**
@@ -29,7 +31,7 @@ public abstract class Place {
 	public Place(){}
 	
 	public Place(int id,String name, int capacity,
-			String placeDescription, String workingHours, Zone zone, String image) {
+			String placeDescription, String workingHours, Zone zone, File image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -90,11 +92,11 @@ public abstract class Place {
 		this.zone = zone;
 	}
 
-	public String getImage() {
+	public File getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(File image) {
 		this.image = image;
 	}
 

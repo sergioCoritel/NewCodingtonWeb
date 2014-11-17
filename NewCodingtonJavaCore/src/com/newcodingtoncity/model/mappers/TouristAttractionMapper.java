@@ -1,13 +1,15 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
+import com.newcodingtoncity.model.helper.ConvertImage;
 
 public class TouristAttractionMapper {
 
-	public static TouristAttraction map(ResultSet resultSet){
+	public static TouristAttraction map(ResultSet resultSet) throws IOException{
 		TouristAttraction touristAttraction = new TouristAttraction();
 		try {
 			touristAttraction.setId(resultSet.getInt("id_touristattraction"));
@@ -15,7 +17,7 @@ public class TouristAttractionMapper {
 			touristAttraction.setCapacity(resultSet.getInt("capacity"));
 			touristAttraction.setPlaceDescription(resultSet.getString("description"));
 			touristAttraction.setWorkingHours(resultSet.getString("workinghours"));
-			touristAttraction.setImage(resultSet.getString("image"));
+			touristAttraction.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
