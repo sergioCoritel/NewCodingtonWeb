@@ -16,7 +16,8 @@ public class ParkMapper {
 			park.setName(resultSet.getString("name"));
 			park.setCapacity(resultSet.getInt("capacity"));
 			park.setPlaceDescription(resultSet.getString("description"));
-//			park.setWorkingHours(resultSet.getString("workinghours"));
+			park.setStart(resultSet.getString("start_time"));
+			park.setEnd(resultSet.getString("end_time"));
 			park.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

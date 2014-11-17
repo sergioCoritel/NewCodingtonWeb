@@ -13,7 +13,8 @@ public abstract class Place {
 	private String name;
 	private int capacity;
 	private String placeDescription; 
-	private String workingHours;
+	private String start;
+	private String end;
 	public enum Zone{NORTH, SOUTH};
 	private Zone zone;
 	private File image;
@@ -31,13 +32,14 @@ public abstract class Place {
 	public Place(){}
 	
 	public Place(int id,String name, int capacity,
-			String placeDescription, String workingHours, Zone zone, File image) {
+			String placeDescription, String start, String end, Zone zone, File image) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.capacity = capacity;
 		this.placeDescription = placeDescription;
-		this.workingHours = workingHours;
+		this.start = start;
+		this.end = end;
 		this.zone = zone;
 		this.setImage(image);
 	}
@@ -45,12 +47,7 @@ public abstract class Place {
 
 
 
-	public String getPlaceDescription() {
-		return placeDescription;
-	}
-	public void setPlaceDescription(String placeDescription) {
-		this.placeDescription = placeDescription;
-	}
+	
 
 
 	// Abstract method to be overrided in Subclasses like Stadium, Zoo etc.
@@ -78,11 +75,26 @@ public abstract class Place {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	public String getWorkingHours() {
-		return workingHours;
+	public String getPlaceDescription() {
+		return placeDescription;
 	}
-	public void setWorkingHours(String workingHours) {
-		this.workingHours = workingHours;
+	public void setPlaceDescription(String placeDescription) {
+		this.placeDescription = placeDescription;
+	}
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
 	}
 	
 	public Zone getZone() {
@@ -99,5 +111,7 @@ public abstract class Place {
 	public void setImage(File image) {
 		this.image = image;
 	}
+
+
 
 }
