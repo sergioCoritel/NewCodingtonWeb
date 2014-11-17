@@ -21,6 +21,8 @@ public class EventDAO implements IEventDAO {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
+	private static String allEventsQuery = DatabaseHelper.getQuery("allevents");
+	
 	private static String museumEventsQuery = DatabaseHelper.getQuery("museum");
 
 	private static String zooEventsQuery = DatabaseHelper.getQuery("zoo");
@@ -58,6 +60,11 @@ public class EventDAO implements IEventDAO {
 		return eventList;
 	}
 	
+	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
+	SQLException {
+		
+		return requestEventList(allEventsQuery);
+	}
 	
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
 	SQLException, IOException {
