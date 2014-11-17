@@ -107,7 +107,7 @@ public class EventDAO implements IEventDAO {
 		return requestEventList(traditionalMarketEventsQuery);
 	}
 	
-	public Event showEventById (int id) throws ClassNotFoundException, SQLException{
+	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException{
 		statement = connection.prepareStatement(eventByIdQuery);
 		statement.setInt(1,id);
 		resultSet = statement.executeQuery();
