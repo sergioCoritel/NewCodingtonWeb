@@ -4,30 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
-
-public class UserDAO implements IUserDAO {
-
+public class UserDAO implements IUserDAO{
 
 	// JDBC API classes for data persistence
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-	/**
-	 * 
-	 * @param user
-	 * @param pass
-	 * @return boolean
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
+			
 	@Override
-	public boolean ValidationLogin(User u) throws SQLException, ClassNotFoundException{
+	public boolean login(User u) throws SQLException, ClassNotFoundException{
 
 		int userId = 0;
 
@@ -79,17 +71,9 @@ public class UserDAO implements IUserDAO {
 	}	
 
 
-	/**
-	 * 
-	 * @param user
-	 * @param old_pass
-	 * @param new_pass
-	 * @return boolean
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
+	
 	@Override
-	public int updateDAOPassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
+	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
 
 		int affectedRows = 0;
 	
@@ -138,16 +122,8 @@ public class UserDAO implements IUserDAO {
 
 	}
 
-
-	/**
-	 * 
-	 * @param u
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
 	@Override
-	public int updateDAOInfo(User u) throws SQLException, ClassNotFoundException{
+	public int updateInfo(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
 		
@@ -173,5 +149,10 @@ public class UserDAO implements IUserDAO {
 
 		return affectedRows;
 	}
-
+	
+	@Override
+	public boolean registerNewVisitor(User u) throws SQLException, ClassNotFoundException{
+		return true;
+	}
+	
 }

@@ -6,11 +6,11 @@ public class Visitor extends User {
 			String firstName, String lastName, String dni, String email,
 			String phoneNumber, String address) {
 		super(userId, userName, password, firstName, lastName, dni, email, phoneNumber,
-				address);
+				address, esAdmin);
 	}
 
 	public Visitor() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public boolean registerNewVisitor(){
