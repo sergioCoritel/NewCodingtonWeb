@@ -29,14 +29,14 @@ CREATE TABLE `places` (
   `id_type_place` int(11) DEFAULT NULL,
   `name_place` varchar(50) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
-  `description_place` varchar(50) DEFAULT NULL,
-  `start_time` date DEFAULT NULL,
-  `end_time` date DEFAULT NULL,
+  `description_place` varchar(250) DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
   `zone` varchar(50) DEFAULT NULL,
   `image` longblob,
   `is_building` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_place`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `places` (
 
 LOCK TABLES `places` WRITE;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
+INSERT INTO `places` VALUES (1,1,'Large business1',100,'desc large business1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,1),(2,2,'museum1',100,'desc museum1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,1),(3,3,'park1',100,'desc park1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(4,4,'stadium1',100,'desc stadium1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(5,5,'theater1',100,'desc theater1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(6,6,'touristic attraction1',100,'desc touristic attraction1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(7,7,'traditional market1',100,'desc trad market1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(8,8,'zoo1',100,'desc zoo1','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0),(9,2,'museum2',100,'desc museum2','2014-02-01 00:00:00','2014-02-01 00:00:00','SOUTH',NULL,0);
 /*!40000 ALTER TABLE `places` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-17  2:51:02
+-- Dump completed on 2014-11-17  7:46:38

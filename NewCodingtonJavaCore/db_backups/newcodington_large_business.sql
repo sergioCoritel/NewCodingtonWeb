@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `large_business`;
 CREATE TABLE `large_business` (
   `id_place` int(11) NOT NULL,
   PRIMARY KEY (`id_place`),
-  CONSTRAINT `fk_large_business_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_large_business_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,6 +37,7 @@ CREATE TABLE `large_business` (
 
 LOCK TABLES `large_business` WRITE;
 /*!40000 ALTER TABLE `large_business` DISABLE KEYS */;
+INSERT INTO `large_business` VALUES (1);
 /*!40000 ALTER TABLE `large_business` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-17  2:51:01
+-- Dump completed on 2014-11-17  7:46:36
