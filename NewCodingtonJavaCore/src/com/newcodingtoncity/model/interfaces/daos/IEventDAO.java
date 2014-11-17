@@ -8,7 +8,6 @@ import com.newcodingtoncity.model.domain.Event;
 
 public interface IEventDAO {
 	
-
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException, SQLException, IOException;
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException, SQLException, IOException;
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException, SQLException, IOException;
@@ -19,5 +18,6 @@ public interface IEventDAO {
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException, SQLException, IOException;
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException, SQLException, IOException;
 	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException;
-
+	public int insertEvent(Event insertEvent);
+	public int deleteEvent(int eventId);
 }

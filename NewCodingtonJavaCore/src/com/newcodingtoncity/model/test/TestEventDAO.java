@@ -16,17 +16,17 @@ public class TestEventDAO {
 
 
 
-//	private static void testInsertEvent(DAOManager daoManager) {
-//		Event insertEvent = new Event();
-//		insertEvent.setEventName("Evento1");
-//		insertEvent.setDescription("Descripcion");
-//		insertEvent.setDuration(50);
-//		insertEvent.setSeatsAvailable(100);
-//		insertEvent.setTicketPrice(10);
-//		int rowsAffected = daoManager.getEventDAO().insertEvent(insertEvent);
-//		System.out.println("InsertEvent: numrRowsAffected");
-//		System.out.println(rowsAffected);
-//	}
+	private static void testInsertEvent(DAOManager daoManager) {
+		Event insertEvent = new Event();
+		insertEvent.setEventName("Evento1");
+		insertEvent.setDescription("Descripcion");
+		insertEvent.setDuration(50);
+		insertEvent.setSeatsAvailable(100);
+		insertEvent.setTicketPrice(10);
+		int rowsAffected = daoManager.getEventDAO().insertEvent(insertEvent);
+		System.out.println("InsertEvent: numrRowsAffected");
+		System.out.println(rowsAffected);
+	}
 
 
 
