@@ -25,14 +25,12 @@ DROP TABLE IF EXISTS `events_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `events_users` (
-  `ideu` int(11) NOT NULL,
-  `iduser` int(11) DEFAULT NULL,
-  `idevent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ideu`),
-  KEY `iduser` (`iduser`),
-  KEY `idevent` (`idevent`),
-  CONSTRAINT `events_users_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `users` (`id`),
-  CONSTRAINT `events_users_ibfk_2` FOREIGN KEY (`idevent`) REFERENCES `events` (`id`)
+  `id_event` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_event`,`id_user`),
+  KEY `R_3` (`id_user`),
+  CONSTRAINT `events_users_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
+  CONSTRAINT `events_users_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `events` (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-11  6:16:15
+-- Dump completed on 2014-11-17  2:51:02

@@ -18,35 +18,34 @@ USE `newcodington`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `theater`
+-- Table structure for table `places`
 --
 
-DROP TABLE IF EXISTS `theater`;
+DROP TABLE IF EXISTS `places`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `theater` (
-  `placeId` int(11) NOT NULL,
-  `placetypeid` int(11) NOT NULL DEFAULT '5',
-  `name` varchar(45) DEFAULT NULL,
+CREATE TABLE `places` (
+  `id_place` int(11) NOT NULL AUTO_INCREMENT,
+  `id_type_place` int(11) DEFAULT NULL,
+  `name_place` varchar(50) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `hour_open` time DEFAULT NULL,
-  `hour_close` time DEFAULT NULL,
-  `zone` varchar(45) DEFAULT NULL,
+  `description_place` varchar(50) DEFAULT NULL,
+  `start_time` date DEFAULT NULL,
+  `end_time` date DEFAULT NULL,
+  `zone` varchar(50) DEFAULT NULL,
   `image` longblob,
-  `building` tinyint(4) DEFAULT '1',
-  PRIMARY KEY (`placeId`,`placetypeid`)
+  `is_building` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_place`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `theater`
+-- Dumping data for table `places`
 --
 
-LOCK TABLES `theater` WRITE;
-/*!40000 ALTER TABLE `theater` DISABLE KEYS */;
-INSERT INTO `theater` VALUES (1,5,'theather madrid',200,'theater more traditional','00:02:00',NULL,'north','200',1);
-/*!40000 ALTER TABLE `theater` ENABLE KEYS */;
+LOCK TABLES `places` WRITE;
+/*!40000 ALTER TABLE `places` DISABLE KEYS */;
+/*!40000 ALTER TABLE `places` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-12  6:41:05
+-- Dump completed on 2014-11-17  2:51:02

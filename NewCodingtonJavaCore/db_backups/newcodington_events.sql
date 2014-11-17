@@ -25,16 +25,16 @@ DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `start` timestamp NULL DEFAULT NULL,
-  `type` varchar(45) DEFAULT NULL,
-  `end` timestamp NULL DEFAULT NULL,
-  `ticketprice` float DEFAULT NULL,
-  `seatsavailable` int(11) DEFAULT NULL,
-  `place` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id_event` int(11) NOT NULL AUTO_INCREMENT,
+  `name_event` varchar(45) DEFAULT NULL,
+  `description_event` varchar(45) DEFAULT NULL,
+  `start_event` datetime DEFAULT NULL,
+  `end_event` datetime DEFAULT NULL,
+  `type_event` varchar(50) DEFAULT NULL,
+  `ticket_price` float DEFAULT NULL,
+  `seats_available` int(11) DEFAULT NULL,
+  `seats_total` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,7 +44,6 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'Partido','Un partido de futbol','2014-12-31 18:00:00','1','2014-12-31 20:00:00',75.5,300,'Stadium');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-11  6:16:22
+-- Dump completed on 2014-11-17  2:51:05

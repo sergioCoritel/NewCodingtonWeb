@@ -18,33 +18,26 @@ USE `newcodington`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `largebusiness`
+-- Table structure for table `tourist_attraction`
 --
 
-DROP TABLE IF EXISTS `largebusiness`;
+DROP TABLE IF EXISTS `tourist_attraction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `largebusiness` (
-  `placeId` int(11) NOT NULL,
-  `placetypeid` int(11) NOT NULL DEFAULT '1',
-  `capacity` int(11) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `workinghours` varchar(45) DEFAULT NULL,
-  `zone` varchar(45) DEFAULT NULL,
-  `image` varchar(45) DEFAULT NULL,
-  `building` tinyint(4) DEFAULT '1',
-  PRIMARY KEY (`placeId`,`placetypeid`)
+CREATE TABLE `tourist_attraction` (
+  `id_place` int(11) NOT NULL,
+  PRIMARY KEY (`id_place`),
+  CONSTRAINT `fk_tourist_attraction_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `largebusiness`
+-- Dumping data for table `tourist_attraction`
 --
 
-LOCK TABLES `largebusiness` WRITE;
-/*!40000 ALTER TABLE `largebusiness` DISABLE KEYS */;
-/*!40000 ALTER TABLE `largebusiness` ENABLE KEYS */;
+LOCK TABLES `tourist_attraction` WRITE;
+/*!40000 ALTER TABLE `tourist_attraction` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tourist_attraction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-11  6:16:20
+-- Dump completed on 2014-11-17  2:51:04
