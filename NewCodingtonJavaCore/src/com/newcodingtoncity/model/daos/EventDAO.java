@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.daos;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,7 +44,7 @@ public class EventDAO implements IEventDAO {
 	}
 	
 	public ArrayList<Event> requestEventList(String sqlQuery) throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		statement = connection.prepareStatement(sqlQuery);
 		
 		resultSet = statement.executeQuery();
@@ -59,49 +60,49 @@ public class EventDAO implements IEventDAO {
 	
 	
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(museumEventsQuery);
 	}
 
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(zooEventsQuery);
 	}
 	
 	public ArrayList<Event> showParkEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(parkEventsQuery);
 	}
 	
 	public ArrayList<Event> showTheaterEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(theaterEventsQuery);
 	}
 	
 	public ArrayList<Event> showStadiumEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(stadiumEventsQuery);
 	}
 	
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(largeBusinessEventsQuery);
 	}
 	
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(touristAttractionEventsQuery);
 	}
 	
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 	
 		return requestEventList(traditionalMarketEventsQuery);
 	}

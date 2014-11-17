@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -7,7 +8,7 @@ import com.newcodingtoncity.model.domain.Event;
 
 public class EventMapper {
 
-	public static Event map(ResultSet resultSet){
+	public static Event map(ResultSet resultSet) throws IOException{
 		Event event = new Event();
 		try {
 			event.setEventId(resultSet.getInt("id"));

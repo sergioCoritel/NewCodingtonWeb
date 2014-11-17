@@ -1,13 +1,15 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.places.Stadium;
+import com.newcodingtoncity.model.helper.ConvertImage;
 
 public class StadiumMapper {
 
-	public static Stadium map(ResultSet resultSet){
+	public static Stadium map(ResultSet resultSet) throws IOException{
 		Stadium stadium = new Stadium();
 		try {
 			stadium.setId(resultSet.getInt("id_stadium"));
@@ -15,7 +17,7 @@ public class StadiumMapper {
 			stadium.setCapacity(resultSet.getInt("capacity"));
 			stadium.setPlaceDescription(resultSet.getString("description"));
 			stadium.setWorkingHours(resultSet.getString("workinghours"));
-			stadium.setImage(resultSet.getString("image"));
+			stadium.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,7 @@
 package com.newcodingtoncity.model.domain.places;
 
+import java.io.File;
+
 
 /**
  * MUSEUM class inherits common behavior from BUILDING class
@@ -12,7 +14,7 @@ public class Museum extends Building {
 	}
 	
 	public Museum(int id,String name, int capacity,
-			String placeDescription, String workingHours, Zone zone, String image) {
+			String placeDescription, String workingHours, Zone zone, File image) {
 		super(id,name, capacity, placeDescription, workingHours, zone, image);
 		super.setZone(Zone.NORTH);
 	}
