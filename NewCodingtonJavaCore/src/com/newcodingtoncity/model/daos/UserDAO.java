@@ -26,8 +26,8 @@ public class UserDAO implements IUserDAO{
 		try{		    		
 
 			connection = CodingtonConnectToDB.createConnection();
-			String login  = DatabaseHelper.getQuery("selec_login");
-			statement = connection.prepareStatement(login);
+			String sql  = DatabaseHelper.getQuery("selec_login");
+			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, u.getUserName());
 			statement.setString(2, u.getPassword());
@@ -80,8 +80,8 @@ public class UserDAO implements IUserDAO{
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();
-			String login  = DatabaseHelper.getQuery("change_pass");
-			statement = connection.prepareStatement(login);
+			String sql  = DatabaseHelper.getQuery("change_pass");
+			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, new_pass);
 			statement.setInt(2, u.getUserId());
@@ -130,8 +130,8 @@ public class UserDAO implements IUserDAO{
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();			
-			String select  = DatabaseHelper.getQuery("change_info");	              
-			statement = connection.prepareStatement(select);
+			String sql  = DatabaseHelper.getQuery("change_info");	              
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getFirstName());
 			statement.setString(2, u.getLastName());
 			statement.setString(3, u.getDni());
@@ -180,8 +180,8 @@ public class UserDAO implements IUserDAO{
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();			
-			String select  = DatabaseHelper.getQuery("isAcountExists");	              
-			statement = connection.prepareStatement(select);
+			String sql  = DatabaseHelper.getQuery("isAcountExists");	              
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getUserName());
 			statement.setString(2, u.getEmail());
 			resultSet = statement.executeQuery();
@@ -195,8 +195,8 @@ public class UserDAO implements IUserDAO{
 			}
 			
 			
-			select  = DatabaseHelper.getQuery("registerUser");	              
-			statement = connection.prepareStatement(select);
+			sql  = DatabaseHelper.getQuery("registerUser");	              
+			statement = connection.prepareStatement(sql);
 			statement.setInt(1, u.getUserId()); /*Falta una función que autoamticamente asigne un ID*/
 			statement.setString(2, u.getUserName());
 			statement.setString(3, u.getPassword());

@@ -23,8 +23,13 @@
 	
 <entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
 	<entry key="change_pass">update users set password = ? where id = ?</entry>
-	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phonenumber = ?, address = ? where id = ?;</entry>
-	<entry key="isAcountExists">SELECT id FROM users WHERE email= ? OR username = ?;</entry>
-	<entry key="registerUser">INSERT INTO users (id, username, password, firstname, lastname, dni, email, phonenumber, address, esadmin) VALUES (?,?,?,?,?,?,?,?,?,?);</entry>
+	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?;</entry>
+	<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?;</entry>
+	<entry key="registerUser">INSERT INTO users (id_user, username, password, firstname, lastname, dni, email, phone_number, address, is_admin) VALUES (?,?,?,?,?,?,?,?,?,?);</entry>
+	<entry key="registerVisitorToEvent">INSERT INTO events_users (id_events_users,id_event, id_user) values(?, ?, ?);</entry>
+	<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?;</entry>
+	<entry key='deleteEventFromEventSignup'>DELETE FROM id_events_users WHERE id_event = ?;</entry>
+	<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_visitor = ?;</entry>
+	<entry key='eventsOfUser'>SELECT id_event, name_event, description_event, start_event, end_event, type_event, ticket_price, seats_available, seats_total, id_place FROM events WHERE id_events_users IN (SELECT id_event FROM events_users WHERE id_visitor = ?);</entry>
 
 </properties>

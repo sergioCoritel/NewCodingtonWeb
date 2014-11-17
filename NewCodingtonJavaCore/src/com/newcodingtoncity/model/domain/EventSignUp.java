@@ -36,5 +36,9 @@ public class EventSignUp {
 		this.eventId = eventId;
 		this.visitorId = visitorId;
 	}
+	
+	public EventSignUp() {
+
+	}
 
 }
