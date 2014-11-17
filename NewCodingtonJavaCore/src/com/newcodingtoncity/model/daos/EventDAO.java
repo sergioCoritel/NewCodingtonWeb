@@ -61,7 +61,7 @@ public class EventDAO implements IEventDAO {
 	}
 	
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
-	SQLException {
+	SQLException, IOException {
 		
 		return requestEventList(allEventsQuery);
 	}
