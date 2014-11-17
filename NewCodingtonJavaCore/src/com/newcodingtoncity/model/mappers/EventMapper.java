@@ -11,15 +11,15 @@ public class EventMapper {
 	public static Event map(ResultSet resultSet) throws IOException{
 		Event event = new Event();
 		try {
-			event.setEventId(resultSet.getInt("id"));
-			event.setEventName(resultSet.getString("name"));
-			event.setDescription(resultSet.getString("description"));
-			event.setStart(resultSet.getString("start"));
-			event.setEnd(resultSet.getString("end"));
+			event.setEventId(resultSet.getInt("id_event"));
+			event.setEventName(resultSet.getString("name_event"));
+			event.setDescription(resultSet.getString("description_event"));
+			event.setStart(resultSet.getString("start_event"));
+			event.setEnd(resultSet.getString("end_event"));
 			event.setTicketPrice(resultSet.getInt("ticket_price"));
 			event.setSeatsAvailable(resultSet.getInt("seats_available"));
 			event.setSeatsTotal(resultSet.getInt("seats_total"));
-			switch (resultSet.getInt("place_type_id")) {
+			switch (resultSet.getInt("id_type_place")) {
 			case 1:
 				event.setPlace(LargeBusinessMapper.map(resultSet));
 				break;

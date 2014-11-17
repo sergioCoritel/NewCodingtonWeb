@@ -16,7 +16,8 @@ public class TraditionalMarketMapper {
 			traditionalMarket.setName(resultSet.getString("name"));
 			traditionalMarket.setCapacity(resultSet.getInt("capacity"));
 			traditionalMarket.setPlaceDescription(resultSet.getString("description"));
-			traditionalMarket.setWorkingHours(resultSet.getString("workinghours"));
+			traditionalMarket.setStart(resultSet.getString("start_time"));
+			traditionalMarket.setEnd(resultSet.getString("end_time"));
 			traditionalMarket.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

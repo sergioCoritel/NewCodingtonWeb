@@ -16,7 +16,8 @@ public class TheaterMapper {
 			theater.setName(resultSet.getString("name"));
 			theater.setCapacity(resultSet.getInt("capacity"));
 			theater.setPlaceDescription(resultSet.getString("description"));
-			theater.setWorkingHours(resultSet.getString("workinghours"));
+			theater.setStart(resultSet.getString("start_time"));
+			theater.setEnd(resultSet.getString("end_time"));
 			theater.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

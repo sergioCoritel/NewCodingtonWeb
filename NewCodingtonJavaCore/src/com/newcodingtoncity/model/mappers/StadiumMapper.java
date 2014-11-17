@@ -16,7 +16,8 @@ public class StadiumMapper {
 			stadium.setName(resultSet.getString("name"));
 			stadium.setCapacity(resultSet.getInt("capacity"));
 			stadium.setPlaceDescription(resultSet.getString("description"));
-			stadium.setWorkingHours(resultSet.getString("workinghours"));
+			stadium.setStart(resultSet.getString("start_time"));
+			stadium.setEnd(resultSet.getString("end_time"));
 			stadium.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

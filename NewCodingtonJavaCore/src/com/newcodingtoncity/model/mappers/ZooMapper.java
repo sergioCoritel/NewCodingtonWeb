@@ -16,7 +16,8 @@ public class ZooMapper {
 			zoo.setName(resultSet.getString("name"));
 			zoo.setCapacity(resultSet.getInt("capacity"));
 			zoo.setPlaceDescription(resultSet.getString("description"));
-			zoo.setWorkingHours(resultSet.getString("workinghours"));
+			zoo.setStart(resultSet.getString("start_time"));
+			zoo.setEnd(resultSet.getString("end_time"));
 			zoo.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

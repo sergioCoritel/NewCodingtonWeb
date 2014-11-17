@@ -16,7 +16,8 @@ public class TouristAttractionMapper {
 			touristAttraction.setName(resultSet.getString("name"));
 			touristAttraction.setCapacity(resultSet.getInt("capacity"));
 			touristAttraction.setPlaceDescription(resultSet.getString("description"));
-			touristAttraction.setWorkingHours(resultSet.getString("workinghours"));
+			touristAttraction.setStart(resultSet.getString("start_time"));
+			touristAttraction.setEnd(resultSet.getString("end_time"));
 			touristAttraction.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();

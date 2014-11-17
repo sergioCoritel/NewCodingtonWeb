@@ -11,8 +11,8 @@ public class LargeBusiness extends Building{
 	}
 	
 	public LargeBusiness(int id,String name, int capacity,
-			String placeDescription, String workingHours, Zone zone, File image) {
-		super(id,name, capacity, placeDescription, workingHours, zone, image);
+			String placeDescription, String start, String end, Zone zone, File image) {
+		super(id,name, capacity, placeDescription, start, end, zone, image);
 		super.setZone(Zone.NORTH);
 	}
 	

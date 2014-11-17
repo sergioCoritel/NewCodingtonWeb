@@ -16,7 +16,8 @@ public class MuseumMapper {
 			museum.setName(resultSet.getString("name"));
 			museum.setCapacity(resultSet.getInt("capacity"));
 			museum.setPlaceDescription(resultSet.getString("description"));
-			museum.setWorkingHours(resultSet.getString("workinghours"));
+			museum.setStart(resultSet.getString("start_time"));
+			museum.setEnd(resultSet.getString("end_time"));
 			museum.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
 		} catch (SQLException e) {
 			e.printStackTrace();
