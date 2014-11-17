@@ -17,7 +17,7 @@ public class UserDAO implements IUserDAO{
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-			
+
 	@Override
 	public boolean login(User u) throws SQLException, ClassNotFoundException{
 
@@ -33,11 +33,11 @@ public class UserDAO implements IUserDAO{
 			statement.setString(2, u.getPassword());
 
 			resultSet = statement.executeQuery();
-		
+
 			while (resultSet.next()){
 				userId = resultSet.getInt(1);
 			}
-	
+
 			u.setUserId(userId);
 
 		} catch (Exception ee) {
@@ -71,12 +71,12 @@ public class UserDAO implements IUserDAO{
 	}	
 
 
-	
+
 	@Override
 	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
 
 		int affectedRows = 0;
-	
+
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();
@@ -87,17 +87,17 @@ public class UserDAO implements IUserDAO{
 			statement.setInt(2, u.getUserId());
 
 			affectedRows = statement.executeUpdate();
-		    
+
 		}catch (Exception ee) {
-			
+
 			System.out.println(" updateDAOPassword 1: "+ ee.getMessage());
 			return 0;
 
-	
+
 		}finally {
-			
+
 			try {
-				
+
 				if (resultSet != null) {
 					resultSet.close(); 
 					resultSet = null;
@@ -106,18 +106,18 @@ public class UserDAO implements IUserDAO{
 					statement.close(); 
 					statement = null;
 				}
-	
+
 				if (connection != null) {
 					CodingtonConnectToDB.closeConnection(connection);
 					connection = null;
 				}
-				
+
 			}catch (Exception ee) {
 				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
 				return 0;
 			}
 		}
-		
+
 		return affectedRows;
 
 	}
@@ -126,7 +126,7 @@ public class UserDAO implements IUserDAO{
 	public int updateInfo(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
-		
+
 		try{
 
 			connection = CodingtonConnectToDB.createConnection();			
@@ -143,16 +143,80 @@ public class UserDAO implements IUserDAO{
 
 		}catch(Exception ee) {
 			System.out.println(" updateDAOInfo "+ ee.getMessage());		    	
-			return 0;
+			return affectedRows;
+
+		}finally {
+
+			try {
+
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+
+				if (connection != null) {
+					CodingtonConnectToDB.closeConnection(connection);
+					connection = null;
+				}
+
+			}catch (Exception ee) {
+				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
+				return affectedRows;
+			}
+		}
+
+		return affectedRows;
+	}
+
+	@Override
+	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException{
+
+		int affectedRows = 0, userId=0;
+
+		try{
+
+			connection = CodingtonConnectToDB.createConnection();			
+			String select  = DatabaseHelper.getQuery("isAcountExists");	              
+			statement = connection.prepareStatement(select);
+			statement.setString(1, u.getUserName());
+			statement.setString(2, u.getEmail());
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()){
+				userId = resultSet.getInt(1);
+			}
+			
+			if(userId!=0){
+				return affectedRows;
+			}
+			
+			
+			select  = DatabaseHelper.getQuery("registerUser");	              
+			statement = connection.prepareStatement(select);
+			statement.setInt(1, u.getUserId()); /*Falta una función que autoamticamente asigne un ID*/
+			statement.setString(2, u.getUserName());
+			statement.setString(3, u.getPassword());
+			statement.setString(4, u.getFirstName());
+			statement.setString(5, u.getLastName());
+			statement.setString(6, u.getDni());
+			statement.setString(7, u.getEmail());
+			statement.setString(8, u.getPhoneNumber());
+			statement.setString(9, u.getAddress());
+			statement.setInt(10, 0);
+			
+			affectedRows = statement.executeUpdate(); 
+
+		}catch(Exception ee) {
+			System.out.println(" registerNewVisitor "+ ee.getMessage());		    	
+			return affectedRows;
 
 		}
 
 		return affectedRows;
 	}
-	
-	@Override
-	public boolean registerNewVisitor(User u) throws SQLException, ClassNotFoundException{
-		return true;
-	}
-	
+
 }

@@ -35,7 +35,7 @@ public abstract class User {
 			String lastName, String dni, String email, String phoneNumber,
 			String address, boolean esAdmin) {
 		super();
-		this.userId = userId;
+		this.userId = userId++;
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;

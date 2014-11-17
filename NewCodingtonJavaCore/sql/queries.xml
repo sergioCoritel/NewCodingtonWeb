@@ -24,5 +24,7 @@
 <entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
 	<entry key="change_pass">update users set password = ? where id = ?</entry>
 	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phonenumber = ?, address = ? where id = ?;</entry>
+	<entry key="isAcountExists">SELECT id FROM users WHERE email= ? OR username = ?;</entry>
+	<entry key="registerUser">INSERT INTO users (id, username, password, firstname, lastname, dni, email, phonenumber, address, esadmin) VALUES (?,?,?,?,?,?,?,?,?,?);</entry>
 
 </properties>

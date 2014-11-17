@@ -40,5 +40,5 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean registerNewVisitor(User u) throws SQLException, ClassNotFoundException;
+	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException;
 }

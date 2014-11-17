@@ -21,19 +21,25 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 	@Override
 	public boolean deleteEvenSignUp(EventSignUp e) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	@Override
 	public List<Event> viewEvents(EventSignUp e) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
 	@Override
+	public List<Event> showEvents(EventSignUp e) {
+	
+		return null;
+	}
+	
+	@Override
 	public boolean visitorIsRegisteredToEvent(EventSignUp e) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	

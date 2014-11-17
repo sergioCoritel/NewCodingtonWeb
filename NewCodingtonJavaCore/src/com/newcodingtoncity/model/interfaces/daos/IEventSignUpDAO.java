@@ -25,6 +25,10 @@ public interface IEventSignUpDAO {
 	
 	
 	public boolean visitorIsRegisteredToEvent(EventSignUp e);
+
+
+
+	public List<Event> showEvents(EventSignUp e);
 	
 	
 }
