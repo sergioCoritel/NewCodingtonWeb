@@ -25,18 +25,19 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `dni` varchar(45) DEFAULT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(12) DEFAULT NULL,
+  `password` varchar(15) DEFAULT NULL,
+  `firstname` varchar(30) DEFAULT NULL,
+  `lastname` varchar(30) DEFAULT NULL,
+  `dni` varchar(15) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `phonenumber` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `esadmin` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
+  `phone_number` varchar(20) DEFAULT NULL,
+  `address` varchar(30) DEFAULT NULL,
+  `is_admin` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,7 +47,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'JohnDoe','1234','John','Doe','77223344A','Johnsmith@gmail.com','111222333','C/ Velazquez 22',1),(2,'Mark','5678','Mark','David','77554422B','Markdavid@gmail.com','555666777','C/ Ibiza 44',0),(3,'Mike','0987','Mike','Swan','77889911C','Mikeswan@gmail.com','889955222','C/ Soria 21',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-11  6:16:16
+-- Dump completed on 2014-11-17  2:51:02

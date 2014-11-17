@@ -25,16 +25,9 @@ DROP TABLE IF EXISTS `zoo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zoo` (
-  `placeId` int(11) NOT NULL,
-  `placetypeid` int(11) NOT NULL DEFAULT '8',
-  `name` varchar(45) DEFAULT NULL,
-  `capacity` int(11) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `workinghours` varchar(45) DEFAULT NULL,
-  `zone` varchar(45) DEFAULT NULL,
-  `image` varchar(45) DEFAULT NULL,
-  `building` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`placetypeid`,`placeId`)
+  `id_place` int(11) NOT NULL,
+  PRIMARY KEY (`id_place`),
+  CONSTRAINT `fk_zoo_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -56,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-11  6:16:20
+-- Dump completed on 2014-11-17  2:51:03

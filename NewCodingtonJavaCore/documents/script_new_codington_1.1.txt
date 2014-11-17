@@ -1,0 +1,159 @@
+CREATE SCHEMA IF NOT EXISTS `newcodington` DEFAULT CHARACTER SET utf8 ;
+USE `newcodington` ;
+
+CREATE  TABLE IF NOT EXISTS `events` (
+  `id_event` INT(11) NOT NULL AUTO_INCREMENT ,
+  `name_event` VARCHAR(45) NULL DEFAULT NULL ,
+  `description_event` VARCHAR(45) NULL DEFAULT NULL ,
+  `start_event` DATETIME NULL DEFAULT NULL ,
+  `end_event` DATETIME NULL DEFAULT NULL ,
+  `type_event` VARCHAR(50) NULL DEFAULT NULL ,
+  `ticket_price` FLOAT NULL DEFAULT NULL ,
+  `seats_available` INT(11) NULL DEFAULT NULL ,
+  `seats_total` INT(11) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id_event`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `places` (
+  `id_place` INT(11) NOT NULL AUTO_INCREMENT ,
+  `id_type_place` INT(11) NULL DEFAULT NULL ,
+  `name_place` VARCHAR(50) NULL DEFAULT NULL ,
+  `capacity` INT(11) NULL DEFAULT NULL ,
+  `description_place` VARCHAR(50) NULL DEFAULT NULL ,
+  `start_time` DATE NULL DEFAULT NULL ,
+  `end_time` DATE NULL DEFAULT NULL ,
+  `zone` VARCHAR(50) NULL DEFAULT NULL ,
+  `image` LONGBLOB NULL DEFAULT NULL ,
+  `is_building` TINYINT(1) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id_place`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `events_places` (
+  `id_event` INT(11) NOT NULL ,
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_event`, `id_place`) ,
+  INDEX `R_6` (`id_place` ASC) ,
+  CONSTRAINT `events_places_ibfk_2`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` ),
+  CONSTRAINT `events_places_ibfk_1`
+    FOREIGN KEY (`id_event` )
+    REFERENCES `events` (`id_event` ))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `users` (
+  `id_user` INT(11) NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(12) NULL DEFAULT NULL ,
+  `password` VARCHAR(15) NULL DEFAULT NULL ,
+  `firstname` VARCHAR(30) NULL DEFAULT NULL ,
+  `lastname` VARCHAR(30) NULL DEFAULT NULL ,
+  `dni` VARCHAR(15) NULL DEFAULT NULL ,
+  `email` VARCHAR(45) NULL DEFAULT NULL ,
+  `phone_number` VARCHAR(20) NULL DEFAULT NULL ,
+  `address` VARCHAR(30) NULL DEFAULT NULL ,
+  `is_admin` TINYINT(1) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id_user`) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `events_users` (
+  `id_event` INT(11) NOT NULL ,
+  `id_user` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_event`, `id_user`) ,
+  INDEX `R_3` (`id_user` ASC) ,
+  CONSTRAINT `events_users_ibfk_2`
+    FOREIGN KEY (`id_user` )
+    REFERENCES `users` (`id_user` ),
+  CONSTRAINT `events_users_ibfk_1`
+    FOREIGN KEY (`id_event` )
+    REFERENCES `events` (`id_event` ))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `zoo` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_zoo_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `museum` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_museum_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `park` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_park_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `large_business` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_large_business_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `stadium` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_stadium_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `theater` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_theater_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+CREATE  TABLE IF NOT EXISTS `tourist_attraction` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_tourist_attraction_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE  TABLE IF NOT EXISTS `traditional_market` (
+  `id_place` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_place`) ,
+  CONSTRAINT `fk_traditional_market_places1`
+    FOREIGN KEY (`id_place` )
+    REFERENCES `places` (`id_place` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
