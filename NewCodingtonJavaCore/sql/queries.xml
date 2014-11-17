@@ -3,6 +3,8 @@
 <properties>
 <comment>Here are some favorites</comment>
 
+<entry key="allevents">SELECT events.* FROM events</entry>
+
 <entry key="museum">SELECT events.*, museum.* FROM events, events_places, museum WHERE events.id = events_places.event_id AND events_places.placetypeid = 2 AND events_places.place_id =  museum.placeId</entry>
 
 <entry key="zoo">SELECT events.*, zoo.* FROM events, events_places, zoo WHERE events.id = events_places.event_id AND events_places.placetypeid = 8 AND events_places.place_id =  zoo.placeId</entry>
