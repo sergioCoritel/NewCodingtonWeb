@@ -14,10 +14,6 @@ public class DAOManager {
 		connection  = CodingtonConnectToDB.createConnection();	
 	}
 
-	/**
-	 * Return an instance of IEventDAO
-	 * @return
-	 */
 	public IEventDAO getEventDAO() {
 		return new EventDAO(connection);		
 	}
