@@ -1,15 +1,11 @@
 package com.newcodingtoncity.model.domain.users;
 
-<<<<<<< HEAD
-=======
 import java.sql.SQLException;
-
 import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.test.ValidateUser;
-
 import com.newcodingtoncity.model.exceptions.DomainException;
 
->>>>>>> User and validators
+
 /**
  * 
  * @author Esther Guerrero Santana
@@ -27,7 +23,6 @@ public abstract class User {
 	private String phoneNumber;
 	private String address;
 	protected static boolean esAdmin;
-
 	
 	
 	/**
@@ -75,18 +70,11 @@ public abstract class User {
 		this.address = "";
 		User.esAdmin = false;
 	}
-<<<<<<< HEAD
-
-	/**
-	 * 
-	 * @return id
-=======
 	
 	
 	/**
 	 * Return the userId associated with this instance of User.
 	 * @return the userId
->>>>>>> User and validators
 	 */
 	public int getUserId() {
 		return userId;
@@ -94,46 +82,22 @@ public abstract class User {
 	
 	
 	/**
-<<<<<<< HEAD
-	 * 
-	 * @param id
-=======
 	 * Sets the id of the specified instance of User
 	 * @param the new id
->>>>>>> User and validators
 	 */
 	public void setUserId(int id) {
 		this.userId = id;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return userName
-=======
 	
 	/**
 	 * Return the userName associated with this instance of User.
 	 * @return the userName
->>>>>>> User and validators
 	 */
 	public String getUserName() {
 		return userName;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param userName
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
-	/**
-	 * 
-	 * @return password
-=======
 	
 	/**
 	 * Sets the userName of the specified instance of User, check the
@@ -157,17 +121,11 @@ public abstract class User {
 		return password;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param password
-=======
 	
 	/**
 	 * Sets the password of the specified instance of User, check the
      * password correct.
 	 * @param the new password
->>>>>>> User and validators
 	 */
 	public void setPassword(String password) {
 		if(ValidateUser.validatePassword(password))
@@ -176,32 +134,20 @@ public abstract class User {
 			throw new DomainException("Format Password incorrect (digits between 6 to 15)");
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return firstName
-=======
 	
 	/**
 	 * Return the firstName associated with this instance of User.
 	 * @return the firstName
->>>>>>> User and validators
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param firstName
-=======
 	
 	/**
 	 * Sets the firstName of the specified instance of User, check the
      * firstName correct.
 	 * @param the new firstName
->>>>>>> User and validators
 	 */
 	public void setFirstName(String firstName) {
 		if(ValidateUser.validateString(firstName))
@@ -210,32 +156,20 @@ public abstract class User {
 			throw new DomainException("Format FirstName incorrect (digits between 1 to 30)");
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return lastName
-=======
 	
 	/**
 	 * Return the lastName associated with this instance of User.
 	 * @return the lastName
->>>>>>> User and validators
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param lastName
-=======
 	
 	/**
 	 * Sets the lastName of the specified instance of User, check the
      * lastName correct.
 	 * @param the new lastName
->>>>>>> User and validators
 	 */
 	public void setLastName(String lastName) {
 		if(ValidateUser.validateString(lastName))
@@ -244,34 +178,15 @@ public abstract class User {
 			throw new DomainException("Format LastName incorrect (digits between 1 to 30)");
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return dni
-=======
 	
 	/**
 	 * Return the dni associated with this instance of User.
 	 * @return the dni
->>>>>>> User and validators
 	 */
 	public String getDni() {
 		return dni;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param dni
-	 */
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	
-	/**
-	 * 
-	 * @return email
-=======
 	
 	/**
 	 * Sets the dni of the specified instance of User, check the
@@ -289,23 +204,16 @@ public abstract class User {
 	/**
 	 * Return the email associated with this instance of User.
 	 * @return the email
->>>>>>> User and validators
 	 */
 	public String getEmail() {
 		return email;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param email
-=======
 	
 	/**
 	 * Sets the email of the specified instance of User, check the
      * email correct.
 	 * @param the new email
->>>>>>> User and validators
 	 */
 	public void setEmail(String email) {
 		if(ValidateUser.validateSetEmail(email))
@@ -314,32 +222,20 @@ public abstract class User {
 			throw new DomainException("Email NO VALID: email must have leters, numbers, and specials characters ('.' and ' _')");
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return phoneNumber
-=======
 	
 	/**
 	 * Return the phoneNumber associated with this instance of User.
 	 * @return the phoneNumber
->>>>>>> User and validators
 	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @param phoneNumber
-=======
 	
 	/**
 	 * Sets the phoneNumber of the specified instance of User, check the
      * phoneNumber correct.
 	 * @param the new phoneNumber
->>>>>>> User and validators
 	 */
 	public void setPhoneNumber(String phoneNumber) {
 		if(ValidateUser.validateSetPhoneNumber(phoneNumber))
@@ -350,11 +246,6 @@ public abstract class User {
 					"\n and min 10digits or max 20digits");
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * 
-	 * @return address
-=======
 	
 	/**
 	 * Return the address associated with this instance of User.
@@ -364,9 +255,6 @@ public abstract class User {
 	public String getAddress() {
 		return address;
 	}
-<<<<<<< HEAD
-	
-=======
 	
 	
 	/**
@@ -383,14 +271,6 @@ public abstract class User {
 	
 	
 	/* falta devovler generar y devovler una sesion en lugar de un boolean*/
->>>>>>> User and validators
-	/**
-	 * 
-	 * @param address
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	
 	/**
 	 * 
