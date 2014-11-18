@@ -12,7 +12,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean loginDAO(User u) throws SQLException, ClassNotFoundException;
+	public int loginDAO(User u) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
@@ -40,5 +40,5 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException;
+	public boolean registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException;
 }

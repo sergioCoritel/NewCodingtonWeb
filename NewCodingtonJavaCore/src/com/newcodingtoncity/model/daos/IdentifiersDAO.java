@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
 
@@ -28,37 +29,45 @@ public class IdentifiersDAO implements IIdentifiersDAO{
 	 */
 	@Override
 	public int getNextId(String classname) {
-		Integer nextId = 1;
-			
-		String sql  = DatabaseHelper.getQuery("selec_login");
-		statement = connection.prepareStatement(sql);
-
-		statement.setString(1, u.getUserName());
-		statement.setString(2, u.getPassword());
-
-		resultSet = statement.executeQuery();
-
-		while (resultSet.next()){
-			userId = resultSet.getInt(1);
-		}
+		int nextId = 0;
 
 		try {
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, classname);
+			
+			String sql  = DatabaseHelper.getQuery("FALTA LA QUERY");
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, classname);
+			resultSet = statement.executeQuery();
+		    resultSet.next();
+		    
+		    nextId += resultSet.getInt("value");
+		    this.updateNextId(classname, nextId);
 
-			resultSet = preparedStatement.executeQuery();
-			resultSet.next();
+		}catch(Exception ee) {
+			System.out.println(" getNextId 1: "+ ee.getMessage());		    	
+			return nextId;
 
-			nextId += resultSet.getInt("value");
-			this.updateNext(classname, nextId);
+		}finally {
 
-		} catch(SQLException ex) {
-			throw new DAOException(ex.getMessage(), ex);
+			try {
 
-		} finally {
-			FERSDataConnection.closeStatement(preparedStatement);
-			FERSDataConnection.closeResulSet(resultSet);
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
 
+				if (connection != null) {
+					CodingtonConnectToDB.closeConnection(connection);
+					connection = null;
+				}
+
+			}catch (Exception ee) {
+				System.out.println(" getNextId 2: "+ ee.getMessage());
+				return nextId;
+			}
 		}	
 
 		return nextId;

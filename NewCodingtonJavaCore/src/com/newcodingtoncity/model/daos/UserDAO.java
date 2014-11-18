@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.users.User;
+import com.newcodingtoncity.model.exceptions.DAOException;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
@@ -25,10 +26,14 @@ public class UserDAO implements IUserDAO{
 	public UserDAO(Connection connection) {
 		this.connection = connection;
 	}
+	
+	public UserDAO() {
+		
+	}
 
 
 	@Override
-	public boolean loginDAO(User u) throws SQLException, ClassNotFoundException{
+	public int loginDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int userId = 0;
 
@@ -49,10 +54,10 @@ public class UserDAO implements IUserDAO{
 
 			u.setUserId(userId);
 
-		} catch (Exception ee) {
+		}catch (Exception ee) {
 			System.out.println(" loginDAO 1: "+ ee.getMessage());
-			return false;
-
+			return 0;
+		
 		} finally {
 			try {
 				if (resultSet != null) {
@@ -70,12 +75,12 @@ public class UserDAO implements IUserDAO{
 				}
 			}catch (Exception ee) {
 				System.out.println(" loginDAO 2: "+ ee.getMessage());
-				return false;
+				return userId;
 			}
 
 		} 
 
-		return true;
+		return userId;
 
 	}	
 
@@ -201,7 +206,7 @@ public class UserDAO implements IUserDAO{
 	}
 
 	@Override
-	public int registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException{
+	public boolean registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0, userId=0;
 
@@ -220,28 +225,27 @@ public class UserDAO implements IUserDAO{
 			
 			/*If userId != 0, there is a user registered with this acount*/
 			if(userId!=0){
-				return affectedRows;
+				throw new DAOException("Acount Exists: Username or email is registrared in date base");
 			}
 			
 			
 			sql  = DatabaseHelper.getQuery("registerUser");	              
 			statement = connection.prepareStatement(sql);
-			statement.setInt(1, u.getUserId()); /*Falta una función que autoamticamente asigne un ID*/
-			statement.setString(2, u.getUserName());
-			statement.setString(3, u.getPassword());
-			statement.setString(4, u.getFirstName());
-			statement.setString(5, u.getLastName());
-			statement.setString(6, u.getDni());
-			statement.setString(7, u.getEmail());
-			statement.setString(8, u.getPhoneNumber());
-			statement.setString(9, u.getAddress());
-			statement.setInt(10, 0);
+			statement.setString(1, u.getUserName());
+			statement.setString(2, u.getPassword());
+			statement.setString(3, u.getFirstName());
+			statement.setString(4, u.getLastName());
+			statement.setString(5, u.getDni());
+			statement.setString(6, u.getEmail());
+			statement.setString(7, u.getPhoneNumber());
+			statement.setString(8, u.getAddress());
+			statement.setInt(9, 0);
 			
 			affectedRows = statement.executeUpdate(); 
 
 		}catch(Exception ee) {
 			System.out.println(" registerNewVisitorDAO 1: "+ ee.getMessage());		    	
-			return affectedRows;
+			return false;
 
 		}finally {
 
@@ -263,11 +267,16 @@ public class UserDAO implements IUserDAO{
 
 			}catch (Exception ee) {
 				System.out.println(" registerNewVisitorDAO 2: "+ ee.getMessage());
-				return affectedRows;
+				return false;
 			}
 		}
 
-		return affectedRows;
+		if(affectedRows!=0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 }

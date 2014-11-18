@@ -1,7 +1,5 @@
 package com.newcodingtoncity.model.domain.users;
 
-import java.sql.SQLException;
-import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.test.ValidateUser;
 import com.newcodingtoncity.model.exceptions.DomainException;
 
@@ -115,7 +113,7 @@ public abstract class User {
 	/**
 	 * Return the password associated with this instance of User.
 	 * @return the password
->>>>>>> User and validators
+ 	 * User and validators
 	 */
 	public String getPassword() {
 		return password;
