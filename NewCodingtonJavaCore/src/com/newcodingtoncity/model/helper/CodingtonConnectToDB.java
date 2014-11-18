@@ -38,8 +38,24 @@ public class CodingtonConnectToDB {
 		}
 	}
 	
-	public static void main(String[] args){
-		createConnection();
-		System.out.println(connnection);
+	public static void commit(Connection connection) throws RuntimeException {
+		if(connection != null) {
+			try {
+				connection.commit();
+			} catch(SQLException ex) {
+				throw new RuntimeException(ex.getMessage(), ex);
+			}
+		}
 	}
+	
+	public static void rollback(Connection connection) throws RuntimeException {
+		if(connection != null) {
+			try {
+				connection.rollback();
+			} catch(SQLException ex) {
+				throw new RuntimeException(ex.getMessage(), ex);
+			}
+		}
+	}
+	
 }
