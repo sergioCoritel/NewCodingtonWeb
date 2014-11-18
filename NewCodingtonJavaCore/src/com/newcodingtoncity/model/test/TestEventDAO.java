@@ -49,9 +49,11 @@ public class TestEventDAO {
 				System.out.println("primer resultado: "+eventList.get(i).getEventName());
 			}
 		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
 		}
 	}
 
