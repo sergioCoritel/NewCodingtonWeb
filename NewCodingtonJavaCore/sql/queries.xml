@@ -31,5 +31,6 @@
 	<entry key='deleteEventFromEventSignup'>DELETE FROM id_events_users WHERE id_event = ?;</entry>
 	<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_visitor = ?;</entry>
 	<entry key='eventsOfUser'>SELECT id_event, name_event, description_event, start_event, end_event, type_event, ticket_price, seats_available, seats_total, id_place FROM events WHERE id_events_users IN (SELECT id_event FROM events_users WHERE id_visitor = ?);</entry>
+	<entry key='sequencerActual'>SELECT value FROM sequencer WHERE name = ?;</entry>
 
 </properties>

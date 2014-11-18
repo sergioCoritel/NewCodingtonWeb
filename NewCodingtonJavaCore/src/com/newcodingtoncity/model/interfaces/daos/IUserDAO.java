@@ -12,7 +12,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean login(User u) throws SQLException, ClassNotFoundException;
+	public boolean loginDAO(User u) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
@@ -22,7 +22,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException;
+	public int updatePasswordDAO(User u, String new_pass) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
@@ -31,7 +31,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updateInfo(User u) throws SQLException, ClassNotFoundException;
+	public int updateInfoDAO(User u) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
@@ -40,5 +40,5 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException;
+	public int registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException;
 }

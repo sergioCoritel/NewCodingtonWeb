@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.daos.UserDAO;
@@ -14,8 +15,9 @@ public class PruebaUpdateInfo {
 	 * @throws SQLException 
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		Connection connection = null;
 		User user = new Visitor();
-		UserDAO user_dao = new UserDAO();
+		UserDAO user_dao = new UserDAO(connection);
 		int reg=0;
 		
 		user.setUserId(2);
@@ -26,7 +28,7 @@ public class PruebaUpdateInfo {
 		user.setPhoneNumber("555666777");
 		user.setAddress("Av/ Arturo Soria");
 		
-		reg = user_dao.updateInfo(user);
+		reg = user_dao.updateInfoDAO(user);
 		
 		System.out.print(reg);
 	}

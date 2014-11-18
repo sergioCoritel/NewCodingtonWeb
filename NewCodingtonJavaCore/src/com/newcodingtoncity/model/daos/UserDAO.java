@@ -17,15 +17,23 @@ public class UserDAO implements IUserDAO{
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
+	/**
+	 * Constructor
+	 * @param connection
+	 */
+	public UserDAO(Connection connection) {
+		this.connection = connection;
+	}
+
 
 	@Override
-	public boolean login(User u) throws SQLException, ClassNotFoundException{
+	public boolean loginDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int userId = 0;
 
-		try{		    		
+		try{		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("selec_login");
 			statement = connection.prepareStatement(sql);
 
@@ -41,7 +49,7 @@ public class UserDAO implements IUserDAO{
 			u.setUserId(userId);
 
 		} catch (Exception ee) {
-			System.out.println("ValidationLogin1: "+ ee.getMessage());
+			System.out.println(" loginDAO 1: "+ ee.getMessage());
 			return false;
 
 		} finally {
@@ -60,7 +68,7 @@ public class UserDAO implements IUserDAO{
 					connection = null;
 				}
 			}catch (Exception ee) {
-				System.out.println(" ValidationLogin2: "+ ee.getMessage());
+				System.out.println(" loginDAO 2: "+ ee.getMessage());
 				return false;
 			}
 
@@ -73,13 +81,13 @@ public class UserDAO implements IUserDAO{
 
 
 	@Override
-	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
+	public int updatePasswordDAO(User u, String new_pass) throws SQLException, ClassNotFoundException {
 
 		int affectedRows = 0;
 
 		try{
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("change_pass");
 			statement = connection.prepareStatement(sql);
 
@@ -90,7 +98,7 @@ public class UserDAO implements IUserDAO{
 
 		}catch (Exception ee) {
 
-			System.out.println(" updateDAOPassword 1: "+ ee.getMessage());
+			System.out.println(" updatePasswordDAO 1: "+ ee.getMessage());
 			return 0;
 
 
@@ -113,7 +121,7 @@ public class UserDAO implements IUserDAO{
 				}
 
 			}catch (Exception ee) {
-				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
+				System.out.println(" updatePasswordDAO 2: "+ ee.getMessage());
 				return 0;
 			}
 		}
@@ -123,13 +131,13 @@ public class UserDAO implements IUserDAO{
 	}
 
 	@Override
-	public int updateInfo(User u) throws SQLException, ClassNotFoundException{
+	public int updateInfoDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
 
 		try{
 
-			connection = CodingtonConnectToDB.createConnection();			
+			//connection = CodingtonConnectToDB.createConnection();			
 			String sql  = DatabaseHelper.getQuery("change_info");	              
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getFirstName());
@@ -142,7 +150,7 @@ public class UserDAO implements IUserDAO{
 			affectedRows = statement.executeUpdate(); 
 
 		}catch(Exception ee) {
-			System.out.println(" updateDAOInfo "+ ee.getMessage());		    	
+			System.out.println(" updateInfoDAO "+ ee.getMessage());		    	
 			return affectedRows;
 
 		}finally {
@@ -164,7 +172,7 @@ public class UserDAO implements IUserDAO{
 				}
 
 			}catch (Exception ee) {
-				System.out.println(" updateDAOPassword 2: "+ ee.getMessage());
+				System.out.println(" updateInfoDAO 2: "+ ee.getMessage());
 				return affectedRows;
 			}
 		}
@@ -173,13 +181,13 @@ public class UserDAO implements IUserDAO{
 	}
 
 	@Override
-	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException{
+	public int registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0, userId=0;
 
 		try{
 
-			connection = CodingtonConnectToDB.createConnection();			
+			//connection = CodingtonConnectToDB.createConnection();			
 			String sql  = DatabaseHelper.getQuery("isAcountExists");	              
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getUserName());
@@ -190,6 +198,7 @@ public class UserDAO implements IUserDAO{
 				userId = resultSet.getInt(1);
 			}
 			
+			/*If userId != 0, there is a user registered with this acount*/
 			if(userId!=0){
 				return affectedRows;
 			}
@@ -211,9 +220,31 @@ public class UserDAO implements IUserDAO{
 			affectedRows = statement.executeUpdate(); 
 
 		}catch(Exception ee) {
-			System.out.println(" registerNewVisitor "+ ee.getMessage());		    	
+			System.out.println(" registerNewVisitorDAO 1: "+ ee.getMessage());		    	
 			return affectedRows;
 
+		}finally {
+
+			try {
+
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+
+				if (connection != null) {
+					CodingtonConnectToDB.closeConnection(connection);
+					connection = null;
+				}
+
+			}catch (Exception ee) {
+				System.out.println(" registerNewVisitorDAO 2: "+ ee.getMessage());
+				return affectedRows;
+			}
 		}
 
 		return affectedRows;
