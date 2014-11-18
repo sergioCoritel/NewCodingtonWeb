@@ -32,6 +32,7 @@ public class TestEvent extends TestCase {
 		event = new Event(EVENT_ID, EVENT_NAME, DESCRIPTION,
 				START, END, EVENT_TYPE, TICKET_PRICE,
 				SEATSAVAILABLE, SEATSTOTAL, PLACE);
+
 	}
 	
 	@After
