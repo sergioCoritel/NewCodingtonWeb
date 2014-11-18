@@ -20,7 +20,7 @@
 <entry key="touristattraction">SELECT events.*, touristattraction.* FROM events, events_places, touristattraction WHERE events.id = events_places.event_id AND events_places.placetypeid = 6 AND events_places.place_id =  touristattraction.placeId</entry>
 
 <entry key="traditionalmarket">SELECT events.*, traditionalmarket.* FROM events, events_places, traditionalmarket WHERE events.id = events_places.event_id AND events_places.placetypeid = 7 AND events_places.place_id =  traditionalmarket.placeId</entry>
-	
+
 <entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
 	<entry key="change_pass">update users set password = ? where id = ?</entry>
 	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?;</entry>
@@ -32,5 +32,15 @@
 	<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_visitor = ?;</entry>
 	<entry key='eventsOfUser'>SELECT id_event, name_event, description_event, start_event, end_event, type_event, ticket_price, seats_available, seats_total, id_place FROM events WHERE id_events_users IN (SELECT id_event FROM events_users WHERE id_visitor = ?);</entry>
 	<entry key='sequencerActual'>SELECT value FROM sequencer WHERE name = ?;</entry>
+
+<entry key="selec_login">select id from users where username = ? and password =?</entry>
+
+<entry key="change_pass">update users set password = ? "+" where id = ?</entry>
+
+<entry key="change_info">update users set firstname = ? "+" lastname = ? "+" dni = ? "+" email = ? "+" phonenumber = ? "+" adress = ? "+"where id = ?;</entry>
+	
+<entry key="insert_image">INSERT INTO places (image) VALUES (?) WHERE placeId = ?</entry>
+
+<entry key="update_image">UPDATE places SET image = ? "+" WHERE placeId = ?</entry>
 
 </properties>

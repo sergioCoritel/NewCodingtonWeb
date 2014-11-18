@@ -24,4 +24,8 @@ public class ConvertImage {
 		}
 		return image_deserialized;	
 	}
+	
+	public static Blob imageToBlob(File image) throws SQLException, IOException{
+		return null;
+	}	
 }

@@ -9,6 +9,7 @@ import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
+import com.newcodingtoncity.model.helper.Encripter;
 
 public class UserDAO implements IUserDAO{
 
@@ -134,6 +135,25 @@ public class UserDAO implements IUserDAO{
 	public int updateInfoDAO(User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
+
+		return userId;
+	}  
+	@Override
+	public boolean ValidationLogin(String user, String pass) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param user
+	 * @param old_pass
+	 * @param new_pass
+	 * @return boolean
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public boolean updateDAOPassword(User u, String new_pass) throws SQLException, ClassNotFoundException {
 
 		try{
 
