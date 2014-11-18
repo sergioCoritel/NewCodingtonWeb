@@ -21,12 +21,17 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 	private ResultSet resultSet = null;
 
 
+	public EventSignUpDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+
 	@Override
 	public boolean isVisitorRegisteredToEvent(EventSignUp e) {
 
 		try{		    		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("IsRegisteredToEvent");
 			statement = connection.prepareStatement(sql);
 
@@ -80,7 +85,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 		try{		    		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("registerVisitorToEvent");
 			statement = connection.prepareStatement(sql);
 
@@ -127,7 +132,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 		try{		    		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("unRegisterVisitorToEvent");
 			statement = connection.prepareStatement(sql);
 
@@ -174,7 +179,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 		try{		    		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("deleteEventFromEventSignup");
 			statement = connection.prepareStatement(sql);
 
@@ -247,7 +252,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		
 		try{		    		
 
-			connection = CodingtonConnectToDB.createConnection();
+			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = DatabaseHelper.getQuery("eventsOfUser");
 			statement = connection.prepareStatement(sql);
 
