@@ -12,7 +12,7 @@ public interface IUserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean login(User u) throws SQLException, ClassNotFoundException;
+	public int login(User u) throws SQLException, ClassNotFoundException;
 	
 	
 	/**
@@ -22,7 +22,7 @@ public interface IUserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException;
+	public boolean updatePassword(User u, String new_pass) throws SQLException, ClassNotFoundException;
 		
 	
 	/**
@@ -31,7 +31,7 @@ public interface IUserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updateInfo(User u) throws SQLException, ClassNotFoundException;
+	public boolean updateInfo(User u) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
@@ -40,6 +40,6 @@ public interface IUserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int registerNewVisitor(User u) throws SQLException, ClassNotFoundException;
+	public boolean registerNewVisitor(User u) throws SQLException, ClassNotFoundException;
 	
 }

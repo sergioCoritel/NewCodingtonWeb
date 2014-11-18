@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
+import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 
 public class PruebaLogin {
 
@@ -16,17 +17,19 @@ public class PruebaLogin {
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
-		Connection connection = null;
+		Connection connection  = CodingtonConnectToDB.createConnection();
 		UserDAO user_dao = new UserDAO(connection);
 		User user = new Visitor();
-		boolean reg=false;
+		int reg=0;
 
-		user.setUserName("Mark");
-		user.setPassword("5678");
+		user.setUserName("admin1");
+		user.setPassword("password1");
 		
 		reg = user_dao.loginDAO(user);
 		
-		System.out.println(reg);
+		if(reg!=0){
+			System.out.println("lOGIN GUAY!!");
+		}
 	}
 
 }

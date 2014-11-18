@@ -6,7 +6,6 @@ import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.exceptions.DAOException;
 import com.newcodingtoncity.model.exceptions.ServiceException;
-import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 import com.newcodingtoncity.model.interfaces.services.IUserService;
 
@@ -19,8 +18,34 @@ public class UserService implements IUserService{
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public boolean login(User u) throws SQLException, ClassNotFoundException{
-		return true;
+	public int login(User user) throws SQLException, ClassNotFoundException{
+		DAOManager manager = null;
+		IUserDAO userDAO = null;
+		int userId = 0;
+
+		try {
+			manager = new DAOManager();
+			userDAO = manager.getUserDAO();
+
+			userId = userDAO.loginDAO(user);
+
+			if(userId==0) {
+				throw new ServiceException("Username or Password incorrect");
+			}
+
+			manager.closeOK();
+
+		} catch(DAOException e) {
+			if(manager != null) {
+				manager.closeError();
+
+			}
+
+			throw new ServiceException("Error in data base.", e);
+
+		}
+
+		return userId;
 	}
 
 
@@ -31,7 +56,7 @@ public class UserService implements IUserService{
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updatePassword(User user, String new_pass) throws SQLException, ClassNotFoundException{
+	public boolean updatePassword(User user, String new_pass) throws SQLException, ClassNotFoundException{
 
 		DAOManager manager = null;
 		IUserDAO userDAO = null;
@@ -45,7 +70,7 @@ public class UserService implements IUserService{
 
 		}catch (Exception ee) {
 			System.out.println("updatePassword: "+ ee.getMessage());
-			return affectedRows;
+			return false;
 
 		} finally {
 			if(manager != null) {
@@ -60,7 +85,13 @@ public class UserService implements IUserService{
 
 		}
 
-		return affectedRows;
+		if(affectedRows == 1){
+			return true;
+		}
+		else{
+			return false;
+		}
+
 	}
 
 
@@ -70,7 +101,7 @@ public class UserService implements IUserService{
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updateInfo(User user) throws SQLException, ClassNotFoundException{
+	public boolean updateInfo(User user) throws SQLException, ClassNotFoundException{
 
 		DAOManager manager = null;
 		IUserDAO userDAO = null;
@@ -84,22 +115,26 @@ public class UserService implements IUserService{
 
 		}catch (Exception ee) {
 			System.out.println("updateInfo: "+ ee.getMessage());
-			return affectedRows;
+			return false;
 
 		} finally {
 			if(manager != null) {
 				if(affectedRows == 1) {
 					manager.closeOK();
-
+					return true;
 				} else {
 					manager.closeError();
-
+					return false;
 				}		
-
 			}
 		}
 
-		return affectedRows;
+		if(affectedRows == 1){
+			return true;
+		}
+		else{
+			return false;
+		}
 
 	}
 
@@ -110,46 +145,44 @@ public class UserService implements IUserService{
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int registerNewVisitor(User user) throws SQLException, ClassNotFoundException{
-		int reg = 0;
+	public boolean registerNewVisitor(User user) throws SQLException, ClassNotFoundException{
+		boolean reg = false;
 		DAOManager manager = null;		
 		IUserDAO userDAO = null;
-		ISequenceDAO sequenceDAO = null;
-		int userId = 0;
+		//IIdentifiersDAO sequenceDAO = null;
 
 		try {
 			manager = new DAOManager();	    
 			userDAO = manager.getUserDAO();
-			sequenceDAO = manager.getSequencerDAO();
+			//sequenceDAO = manager.getIdentifiersDAO();
 
-			reg = userDAO.registerNewVisitorDAO(user)
-					
-			if(reg!=0) {
-				userId = sequenceDAO.getNext(ISequenceDAO.CLASS_VISITOR_NAME);		    
-				user.setUserId(userId);
+			reg = userDAO.registerNewVisitorDAO(user);
 
-				reg = userDAO.registerNewVisitorDAO(user);
-
-			} else {
-				throw new ServiceException("Username is registered.");
-
+			if(!reg) {
+				throw new ServiceException("Acount Exists: Choose new username (nickname) or email.");
+				//userId = sequenceDAO.getNextId(IIdentifiersDAO.CLASS_USERS_NAME);		    
+				//user.setUserId(userId);
+				//reg = userDAO.registerNewVisitorDAO(user);
 			}
 
 			manager.closeOK();
 
-		} catch(DAOException ex) {
+		} catch(DAOException e) {
 			if(manager != null) {
 				manager.closeError();
 
 			}
 
-			throw new ServiceException("Error de acceso a la base de datos.", ex);
+			throw new ServiceException("Error in data base.", e);
 
 		}
 
 		return reg;
 	}
-}
+
+
 
 
 }
+
+
