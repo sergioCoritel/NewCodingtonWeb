@@ -3,6 +3,8 @@
 <properties>
 <comment>Here are some favorites</comment>
 
+<!-- SELECTS-->
+
 <!-- ALL EVENTS-->
 <entry key="allevents">SELECT * FROM events</entry>
 
@@ -72,37 +74,64 @@
 <!--PLACE ZOO-->
 <entry key="placeszoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
 
-<entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
-	<entry key="change_pass">update users set password = ? where id = ?</entry>
-	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?;</entry>
-	<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?;</entry>
-	<entry key="registerUser">INSERT INTO users (id_user, username, password, firstname, lastname, dni, email, phone_number, address, is_admin) VALUES (?,?,?,?,?,?,?,?,?,?);</entry>
-	<entry key="registerVisitorToEvent">INSERT INTO events_users (id_events_users,id_event, id_user) values(?, ?, ?);</entry>
-	<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?;</entry>
-	<entry key='deleteEventFromEventSignup'>DELETE FROM id_events_users WHERE id_event = ?;</entry>
-	<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_visitor = ?;</entry>
-	<entry key='eventsOfUser'>SELECT id_event, name_event, description_event, start_event, end_event, type_event, ticket_price, seats_available, seats_total, id_place FROM events WHERE id_events_users IN (SELECT id_event FROM events_users WHERE id_visitor = ?);</entry>
-	<entry key='sequencerActual'>SELECT value FROM sequencer WHERE name = ?;</entry>
-
-<entry key="traditionalmarket">SELECT events.*, traditionalmarket.* FROM events, events_places, traditionalmarket WHERE events.id = events_places.event_id AND events_places.placetypeid = 7 AND events_places.place_id =  traditionalmarket.placeId</entry>
-	
+<!--USER, LOGIN FILTER: USERNAME_PASS-->
 <entry key="selec_login">select id_user from users where username = ? and password =?</entry>
-	<entry key="change_pass">update users set password = ? where id_user = ?</entry>
-	<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?</entry>
-	<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
-	<entry key="registerUser">INSERT INTO users (username, password, firstname, lastname, dni, email, phone_number, address, is_admin) VALUES (?,?,?,?,?,?,?,?,?)</entry>
-	<entry key="registerVisitorToEvent">INSERT INTO events_users (id_events_users,id_event, id_user) values(?, ?, ?)</entry>
-	<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?</entry>
-	<entry key='deleteEventFromEventSignup'>DELETE FROM id_events_users WHERE id_event = ?</entry>
-	<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_visitor = ?</entry>
-	<entry key='eventsOfUser'>SELECT id_event, name_event, description_event, start_event, end_event, type_event, ticket_price, seats_available, seats_total, id_place FROM events WHERE id_events_users IN (SELECT id_event FROM events_users WHERE id_visitor = ?)</entry>
 
-<entry key="change_pass">update users set password = ? "+" where id = ?</entry>
+<!--USER, LOGIN FILTER: EMAIL_USERNAME-->
+<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
 
-<entry key="change_info">update users set firstname = ? "+" lastname = ? "+" dni = ? "+" email = ? "+" phonenumber = ? "+" adress = ? "+"where id = ?;</entry>
+<!-- EVENT_USER, FILTER: id_event and id_user-->
+<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_user = ?</entry>
+
+<!-- EVENT_USER, FILTER: id_event-->
+<entry key='register_event'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ?</entry>
+
+<!-- EVENT_USER, FILTER: id_user-->
+<entry key='register_user'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_user = ?</entry>
+
+<!--UPDATES-->
+
+<!--UPDATE PASS-->
+<entry key="change_pass">update users set password = ? where id_user = ?</entry>
+
+<!--UPDATE INFO USER-->
+<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?</entry>
 	
-<entry key="insert_image">INSERT INTO places (image) VALUES (?) WHERE placeId = ?</entry>
+<!--UPDATE INFO EVENTS-->
+<entry key="update_infoevents">update events set name_event= ?, description_event=?, start_event=?, end_event=?,type_event=?,ticket_price=?,seats_available=?,seats_total=?,id_place=? WHERE id_event = ?</entry>
 
+<!--UPDATE INFO PLACES-->
+<entry key="update_infoplaces">update places set id_type_place=?, name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, zone=?, image=?, is_building=? WHERE id_place = ?</entry>
+
+<!--UPDATE PLACES IMAGE-->
 <entry key="update_image">UPDATE places SET image = ? "+" WHERE placeId = ?</entry>
+
+<!--DELETES-->
+
+<!--DELETE EVENTS--> <!--DANGER: All associated events_users are deleted --> 
+<entry key="delete_event">delete from events where id_event=?</entry>
+
+<!--DELETE PLACES--> <!--DANGER: All associated events & events_users are deleted --> 
+<entry key="delete_places">delete from places where id_place=?</entry>
+
+<!--DELETE USERS--> <!--DANGER: All associated events_users are deleted --> 
+<entry key="delete_users">delete from users where id_user=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_events_users-->
+<entry key="deleteEventFromEventSignup">delete from events_users where id_events_users=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_user-->
+<entry key="deleteEvent_user">delete from events_users where id_user=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_event-->
+<entry key="deleteEvent_event">delete from events_users where id_event=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_event and id_user-->
+<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?</entry>
+
+<!--INSERTS-->
+
+<entry key="registerUser">INSERT INTO users (id_user, username, password, firstname, lastname, dni, email, phone_number, address, is_admin) VALUES (?,?,?,?,?,?,?,?,?,?)</entry>
+<entry key="registerVisitorToEvent">INSERT INTO events_users (id_events_users,id_event, id_user) values(?, ?, ?)</entry>
 
 </properties>
