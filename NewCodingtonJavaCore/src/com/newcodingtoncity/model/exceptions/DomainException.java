@@ -1,4 +1,4 @@
-package com.newcodingtoncity.model.test;
+package com.newcodingtoncity.model.exceptions;
 
 /**
  * Representa las excepciones lanzadas en paquete domain

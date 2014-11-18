@@ -13,11 +13,12 @@ public class TestEvent extends TestCase {
     private static final int EVENT_ID = 100158;
     private static final String EVENT_NAME = "Museo";
     private static final String DESCRIPTION = "Visita al museo";
-    private static final int DURATION = 2;
+    private static final String START = "10:00";
+    private static final String END = "14:00";
     private static final String EVENT_TYPE = "Historico";
-    private static final String SCHEDULE = "10:00-21:00";
     private static final int TICKET_PRICE = 7;
     private static final int SEATSAVAILABLE = 180;
+    private static final int SEATSTOTAL = 7;
     private static final Place PLACE = null;
     
 	private Event event;
@@ -25,7 +26,7 @@ public class TestEvent extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		event = new Event(EVENT_ID, EVENT_NAME, DESCRIPTION,
-				DURATION, EVENT_TYPE, SCHEDULE, TICKET_PRICE,
+				START, END, EVENT_TYPE, TICKET_PRICE,
 				SEATSAVAILABLE, PLACE);
 	}
 	
@@ -40,11 +41,12 @@ public class TestEvent extends TestCase {
 		assertEquals("eventID ok", EVENT_ID, event.getEventId());
 		assertEquals("eventName ok", EVENT_NAME, event.getEventName());
 		assertEquals("description ok", DESCRIPTION, event.getDescription());
-		assertEquals("duration ok", DURATION, event.getDuration());
+		assertEquals("duration ok", START, event.getStart());
+		assertEquals("duration ok", END, event.getEnd());
 		assertEquals("eventType ok", EVENT_TYPE, event.getEventType());
-		assertEquals("schedule ok", SCHEDULE, event.getSchedule());
 		assertEquals("ticketPrice ok", TICKET_PRICE, event.getTicketPrice());
 		assertEquals("seatsAvailable ok", SEATSAVAILABLE, event.getSeatsAvailable());
+		assertEquals("seatsTotal ok", SEATSTOTAL, event.getSeatsTotal());
 	}
 	
 	@Test
@@ -75,16 +77,27 @@ public class TestEvent extends TestCase {
 	}
 
 	@Test
-	public void testGetDuration() {
+	public void testGetStart() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetDuration() {
-		event.setDuration(5);
-		assertEquals("Update ok", 5, event.getDuration());
+		event.setStart("9:00");
+		assertEquals("Update ok", 5, event.getStart());
+	}
+	
+	@Test
+	public void testGetEnd() {
+		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testSetEnd() {
+		event.setStart("9:00");
+		assertEquals("Update ok", 5, event.getStart());
+	}
+	
 	@Test
 	public void testGetEventType() {
 		fail("Not yet implemented");
@@ -94,17 +107,6 @@ public class TestEvent extends TestCase {
 	public void testSetEventType() {
 		event.setEventType("Deportivo");
 		assertEquals("Update ok", "Deportivo", event.getEventType());
-	}
-
-	@Test
-	public void testGetSchedule() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSchedule() {
-		event.setSchedule("8:00-22:00");
-		assertEquals("Update ok", "8:00-22:00", event.getSchedule());
 	}
 
 	@Test
@@ -139,7 +141,18 @@ public class TestEvent extends TestCase {
 		event.setSeatsAvailable(850);
 		assertEquals("Update ok", 850, event.getSeatsAvailable());
 	}
+	
+	@Test
+	public void testGetSeatsTotal() {
+		fail("Not yet implemented");
+	}
 
+	@Test
+	public void testSetSeatsTotal() {
+		event.setSeatsAvailable(850);
+		assertEquals("Update ok", 850, event.getSeatsTotal());
+	}
+	
 	@Test
 	public void testGetPlace() {
 		fail("Not yet implemented");
