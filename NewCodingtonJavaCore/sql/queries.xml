@@ -3,23 +3,74 @@
 <properties>
 <comment>Here are some favorites</comment>
 
-<entry key="allevents">SELECT events.* FROM events</entry>
+<!-- ALL EVENTS-->
+<entry key="allevents">SELECT * FROM events</entry>
 
-<entry key="museum">SELECT events.*, museum.* FROM events, events_places, museum WHERE events.id = events_places.event_id AND events_places.placetypeid = 2 AND events_places.place_id =  museum.placeId</entry>
+<!-- ALL EVENTS AND PLACES-->
+<entry key="allevents&places">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place</entry>
 
-<entry key="zoo">SELECT events.*, zoo.* FROM events, events_places, zoo WHERE events.id = events_places.event_id AND events_places.placetypeid = 8 AND events_places.place_id =  zoo.placeId</entry>
+<!-- ALL EVENTS MUSEUM-->
+<entry key="museum">SELECT events.*, places.*, museum.* FROM events, places, museum WHERE events.id_place = places.id_place AND places.id_place=museum.id_place</entry>
 
-<entry key="park">SELECT events.*, park.* FROM events, events_places, park WHERE events.id = events_places.event_id AND events_places.placetypeid = 3 AND events_places.place_id =  park.placeId</entry>
+<!-- ALL EVENTS ZOO-->
+<entry key="zoo">SELECT events.*, places.*, zoo.* FROM events, places, zoo WHERE events.id_place = places.id_place AND places.id_place=zoo.id_place</entry>
 
-<entry key="theater">SELECT events.*, theater.* FROM events, events_places, theater WHERE events.id = events_places.event_id AND events_places.placetypeid = 5 AND events_places.place_id =  theater.placeId</entry>
+<!-- ALL EVENTS PARK-->
+<entry key="park">SELECT events.*, places.*, park.* FROM events, places, park WHERE events.id_place = places.id_place AND places.id_place=park.id_place</entry>
 
-<entry key="stadium">SELECT events.*, stadium.* FROM events, events_places, stadium WHERE events.id = events_places.event_id AND events_places.placetypeid = 4 AND events_places.place_id =  stadium.placeId</entry>
+<!-- ALL EVENTS THEATER-->
+<entry key="theater">SELECT events.*, places.*, theater.* FROM events, places, theater WHERE events.id_place = places.id_place AND places.id_place=theater.id_place</entry>
 
-<entry key="largebusiness">SELECT events.*, largebusiness.* FROM events, events_places, largebusiness WHERE events.id = events_places.event_id AND events_places.placetypeid = 1 AND events_places.place_id =  largebusiness.placeId</entry>
+<!-- ALL EVENTS STADIUM-->
+<entry key="stadium">SELECT events.*, places.*, stadium.* FROM events, places, stadium WHERE events.id_place = places.id_place AND places.id_place=stadium.id_place</entry>
 
-<entry key="touristattraction">SELECT events.*, touristattraction.* FROM events, events_places, touristattraction WHERE events.id = events_places.event_id AND events_places.placetypeid = 6 AND events_places.place_id =  touristattraction.placeId</entry>
+<!-- ALL EVENTS LARGEBUSINESS-->
+<entry key="largebusiness">SELECT events.*, places.*,large_business.* FROM events, places, large_business WHERE events.id_place = places.id_place AND places.id_place=large_business.id_place</entry>
 
-<entry key="traditionalmarket">SELECT events.*, traditionalmarket.* FROM events, events_places, traditionalmarket WHERE events.id = events_places.event_id AND events_places.placetypeid = 7 AND events_places.place_id =  traditionalmarket.placeId</entry>
+<!-- ALL EVENTS TOURISTATTRACTION-->
+<entry key="touristattraction">SELECT events.*, places.*, tourist_attraction.* FROM events, places, tourist_attraction WHERE events.id_place = places.id_place AND places.id_place=tourist_attraction.id_place</entry>
+
+<!-- ALL EVENTS TRADITIONALMARKET-->
+<entry key="traditionalmarket">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
+
+<!--ALL USER EVENTS-->
+<entry key="eventsusers">SELECT * FROM events_users</entry>
+
+<!--1 USER EVENTS, FILTER:USERS-->
+<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_user = ?</entry>
+
+<!--1 EVENTS USER,  FILTER:EVENTS-->
+<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_event = ?</entry>
+
+<!--ALL USERS-->
+<entry key="allusers">SELECT * FROM users</entry>
+
+<!--ALL PLACES-->
+<entry key="allplaces">SELECT * FROM places</entry>
+
+<!--ALL PLACE LARGEBUSINESS-->
+<entry key="placelargebusiness">SELECT places.*, large_business.* FROM places,large_business WHERE places.id_place=large_business.id_place</entry>
+
+<!--ALL PLACE MUSEUM-->
+<entry key="placemuseum">SELECT places.*, museum.* FROM places,museum WHERE places.id_place=museum.id_place</entry>
+
+<!--ALL PLACE PARK-->
+<entry key="placepark">SELECT places.*, park.* FROM places,park WHERE places.id_place=park.id_place</entry>
+
+<!--ALL PLACE STADIUM-->
+<entry key="placestadium">SELECT places.*, stadium.* FROM places,stadium WHERE places.id_place=stadium.id_place</entry>
+
+<!--ALL PLACE THEATER-->
+<entry key="placestheater">SELECT places.*, theater.* FROM places,theater WHERE places.id_place=theater.id_place</entry>
+
+<!--PLACE TOURISTATTRACTION-->
+<entry key="placestouristattraction">SELECT places.*, tourist_attraction.* FROM places,tourist_attraction WHERE places.id_place=tourist_attraction.id_place</entry>
+
+<!--PLACE TRADITIONALMARKET-->
+<entry key="placestraditionalmarket">SELECT places.*, traditional_market.* FROM places,traditional_market WHERE places.id_place=traditional_market.id_place</entry>
+
+<!--PLACE ZOO-->
+<entry key="placeszoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
 
 <entry key="selec_login">select users.id from users where users.username = ? and users.password =?</entry>
 	<entry key="change_pass">update users set password = ? where id = ?</entry>
