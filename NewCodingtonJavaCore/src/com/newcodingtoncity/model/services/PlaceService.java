@@ -13,8 +13,9 @@ import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
 import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
+import com.newcodingtoncity.model.interfaces.services.IPlaceService;
 
-public class PlaceService {
+public class PlaceService implements IPlaceService{
 	
 	public List<LargeBusiness> getLargeBusiness(){
 		DAOManager manager = null;
