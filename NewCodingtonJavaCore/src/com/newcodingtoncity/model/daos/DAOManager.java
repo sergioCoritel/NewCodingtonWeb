@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
+import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 
 
 public class DAOManager {
@@ -18,6 +19,9 @@ public class DAOManager {
 		return new EventDAO(connection);		
 	}
 
+	public IPlaceDAO getPlaceDAO() {
+		return new PlaceDAO(connection);		
+	}
 
 	public void closeConnectionWithCommit() {
 		CodingtonConnectToDB.commit(connection);

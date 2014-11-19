@@ -11,17 +11,7 @@ public class MuseumMapper {
 
 	public static Museum map(ResultSet resultSet) throws IOException{
 		Museum museum = new Museum();
-		try {
-			museum.setId(resultSet.getInt("id_museum"));
-			museum.setName(resultSet.getString("name"));
-			museum.setCapacity(resultSet.getInt("capacity"));
-			museum.setPlaceDescription(resultSet.getString("description"));
-			museum.setStart(resultSet.getString("start_time"));
-			museum.setEnd(resultSet.getString("end_time"));
-			museum.setImage(ConvertImage.blobToImage(resultSet.getBlob("image")));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		PlaceMapper.map(resultSet, museum);
 		return museum;
 	}
 

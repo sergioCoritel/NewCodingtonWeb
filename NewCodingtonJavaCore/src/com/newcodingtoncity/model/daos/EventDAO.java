@@ -21,19 +21,6 @@ public class EventDAO implements IEventDAO {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-	private static String allEventsQuery = DatabaseHelper.getQuery("allevents");
-	
-	private static String museumEventsQuery = DatabaseHelper.getQuery("museum");
-	private static String zooEventsQuery = DatabaseHelper.getQuery("zoo");
-	private static String parkEventsQuery = DatabaseHelper.getQuery("park");
-	private static String theaterEventsQuery = DatabaseHelper.getQuery("theater");
-	private static String stadiumEventsQuery = DatabaseHelper.getQuery("stadium");
-	private static String largeBusinessEventsQuery = DatabaseHelper.getQuery("largebusiness");
-	private static String touristAttractionEventsQuery = DatabaseHelper.getQuery("touristattraction");
-	private static String traditionalMarketEventsQuery = DatabaseHelper.getQuery("traditionalmarket");
-	private static String eventByIdQuery = DatabaseHelper.getQuery("eventbyid");
-	private static String insertEventQuery = DatabaseHelper.getQuery("insertevent");
-
 	public EventDAO(Connection connection) {
 		this.connection = connection;
 	}
@@ -57,56 +44,56 @@ public class EventDAO implements IEventDAO {
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 		
-		return requestEventList(allEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("allevents"));
 	}
 	
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,SQLException, IOException {
-		return requestEventList(museumEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("museum"));
 	}
 	
 
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException,SQLException, IOException {
 		
 
-		return requestEventList(zooEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("zoo"));
 	}
 
 	public ArrayList<Event> showParkEvents() throws ClassNotFoundException,SQLException, IOException {
 		
 
-		return requestEventList(parkEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("park"));
 	}
 
 	public ArrayList<Event> showTheaterEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(theaterEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("teather"));
 	}
 
 	public ArrayList<Event> showStadiumEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(stadiumEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("stadium"));
 	}
 
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(largeBusinessEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("largeBusiness"));
 	}
 
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(touristAttractionEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("touristAttraction"));
 	}
 
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 	
-		return requestEventList(traditionalMarketEventsQuery);
+		return requestEventList(DatabaseHelper.getQuery("traditionalMarket"));
 	}
 	
 
 	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException{
 
-		statement = connection.prepareStatement(eventByIdQuery);
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("eventbyid"));
 		statement.setInt(1,id);
 		resultSet = statement.executeQuery();
 		Event event = EventMapper.map(resultSet);
@@ -119,7 +106,7 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(insertEventQuery);
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insertevent"));
 			preparedStatement.setString(1, insertEvent.getEventName());
 			preparedStatement.setString(2, insertEvent.getDescription());
 			preparedStatement.setInt(3, insertEvent.getTicketPrice());

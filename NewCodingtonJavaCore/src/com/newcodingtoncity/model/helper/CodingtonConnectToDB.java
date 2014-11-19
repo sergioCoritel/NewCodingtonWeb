@@ -22,6 +22,7 @@ public class CodingtonConnectToDB {
 
 		try {
 			connnection = DriverManager.getConnection(url, user, pass);
+			connnection.setAutoCommit(false);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
