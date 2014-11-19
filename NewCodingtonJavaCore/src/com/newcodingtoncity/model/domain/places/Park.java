@@ -8,6 +8,8 @@ import java.io.File;
  */
 public class Park extends Place {
 	
+	public static final int ID_TYPE_OF_PLACE = 3;
+	
 	public Park(){
 		super.setZone(Zone.SOUTH);
 	}

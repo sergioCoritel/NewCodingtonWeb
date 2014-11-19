@@ -7,7 +7,9 @@ import java.io.File;
  * Theater POJO class for domain model 
  */
 public class Theater extends Building {
-
+	
+	public static final int ID_TYPE_OF_PLACE = 5;
+	
 	public Theater(){
 		super.setZone(Zone.NORTH);
 	}

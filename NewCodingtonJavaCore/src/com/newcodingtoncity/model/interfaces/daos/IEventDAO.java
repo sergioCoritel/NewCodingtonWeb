@@ -20,4 +20,7 @@ public interface IEventDAO {
 	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException;
 	public int insertEvent(Event insertEvent);
 	public int deleteEvent(int eventId);
+    public int updateEvent(Event updateEvent) throws ClassNotFoundException, SQLException, IOException;
+	public int updateSeatsEventDec(int eventId)  throws ClassNotFoundException, SQLException, IOException;
+	public int updateSeatsEventInc(int eventId)  throws ClassNotFoundException, SQLException, IOException;
 }

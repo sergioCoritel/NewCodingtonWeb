@@ -6,6 +6,8 @@ import java.io.File;
 
 public class LargeBusiness extends Building{
 	
+	public static final int ID_TYPE_OF_PLACE = 1;
+	
 	public LargeBusiness(){
 		super.setZone(Zone.NORTH);
 	}

@@ -106,12 +106,19 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insertevent"));
-			preparedStatement.setString(1, insertEvent.getEventName());
-			preparedStatement.setString(2, insertEvent.getDescription());
-			preparedStatement.setInt(3, insertEvent.getTicketPrice());
-			preparedStatement.setInt(4, insertEvent.getSeatsAvailable());
-
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_events"));
+			
+			preparedStatement.setString(1,insertEvent.getEventName());
+			preparedStatement.setString(2,insertEvent.getDescription());
+			preparedStatement.setString(3,insertEvent.getStart());
+			preparedStatement.setString(4,insertEvent.getEnd());
+			preparedStatement.setString(5,insertEvent.getEventType());
+			preparedStatement.setFloat(6, insertEvent.getTicketPrice());
+			preparedStatement.setInt(7,insertEvent.getSeatsAvailable());
+			preparedStatement.setInt(8,insertEvent.getSeatsTotal());
+			preparedStatement.setInt(9,insertEvent.getPlace().getId());
+			
+			
 			affectedRows = preparedStatement.executeUpdate();
 
 		} catch(SQLException ex) {}
@@ -120,8 +127,66 @@ public class EventDAO implements IEventDAO {
 
 	@Override
 	public int deleteEvent(int eventId) {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_event"));
+		    preparedStatement.setInt(1, eventId);	 
+		    affectedRows = preparedStatement.executeUpdate();
 
-		return 0;
+		} catch(SQLException ex) {}
+		return affectedRows;
+	}
+
+	@Override
+	public int updateEvent(Event updateEvent) throws ClassNotFoundException,
+			SQLException, IOException {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoevents"));
+			preparedStatement.setString(1,updateEvent.getEventName());
+			preparedStatement.setString(2,updateEvent.getDescription());
+			preparedStatement.setString(3,updateEvent.getStart());
+			preparedStatement.setString(4,updateEvent.getEnd());
+			preparedStatement.setString(5,updateEvent.getEventType());
+			preparedStatement.setFloat(6, updateEvent.getTicketPrice());
+			preparedStatement.setInt(7,updateEvent.getSeatsAvailable());
+			preparedStatement.setInt(8,updateEvent.getSeatsTotal());
+			preparedStatement.setInt(9,updateEvent.getPlace().getId());
+			preparedStatement.setInt(10, updateEvent.getEventId());
+		    affectedRows = preparedStatement.executeUpdate();
+
+		} catch(SQLException ex) {}
+		return affectedRows;
+	}
+
+	@Override
+	public int updateSeatsEventDec(int eventId) throws ClassNotFoundException,
+			SQLException, IOException {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_seats_event_dec"));
+		    preparedStatement.setInt(1, eventId);	 
+		    affectedRows = preparedStatement.executeUpdate();
+
+		} catch(SQLException ex) {}
+		return affectedRows;
+	}
+
+	@Override
+	public int updateSeatsEventInc(int eventId) throws ClassNotFoundException,
+			SQLException, IOException {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_seats_event_inc"));
+		    preparedStatement.setInt(1, eventId);	 
+		    affectedRows = preparedStatement.executeUpdate();
+
+		} catch(SQLException ex) {}
+		return affectedRows;
 	}
 
 }

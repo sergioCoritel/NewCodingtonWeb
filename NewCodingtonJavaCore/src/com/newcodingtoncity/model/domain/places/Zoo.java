@@ -8,6 +8,8 @@ import java.io.File;
  * Zoo class that is composed of SAFARI object
  */
 public class Zoo extends Place {
+	
+	public static final int ID_TYPE_OF_PLACE = 8;
 
 	public Zoo(){
 		super.setZone(Zone.SOUTH);

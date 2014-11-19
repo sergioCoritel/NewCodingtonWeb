@@ -9,6 +9,8 @@ import java.io.File;
  */
 public class Museum extends Building {
 	
+	public static final int ID_TYPE_OF_PLACE = 2;
+	
 	public Museum(){
 		super.setZone(Zone.NORTH);
 	}

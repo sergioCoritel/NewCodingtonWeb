@@ -101,6 +101,12 @@
 <!--UPDATE INFO EVENTS-->
 <entry key="update_infoevents">update events set name_event= ?, description_event=?, start_event=?, end_event=?,type_event=?,ticket_price=?,seats_available=?,seats_total=?,id_place=? WHERE id_event = ?</entry>
 
+<!--UPDATE INFO EVENTS-->
+<entry key="update_seats_event_inc">update events set seats_available = seats_available+1  WHERE id_event = ?</entry>
+
+<!--UPDATE INFO EVENTS-->
+<entry key="update_seats_event_dec">update events set seats_available = seats_available-1  WHERE id_event = ?</entry>
+
 <!--UPDATE INFO PLACES-->
 <entry key="update_infoplaces">update places set id_type_place=?, name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, zone=?, image=?, is_building=? WHERE id_place = ?</entry>
 
