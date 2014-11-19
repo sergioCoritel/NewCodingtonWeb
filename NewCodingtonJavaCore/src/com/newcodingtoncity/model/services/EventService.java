@@ -1,7 +1,5 @@
 package com.newcodingtoncity.model.services;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +21,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();	
 			allEvents = eventDAO.showAllEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}	
 		return allEvents;		
@@ -45,14 +37,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			event = eventDAO.showEventById(id_event);
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return event;
@@ -67,14 +53,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			largeBusinessEvents = eventDAO.showLargeBusinessEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return largeBusinessEvents;
@@ -89,14 +69,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			museumEvents = eventDAO.showMuseumEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return museumEvents;
@@ -111,14 +85,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			parkEvents = eventDAO.showParkEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return parkEvents;
@@ -133,14 +101,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			stadiumEvents = eventDAO.showStadiumEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return stadiumEvents;
@@ -155,14 +117,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			theaterEvents = eventDAO.showTheaterEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return theaterEvents;
@@ -177,14 +133,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			touristAttractionEvents = eventDAO.showTouristAttractionEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return touristAttractionEvents;
@@ -199,14 +149,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			traditionalMarketEvents = eventDAO.showTraditionalMarketEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return traditionalMarketEvents;
@@ -221,14 +165,8 @@ public class EventService {
 			eventDAO = manager.getEventDAO();
 			zooEvents = eventDAO.showZooEvents();
 			manager.closeConnectionWithCommit();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		}
 		return zooEvents;
