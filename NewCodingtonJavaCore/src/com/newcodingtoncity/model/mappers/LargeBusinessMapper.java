@@ -2,10 +2,8 @@ package com.newcodingtoncity.model.mappers;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
-import com.newcodingtoncity.model.helper.ConvertImage;
 
 public class LargeBusinessMapper {
 
