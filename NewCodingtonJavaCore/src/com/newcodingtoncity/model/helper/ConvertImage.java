@@ -10,19 +10,18 @@ import java.sql.SQLException;
 
 public class ConvertImage {
 
-	public static File blobToImage(Blob image) throws SQLException, IOException{
-		String filename = "imagen.jpg";
-		File image_deserialized = new File("\\NewCodingtonWeb\\WebContent\\images\\" + filename);
+	public static File blobToImage(Blob image, int id) throws SQLException, IOException{
+		File image_deserialized = new File("images/" + id + ".jpg");
 		
 		
 		InputStream is = image.getBinaryStream();  
         FileOutputStream fos = new FileOutputStream(image_deserialized);  
 
-		int b = 0;  
+		int b = 0;
 		while ((b = is.read()) != -1){
 			fos.write(b);
 		}
-		return image_deserialized;	
+		return image_deserialized;
 	}
 	
 	public static Blob imageToBlob(File image) throws SQLException, IOException{
