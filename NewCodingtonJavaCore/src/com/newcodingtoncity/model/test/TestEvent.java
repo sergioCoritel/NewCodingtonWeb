@@ -1,15 +1,17 @@
 package com.newcodingtoncity.model.test;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import junit.framework.TestCase;
-
-import org.junit.Test;
 
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.Place;
+import com.newcodingtoncity.model.exceptions.DomainException;
+
 
 public class TestEvent extends TestCase {
+	
     private static final int EVENT_ID = 100158;
     private static final String EVENT_NAME = "Museo";
     private static final String DESCRIPTION = "Visita al museo";
@@ -23,144 +25,192 @@ public class TestEvent extends TestCase {
     
 	private Event event;
 	
+	
+	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
 		event = new Event(EVENT_ID, EVENT_NAME, DESCRIPTION,
 				START, END, EVENT_TYPE, TICKET_PRICE,
-				SEATSAVAILABLE, PLACE);
+				SEATSAVAILABLE, SEATSTOTAL, PLACE);
 	}
 	
-	
+	@After
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 	
 	
 	@Test
-	public void testGetAtributos() {
-		assertEquals("eventID ok", EVENT_ID, event.getEventId());
-		assertEquals("eventName ok", EVENT_NAME, event.getEventName());
-		assertEquals("description ok", DESCRIPTION, event.getDescription());
-		assertEquals("duration ok", START, event.getStart());
-		assertEquals("duration ok", END, event.getEnd());
-		assertEquals("eventType ok", EVENT_TYPE, event.getEventType());
-		assertEquals("ticketPrice ok", TICKET_PRICE, event.getTicketPrice());
-		assertEquals("seatsAvailable ok", SEATSAVAILABLE, event.getSeatsAvailable());
-		assertEquals("seatsTotal ok", SEATSTOTAL, event.getSeatsTotal());
+	public void testGetEventId() {
+		assertEquals(EVENT_ID, event.getEventId());
 	}
 	
+	
 	@Test
-	public void testEventIntStringStringIntStringStringIntIntPlace() {
-		fail("Not yet implemented");
+	public void testSetEventId() {
+		event.setEventId(0123456);
+		assertEquals("Update ok", 0123456, event.getEventId());
 	}
+	
 	
 	@Test
 	public void testGetEventName() {
-		fail("Not yet implemented");
+		assertEquals(EVENT_NAME, event.getEventName());
 	}
+	
 	
 	@Test
 	public void testSetEventName() {
 		event.setEventName("Zoo");
 		assertEquals("Update ok", "Zoo", event.getEventName());
 	}
-
+	
+	
+	/**
+	 * Test for null and bad format of eventName
+	 * @throws DomainException
+	 */
+	@Test (expected = DomainException.class)
+	public void testSetEventNameTestException() throws DomainException {
+		try{
+			String eventName;
+			//Check eventName length out of maximum range.
+			eventName = "acdefghacdefghacdefghacdefghacdefghacdefghacdefgh";
+			event.setEventName(eventName);
+			
+			//Check eventName length out of minimum range.
+			eventName = "";
+			event.setEventName(eventName);
+			
+			//Check eventName is NULL.
+			eventName = null;
+			event.setEventName(eventName);
+		}catch(DomainException ex){
+			System.err.println(ex.getMessage());
+			}
+	}
+	
+	
 	@Test
 	public void testGetDescription() {
-		fail("Not yet implemented");
+		assertEquals(DESCRIPTION, event.getDescription());
 	}
-
+	
+	
 	@Test
 	public void testSetDescription() {
-		event.setDescription("Visita el gran parque de atracciones de la ciudad");
-		assertEquals("Update ok", "Visita el gran parque de atracciones de la ciudad", event.getDescription());
+		event.setDescription("Visita el parque de atracciones de la ciudad");
+		assertEquals("Update ok", "Visita el parque de atracciones de la ciudad", event.getDescription());
 	}
-
+	
+	
+	/**
+	 * Test for null and bad format of description
+	 * @throws DomainException
+	 */
+	@Test (expected = DomainException.class)
+	public void testSetEventDescriptionTestException() throws DomainException {
+		try{
+			String description;
+			//Check description length out of maximum range.
+			description = "acdefghacdefghacdefghacdefghacdefghacdefghacdefgh";
+			event.setDescription(description);
+			
+			//Check description length out of minimum range.
+			description = "";
+			event.setDescription(description);
+			
+			//Check description is NULL.
+			description = null;
+			event.setDescription(description);
+		}catch(DomainException ex){
+			System.err.println(ex.getMessage());
+			}
+	}
+	
+	
 	@Test
 	public void testGetStart() {
-		fail("Not yet implemented");
+		assertEquals(START, event.getStart());
 	}
-
+	
+	
 	@Test
-	public void testSetDuration() {
+	public void testSetStart() {
 		event.setStart("9:00");
-		assertEquals("Update ok", 5, event.getStart());
+		assertEquals("Update ok", "9:00", event.getStart());
 	}
+	
 	
 	@Test
 	public void testGetEnd() {
-		fail("Not yet implemented");
+		assertEquals(END, event.getEnd());
 	}
-
+	
+	
 	@Test
 	public void testSetEnd() {
-		event.setStart("9:00");
-		assertEquals("Update ok", 5, event.getStart());
+		event.setEnd("20:00");
+		assertEquals("Update ok", "20:00", event.getEnd());
 	}
+	
 	
 	@Test
 	public void testGetEventType() {
-		fail("Not yet implemented");
+		assertEquals(EVENT_TYPE, event.getEventType());
 	}
-
+	
+	
 	@Test
 	public void testSetEventType() {
 		event.setEventType("Deportivo");
 		assertEquals("Update ok", "Deportivo", event.getEventType());
 	}
-
+	
+	
 	@Test
 	public void testGetTicketPrice() {
-		fail("Not yet implemented");
+		assertEquals(TICKET_PRICE, event.getTicketPrice());
 	}
-
+	
+	
 	@Test
 	public void testSetTicketPrice() {
 		event.setTicketPrice(14);
 		assertEquals("Update ok", 14, event.getTicketPrice());
 	}
-
-	@Test
-	public void testGetEventId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetEventId() {
-		event.setEventId(0123456);
-		assertEquals("Update ok", 0123456, event.getEventId());
-	}
-
+	
+	
 	@Test
 	public void testGetSeatsAvailable() {
-		fail("Not yet implemented");
+		assertEquals(SEATSAVAILABLE, event.getSeatsAvailable());
 	}
-
+	
+	
 	@Test
 	public void testSetSeatsAvailable() {
 		event.setSeatsAvailable(850);
 		assertEquals("Update ok", 850, event.getSeatsAvailable());
 	}
 	
+	
 	@Test
 	public void testGetSeatsTotal() {
-		fail("Not yet implemented");
+		assertEquals(SEATSTOTAL, event.getSeatsTotal());
 	}
-
+	
+	
 	@Test
 	public void testSetSeatsTotal() {
-		event.setSeatsAvailable(850);
+		event.setSeatsTotal(850);
 		assertEquals("Update ok", 850, event.getSeatsTotal());
 	}
 	
+	
 	@Test
 	public void testGetPlace() {
-		fail("Not yet implemented");
+		assertEquals(PLACE, event.getPlace());
 	}
-
-	@Test
-	public void testSetPlace() {
-		fail("Not yet implemented");
-	}
-
+	
+	
 }

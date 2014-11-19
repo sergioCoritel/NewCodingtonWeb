@@ -10,23 +10,6 @@ import com.newcodingtoncity.model.exceptions.DomainException;
 
 public class ValidateUser {
 	
-	/**
-	 * Probando validaciones
-	 * @param argv
-	 */
-	public static void main(String[] argv) {
-		//String userName = "paoo ioi";
-		//String dni = "71.298.438-E";
-		//String phoneNUmber = "666777888";
-		//String email = "pru-eba@gmail.com";
-		//String string = "paoo ioi";
-		//validateUserName(userName);
-		//validateSetDNI(dni);
-		//validateGetPhoneNumber(phoneNUmber);
-		//validateSetEmail(email);
-		//validateString(string);
-	}
-	
 	
 	/**
 	 * Validate userName
@@ -60,15 +43,15 @@ public class ValidateUser {
 	
 	
 	/**
-	 * Validate irstName, lastName and address
+	 * Validate firstName, lastName and address
 	 * @param string
 	 * @return
 	 */
 	public static boolean validateString(String string) {
-		boolean checkFirstName = false;
+		boolean checkString = false;
 		if(string != null && string.length() >= 1 && string.length() <= 30)
-			checkFirstName = true;
-		return checkFirstName;
+			checkString = true;
+		return checkString;
 	}
 	
 	
@@ -149,7 +132,7 @@ public class ValidateUser {
 		boolean checkphoneNumberCorrect = false;
 		
 		if (phoneNumber != null){
-			pattern = Pattern.compile("[0-9]{10,20}");
+			pattern = Pattern.compile("[0]{2}[0-9]{8,18}");
 			matcher = pattern.matcher(phoneNumber);
 			if (matcher.matches())
 				checkphoneNumberCorrect = true;
@@ -169,7 +152,7 @@ public class ValidateUser {
 		boolean checkphoneEmailCorrect = false;
 		
 		if (email != null){
-			pattern = Pattern.compile("[[a-zA-Z]||[0-9]||[., _]]{1,45}@[[a-zA-Z]||[0-9]]{1,45}.[[a-zA-Z]||[0-9]]{1,45}");
+			pattern = Pattern.compile("[[a-zA-Z]||[0-9]||[._-]]{1,45}@[[a-zA-Z]||[0-9]]{1,45}.[[a-zA-Z]||[0-9]]{2,4}");
 			matcher = pattern.matcher(email);
 			if (matcher.matches() && email.length() < 45)			//Tiene que cumplir el patron y que su tamaño sea menor de 45
 				checkphoneEmailCorrect = true;
