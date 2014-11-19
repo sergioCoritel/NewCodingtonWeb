@@ -28,13 +28,13 @@
 <entry key="stadium">SELECT events.*, places.*, stadium.* FROM events, places, stadium WHERE events.id_place = places.id_place AND places.id_place=stadium.id_place</entry>
 
 <!-- ALL EVENTS LARGEBUSINESS-->
-<entry key="largebusiness">SELECT events.*, places.*,large_business.* FROM events, places, large_business WHERE events.id_place = places.id_place AND places.id_place=large_business.id_place</entry>
+<entry key="large_business">SELECT events.*, places.*,large_business.* FROM events, places, large_business WHERE events.id_place = places.id_place AND places.id_place=large_business.id_place</entry>
 
 <!-- ALL EVENTS TOURISTATTRACTION-->
-<entry key="touristattraction">SELECT events.*, places.*, tourist_attraction.* FROM events, places, tourist_attraction WHERE events.id_place = places.id_place AND places.id_place=tourist_attraction.id_place</entry>
+<entry key="tourist_attraction">SELECT events.*, places.*, tourist_attraction.* FROM events, places, tourist_attraction WHERE events.id_place = places.id_place AND places.id_place=tourist_attraction.id_place</entry>
 
 <!-- ALL EVENTS TRADITIONALMARKET-->
-<entry key="traditionalmarket">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
+<entry key="traditional_market">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
 
 <!--ALL USER EVENTS-->
 <entry key="eventsusers">SELECT * FROM events_users</entry>
