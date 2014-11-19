@@ -11,8 +11,9 @@ import com.newcodingtoncity.model.domain.places.Museum;
 public class TestWhithConsoleEventDAO {
 	public static void main(String[] args) throws IOException {
 		DAOManager daoManager = new DAOManager();
-	//	testInsertEvent(daoManager);
+		//testInsertEvent(daoManager);
 		testListMuseumEvents(daoManager);
+		testListZooEvents(daoManager);
 		daoManager.closeConnectionWithCommit();
 	}
 
@@ -37,6 +38,7 @@ public class TestWhithConsoleEventDAO {
 		int rowsAffected = daoManager.getEventDAO().insertEvent(insertEvent);
 		System.out.println("InsertEvent: numrRowsAffected");
 		System.out.println(rowsAffected);
+		System.out.println(insertEvent);
 	}
 
 
@@ -46,7 +48,7 @@ public class TestWhithConsoleEventDAO {
 			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
 			System.out.println("ListMuseumEvents:");
 			for(int i=0; i<eventList.size();i++){
-				System.out.println("primer resultado: "+eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
 			}
 		} catch (ClassNotFoundException e) {
 			daoManager.closeConnectionWithRollback();
@@ -56,5 +58,24 @@ public class TestWhithConsoleEventDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
+	
+	
+	private static void testListZooEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showZooEvents();
+			System.out.println("ListZooEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+
+	
 
 }

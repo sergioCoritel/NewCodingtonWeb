@@ -52,31 +52,31 @@
 <entry key="allplaces">SELECT * FROM places</entry>
 
 <!--ALL PLACE LARGEBUSINESS-->
-<entry key="placelargebusiness">SELECT places.*, large_business.* FROM places,large_business WHERE places.id_place=large_business.id_place</entry>
+<entry key="place_large_business">SELECT places.*, large_business.* FROM places,large_business WHERE places.id_place=large_business.id_place</entry>
 
 <!--ALL PLACE MUSEUM-->
-<entry key="placemuseum">SELECT places.*, museum.* FROM places,museum WHERE places.id_place=museum.id_place</entry>
+<entry key="place_museum">SELECT places.*, museum.* FROM places,museum WHERE places.id_place=museum.id_place</entry>
 
 <!--ALL PLACE PARK-->
-<entry key="placepark">SELECT places.*, park.* FROM places,park WHERE places.id_place=park.id_place</entry>
+<entry key="place_park">SELECT places.*, park.* FROM places,park WHERE places.id_place=park.id_place</entry>
 
 <!--ALL PLACE STADIUM-->
-<entry key="placestadium">SELECT places.*, stadium.* FROM places,stadium WHERE places.id_place=stadium.id_place</entry>
+<entry key="place_stadium">SELECT places.*, stadium.* FROM places,stadium WHERE places.id_place=stadium.id_place</entry>
 
 <!--ALL PLACE THEATER-->
-<entry key="placestheater">SELECT places.*, theater.* FROM places,theater WHERE places.id_place=theater.id_place</entry>
+<entry key="place_theater">SELECT places.*, theater.* FROM places,theater WHERE places.id_place=theater.id_place</entry>
 
 <!--PLACE TOURISTATTRACTION-->
-<entry key="placestouristattraction">SELECT places.*, tourist_attraction.* FROM places,tourist_attraction WHERE places.id_place=tourist_attraction.id_place</entry>
+<entry key="place_tourist_attraction">SELECT places.*, tourist_attraction.* FROM places,tourist_attraction WHERE places.id_place=tourist_attraction.id_place</entry>
 
 <!--PLACE TRADITIONALMARKET-->
-<entry key="placestraditionalmarket">SELECT places.*, traditional_market.* FROM places,traditional_market WHERE places.id_place=traditional_market.id_place</entry>
+<entry key="place_traditional_market">SELECT places.*, traditional_market.* FROM places,traditional_market WHERE places.id_place=traditional_market.id_place</entry>
 
 <!--PLACE ZOO-->
-<entry key="placeszoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
+<entry key="place_zoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
 
-<!--USER, LOGIN FILTER: USERNAME_PASS-->
-<entry key="selec_login">select id_user from users where username = ? and password =?</entry>
+
+<entry key="selec_login">select id_user from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
 
 <!--USER, LOGIN FILTER: EMAIL_USERNAME-->
 <entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
