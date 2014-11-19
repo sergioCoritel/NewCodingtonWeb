@@ -39,7 +39,7 @@ public class Encripter {
 	 * @return String encripted text
 	 */
 	public String encript(String texto) {
-		String value = "Codington10";
+		String value = "";
 		try {
 			cipher = Cipher.getInstance(algoritmo);
 			cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -61,7 +61,7 @@ public class Encripter {
 	}
 
 	/**
-	 * Methor for decripting the text
+	 * Method for decripting the text
 	 * 
 	 * @param texto
 	 *            encripted Text
