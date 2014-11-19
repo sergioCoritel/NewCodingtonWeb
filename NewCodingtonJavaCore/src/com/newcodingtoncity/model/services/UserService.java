@@ -1,7 +1,6 @@
 package com.newcodingtoncity.model.services;
 
 import java.sql.SQLException;
-
 import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.exceptions.DAOException;
@@ -12,6 +11,9 @@ import com.newcodingtoncity.model.interfaces.services.IUserService;
 public class UserService implements IUserService{
 
 
+	//private Connection connection = null;
+	
+	
 	/**
 	 * 
 	 * @return true if login was successful
@@ -19,25 +21,26 @@ public class UserService implements IUserService{
 	 * @throws ClassNotFoundException
 	 */
 	public int login(User user) throws SQLException, ClassNotFoundException{
+		
+		int userId = 0;
 		DAOManager manager = null;
 		IUserDAO userDAO = null;
-		int userId = 0;
-
+		
 		try {
+			
 			manager = new DAOManager();
 			userDAO = manager.getUserDAO();
-
 			userId = userDAO.loginDAO(user);
 
 			if(userId==0) {
 				throw new ServiceException("Username or Password incorrect");
 			}
 
-			manager.closeOK();
-
+			manager.closeConnectionWithCommit();
+			
 		} catch(DAOException e) {
 			if(manager != null) {
-				manager.closeError();
+				manager.closeConnectionWithRollback();
 
 			}
 
@@ -58,15 +61,15 @@ public class UserService implements IUserService{
 	 */
 	public boolean updatePassword(User user, String new_pass) throws SQLException, ClassNotFoundException{
 
+		boolean pass = false;
 		DAOManager manager = null;
 		IUserDAO userDAO = null;
-		int affectedRows = 0;	
 
 		try {
+			
 			manager = new DAOManager();
 			userDAO = manager.getUserDAO();
-
-			affectedRows = userDAO.updatePasswordDAO(user, new_pass);
+			pass = userDAO.updatePasswordDAO(user, new_pass);
 
 		}catch (Exception ee) {
 			System.out.println("updatePassword: "+ ee.getMessage());
@@ -74,18 +77,18 @@ public class UserService implements IUserService{
 
 		} finally {
 			if(manager != null) {
-				if(affectedRows == 1) {
-					manager.closeOK();
+				if(pass) {
+					manager.closeConnectionWithCommit();
 
 				} else {
-					manager.closeError();
+					manager.closeConnectionWithRollback();
 
 				}
 			}
 
 		}
 
-		if(affectedRows == 1){
+		if(pass){
 			return true;
 		}
 		else{
@@ -103,9 +106,9 @@ public class UserService implements IUserService{
 	 */
 	public boolean updateInfo(User user) throws SQLException, ClassNotFoundException{
 
+		int affectedRows = 0;
 		DAOManager manager = null;
 		IUserDAO userDAO = null;
-		int affectedRows = 0;	
 
 		try {
 
@@ -120,11 +123,10 @@ public class UserService implements IUserService{
 		} finally {
 			if(manager != null) {
 				if(affectedRows == 1) {
-					manager.closeOK();
-					return true;
+					manager.closeConnectionWithCommit();
+			
 				} else {
-					manager.closeError();
-					return false;
+					manager.closeConnectionWithRollback();
 				}		
 			}
 		}
@@ -146,30 +148,28 @@ public class UserService implements IUserService{
 	 * @throws ClassNotFoundException
 	 */
 	public boolean registerNewVisitor(User user) throws SQLException, ClassNotFoundException{
+		
 		boolean reg = false;
-		DAOManager manager = null;		
+		DAOManager manager = null;
 		IUserDAO userDAO = null;
-		//IIdentifiersDAO sequenceDAO = null;
+
 
 		try {
 			manager = new DAOManager();	    
 			userDAO = manager.getUserDAO();
-			//sequenceDAO = manager.getIdentifiersDAO();
 
 			reg = userDAO.registerNewVisitorDAO(user);
 
-			if(!reg) {
-				throw new ServiceException("Acount Exists: Choose new username (nickname) or email.");
-				//userId = sequenceDAO.getNextId(IIdentifiersDAO.CLASS_USERS_NAME);		    
-				//user.setUserId(userId);
-				//reg = userDAO.registerNewVisitorDAO(user);
+			if(reg) {
+				manager.closeConnectionWithCommit();
 			}
-
-			manager.closeOK();
+			else{
+				throw new ServiceException("Acount Exists: Choose new username (nickname) or email.");
+			}	
 
 		} catch(DAOException e) {
 			if(manager != null) {
-				manager.closeError();
+				manager.closeConnectionWithRollback();
 
 			}
 

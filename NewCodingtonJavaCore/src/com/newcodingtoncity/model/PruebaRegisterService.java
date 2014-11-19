@@ -1,14 +1,11 @@
 package com.newcodingtoncity.model;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-
-import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
-import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
+import com.newcodingtoncity.model.services.UserService;
 
-public class PruebaRegister {
+public class PruebaRegisterService {
 
 	/**
 	 * @param args
@@ -16,34 +13,43 @@ public class PruebaRegister {
 	 * @throws SQLException 
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
-		Connection connection  = CodingtonConnectToDB.createConnection();
-		UserDAO user_dao = new UserDAO(connection);
+		
+		UserService user_service = new UserService();
 		User user = new Visitor();
+		
 		boolean reg=false;
-		int inf=0;
+		boolean inf=false;
 
-		user.setUserName("EstherGsdhsfgh");
+		user.setUserName("Laurasaa");
 		user.setPassword("1234567890");
-		user.setFirstName("Esther");
-		user.setLastName("Guerrero");
+		user.setFirstName("Marcos");
+		user.setLastName("Munioz");
 		user.setDni("70.082.648-S");
-		user.setEmail("estherguerr@gmail.com");
+		user.setEmail("lau@gmail.com");
 		user.setPhoneNumber("0034665871333");
 		user.setAddress("C/ Los Morales");
 		user.setEsAdmin(false);
 		
-		reg = user_dao.registerNewVisitorDAO(user);
+		reg = user_service.registerNewVisitor(user);
+		
 		if(reg){
-			System.out.print("Nuevo Visitor Registrated");
+			System.out.println("Nuevo Visitor Registrated");
+			System.out.println(user.getAddress());
+			System.out.println(user.getUserId());
 		}		
-		
-		user.setUserId(6);
+
+		System.out.println("-------------------");
+		user.setUserId(24);
 		user.setAddress("C/ Soria");
-		inf = user_dao.updateInfoDAO(user);
 		
-		if(inf!=0){
+		inf = user_service.updateInfo(user);
+		
+		if(inf){
 			System.out.print("Info changed!");
+			System.out.println(user.getAddress());
 		}
 		
+
 	}
+
 }
