@@ -11,9 +11,15 @@ import com.newcodingtoncity.model.domain.places.Museum;
 public class TestWhithConsoleEventDAO {
 	public static void main(String[] args) throws IOException {
 		DAOManager daoManager = new DAOManager();
-		//testInsertEvent(daoManager);
+		testInsertEvent(daoManager);
 		testListMuseumEvents(daoManager);
 		testListZooEvents(daoManager);
+		testListParkEvents(daoManager);
+		testListTheaterEvents(daoManager);
+		testListStadiumEvents(daoManager);
+		testListLargeBusinessEvents(daoManager);
+		testListTouristAttractionEvents(daoManager);
+		testListTraditionalMarketEvents(daoManager);
 		daoManager.closeConnectionWithCommit();
 	}
 
@@ -76,6 +82,113 @@ public class TestWhithConsoleEventDAO {
 		}
 	}
 
+	
+	private static void testListParkEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showParkEvents();
+			System.out.println("ListParkEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	
+	private static void testListTheaterEvents(DAOManager daoManager) throws IOException {
+		try {
+			System.out.println("E1");
+			ArrayList<Event> eventList = daoManager.getEventDAO().showTheaterEvents();
+			System.out.println("E2");
+			System.out.println("ListTheaterEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	private static void testListStadiumEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showStadiumEvents();
+			System.out.println("ListStadiumEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	private static void testListLargeBusinessEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showLargeBusinessEvents();
+			System.out.println("ListLargeBusinessEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	private static void testListTouristAttractionEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showTouristAttractionEvents();
+			System.out.println("ListTouristAttractionEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	private static void testListTraditionalMarketEvents(DAOManager daoManager) throws IOException {
+		try {
+			ArrayList<Event> eventList = daoManager.getEventDAO().showTraditionalMarketEvents();
+			System.out.println("ListTraditionalMarketEvents:");
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
+		} catch (ClassNotFoundException e) {
+			daoManager.closeConnectionWithRollback();
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			daoManager.closeConnectionWithRollback();
+		}
+	}
+	
+	
+	
 	
 
 }

@@ -66,7 +66,7 @@ public class EventDAO implements IEventDAO {
 
 	public ArrayList<Event> showTheaterEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("teather"));
+		return requestEventList(DatabaseHelper.getQuery("theater"));
 	}
 
 	public ArrayList<Event> showStadiumEvents() throws ClassNotFoundException,SQLException, IOException {
@@ -76,18 +76,18 @@ public class EventDAO implements IEventDAO {
 
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("largeBusiness"));
+		return requestEventList(DatabaseHelper.getQuery("large_business"));
 	}
 
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("touristAttraction"));
+		return requestEventList(DatabaseHelper.getQuery("tourist_attraction"));
 	}
 
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 	
-		return requestEventList(DatabaseHelper.getQuery("traditionalMarket"));
+		return requestEventList(DatabaseHelper.getQuery("traditional_market"));
 	}
 	
 
