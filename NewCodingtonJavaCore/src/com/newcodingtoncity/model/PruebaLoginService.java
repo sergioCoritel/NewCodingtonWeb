@@ -1,35 +1,33 @@
 package com.newcodingtoncity.model;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-
-import com.newcodingtoncity.model.daos.UserDAO;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
-import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
+import com.newcodingtoncity.model.services.UserService;
 
-public class PruebaLogin {
+public class PruebaLoginService {
 
 	/**
 	 * @param args
-	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
 	 */
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
-		Connection connection  = CodingtonConnectToDB.createConnection();
-		UserDAO user_dao = new UserDAO(connection);
+		UserService user_service = new UserService();
 		User user = new Visitor();
+
 		int reg=0;
 
-		user.setUserName("admin1");
-		user.setPassword("password1");
-		
-		reg = user_dao.loginDAO(user);
-		
+		user.setUserName("Gominolaa");
+		user.setPassword("1234567890");
+
+		reg = user_service.login(user);
+
 		if(reg!=0){
 			System.out.println("lOGIN GUAY!!");
 		}
 	}
 
 }
+

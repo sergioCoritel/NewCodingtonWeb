@@ -22,7 +22,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int updatePasswordDAO(User u, String new_pass) throws SQLException, ClassNotFoundException;
+	public boolean updatePasswordDAO(User u, String new_pass) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 
