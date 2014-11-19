@@ -8,11 +8,11 @@ import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.Museum;
 
-public class TestEventDAO {
+public class TestWhithConsoleEventDAO {
 	public static void main(String[] args) throws IOException {
 		DAOManager daoManager = new DAOManager();
-		testListParkEvents(daoManager);
-		testInsertEvent(daoManager);
+	//	testInsertEvent(daoManager);
+		testListMuseumEvents(daoManager);
 		daoManager.closeConnectionWithCommit();
 	}
 
@@ -20,8 +20,8 @@ public class TestEventDAO {
 
 	private static void testInsertEvent(DAOManager daoManager) {
 		Event insertEvent = new Event();
-		insertEvent.setEventName("Evento1");
-		insertEvent.setDescription("Descripcion");
+		insertEvent.setEventName("Evento1991");
+		insertEvent.setDescription("Descripcion 1991");
 		insertEvent.setStart("2014-02-01");
 		insertEvent.setEnd("2014-02-01");
 		insertEvent.setSeatsAvailable(100);
@@ -41,12 +41,12 @@ public class TestEventDAO {
 
 
 
-	private static void testListParkEvents(DAOManager daoManager) throws IOException {
+	private static void testListMuseumEvents(DAOManager daoManager) throws IOException {
 		try {
-			ArrayList<Event> eventList = daoManager.getEventDAO().showParkEvents();
-			System.out.println("ListParkEvents:");
+			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
+			System.out.println("ListMuseumEvents:");
 			for(int i=0; i<eventList.size();i++){
-				System.out.println("primer resultado: "+eventList.get(i).getEventName());
+				System.out.println("primer resultado: "+eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
 			}
 		} catch (ClassNotFoundException e) {
 			daoManager.closeConnectionWithRollback();
