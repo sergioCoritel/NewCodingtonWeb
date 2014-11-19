@@ -3,13 +3,11 @@ package com.newcodingtoncity.model.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import junit.framework.TestCase;
 
 import com.newcodingtoncity.model.domain.users.Visitor;
 import com.newcodingtoncity.model.exceptions.DomainException;
 
-
-
-import junit.framework.TestCase;
 
 public class TestVisitor extends TestCase {
 	

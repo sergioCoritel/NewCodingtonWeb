@@ -113,7 +113,7 @@ public abstract class User {
 	/**
 	 * Return the password associated with this instance of User.
 	 * @return the password
- 	 * User and validators
+
 	 */
 	public String getPassword() {
 		return password;
@@ -248,7 +248,6 @@ public abstract class User {
 	/**
 	 * Return the address associated with this instance of User.
 	 * @return the address
->>>>>>> User and validators
 	 */
 	public String getAddress() {
 		return address;
