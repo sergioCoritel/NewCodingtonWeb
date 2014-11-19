@@ -46,7 +46,7 @@ public class PlaceDAO implements IPlaceDAO {
 	
 
 	public ArrayList<Museum> showMuseums() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placemuseum"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_museum"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Museum> placeList = new ArrayList<Museum>();
@@ -59,7 +59,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Zoo> showZoos() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placezoo"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_zoo"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Zoo> placeList = new ArrayList<Zoo>();
@@ -72,7 +72,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Park> showParks() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placepark"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_park"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Park> placeList = new ArrayList<Park>();
@@ -85,7 +85,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Theater> showTheaters() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placetheater"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_theater"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Theater> placeList = new ArrayList<Theater>();
@@ -99,7 +99,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Stadium> showStadiums() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placestadium"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_stadium"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Stadium> placeList = new ArrayList<Stadium>();
@@ -112,7 +112,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<LargeBusiness> showLargeBusiness() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placelargebusiness"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_large_business"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<LargeBusiness> placeList = new ArrayList<LargeBusiness>();
@@ -126,7 +126,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<TouristAttraction> showTouristAttractions() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placetouristattraction"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_tourist_attraction"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<TouristAttraction> placeList = new ArrayList<TouristAttraction>();
@@ -140,7 +140,7 @@ public class PlaceDAO implements IPlaceDAO {
 
 	public ArrayList<TraditionalMarket> showTraditionalMarkets() throws ClassNotFoundException,
 	SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("placetraditionalmarkets"));
+		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_traditional_market"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<TraditionalMarket> placeList = new ArrayList<TraditionalMarket>();
