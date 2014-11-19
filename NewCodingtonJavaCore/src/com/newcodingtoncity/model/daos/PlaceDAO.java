@@ -25,7 +25,6 @@ import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.mappers.LargeBusinessMapper;
 import com.newcodingtoncity.model.mappers.MuseumMapper;
 import com.newcodingtoncity.model.mappers.ParkMapper;
-import com.newcodingtoncity.model.mappers.PlaceMapper;
 import com.newcodingtoncity.model.mappers.StadiumMapper;
 import com.newcodingtoncity.model.mappers.TheaterMapper;
 import com.newcodingtoncity.model.mappers.TouristAttractionMapper;

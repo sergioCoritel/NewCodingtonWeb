@@ -1,5 +1,5 @@
 package com.newcodingtoncity.model.daos;
 
-public class AdmiDAO {
+public class AdminDAO {
 
 }
