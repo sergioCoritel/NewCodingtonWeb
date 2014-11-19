@@ -4,6 +4,7 @@ import java.io.File;
 
 
 public class TouristAttraction extends Place {
+	public static final int ID_TYPE_OF_PLACE = 6;
 	
 	public TouristAttraction(){
 		super.setZone(Zone.SOUTH);

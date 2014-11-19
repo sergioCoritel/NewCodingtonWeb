@@ -8,6 +8,7 @@ import java.io.File;
  * class STADIUM takes properties BUILDING
  */
 public class Stadium extends Building {
+	public static final int ID_TYPE_OF_PLACE = 4;
 	
 	public Stadium(){
 		super.setZone(Zone.NORTH);

@@ -30,7 +30,7 @@ import com.newcodingtoncity.model.mappers.TheaterMapper;
 import com.newcodingtoncity.model.mappers.TouristAttractionMapper;
 import com.newcodingtoncity.model.mappers.TraditionalMarketMapper;
 import com.newcodingtoncity.model.mappers.ZooMapper;
-
+import com.mysql.jdbc.Statement;
 
 
 public class PlaceDAO implements IPlaceDAO {
@@ -152,22 +152,84 @@ public class PlaceDAO implements IPlaceDAO {
 		return placeList;
 	}
 
-	public int insertPlace(Place place, String sqlQuery) {
+	public int insertPlace(Place place, String sqlQuery, int typeOfPlace) {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery(sqlQuery));
-			preparedStatement.setString(1, place.getName());
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_places"),Statement.RETURN_GENERATED_KEYS);
+			String secondQuery = getSecondQuery(typeOfPlace);
+			preparedStatement.setInt(1,typeOfPlace);
+			preparedStatement.setString(2,place.getName());
+			preparedStatement.setInt(3,place.getCapacity());
+			preparedStatement.setString(4,place.getPlaceDescription());
+			preparedStatement.setString(5,place.getStart());
+			preparedStatement.setString(6,place.getEnd());
+			preparedStatement.setString(7,place.getZone().name());
+			//HAY QUE CAMBIAR LO DE LA IMAGEN!!!!!!!!!!!!!!!!
+			preparedStatement.setInt(8,11);
+			preparedStatement.setBoolean(9,false);
+			
 			affectedRows = preparedStatement.executeUpdate();
-
+			ResultSet resultSetGenerated = preparedStatement.getGeneratedKeys();
+			connection.commit();	
+			
+			int lastInsertedId = -1;
+            if(resultSetGenerated.next()){
+                lastInsertedId = resultSetGenerated.getInt(1);
+            }
+			preparedStatement = connection.prepareStatement(secondQuery);
+			preparedStatement.setInt(1, lastInsertedId);
+			preparedStatement.executeUpdate();
+			
 		} catch(SQLException ex) {}
 		return affectedRows;
 	}
 
-	
-	public int deletePlace(int placeId, int typeId) {
 
-		return 0;
+	private String getSecondQuery(int typeOfPlace) {
+		String secondSqlQuery = "";
+		switch (typeOfPlace) {
+		case LargeBusiness.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case Museum.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case Park.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case Stadium.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case Theater.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case TouristAttraction.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+		case TraditionalMarket.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+		case Zoo.ID_TYPE_OF_PLACE:
+			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			break;
+
+		default:
+			break;
+		}
+		return secondSqlQuery;
+	}
+
+	
+	public int deletePlace(int placeId) {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_place"));
+		    preparedStatement.setInt(1, placeId);	 
+		    affectedRows = preparedStatement.executeUpdate();
+
+		} catch(SQLException ex) {}
+		return affectedRows;
 	}
 	
 	
@@ -197,6 +259,32 @@ public class PlaceDAO implements IPlaceDAO {
 			statement.executeUpdate();
 //		}
 	}
+
+
+	@Override
+	public int updatePlace(Place place, int typeOfPlace) throws ClassNotFoundException,
+			SQLException, IOException {
+		int affectedRows = 0;	
+		PreparedStatement preparedStatement = null;			 			
+		try {
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoevents"));
+			preparedStatement.setInt(1,typeOfPlace);
+			preparedStatement.setString(2,place.getName());
+			preparedStatement.setInt(3,place.getCapacity());
+			preparedStatement.setString(4,place.getPlaceDescription());
+			preparedStatement.setString(5,place.getStart());
+			preparedStatement.setString(6,place.getEnd());
+			preparedStatement.setString(7,place.getZone().name());
+			//HAY QUE CAMBIAR LO DE LA IMAGEN!!!!!!!!!!!!!!!!
+			preparedStatement.setInt(8,11);
+			preparedStatement.setBoolean(9,false);
+			preparedStatement.setInt(10,place.getId());
+		    affectedRows = preparedStatement.executeUpdate();
+
+		} catch(SQLException ex) {}
+		return affectedRows;
+	}
+
 	
 	
 

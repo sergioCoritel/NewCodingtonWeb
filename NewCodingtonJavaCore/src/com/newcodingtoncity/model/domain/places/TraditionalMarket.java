@@ -6,6 +6,8 @@ import java.io.File;
 
 public class TraditionalMarket extends Place{
 	
+	public static final int ID_TYPE_OF_PLACE = 7;
+	
 	public TraditionalMarket(){
 		super.setZone(Zone.SOUTH);
 	}

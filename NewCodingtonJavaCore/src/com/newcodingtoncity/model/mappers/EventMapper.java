@@ -5,6 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.newcodingtoncity.model.domain.Event;
+import com.newcodingtoncity.model.domain.places.LargeBusiness;
+import com.newcodingtoncity.model.domain.places.Museum;
+import com.newcodingtoncity.model.domain.places.Park;
+import com.newcodingtoncity.model.domain.places.Stadium;
+import com.newcodingtoncity.model.domain.places.Theater;
+import com.newcodingtoncity.model.domain.places.TouristAttraction;
+import com.newcodingtoncity.model.domain.places.TraditionalMarket;
+import com.newcodingtoncity.model.domain.places.Zoo;
 
 public class EventMapper {
 
@@ -20,28 +28,28 @@ public class EventMapper {
 			event.setSeatsAvailable(resultSet.getInt("seats_available"));
 			event.setSeatsTotal(resultSet.getInt("seats_total"));
 			switch (resultSet.getInt("id_type_place")) {
-			case 1:
+			case LargeBusiness.ID_TYPE_OF_PLACE:
 				event.setPlace(LargeBusinessMapper.map(resultSet));
 				break;
-			case 2:
+			case Museum.ID_TYPE_OF_PLACE:
 				event.setPlace(MuseumMapper.map(resultSet));
 				break;
-			case 3:
+			case Park.ID_TYPE_OF_PLACE:
 				event.setPlace(ParkMapper.map(resultSet));
 				break;
-			case 4:
+			case Stadium.ID_TYPE_OF_PLACE:
 				event.setPlace(StadiumMapper.map(resultSet));
 				break;
-			case 5:
+			case Theater.ID_TYPE_OF_PLACE:
 				event.setPlace(TheaterMapper.map(resultSet));
 				break;
-			case 6:
+			case TouristAttraction.ID_TYPE_OF_PLACE:
 				event.setPlace(TouristAttractionMapper.map(resultSet));
 				break;
-			case 7:
+			case TraditionalMarket.ID_TYPE_OF_PLACE:
 				event.setPlace(TraditionalMarketMapper.map(resultSet));
 				break;
-			case 8:
+			case Zoo.ID_TYPE_OF_PLACE:
 				event.setPlace(ZooMapper.map(resultSet));
 				break;
 
