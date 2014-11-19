@@ -1,0 +1,76 @@
+package com.accenture.adf.newcodington.module20.sample;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.mysql.jdbc.Statement;
+
+public class InsertDemo {
+	
+
+		public static void main(String[] args) {
+			try{
+				//Obtaining a connection
+				Connection con = ConnectionToDBDemo.getConnection();
+				if(con != null)
+				{
+				System.out.println("Connection successfully established!");
+				}
+				
+				//Creating a PreparedStatement with a query "insert into Student values(?,?,?)" 
+				PreparedStatement pStmt = con.prepareStatement("insert into places values (null,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+				
+				//Changing parameters to appropriate values
+				int Type=2;
+				pStmt.setInt(1,Type);
+				pStmt.setString(2,"Museo del Arte");
+				pStmt.setInt(3,300);
+				pStmt.setString(4,"Museo con arte comtemporaneo");
+				pStmt.setString(5,"2014-01-02");
+				pStmt.setString(6,"2014-01-02");
+				pStmt.setString(7,"NORTH");
+				pStmt.setInt(8,200);
+				pStmt.setBoolean(9,false);
+								
+				
+				//Setting autoCommit to false 
+				con.setAutoCommit(false);
+				
+				//Executing this query using executeUpdate()
+				
+				int rows = pStmt.executeUpdate();
+				ResultSet rs = pStmt.getGeneratedKeys();
+				//Committing
+				con.commit();	
+				
+				//Printing how many rows got added
+				System.out.println(rows + " row(s) added!");
+				
+				int last_inserted_id = -1;
+				
+                if(rs.next())
+                {
+                    last_inserted_id = rs.getInt(1);
+                }
+				
+				System.out.println(last_inserted_id);				
+				
+				
+				pStmt = con.prepareStatement("insert into large_business values (?)");
+				pStmt.setInt(1, last_inserted_id);
+				pStmt.executeUpdate();
+				con.commit();
+				
+					
+				System.out.println("last_inserted_id:"+ last_inserted_id + " Type: " + Type + " row(s) added!");
+				//Closing the connection
+				con.close();
+				
+			}catch (Exception e){
+				System.out.println(e.getMessage());
+			}
+
+		}
+}
+

@@ -1,0 +1,54 @@
+package com.accenture.adf.newcodington.module20.sample;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class InsertDemo {
+	
+
+		public static void main(String[] args) {
+			try{
+				//Obtaining a connection
+				Connection con = ConnectionToDBDemo.getConnection();
+				if(con != null)
+				{
+				System.out.println("Connection successfully established!");
+				}
+				
+				//Creating a PreparedStatement with a query "insert into Student values(?,?,?)" 
+				PreparedStatement pStmt = con.prepareStatement("insert into events values(null,?,?,?,?,?,?,?,?,?)");
+				
+				//Changing parameters to appropriate values
+				pStmt.setString(1,"Evento20");
+				pStmt.setString(2,"evento divertido");
+				pStmt.setString(3,"2014-02-01");
+				pStmt.setString(4,"2014-02-01");
+				pStmt.setString(5,"deportivo");
+				pStmt.setFloat(6, (float) 15.4);
+				pStmt.setInt(7,200);
+				pStmt.setInt(8,300);
+				pStmt.setInt(9,2);
+								
+				
+				//Setting autoCommit to false 
+				con.setAutoCommit(false);
+				
+				//Executing this query using executeUpdate()
+				int rows = pStmt.executeUpdate();
+				
+				//Committing
+				con.commit();	
+				
+				//Printing how many rows got added
+				System.out.println(rows + " row(s) added!");
+				
+				//Closing the connection
+				con.close();
+				
+			}catch (Exception e){
+				System.out.println(e.getMessage());
+			}
+
+		}
+}
+
