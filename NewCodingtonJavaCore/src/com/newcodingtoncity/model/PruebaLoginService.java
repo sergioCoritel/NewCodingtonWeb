@@ -19,8 +19,8 @@ public class PruebaLoginService {
 
 		int reg=0;
 
-		user.setUserName("Gominolaa");
-		user.setPassword("1234567890");
+		user.setUserName("gatubela85");
+		user.setPassword("123456");
 
 		reg = user_service.login(user);
 
