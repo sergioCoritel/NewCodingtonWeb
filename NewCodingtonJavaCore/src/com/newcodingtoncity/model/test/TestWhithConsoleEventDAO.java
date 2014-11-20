@@ -11,42 +11,95 @@ import com.newcodingtoncity.model.domain.places.Museum;
 public class TestWhithConsoleEventDAO {
 	public static void main(String[] args) throws IOException {
 		DAOManager daoManager = new DAOManager();
-		testInsertEvent(daoManager);
-		testListMuseumEvents(daoManager);
-		testListZooEvents(daoManager);
-		testListParkEvents(daoManager);
-		testListTheaterEvents(daoManager);
-		testListStadiumEvents(daoManager);
-		testListLargeBusinessEvents(daoManager);
-		testListTouristAttractionEvents(daoManager);
-		testListTraditionalMarketEvents(daoManager);
+//		testInsertEvent(daoManager);
+//		testUpdateEvent(daoManager);
+//		testUpdateSeatsEventInc(daoManager);
+//		testUpdateSeatsEventDec(daoManager);
+		testDeleteEvent(daoManager);
+//		testListMuseumEvents(daoManager);
+//		testListZooEvents(daoManager);
+//		testListParkEvents(daoManager);
+//		testListTheaterEvents(daoManager);
+//		testListStadiumEvents(daoManager);
+//		testListLargeBusinessEvents(daoManager);
+//		testListTouristAttractionEvents(daoManager);
+//		testListTraditionalMarketEvents(daoManager);
 		daoManager.closeConnectionWithCommit();
 	}
 
-
-
-	private static void testInsertEvent(DAOManager daoManager) {
+	private static Event getFakeMuseumEvent(){
 		Event insertEvent = new Event();
-		insertEvent.setEventName("Evento1991");
+		insertEvent.setEventName("EventoPruebaaaa");
 		insertEvent.setDescription("Descripcion 1991");
-		insertEvent.setStart("2014-02-01");
+		insertEvent.setStart("2014-02-0+1");
 		insertEvent.setEnd("2014-02-01");
+		insertEvent.setEventType("SPORTS");
 		insertEvent.setSeatsAvailable(100);
+		insertEvent.setSeatsTotal(100);
+		insertEvent.setTicketPrice(100);
 		insertEvent.setTicketPrice(10);
 		Museum museum = new Museum();
-		museum.setId(1991);
+		museum.setId(9);
 		museum.setCapacity(100);
 		museum.setName("Museo prueba");
 		museum.setPlaceDescription("desc museo prueba");
 		museum.setStart("2014-01-01");
 		museum.setEnd("2014-02-01");
 		insertEvent.setPlace(museum);
-		int rowsAffected = daoManager.getEventDAO().insertEvent(insertEvent);
+		return insertEvent;
+	}
+	
+
+	private static void testInsertEvent(DAOManager daoManager) {
+		int rowsAffected = daoManager.getEventDAO().insertEvent(getFakeMuseumEvent());
 		System.out.println("InsertEvent: numrRowsAffected");
 		System.out.println(rowsAffected);
-		System.out.println(insertEvent);
 	}
 
+	
+	private static void testUpdateEvent(DAOManager daoManager) {	
+		try {
+			Event updateEvent = getFakeMuseumEvent();
+			updateEvent.setEventId(1);
+			int rowsAffected;
+			rowsAffected = daoManager.getEventDAO().updateEvent(updateEvent);
+			System.out.println("UpdateEvent: numrRowsAffected");
+			System.out.println(rowsAffected);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	private static void testUpdateSeatsEventInc(DAOManager daoManager) {
+		try {
+			int rowsAffected = daoManager.getEventDAO().updateSeatsEventInc(1);
+			System.out.println("UpdateSeatsEventInc: numrRowsAffected");
+			System.out.println(rowsAffected);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void testUpdateSeatsEventDec(DAOManager daoManager) {
+		try {
+			int rowsAffected = daoManager.getEventDAO().updateSeatsEventDec(22);
+			System.out.println("UpdateSeatsEventDec: numrRowsAffected");
+			System.out.println(rowsAffected);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void testDeleteEvent(DAOManager daoManager) {
+		try {
+			int rowsAffected = daoManager.getEventDAO().deleteEvent(22);
+			System.out.println("DeleteEvent: numrRowsAffected");
+			System.out.println(rowsAffected);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 	private static void testListMuseumEvents(DAOManager daoManager) throws IOException {

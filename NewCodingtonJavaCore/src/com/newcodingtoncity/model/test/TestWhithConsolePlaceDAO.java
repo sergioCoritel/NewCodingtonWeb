@@ -18,33 +18,68 @@ import com.newcodingtoncity.model.domain.places.Zoo;
 public class TestWhithConsolePlaceDAO {
 	public static void main(String[] args) throws IOException {
 		DAOManager daoManager = new DAOManager();
-		testListMuseums(daoManager);
-		testListZoos(daoManager);
-		testListParks(daoManager);
-		testListTheaters(daoManager);
-		testListStadiums(daoManager);
-		testListLargeBusiness(daoManager);
-		testListTouristAttractions(daoManager);
-		testListTraditionalMarkets(daoManager);
+		testInsertMuseum(daoManager);
+//		testDeletePlace(daoManager);
+//		testUpdatePlace(daoManager);
+//		testListMuseums(daoManager);
+//		testListZoos(daoManager);
+//		testListParks(daoManager);
+//		testListTheaters(daoManager);
+//		testListStadiums(daoManager);
+//		testListLargeBusiness(daoManager);
+//		testListTouristAttractions(daoManager);
+//		testListTraditionalMarkets(daoManager);
 		daoManager.closeConnectionWithCommit();
 	}
 
 
 
-//	private static void testInsertMuseum(DAOManager daoManager) {
-//		Museum museum = new Museum();
-//		museum.setId(1991);
-//		museum.setCapacity(100);
-//		museum.setName("Museo prueba");
-//		museum.setPlaceDescription("desc museo prueba");
-//		museum.setStart("2014-01-01");
-//		museum.setEnd("2014-02-01");
-//		int rowsAffected = daoManager.getPlaceDAO().insertMuseum(museum);
-//		System.out.println("InsertEvent: numrRowsAffected");
-//		System.out.println(rowsAffected);
-//	}
+	private static void testInsertMuseum(DAOManager daoManager) {
+		try{
+			Museum museum = getDefaultPlace();	
+			int rowsAffected = daoManager.getPlaceDAO().insertPlace(museum,Zoo.ID_TYPE_OF_PLACE);
+			System.out.println("InsertMuseum: numrRowsAffected");
+			System.out.println(rowsAffected);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
 
+	private static Museum getDefaultPlace() {
+		Museum museum = new Museum();
+		museum.setId(1991);
+		museum.setCapacity(100);
+		museum.setName("Museo prueba");
+		museum.setPlaceDescription("desc museo prueba");
+		museum.setStart("2014-01-01");
+		museum.setEnd("2014-02-01");
+		museum.setImage(null); //AQUI HAY Q MODIFICAR CON EL FICHERO IMAGEN!!!!!
+		return museum;
+	}
 
+	private static void testDeletePlace(DAOManager daoManager) {
+		try {
+			int rowsAffected = daoManager.getPlaceDAO().deletePlace(10);
+			System.out.println("DeleteEvent: numrRowsAffected");
+			System.out.println(rowsAffected);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	private static void testUpdatePlace(DAOManager daoManager) {
+		try{
+			Museum museum = getDefaultPlace();	
+			museum.setId(11);
+			museum.setName("CAMBIO EL NOMBREEE");
+			int rowsAffected = daoManager.getPlaceDAO().updatePlace(museum, Museum.ID_TYPE_OF_PLACE);
+			System.out.println("UpdateMuseum: numrRowsAffected");
+			System.out.println(rowsAffected);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
 
 	private static void testListMuseums(DAOManager daoManager) throws IOException {
 		try {
@@ -58,7 +93,7 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
+
 	private static void testListZoos(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<Zoo> zooList = daoManager.getPlaceDAO().showZoos();
@@ -71,8 +106,8 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
-	
+
+
 	private static void testListParks(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<Park> parkList = daoManager.getPlaceDAO().showParks();
@@ -85,8 +120,8 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
-	
+
+
 	private static void testListTheaters(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<Theater> theatersList = daoManager.getPlaceDAO().showTheaters();
@@ -99,7 +134,7 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
+
 	private static void testListStadiums(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<Stadium> stadiumsList = daoManager.getPlaceDAO().showStadiums();
@@ -112,7 +147,7 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
+
 	private static void testListLargeBusiness(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<LargeBusiness> largeBusinessList = daoManager.getPlaceDAO().showLargeBusiness();
@@ -125,7 +160,7 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
+
 	private static void testListTouristAttractions(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<TouristAttraction> touristAttractionList = daoManager.getPlaceDAO().showTouristAttractions();
@@ -138,7 +173,7 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
+
 	private static void testListTraditionalMarkets(DAOManager daoManager) throws IOException {
 		try {
 			ArrayList<TraditionalMarket> traditionalMarketList = daoManager.getPlaceDAO().showTraditionalMarkets();
@@ -151,8 +186,8 @@ public class TestWhithConsolePlaceDAO {
 			daoManager.closeConnectionWithRollback();
 		}
 	}
-	
-	
-	
+
+
+
 
 }
