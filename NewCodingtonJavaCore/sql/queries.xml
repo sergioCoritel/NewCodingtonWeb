@@ -5,11 +5,8 @@
 
 <!-- SELECTS-->
 
-<!-- ALL EVENTS-->
-<entry key="allevents">SELECT * FROM events</entry>
-
 <!-- ALL EVENTS AND PLACES-->
-<entry key="alleventsandplaces">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place</entry>
+<entry key="alleventsandplaces">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place ORDER BY events.id_event</entry>
 
 
 <!-- ALL EVENTS MUSEUM-->

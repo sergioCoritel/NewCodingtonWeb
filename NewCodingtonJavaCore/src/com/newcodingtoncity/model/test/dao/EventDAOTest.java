@@ -5,35 +5,51 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.junit.Test;
+
 import junit.framework.TestCase;
 
 import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.daos.EventDAO;
+import com.newcodingtoncity.model.daos.PlaceDAO;
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.Museum;
 
 public class EventDAOTest extends TestCase {
 
 	Connection connection;
-	EventDAO eventDAO;       
-	Event insertEvent;
+	EventDAO eventDAO;
+	PlaceDAO placeDAO;
+	Event event1;
 	DAOManager daoManager;
-
+	
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 		daoManager = new DAOManager();
 		eventDAO = (EventDAO) daoManager.getEventDAO();
-		insertEvent = createNewEvent();
-		int rowsAffected = eventDAO.insertEvent(insertEvent);
+		placeDAO = (PlaceDAO) daoManager.getPlaceDAO();
+		
+		event1 = new Event();
+		event1.setEventName("Event1");
+		event1.setDescription("Description");
+		event1.setStart("2014-02-01");
+		event1.setEnd("2014-02-01");
+		event1.setSeatsAvailable(100);
+		event1.setTicketPrice(10);
+		
+		event1.setPlace(createMuseum());
+		daoManager.getEventDAO().insertEvent(event1);				//Insert the event in DB
 	}
-
+	
+	
 	protected void tearDown() throws Exception {	
 		super.tearDown();		
 		daoManager.closeConnectionWithCommit();
 	}
-
+	
+	
 	public Event createNewEvent() {
-
 		Event insertEvent = new Event();
 		insertEvent.setEventName("Evento1");
 		insertEvent.setDescription("Descripcion");
@@ -45,10 +61,13 @@ public class EventDAOTest extends TestCase {
 		insertEvent.setPlace(museum);
 		return insertEvent;
 	}
-
+	
+	
+	
+	
 	private Museum createMuseum() {
 		Museum museum = new Museum();
-		museum.setId(1991);
+		museum.setId(1);
 		museum.setCapacity(100);
 		museum.setName("Museo prueba");
 		museum.setPlaceDescription("desc museo prueba");
@@ -56,22 +75,45 @@ public class EventDAOTest extends TestCase {
 		museum.setEnd("2014-02-01");
 		return museum;
 	}
-
+	
+	
+	@Test
 	public void testShowAllEvents() throws ClassNotFoundException, SQLException, IOException {
-
 		ArrayList<Event> events = eventDAO.showAllEvents();
-		Event event1 = events.get(0);
-		Event event2 = events.get(1);
-
-		assertEquals(event1, this.insertEvent);
-
-//		try {
-//			FERSDataConnection.closeConnection(connection);
-//			events = eventDAO.showAllEvents();
-//			fail("Conexion cerrada");
-//		} catch(DAOException ex) {}
+		Event event1 = events.get(events.size()-1);
+			
+		assertEquals(event1.getEventName(), this.event1.getEventName());
+		assertEquals(event1.getDescription(), this.event1.getDescription());
 	}
+	
+	
+	/*@Test
+	public void testShowMuseumEvents() throws ClassNotFoundException, SQLException, IOException{
+			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
+			for(int i=0; i<eventList.size();i++){
+				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			System.out.println(eventList.get(i).getPlace().getPlaceDescription());
+			}
+	}*/
+	
+	
+	public void testUpdateEvent() {	
+		Event event;
+		
+		event1.setEventName("Evento1");
+		event1.setDescription("Descripcion");
+		event1.setStart("2014-02-01");
+		event1.setEnd("2014-02-01");
+		event1.setSeatsAvailable(100);
+		event1.setTicketPrice(10);
+		
 
 
+		
+	}
+	
+	
+	
+	
 	
 }
