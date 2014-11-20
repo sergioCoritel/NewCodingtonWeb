@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-      <title>Registration form</title>
+      <title>Update event</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" type="text/css" href="estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
@@ -10,7 +10,9 @@
 
 <body>
 <div id="wrapper">
-  <h1 id="webname">New<br><span>Codington</span></h1>
+   <div id="logo">
+        <img src="images/logo.png" class="logo-icon">
+  </div>
 <!--
   <div id="LeftMenu">
              
@@ -37,7 +39,7 @@
 <!-- Contenedor -->
 <div id="contenedor">
 
-        <h2>Registration form</h2>
+        <h2>UPDATE EVENT</h2>
 
 
         <form method="post"  action="" onsubmit="return valida_envia(this);" name="formulario" enctype="multipart/form-data" >
@@ -45,20 +47,14 @@
        <!-- Espacio para marcar error de campos obligatorios-->
         <p id="error"> </p>
 
-        <!-- 1 Caja:nombre y apellidos -->
+        <!-- 1 Caja:nombre -->
         <div class="caja">
 
-                <label class="titulo">First and Last Name <span class="requerido" required>*</span></label> <!--Titulo caja-->
+                <label class="titulo">Event Name<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
                 <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
                       <input class="requerido" required id="campoNombre" name="campoNombre" value="" /><br>
-                      <label>First Name</label>
-                    </span>
-
-                    <span class="derecha">  <!--input y etiqueta de input caja-->
-                      <input id="campoApellidos" name="campoApellidos" value="" /><br>
-                      <label >Last name</label>
                     </span>
 
                     <div class="clear"></div> <!--Para limpiar el float-->
@@ -66,19 +62,19 @@
 
         
         </div>
-        <!-- Fin de 1 Caja:nombre y apellidos -->
+        <!-- Fin de 1 Caja:nombre -->
 
-        <!-- 2 Caja:DNI -->
+        <!-- 2 Caja:Descripcion -->
         <div class="caja" >
 
-            <label class="titulo">DNI <span class="requerido" required>*</span></label> <!--Titulo caja-->
+            <label class="titulo">Event Description<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
             <div>
                 <span class="izquierda"><!--input y etiqueta de input caja-->
-                  <input id="campoDNI" name="campoDNI" value="" /><br>
+                  <input id="campoDescripcion" name="campoDescription" value="" /><br>
                 </span>
                 
-                <span class="error" id="errorDNI"></span> <!--Espacio para indicar el error de esta caja-->
+                <span class="error" id="errorDescripcion"></span> <!--Espacio para indicar el error de esta caja-->
 
                 <div class="clear"></div> <!--Para limpiar el float-->
             </div>
@@ -86,103 +82,107 @@
          
 
         </div>
-        <!-- Fin de 2 Caja:DNI -->
+        <!-- Fin de 2 Caja:Descripcion -->
 
-        <!-- 4 Caja:Direccion-->
+        <!-- 3 Caja:Start-->
         <div class="caja">
 
-              <label class="titulo" >Address</span></label> <!--Titulo caja-->
+              <label class="titulo" >Start Time<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <input id="campoDomicilio" name="campoDomicilio" value="" /><br>
-                    <label>Street, number, floor, door</label>
+                    <input id="campoStart" name="campoStart" value="" /><br>
                   </span>
+
+                  <span class="error" id="errorStart"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
               </div>
 
             
 
         </div>
-        <!-- Fin de 4 Caja:Direccion-->
+        <!-- Fin de 3 Caja:Start-->
 
-        <!-- 6 Caja:Telefono-->
+        <!-- 4 Caja:End-->
         <div class="caja">
 
-              <label class="titulo" >Phone Number</span></label> <!--Titulo caja-->
+              <label class="titulo" >End Time<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
-                       <input id="campoTelefono" name="campoTelefono" value="" /><br>
-                       <label>Ex: 00+Code Country+Number. 0034925224018</label>
+                       <input id="campoEnd" name="campoEnd" value="" /><br>
                     </span>
-                  <span class="error" id="errorTelefono"></span> <!--Espacio para indicar el error de esta caja-->
+                  <span class="error" id="errorEnd"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
               </div>
 
           
         </div>
-        <!-- Fin de 6 Caja:Telefono-->
+        <!-- Fin de 4 Caja:End-->
 
   
 
-        <!-- 7 Caja:Mail-->
+        <!-- 5 Caja:Type-->
         <div class="caja">
 
-              <label class="titulo">Mail<span class="requerido" required>*</span></label> <!--Titulo caja-->
+              <label class="titulo">Event Type<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="campoMail" name="campoMail" value="" /><br>
+                    <input id="campoType" name="campoType" value="" /><br>
                   </span>
-                  <span class="error" id="errorMail"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <span class="error" id="errorType"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
               </div>
 
       
 
         </div>
-        <!-- Fin de 7 Caja:Mail-->
+        <!-- Fin de 5 Caja:Type-->
 		
-		<!-- 3 Caja:Username -->
+		<!-- 6 Caja:Price -->
         <div class="caja">
 
-              <label class="titulo">User Name<span class="requerido" required>*</span></label> <!--Titulo caja-->
+              <label class="titulo">Ticket Price<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
 			  
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="campoUsername" name="campoUsername" type="username" value="" /><br>
+                    <input id="campoPrice" name="campoPrice" value="" /><br>
                   </span>
 
-                  <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
+                  <span class="error" id="errorPrice"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
               </div>
 
            
 
         </div>
-        <!--Fin de 3 caja -->
+        <!--Fin de 6 Caja:Price -->
 
-        <!-- 8 Caja:Contraseñas-->
+        <!-- 7 Caja:Seats-->
         <div class="caja" >
-              <label class="titulo" >Password <span class="requerido" required>*</span></label> <!--Titulo caja-->
+              <label class="titulo" >Total Seats<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
 
                   <span class="izquierda"> <!--input y etiqueta de input caja-->
-                    <input id="campoPassword" name="campoPassword" type="password" value="" /><br>
-                    <label>Password</label>
+                    <input id="campoSeats" name="campoSeats" value="" /><br>
                   </span>
 
-                  <span class="derecha">  <!--input y etiqueta de input caja-->
-                    <input id="campoComprobarPassword" name="campoComprobarPassword" type="password" value="" /><br>
-                    <label >Repeat Password</label>
-                  </span>
 
-                  <span class="error" id="errorPassword"></span> <!--Espacio para indicar el error de esta caja-->
+                  <span class="error" id="errorSeats"></span> <!--Espacio para indicar el error de esta caja-->
 
                   <div class="clear"></div> <!--Para limpiar el float-->
               </div>
 
         </div>
-        <!-- 8 Caja:Contraseñas-->
+        <!--Fin de 7 Caja:Seats -->
 
         <!-- Boton de enviar-->
         <div class="botones">

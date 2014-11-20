@@ -3,7 +3,6 @@
 /*--------------------Indico los estilos básicos-------------------*/
 
 body {
-  background-color:#2D2D37;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight:300;
   text-align: left;
@@ -12,6 +11,11 @@ body {
 
 #wrapper {
  margin: 0 auto;
+}
+
+#logo img{
+  width:auto;
+  height: 100px;
 }
 
 #webname{
