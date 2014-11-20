@@ -1,0 +1,176 @@
+
+
+/*--------------------Indico los estilos básicos-------------------*/
+
+body {
+  background-color:#2D2D37;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight:300;
+  text-align: left;
+  text-decoration: none;
+}
+
+#wrapper {
+ margin: 0 auto;
+}
+
+#webname{
+  color: white;
+}
+#webname span{
+  background-color: rgb(117, 181, 203);
+  padding: 0 10px 0 10px;
+}
+
+/*#LeftMenu {
+  width: 20%;
+    float: left; display:block;
+    font-size: 20px;
+}*/
+.categoria {
+    width: 100%;
+    position: relative;
+    display: block;
+    padding: 20px 20px;
+}
+.categoria a {
+text-align: left;
+width: 100%;
+display: block;
+background-color: #333;
+color: white;
+position: relative;
+text-decoration: none;
+margin: 0px;
+}
+
+h2 {
+  text-align: center;
+}
+/*---------------------LAYOUT--------------------*/
+/*Fijo la estructura de cajas*/
+
+#contenedor {
+width: 75%;
+min-width: 700px;
+margin: 0 auto;
+position: relative;
+z-index: 5;
+background-color: #f3f3f3;
+border: 1px solid #fff;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+padding: 4px 15px;
+}
+/*Error de campos obligatorios en rojo*/
+#error{
+  margin-bottom: 10px;
+  color:red;
+}
+/*Cada caja le pongo una altura y fijo un borde superior de 2px*/
+.caja{
+   margin: 0;
+  padding: 1em;
+  height: 40px;
+  border-top: 2px solid #CCC;
+
+}
+/*Dentro de cada caja has input+etiquetainput a la izq y otros a la dcha*/
+.izquierda{
+  float:left;
+  margin-left: 15px;
+}
+.derecha{
+  float:left;
+  margin-left: 20px;
+}
+/*Para limpiar el float*/
+.clear{
+  clear: both;
+}
+/*Fijo todos los parrafos de ayuda ocultos en un principio y con javascript cambiare cuando pase el raton por encima de la caja*/
+p.ayuda{
+  visibility:hidden;
+  border: 2px solid #CCC;
+  padding:7px;
+  background-color: white;
+  border-radius: 15px;
+  position: absolute;
+  left:0;
+  top: 0;
+}
+/*Todos los mensajes de error de caja tienen q estar en rojo y colocados a la dcha del campo*/
+.error{
+  float:left;
+  margin-left: 20px;
+  color:red;
+}
+/*Boton de enviar lo fijo a la decha del todo del contenedor*/
+.botones{
+    font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	position: absolute;
+	right: 0;
+}
+input[type="submit"], input[type="reset"] {
+margin: 10px auto;
+box-shadow: 0px 2px 0px 0px #d9d9d9;
+background-color: #ffffff;
+border-radius: 6px;
+border: 1px solid #dcdcdc;
+color:#000000;
+font-size: 15px;
+font-weight: bold;
+padding: 6px 24px;
+text-shadow: 0px 1px 0px #ffffff;
+}
+/*--------------------TITULOS DE LA IZQUIERDA---------------------------*/
+/*Etiquetas de input letra un poco mas pequeña un 20% mas pequeña q el titulo */
+label{
+	font-size: 0.8em;
+}
+/*titulos de caja en negrita y ancho determinado*/
+label.titulo {
+  font-size: 1em;
+  font-weight: bold;
+  float: left;
+  width: 200px;
+  text-align: right;
+}
+ /*Los asteriscos de los campos requeridos en rojo y negrita*/
+span.requerido {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #C00;
+}
+
+/* Cambiar el color en el :hover y resaltar los campos s */
+.caja:hover {
+}
+.caja.botones:hover {
+  background-color: transparent;
+}
+
+/*---------pongo algunos campos de input mas grandes---------*/
+ input#campoApellidos, input#campoMail,input#campoDomicilio{
+ 	width: 200px;
+
+ }
+ input#alta{
+ }
+ input:focus{
+  border-width: 3px;
+ }
+
+
+input, input[type="password"] {
+    vertical-align:middle;
+    display:inline-block;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px rgb(204, 204, 204) inset, 0px 1px 0px rgb(255, 255, 255);
+    font: 12px 'Lucida Sans Unicode','Trebuchet MS',Arial,Helvetica;
+    background-color: rgb(241, 241, 241);
+}
+
