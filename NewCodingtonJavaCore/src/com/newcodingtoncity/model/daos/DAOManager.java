@@ -14,6 +14,10 @@ public class DAOManager {
 
 	private Connection connection;
 
+	public Connection getConnection() {
+		return connection;
+	}
+
 	public DAOManager() {		
 		connection  = CodingtonConnectToDB.createConnection();	
 	}
