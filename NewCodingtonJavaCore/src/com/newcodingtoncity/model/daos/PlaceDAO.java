@@ -152,7 +152,7 @@ public class PlaceDAO implements IPlaceDAO {
 		return placeList;
 	}
 
-	public int insertPlace(Place place, String sqlQuery, int typeOfPlace) {
+	public int insertPlace(Place place,int typeOfPlace) {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
@@ -224,11 +224,11 @@ public class PlaceDAO implements IPlaceDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_place"));
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_places"));
 		    preparedStatement.setInt(1, placeId);	 
-		    affectedRows = preparedStatement.executeUpdate();
-
-		} catch(SQLException ex) {}
+		    affectedRows = preparedStatement.executeUpdate();   
+		} catch(SQLException ex) {
+		}
 		return affectedRows;
 	}
 	
@@ -267,7 +267,7 @@ public class PlaceDAO implements IPlaceDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoevents"));
+			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoplaces"));
 			preparedStatement.setInt(1,typeOfPlace);
 			preparedStatement.setString(2,place.getName());
 			preparedStatement.setInt(3,place.getCapacity());
@@ -281,7 +281,9 @@ public class PlaceDAO implements IPlaceDAO {
 			preparedStatement.setInt(10,place.getId());
 		    affectedRows = preparedStatement.executeUpdate();
 
-		} catch(SQLException ex) {}
+		} catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return affectedRows;
 	}
 

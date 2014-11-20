@@ -107,7 +107,7 @@ public class EventDAO implements IEventDAO {
 		PreparedStatement preparedStatement = null;			 			
 		try {
 			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_events"));
-			
+			System.out.println(DatabaseHelper.getQuery("insert_events"));
 			preparedStatement.setString(1,insertEvent.getEventName());
 			preparedStatement.setString(2,insertEvent.getDescription());
 			preparedStatement.setString(3,insertEvent.getStart());
@@ -121,7 +121,9 @@ public class EventDAO implements IEventDAO {
 			
 			affectedRows = preparedStatement.executeUpdate();
 
-		} catch(SQLException ex) {}
+		} catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return affectedRows;
 	}
 

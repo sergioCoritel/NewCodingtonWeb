@@ -27,6 +27,7 @@ public interface IPlaceDAO {
 	public ArrayList<LargeBusiness> showLargeBusiness() throws ClassNotFoundException,SQLException, IOException;
 	public ArrayList<TouristAttraction> showTouristAttractions() throws ClassNotFoundException,SQLException, IOException;
 	public ArrayList<TraditionalMarket> showTraditionalMarkets() throws ClassNotFoundException,SQLException, IOException;
+	public int insertPlace(Place place, int typeOfPlace);
 	public int deletePlace(int placeId) ;
 	public void changeImage(int id, File image) throws FileNotFoundException, SQLException;
 	public int updatePlace(Place place, int typeOfPlace) throws ClassNotFoundException, SQLException, IOException;
