@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
 import com.newcodingtoncity.model.domain.places.Museum;
 import com.newcodingtoncity.model.domain.places.Park;

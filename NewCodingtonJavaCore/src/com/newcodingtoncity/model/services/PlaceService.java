@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.services;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
 import com.newcodingtoncity.model.domain.places.Museum;
 import com.newcodingtoncity.model.domain.places.Park;
+import com.newcodingtoncity.model.domain.places.Place;
 import com.newcodingtoncity.model.domain.places.Stadium;
 import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
@@ -143,6 +145,69 @@ public class PlaceService implements IPlaceService{
 			e.printStackTrace();
 		}	
 		return zoos;		
+	}
+	
+	public int insertPlace(Place place,int typeOfPlace){
+		DAOManager manager = null;
+		IPlaceDAO placeDAO = null;
+		int affectedRows = 0;
+		try {
+			manager = new DAOManager();
+			placeDAO = manager.getPlaceDAO();	
+			affectedRows = placeDAO.insertPlace(place, typeOfPlace);
+			manager.closeConnectionWithCommit();
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
+			e.printStackTrace();
+		}	
+		return affectedRows;		
+	}
+	
+	public int deletePlace(int placeId){
+		DAOManager manager = null;
+		IPlaceDAO placeDAO = null;
+		int affectedRows = 0;
+		try {
+			manager = new DAOManager();
+			placeDAO = manager.getPlaceDAO();	
+			affectedRows = placeDAO.deletePlace(placeId);
+			manager.closeConnectionWithCommit();
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
+			e.printStackTrace();
+		}	
+		return affectedRows;		
+	}
+	
+	public int updatePlace(Place place,int typeOfPlace){
+		DAOManager manager = null;
+		IPlaceDAO placeDAO = null;
+		int affectedRows = 0;
+		try {
+			manager = new DAOManager();
+			placeDAO = manager.getPlaceDAO();	
+			affectedRows = placeDAO.updatePlace(place, typeOfPlace);
+			manager.closeConnectionWithCommit();
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
+			e.printStackTrace();
+		}	
+		return affectedRows;		
+	}
+	
+	public void changeImage(int id, File image){
+		DAOManager manager = null;
+		IPlaceDAO placeDAO = null;
+		
+		try {
+			manager = new DAOManager();
+			placeDAO = manager.getPlaceDAO();	
+			placeDAO.changeImage(id, image);
+			manager.closeConnectionWithCommit();
+		} catch (Exception e) {
+			manager.closeConnectionWithRollback();
+			e.printStackTrace();
+		}			
 	}
 	
 	
