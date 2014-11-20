@@ -44,14 +44,14 @@ public class EventDAO implements IEventDAO {
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 		
-		return requestEventList(DatabaseHelper.getQuery("allevents"));
+		return requestEventList(DatabaseHelper.getQuery("alleventsandplaces"));
 	}
 	
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,SQLException, IOException {
 		return requestEventList(DatabaseHelper.getQuery("museum"));
 	}
 	
-
+	
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException,SQLException, IOException {
 		
 
