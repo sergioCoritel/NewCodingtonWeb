@@ -4,14 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 public class CodingtonConnectToDB {
 
-	static Connection connnection ;
+	static Connection connection ;
 	private static   String url = "jdbc:mysql://localhost:3306/newcodington";
 	private static String user = "root";
 	private static String pass = "abcd1234";
 
 	public static Connection createConnection() {
+		try {
+			Context context = new InitialContext();             
+			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/codingtondb");
+			connection = dataSource.getConnection();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		return connection;
+	}
+	
+	public static Connection createOldConnection() {
 		try {
 	        Class.forName("com.mysql.jdbc.Driver");
 	    } catch (ClassNotFoundException e) {
@@ -21,12 +36,12 @@ public class CodingtonConnectToDB {
 	    }
 
 		try {
-			connnection = DriverManager.getConnection(url, user, pass);
-			connnection.setAutoCommit(false);
+			connection = DriverManager.getConnection(url, user, pass);
+			connection.setAutoCommit(false);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		return connnection;
+		return connection;
 	}
 
 	public static void closeConnection(Connection connection) throws RuntimeException {

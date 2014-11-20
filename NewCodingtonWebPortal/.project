@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>NewCodingtonWeb</name>
+	<name>NewCodingtonWebPortal</name>
 	<comment></comment>
 	<projects>
+		<project>NewCodingtonJavaCore</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
