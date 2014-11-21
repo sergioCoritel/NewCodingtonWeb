@@ -20,13 +20,14 @@ public class CodingtonConnectToDB {
 			Context context = new InitialContext();             
 			DataSource dataSource = (DataSource) context.lookup("java:/comp/env/jdbc/codingtondb");
 			connection = dataSource.getConnection();
+			connection.setAutoCommit(false);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 		return connection;
 	}
 	
-	public static Connection createOldConnection() {
+	public static Connection createConnectionWithoutDataSource() {
 		try {
 	        Class.forName("com.mysql.jdbc.Driver");
 	    } catch (ClassNotFoundException e) {

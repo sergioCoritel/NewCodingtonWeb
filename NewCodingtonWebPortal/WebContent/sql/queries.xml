@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Here are some favorites</comment>
+
+<!-- SELECTS-->
+
+<!-- ALL EVENTS AND PLACES-->
+<entry key="alleventsandplaces">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place ORDER BY events.id_event</entry>
+
+
+<!-- ALL EVENTS MUSEUM-->
+<entry key="museum">SELECT events.*, places.*, museum.* FROM events, places, museum WHERE events.id_place = places.id_place AND places.id_place=museum.id_place</entry>
+
+<!-- ALL EVENTS ZOO-->
+<entry key="zoo">SELECT events.*, places.*, zoo.* FROM events, places, zoo WHERE events.id_place = places.id_place AND places.id_place=zoo.id_place</entry>
+
+<!-- ALL EVENTS PARK-->
+<entry key="park">SELECT events.*, places.*, park.* FROM events, places, park WHERE events.id_place = places.id_place AND places.id_place=park.id_place</entry>
+
+<!-- ALL EVENTS THEATER-->
+<entry key="theater">SELECT events.*, places.*, theater.* FROM events, places, theater WHERE events.id_place = places.id_place AND places.id_place=theater.id_place</entry>
+
+<!-- ALL EVENTS STADIUM-->
+<entry key="stadium">SELECT events.*, places.*, stadium.* FROM events, places, stadium WHERE events.id_place = places.id_place AND places.id_place=stadium.id_place</entry>
+
+<!-- ALL EVENTS LARGEBUSINESS-->
+<entry key="large_business">SELECT events.*, places.*,large_business.* FROM events, places, large_business WHERE events.id_place = places.id_place AND places.id_place=large_business.id_place</entry>
+
+<!-- ALL EVENTS TOURISTATTRACTION-->
+<entry key="tourist_attraction">SELECT events.*, places.*, tourist_attraction.* FROM events, places, tourist_attraction WHERE events.id_place = places.id_place AND places.id_place=tourist_attraction.id_place</entry>
+
+<!-- ALL EVENTS TRADITIONALMARKET-->
+<entry key="traditional_market">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
+
+<!--ALL USER EVENTS-->
+<entry key="eventsusers">SELECT * FROM events_users</entry>
+
+<!--1 USER EVENTS, FILTER:USERS-->
+<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_user = ?</entry>
+
+<!--1 EVENTS USER,  FILTER:EVENTS-->
+<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_event = ?</entry>
+
+<!--ALL USERS-->
+<entry key="allusers">SELECT * FROM users</entry>
+
+<!--ALL PLACES-->
+<entry key="allplaces">SELECT * FROM places</entry>
+
+<!--ALL PLACE LARGEBUSINESS-->
+<entry key="place_large_business">SELECT places.*, large_business.* FROM places,large_business WHERE places.id_place=large_business.id_place</entry>
+
+<!--ALL PLACE MUSEUM-->
+<entry key="place_museum">SELECT places.*, museum.* FROM places,museum WHERE places.id_place=museum.id_place</entry>
+
+<!--ALL PLACE PARK-->
+<entry key="place_park">SELECT places.*, park.* FROM places,park WHERE places.id_place=park.id_place</entry>
+
+<!--ALL PLACE STADIUM-->
+<entry key="place_stadium">SELECT places.*, stadium.* FROM places,stadium WHERE places.id_place=stadium.id_place</entry>
+
+<!--ALL PLACE THEATER-->
+<entry key="place_theater">SELECT places.*, theater.* FROM places,theater WHERE places.id_place=theater.id_place</entry>
+
+<!--PLACE TOURISTATTRACTION-->
+<entry key="place_tourist_attraction">SELECT places.*, tourist_attraction.* FROM places,tourist_attraction WHERE places.id_place=tourist_attraction.id_place</entry>
+
+<!--PLACE TRADITIONALMARKET-->
+<entry key="place_traditional_market">SELECT places.*, traditional_market.* FROM places,traditional_market WHERE places.id_place=traditional_market.id_place</entry>
+
+<!--PLACE ZOO-->
+<entry key="place_zoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
+
+
+<entry key="selec_login">select id_user from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
+
+<!--USER, LOGIN FILTER: EMAIL_USERNAME-->
+<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
+
+<!-- EVENT_USER, FILTER: id_event and id_user-->
+<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_user = ?</entry>
+
+<!-- EVENT_USER, FILTER: id_event-->
+<entry key='register_event'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ?</entry>
+
+<!-- EVENT_USER, FILTER: id_user-->
+<entry key='register_user'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_user = ?</entry>
+
+<!--UPDATES-->
+
+<!--UPDATE PASS-->
+<entry key="change_pass">update users set password = ? where id_user = ?</entry>
+
+<!--UPDATE INFO USER-->
+<entry key="change_info">update users set firstname = ?, lastname = ?, dni = ?, email = ?, phone_number = ?, address = ? where id_user = ?</entry>
+	
+<!--UPDATE INFO EVENTS-->
+<entry key="update_infoevents">update events set name_event= ?, description_event=?, start_event=?, end_event=?,type_event=?,ticket_price=?,seats_available=?,seats_total=?,id_place=? WHERE id_event = ?</entry>
+
+<!--UPDATE INFO EVENTS-->
+<entry key="update_seats_event_inc">update events set seats_available = seats_available+1  WHERE id_event = ?</entry>
+
+<!--UPDATE INFO EVENTS-->
+<entry key="update_seats_event_dec">update events set seats_available = seats_available-1  WHERE id_event = ?</entry>
+
+<!--UPDATE INFO PLACES-->
+<entry key="update_infoplaces">update places set id_type_place=?, name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, zone=?, image=?, is_building=? WHERE id_place = ?</entry>
+
+<!--UPDATE PLACES IMAGE-->
+<entry key="update_image">UPDATE places SET image = ? "+" WHERE placeId = ?</entry>
+
+<!--DELETES-->
+
+<!--DELETE EVENTS--> <!--DANGER: All associated events_users are deleted --> 
+<entry key="delete_event">delete from events where id_event=?</entry>
+
+<!--DELETE PLACES--> <!--DANGER: All associated events & events_users are deleted --> 
+<entry key="delete_places">delete from places where id_place=?</entry>
+
+<!--DELETE USERS--> <!--DANGER: All associated events_users are deleted --> 
+<entry key="delete_users">delete from users where id_user=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_events_users-->
+<entry key="deleteEventFromEventSignup">delete from events_users where id_events_users=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_user-->
+<entry key="deleteEvent_user">delete from events_users where id_user=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_event-->
+<entry key="deleteEvent_event">delete from events_users where id_event=?</entry>
+
+<!--DELETE EVENTS_USERS, SEARCH: id_event and id_user-->
+<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?</entry>
+
+<!--INSERTS-->
+
+<!--INSERTS USERS-->
+<entry key="registerUser">insert into users values (null,?,?,?,?,?,?,?,?,?)</entry>
+
+<!--INSERTS EVENTS_USERS-->
+<entry key="registerVisitorToEvent">insert into events_users values (null, ?, ?)</entry>
+
+<!--INSERTS PLACES-->
+<entry key="insert_places">insert into places values (null,?,?,?,?,?,?,?,?,?)</entry>
+
+<!--INSERTS EVENTS-->
+<entry key="insert_events">insert into events values(null,?,?,?,?,?,?,?,?,?)</entry>
+
+<!--INSERTS ZOO-->
+<entry key="insert_zoo">insert into zoo values (?)</entry>
+
+<!--INSERTS MUSEUM-->
+<entry key="insert_museum">insert into zoo values (?)</entry>
+
+<!--INSERTS LARGE_BUSINESS-->
+<entry key="insert_large_business">insert into large_business values (?)</entry>
+
+<!--INSERTS PARK-->
+<entry key="insert_park">insert into park values (?)</entry>
+
+<!--INSERTS STADIUM-->
+<entry key="insert_stadium">insert into stadium values (?)</entry>
+
+<!--INSERTS THEATER-->
+<entry key="insert_theater">insert into theater values (?)</entry>
+
+<!--INSERTS TOURIST_ATTRACTION-->
+<entry key="insert_tourist_attraction">insert into tourist_attraction values (?)</entry>
+
+<!--INSERTS TRADITIONAL_MARKET-->
+<entry key="insert_traditional_market">insert into traditional_market values (?)</entry>
+
+</properties>

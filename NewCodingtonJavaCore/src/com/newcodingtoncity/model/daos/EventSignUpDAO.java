@@ -19,10 +19,12 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+	private DatabaseHelper databaseHelper;
 
 
-	public EventSignUpDAO(Connection connection) {
+	public EventSignUpDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
+		this.databaseHelper = databaseHelper;
 	}
 
 
@@ -32,7 +34,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		try{		    		
 
 			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = DatabaseHelper.getQuery("IsRegisteredToEvent");
+			String sql  = databaseHelper.getQuery("IsRegisteredToEvent");
 			statement = connection.prepareStatement(sql);
 
 			statement.setInt(1, e.getEventId());
@@ -86,7 +88,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		try{		    		
 
 			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = DatabaseHelper.getQuery("registerVisitorToEvent");
+			String sql  = databaseHelper.getQuery("registerVisitorToEvent");
 			statement = connection.prepareStatement(sql);
 
 			statement.setInt(1, e.getId());
@@ -133,7 +135,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		try{		    		
 
 			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = DatabaseHelper.getQuery("unRegisterVisitorToEvent");
+			String sql  = databaseHelper.getQuery("unRegisterVisitorToEvent");
 			statement = connection.prepareStatement(sql);
 
 			statement.setInt(1, e.getEventId());
@@ -180,7 +182,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		try{		    		
 
 			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = DatabaseHelper.getQuery("deleteEventFromEventSignup");
+			String sql  = databaseHelper.getQuery("deleteEventFromEventSignup");
 			statement = connection.prepareStatement(sql);
 
 			statement.setInt(1, e.getEventId());
@@ -253,7 +255,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		try{		    		
 
 			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = DatabaseHelper.getQuery("eventsOfUser");
+			String sql  = databaseHelper.getQuery("eventsOfUser");
 			statement = connection.prepareStatement(sql);
 
 			statement.setInt(1, e.getVisitorId());

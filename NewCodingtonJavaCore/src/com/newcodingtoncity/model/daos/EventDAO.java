@@ -20,23 +20,30 @@ public class EventDAO implements IEventDAO {
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+	private DatabaseHelper databaseHelper;
 
-	public EventDAO(Connection connection) {
+	public EventDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
+		this.databaseHelper = databaseHelper;
 	}
 
 	public ArrayList<Event> requestEventList(String sqlQuery) throws ClassNotFoundException,
 	SQLException, IOException {
-		statement = connection.prepareStatement(sqlQuery);
-
-		resultSet = statement.executeQuery();
 		ArrayList<Event> eventList = new ArrayList<Event>();
-
-		while (resultSet.next()) {
-			Event event = EventMapper.map(resultSet);
-			eventList.add(event); 
+		try {
+			statement = connection.prepareStatement(sqlQuery);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Event event = EventMapper.map(resultSet);
+				eventList.add(event); 
+			}
+			resultSet.close();
+			
+		} catch (Exception e) {
+			System.out.println("Error en EventDao "+e.getMessage());
+			System.out.println("sqlQuery: " + sqlQuery);
 		}
-		resultSet.close();
+		
 		return eventList;
 	}
 
@@ -44,56 +51,56 @@ public class EventDAO implements IEventDAO {
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 		
-		return requestEventList(DatabaseHelper.getQuery("alleventsandplaces"));
+		return requestEventList(databaseHelper.getQuery("alleventsandplaces"));
 	}
 	
 	public ArrayList<Event> showMuseumEvents() throws ClassNotFoundException,SQLException, IOException {
-		return requestEventList(DatabaseHelper.getQuery("museum"));
+		return requestEventList(databaseHelper.getQuery("museum"));
 	}
 	
 	
 	public ArrayList<Event> showZooEvents() throws ClassNotFoundException,SQLException, IOException {
 		
 
-		return requestEventList(DatabaseHelper.getQuery("zoo"));
+		return requestEventList(databaseHelper.getQuery("zoo"));
 	}
 
 	public ArrayList<Event> showParkEvents() throws ClassNotFoundException,SQLException, IOException {
 		
 
-		return requestEventList(DatabaseHelper.getQuery("park"));
+		return requestEventList(databaseHelper.getQuery("park"));
 	}
 
 	public ArrayList<Event> showTheaterEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("theater"));
+		return requestEventList(databaseHelper.getQuery("theater"));
 	}
 
 	public ArrayList<Event> showStadiumEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("stadium"));
+		return requestEventList(databaseHelper.getQuery("stadium"));
 	}
 
 	public ArrayList<Event> showLargeBusinessEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("large_business"));
+		return requestEventList(databaseHelper.getQuery("large_business"));
 	}
 
 	public ArrayList<Event> showTouristAttractionEvents() throws ClassNotFoundException,SQLException, IOException {
 
-		return requestEventList(DatabaseHelper.getQuery("tourist_attraction"));
+		return requestEventList(databaseHelper.getQuery("tourist_attraction"));
 	}
 
 	public ArrayList<Event> showTraditionalMarketEvents() throws ClassNotFoundException,
 	SQLException, IOException {
 	
-		return requestEventList(DatabaseHelper.getQuery("traditional_market"));
+		return requestEventList(databaseHelper.getQuery("traditional_market"));
 	}
 	
 
 	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException{
 
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("eventbyid"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("eventbyid"));
 		statement.setInt(1,id);
 		resultSet = statement.executeQuery();
 		Event event = EventMapper.map(resultSet);
@@ -106,8 +113,8 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_events"));
-			System.out.println(DatabaseHelper.getQuery("insert_events"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("insert_events"));
+			System.out.println(databaseHelper.getQuery("insert_events"));
 			preparedStatement.setString(1,insertEvent.getEventName());
 			preparedStatement.setString(2,insertEvent.getDescription());
 			preparedStatement.setString(3,insertEvent.getStart());
@@ -132,7 +139,7 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_event"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("delete_event"));
 		    preparedStatement.setInt(1, eventId);	 
 		    affectedRows = preparedStatement.executeUpdate();
 
@@ -146,7 +153,7 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoevents"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("update_infoevents"));
 			preparedStatement.setString(1,updateEvent.getEventName());
 			preparedStatement.setString(2,updateEvent.getDescription());
 			preparedStatement.setString(3,updateEvent.getStart());
@@ -169,7 +176,7 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_seats_event_dec"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("update_seats_event_dec"));
 		    preparedStatement.setInt(1, eventId);	 
 		    affectedRows = preparedStatement.executeUpdate();
 
@@ -183,7 +190,7 @@ public class EventDAO implements IEventDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_seats_event_inc"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("update_seats_event_inc"));
 		    preparedStatement.setInt(1, eventId);	 
 		    affectedRows = preparedStatement.executeUpdate();
 

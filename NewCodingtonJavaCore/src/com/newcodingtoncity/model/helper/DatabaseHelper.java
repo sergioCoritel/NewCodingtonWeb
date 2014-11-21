@@ -1,17 +1,25 @@
 package com.newcodingtoncity.model.helper;
 
+import javax.servlet.ServletContext;
+
 
 public class DatabaseHelper {
 	
-	public static String getDBUser() {
-		return XMLExtractorHelper.getStringFromKey("sql/configuration.xml", "db_user");
+	private ServletContext context;
+	private XMLExtractorHelper xMLExtractorHelper;
+	public DatabaseHelper(ServletContext context) {
+		xMLExtractorHelper = new XMLExtractorHelper(context);
+	}
+
+	public  String getDBUser() {
+		return xMLExtractorHelper.getStringFromKey("sql/configuration.xml", "db_user");
 	}
 	
-	public static String getDBPassword() {
-		return XMLExtractorHelper.getStringFromKey("sql/configuration.xml", "db_password");
+	public String getDBPassword() {
+		return xMLExtractorHelper.getStringFromKey("sql/configuration.xml", "db_password");
 	}
 	
-	public static String getQuery(String queryName) {
-		return XMLExtractorHelper.getStringFromKey("sql/queries.xml", queryName);
+	public  String getQuery(String queryName) {
+		return xMLExtractorHelper.getStringFromKey("sql/queries.xml", queryName);
 	}
 }
