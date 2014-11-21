@@ -29,9 +29,8 @@ public class TestEventSignUp extends TestCase{
 	@After
 	protected void tearDown() throws Exception {	
 		super.tearDown();		
-		//daoManager.closeConnectionWithCommit();
 	}
-	
+
 	@Test
 	public void testEventSignUpRegister() throws Exception {
 		eventSignUpSession.setEventId(16);
@@ -46,6 +45,7 @@ public class TestEventSignUp extends TestCase{
 		assertTrue(eventSignUpService.unregisterVisitorForEvent(eventSignUpSession));
 	}
 	
+	@Test
 	public void testShowAllEvents() throws ClassNotFoundException, SQLException, IOException {
 		
 		List<EventSignUp> eventsSignUp = eventSignUpService.getAllEventsSignUp();
@@ -57,6 +57,7 @@ public class TestEventSignUp extends TestCase{
 		}
 	}
 	
+	@Test
 	public void testShowAllEventsForOneUser() throws ClassNotFoundException, SQLException, IOException {
 		eventSignUpSession.setEventId(16);
 		eventSignUpSession.setVisitorId(16);

@@ -33,6 +33,7 @@ public class DAOManager {
 	public DAOManager() {		
 		connection  = CodingtonConnectToDB.createConnectionWithoutDataSource();	
 		this.context = null;
+		this.databaseHelper = new DatabaseHelper(null);
 	}
 
 
