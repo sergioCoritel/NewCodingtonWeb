@@ -16,7 +16,9 @@ public class TestWhithConsoleEventDAO {
 //		testUpdateSeatsEventInc(daoManager);
 //		testUpdateSeatsEventDec(daoManager);
 //		testDeleteEvent(daoManager);
-		testListMuseumEvents(daoManager);
+//		testListMuseumEvents(daoManager);
+//		testListZooEvents(daoManager);
+//		testListMuseumEvents(daoManager);
 //		testListZooEvents(daoManager);
 //		testListParkEvents(daoManager);
 //		testListTheaterEvents(daoManager);

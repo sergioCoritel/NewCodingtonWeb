@@ -15,6 +15,7 @@ import com.newcodingtoncity.model.daos.PlaceDAO;
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.Museum;
 
+
 public class EventDAOTest extends TestCase {
 
 	Connection connection;
@@ -37,7 +38,6 @@ public class EventDAOTest extends TestCase {
 		event1.setEnd("2014-02-01");
 		event1.setSeatsAvailable(100);
 		event1.setTicketPrice(10);
-		
 		event1.setPlace(createMuseum());
 		daoManager.getEventDAO().insertEvent(event1);				//Insert the event in DB
 	}
@@ -77,19 +77,39 @@ public class EventDAOTest extends TestCase {
 	}
 	
 	
+	/**
+	 * Find last event inserted in DB
+	 * @return the last event inserted
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	private Event lastEventInserted() throws ClassNotFoundException, SQLException, IOException{
+		Event lastEvent = null;
+		try {
+			ArrayList<Event> events = eventDAO.showAllEvents();
+			lastEvent = events.get(events.size()-1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lastEvent;
+	}
+	
+	
 	@Test
 	public void testShowAllEvents() throws ClassNotFoundException, SQLException, IOException {
-		ArrayList<Event> events = eventDAO.showAllEvents();
-		Event event1 = events.get(events.size()-1);
+		Event event1 = lastEventInserted();
 			
 		assertEquals(event1.getEventName(), this.event1.getEventName());
 		assertEquals(event1.getDescription(), this.event1.getDescription());
 	}
 	
-	
-	/*@Test
+	/*
+	@Test
 	public void testShowMuseumEvents() throws ClassNotFoundException, SQLException, IOException{
-			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
+		
+		
+		ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
 			for(int i=0; i<eventList.size();i++){
 				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
 			System.out.println(eventList.get(i).getPlace().getPlaceDescription());
@@ -97,22 +117,41 @@ public class EventDAOTest extends TestCase {
 	}*/
 	
 	
+	@Test
 	public void testUpdateEvent() {	
-		Event event;
-		
-		event1.setEventName("Evento1");
-		event1.setDescription("Descripcion");
-		event1.setStart("2014-02-01");
-		event1.setEnd("2014-02-01");
-		event1.setSeatsAvailable(100);
-		event1.setTicketPrice(10);
-		
-
-
-		
+		try {
+			Event updateEvent = createNewEvent();
+			updateEvent.setEventId(1);
+			eventDAO.updateEvent(updateEvent);
+			daoManager.getEventDAO().updateEvent(event1);
+			int rowsAffected = daoManager.getEventDAO().updateEvent(updateEvent);
+			assertEquals(1, rowsAffected);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
+	@Test
+	public void testDeleteEvent() throws ClassNotFoundException, SQLException, IOException {
+		Event event1 = lastEventInserted();
+		int rowsAffected = daoManager.getEventDAO().deleteEvent(event1.getEventId());		//Delete the last Event inserted
+		assertEquals(1, rowsAffected);
+	}
+	
+	
+	@Test
+    public void testUpdateSeatsEventDec() throws ClassNotFoundException, SQLException, IOException {
+		int rowsAffected = daoManager.getEventDAO().updateSeatsEventDec(15);
+		assertEquals(1, rowsAffected);
+	}
+    
+	
+	@Test
+    public void testUpdateSeatsEventInc() throws ClassNotFoundException, SQLException, IOException {
+		int rowsAffected = daoManager.getEventDAO().updateSeatsEventInc(15);
+		assertEquals(1, rowsAffected);
+	}
 	
 	
 	
