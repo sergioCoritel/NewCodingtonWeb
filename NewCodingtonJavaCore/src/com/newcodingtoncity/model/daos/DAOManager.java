@@ -7,9 +7,9 @@ import javax.servlet.ServletContext;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
-import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
 import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
+import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
 
@@ -56,7 +56,7 @@ public class DAOManager {
 	public IUserDAO getUserDAO() {
 		return new UserDAO(connection,databaseHelper);	
 	}
-
+	
 	public IPlaceDAO getPlaceDAO() {
 		return new PlaceDAO(connection, databaseHelper);				
 	}
