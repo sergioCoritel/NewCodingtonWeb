@@ -44,9 +44,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 			resultSet.last();
 			fila = resultSet.getRow();
 			resultSet.beforeFirst();
-			
-			//System.out.println("Existe la fila: "+ fila);	
-				
+						
 		}catch(Exception eee){
 			eee.getMessage();
 		}finally {
@@ -112,7 +110,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		
 		int affectedRows = 0;
 		try{	
-			String sql  = databaseHelper.getQuery("update_rest_seats_events");
+			String sql  = databaseHelper.getQuery("update_seats_event_dec");
 
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, e.getEventId());
@@ -149,7 +147,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		int affectedRows = 0;
 
 		try{	
-			String sql  = databaseHelper.getQuery("update_sum_seats_events");
+			String sql  = databaseHelper.getQuery("update_seats_event_inc");
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1,e.getEventId());
 			
@@ -195,9 +193,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 				seatsAvailables = resultSet.getInt(1);
 				seatsTotal = resultSet.getInt(2);
 			}
-			
-			//System.out.println("Disponibles"+seatsAvailables);
-			//System.out.println("Totales"+seatsTotal);
+		
 		}catch(Exception eee){
 			eee.getMessage();
 		}finally {
@@ -238,8 +234,6 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 				seatsTotal = resultSet.getInt(2);
 			}
 			
-			//System.out.println("Disponibles"+seatsAvailables);
-			//System.out.println("Totales"+seatsTotal);
 		}catch(Exception eee){
 			eee.getMessage();
 		}finally {

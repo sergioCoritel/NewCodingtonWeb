@@ -65,19 +65,20 @@ public class EventSignUpService {
 				if(seatsAvailabes){
 					registrado = eventSignUpDAO.unregisterVisitorForEventDAO(eventSignUpSession);
 					seatsUpdate = eventSignUpDAO.updateSumSeatsAvailableEvent(eventSignUpSession);
-					System.out.println("PONER MENSAJE EN HTML: Usted se ha desregistrado con exito");
+					System.out.println("BORRAR PONER MENSAJE EN HTML: Usted se ha desregistrado con exito");
 					manager.closeConnectionWithCommit();
 				}else{
 					// PONER MENSAJE EN HTML
-					System.out.println("PONER MENSAJE EN HTML: No hay asientos disponibles para este evento");
+					System.out.println("BORRAR PONER MENSAJE EN HTML: No hay asientos disponibles para este evento");
 				}
 			}else{
 				// PONER MENSAJE EN HTML
-				System.out.println("PONER MENSAJE EN HTML:Usted no esta registrado en este evento");
+				System.out.println("BORRAR PONER MENSAJE EN HTML:Usted no esta registrado en este evento");
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.println("EEEHH QUE PASA");
 			manager.closeConnectionWithRollback();
 			e.printStackTrace();
 		} 	
