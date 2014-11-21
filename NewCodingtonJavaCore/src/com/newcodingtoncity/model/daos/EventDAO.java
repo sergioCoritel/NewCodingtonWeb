@@ -50,7 +50,6 @@ public class EventDAO implements IEventDAO {
 	
 	public ArrayList<Event> showAllEvents() throws ClassNotFoundException,
 	SQLException, IOException {
-		
 		return requestEventList(databaseHelper.getQuery("alleventsandplaces"));
 	}
 	
@@ -115,7 +114,7 @@ public class EventDAO implements IEventDAO {
 		try {
 			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("insert_events"));
 			System.out.println(databaseHelper.getQuery("insert_events"));
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_events"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("insert_events"));
 			preparedStatement.setString(1,insertEvent.getEventName());
 			preparedStatement.setString(2,insertEvent.getDescription());
 			preparedStatement.setString(3,insertEvent.getStart());

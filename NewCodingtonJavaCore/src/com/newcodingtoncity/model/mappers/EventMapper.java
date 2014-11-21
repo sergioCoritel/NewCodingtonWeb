@@ -27,8 +27,10 @@ public class EventMapper {
 			event.setTicketPrice(resultSet.getInt("ticket_price"));
 			event.setSeatsAvailable(resultSet.getInt("seats_available"));
 			event.setSeatsTotal(resultSet.getInt("seats_total"));
+			
 			switch (resultSet.getInt("id_type_place")) {
 			case LargeBusiness.ID_TYPE_OF_PLACE:
+
 				event.setPlace(LargeBusinessMapper.map(resultSet));
 				break;
 			case Museum.ID_TYPE_OF_PLACE:

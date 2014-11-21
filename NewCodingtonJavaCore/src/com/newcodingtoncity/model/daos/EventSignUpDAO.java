@@ -1,17 +1,20 @@
 package com.newcodingtoncity.model.daos;
 
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.EventSignUp;
-import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
+import com.newcodingtoncity.model.mappers.EventMapper;
+import com.newcodingtoncity.model.mappers.EventSignUpMapper;
 
 public class EventSignUpDAO implements IEventSignUpDAO{
 
@@ -27,34 +30,26 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		this.databaseHelper = databaseHelper;
 	}
 
-
 	@Override
-	public boolean isVisitorRegisteredToEvent(EventSignUp e) {
-
-		try{		    		
-
-			//connection = CodingtonConnectToDB.createConnection();
-			String sql  = databaseHelper.getQuery("IsRegisteredToEvent");
+	public boolean checkEventsofVisitorDAO(EventSignUp e){
+		int fila =0;
+		try{	
+			String sql  = databaseHelper.getQuery("eventsusersFilterEventsUsers");
 			statement = connection.prepareStatement(sql);
-
 			statement.setInt(1, e.getEventId());
 			statement.setInt(2, e.getVisitorId());
 
 			resultSet = statement.executeQuery();
-
-			while (resultSet.next()){
-
-			}
-
-			if(resultSet.getRow()==0){
-				return false;
-			}
-
-		} catch (Exception ee) {
-			System.out.println("isVisitorRegisteredToEvent 1: "+ ee.getMessage());
-			return false;
-
-		} finally {
+			
+			resultSet.last();
+			fila = resultSet.getRow();
+			resultSet.beforeFirst();
+			
+			//System.out.println("Existe la fila: "+ fila);	
+				
+		}catch(Exception eee){
+			eee.getMessage();
+		}finally {
 			try {
 				if (resultSet != null) {
 					resultSet.close(); 
@@ -64,40 +59,30 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 					statement.close(); 
 					statement = null;
 				}
-
-				if (connection != null) {
-					CodingtonConnectToDB.closeConnection(connection);
-					connection = null;
-				}
+				
 			}catch (Exception ee) {
-				System.out.println(" isVisitorRegisteredToEvent 2: "+ ee.getMessage());
+				System.out.println(" EventSignUpCheck "+ ee.getMessage());
 				return false;
 			}
 
 		} 
-
-		return true;
+			
+		return fila==1;
 	}
-
-
+	
 	@Override
-	public int registerVisitorForNewEvent(EventSignUp e){
+	public int registerVisitorForNewEventDAO(EventSignUp e){
 
 		int affectedRows = 0;
 
-		try{		    		
-
-			//connection = CodingtonConnectToDB.createConnection();
+		try{	
 			String sql  = databaseHelper.getQuery("registerVisitorToEvent");
 			statement = connection.prepareStatement(sql);
-
-			statement.setInt(1, e.getId());
-			statement.setInt(2, e.getEventId());
-			statement.setInt(3, e.getVisitorId());
-
+			statement.setInt(1, e.getEventId());
+			statement.setInt(2, e.getVisitorId());
+			
 			affectedRows = statement.executeUpdate();
-
-
+			
 		} catch (Exception ee) {
 			System.out.println("registerVisitorForNewEvent 1: "+ ee.getMessage());
 			return affectedRows;
@@ -112,10 +97,41 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 					statement.close(); 
 					statement = null;
 				}
+			}catch (Exception ee) {
+				System.out.println(" registerVisitorForNewEvent 2: "+ ee.getMessage());
+				return affectedRows;
+			}
 
-				if (connection != null) {
-					CodingtonConnectToDB.closeConnection(connection);
-					connection = null;
+		} 
+
+		return affectedRows;
+	}
+
+	@Override
+	public int updateRestSeatsAvailableEvent(EventSignUp e){
+		
+		int affectedRows = 0;
+		try{	
+			String sql  = databaseHelper.getQuery("update_rest_seats_events");
+
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, e.getEventId());
+			
+			affectedRows = statement.executeUpdate();
+			
+		} catch (Exception ee) {
+			System.out.println("registerVisitorForNewEvent 1: "+ ee.getMessage());
+			return affectedRows;
+
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
 				}
 			}catch (Exception ee) {
 				System.out.println(" registerVisitorForNewEvent 2: "+ ee.getMessage());
@@ -127,14 +143,131 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		return affectedRows;
 	}
 
-
 	@Override
-	public int unregisterVisitorForEvent(EventSignUp e){
+	public int updateSumSeatsAvailableEvent(EventSignUp e){
+		
+		int affectedRows = 0;
+
+		try{	
+			String sql  = databaseHelper.getQuery("update_sum_seats_events");
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1,e.getEventId());
+			
+			affectedRows = statement.executeUpdate();
+			
+		} catch (Exception ee) {
+			System.out.println("registerVisitorForNewEvent 1: "+ ee.getMessage());
+			return affectedRows;
+
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+			}catch (Exception ee) {
+				System.out.println(" registerVisitorForNewEvent 2: "+ ee.getMessage());
+				return affectedRows;
+			}
+
+		} 
+
+		return affectedRows;
+	}
+	
+	@Override
+	public boolean checkSeatsForRestAvailableDAO(EventSignUp e){
+
+		int seatsAvailables = 0;
+		int seatsTotal = 0;
+		try{	
+			String sql  = databaseHelper.getQuery("event_for_id");
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, e.getEventId());
+
+			resultSet = statement.executeQuery();
+			
+			while(resultSet.next()){
+				seatsAvailables = resultSet.getInt(1);
+				seatsTotal = resultSet.getInt(2);
+			}
+			
+			//System.out.println("Disponibles"+seatsAvailables);
+			//System.out.println("Totales"+seatsTotal);
+		}catch(Exception eee){
+			eee.getMessage();
+		}finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+				
+			}catch (Exception ee) {
+				System.out.println(" EventSignUpCheck "+ ee.getMessage());
+				return false;
+			}
+
+		} 
+			
+		return (seatsAvailables>0 && seatsAvailables<=seatsTotal);
+	}
+	
+	@Override
+	public boolean checkSeatsForSumAvailableDAO(EventSignUp e){
+
+		int seatsAvailables = 0;
+		int seatsTotal = 0;
+		try{	
+			String sql  = databaseHelper.getQuery("event_for_id");
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, e.getEventId());
+
+			resultSet = statement.executeQuery();
+			
+			while(resultSet.next()){
+				seatsAvailables = resultSet.getInt(1);
+				seatsTotal = resultSet.getInt(2);
+			}
+			
+			//System.out.println("Disponibles"+seatsAvailables);
+			//System.out.println("Totales"+seatsTotal);
+		}catch(Exception eee){
+			eee.getMessage();
+		}finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close(); 
+					resultSet = null;
+				}
+				if (statement != null) {
+					statement.close(); 
+					statement = null;
+				}
+				
+			}catch (Exception ee) {
+				System.out.println(" EventSignUpCheck "+ ee.getMessage());
+				return false;
+			}
+
+		} 
+			
+		return (seatsAvailables>=0 && seatsAvailables<seatsTotal);
+	}
+	
+	@Override
+	public int unregisterVisitorForEventDAO(EventSignUp e){
 		int affectedRows = 0;
 
 		try{		    		
-
-			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = databaseHelper.getQuery("unRegisterVisitorToEvent");
 			statement = connection.prepareStatement(sql);
 
@@ -142,7 +275,6 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 			statement.setInt(2, e.getVisitorId());
 
 			affectedRows = statement.executeUpdate();
-
 
 		} catch (Exception ee) {
 			System.out.println("unregisterVisitorForEvent 1: "+ ee.getMessage());
@@ -159,10 +291,6 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 					statement = null;
 				}
 
-				if (connection != null) {
-					CodingtonConnectToDB.closeConnection(connection);
-					connection = null;
-				}
 			}catch (Exception ee) {
 				System.out.println(" unregisterVisitorForEvent 2: "+ ee.getMessage());
 				return affectedRows;
@@ -173,15 +301,12 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		return affectedRows;
 	}
 
-
 	@Override
-	public int deleteEventFromEventSignUp(EventSignUp e) {
+	public int deleteEventFromEventSignUpDAO(EventSignUp e) {
 
 		int affectedRows = 0;
 
 		try{		    		
-
-			//connection = CodingtonConnectToDB.createConnection();
 			String sql  = databaseHelper.getQuery("deleteEventFromEventSignup");
 			statement = connection.prepareStatement(sql);
 
@@ -191,7 +316,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 
 		} catch (Exception ee) {
-			System.out.println("unregisterVisitorForEvent 1: "+ ee.getMessage());
+			System.out.println("deleteEventFromEventSignUpDAO 1: "+ ee.getMessage());
 			return affectedRows;
 
 		} finally {
@@ -204,13 +329,8 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 					statement.close(); 
 					statement = null;
 				}
-
-				if (connection != null) {
-					CodingtonConnectToDB.closeConnection(connection);
-					connection = null;
-				}
 			}catch (Exception ee) {
-				System.out.println(" unregisterVisitorForEvent 2: "+ ee.getMessage());
+				System.out.println(" deleteEventFromEventSignUpDAO 2: "+ ee.getMessage());
 				return affectedRows;
 			}
 
@@ -220,35 +340,48 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 
 	}
 
-	@Override
-	public List<Event> showAllEvents(ResultSet resultSet)  throws SQLException {
+	public ArrayList<EventSignUp> showAllEventsUsersDAO() throws ClassNotFoundException,
+	SQLException, IOException {
+		return requestEventList(databaseHelper.getQuery("eventsusers"));
+	}
+	
+	public ArrayList<Event> showAllEventsForOneUsersDAO(EventSignUp eventSignUp) throws ClassNotFoundException,
+	SQLException, IOException{
+		return requestEventList2(eventSignUp,databaseHelper.getQuery("events_of_one_user"));
+	}
+	
+	public ArrayList<EventSignUp> requestEventList(String sqlQuery) throws ClassNotFoundException,
+	SQLException, IOException {
+		statement = connection.prepareStatement(sqlQuery);
 
-		List<Event> events = new ArrayList<Event>();
-		Event event = new Event();
+		resultSet = statement.executeQuery();
+		ArrayList<EventSignUp> eventUserList = new ArrayList<EventSignUp>();
 
-		while(resultSet.next()) {
-
-			event.setEventId(resultSet.getInt("id_event"));
-			event.setEventName(resultSet.getString("name_event"));
-			event.setDescription(resultSet.getString("description_event"));
-			event.setStart(resultSet.getString("start_event"));
-			event.setEnd(resultSet.getString("end_event"));
-			event.setEventType(resultSet.getString("type_event"));
-			event.setTicketPrice(resultSet.getInt("ticket_price"));
-			event.setSeatsAvailable(resultSet.getInt("seats_available"));
-			event.setSeatsTotal(resultSet.getInt("seats_total"));
-
-			event.getPlace().setId(resultSet.getInt("id_place"));
-
-			events.add(event);
-
+		while (resultSet.next()) {
+			EventSignUp eventUser = EventSignUpMapper.map(resultSet);
+			eventUserList.add(eventUser); 
 		}
+		resultSet.close();
+		return eventUserList;
+	}
 
-		return events;
-	}           
+	public ArrayList<Event> requestEventList2(EventSignUp eventSignUp,String sqlQuery) throws ClassNotFoundException,
+	SQLException, IOException {
+		statement = connection.prepareStatement(sqlQuery);
+		statement.setInt(1,eventSignUp.getVisitorId() );	
+		resultSet = statement.executeQuery();
+		ArrayList<Event> eventList = new ArrayList<Event>();
+
+		while (resultSet.next()) {
+			Event eventUser = EventMapper.map(resultSet);
+			eventList.add(eventUser); 
+		}
+		resultSet.close();
+		return eventList;
+	}
 	
 	@Override
-	public List<Event> viewEventsOfUser(EventSignUp e) throws SQLException {
+	public List<Event> viewEventsOfUserDAO(EventSignUp e) throws SQLException {
 		
 		List<Event> events = new ArrayList<Event>();
 		
@@ -262,7 +395,7 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 		    
 		    resultSet =  statement.executeQuery();
 		    
-		    events = this.showAllEvents(resultSet);
+		    //events = this.showAllEventsDAO(resultSet);
 
 
 		} catch (Exception ee) {
@@ -278,11 +411,6 @@ public class EventSignUpDAO implements IEventSignUpDAO{
 				if (statement != null) {
 					statement.close(); 
 					statement = null;
-				}
-
-				if (connection != null) {
-					CodingtonConnectToDB.closeConnection(connection);
-					connection = null;
 				}
 			}catch (Exception ee) {
 				System.out.println(" viewEventsOfUser 2: "+ ee.getMessage());

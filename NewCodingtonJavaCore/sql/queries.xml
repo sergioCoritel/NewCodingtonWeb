@@ -8,7 +8,6 @@
 <!-- ALL EVENTS AND PLACES-->
 <entry key="alleventsandplaces">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place ORDER BY events.id_event</entry>
 
-
 <!-- ALL EVENTS MUSEUM-->
 <entry key="museum">SELECT events.*, places.*, museum.* FROM events, places, museum WHERE events.id_place = places.id_place AND places.id_place=museum.id_place</entry>
 
@@ -33,14 +32,23 @@
 <!-- ALL EVENTS TRADITIONALMARKET-->
 <entry key="traditional_market">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
 
+<!-- EVENTS, FILTER: id_event-->
+<entry key="event_for_id">SELECT seats_available,seats_total FROM events WHERE id_event=?</entry>
+
 <!--ALL USER EVENTS-->
 <entry key="eventsusers">SELECT * FROM events_users</entry>
 
 <!--1 USER EVENTS, FILTER:USERS-->
-<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_user = ?</entry>
+<entry key="eventsusersFilterUsers">SELECT * FROM events_users WHERE events_users.id_user = ?</entry>
 
 <!--1 EVENTS USER,  FILTER:EVENTS-->
-<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_event = ?</entry>
+<entry key="eventsusersFilterEvents">SELECT * FROM events_users WHERE events_users.id_event = ?</entry>
+
+<!--1 EVENTS USER,  FILTER:EVENTS AND USERS-->
+<entry key="eventsusersFilterEventsUsers">SELECT * FROM events_users WHERE events_users.id_event = ? AND events_users.id_user=?</entry>
+
+<!--ALL EVENTS OF ONE USER-->
+<entry key="events_of_one_user">SELECT events.*,places.* FROM events,places WHERE events.id_place=places.id_place AND id_event IN (SELECT id_event FROM events_users WHERE id_user=?)</entry>
 
 <!--ALL USERS-->
 <entry key="allusers">SELECT * FROM users</entry>
@@ -98,11 +106,19 @@
 <!--UPDATE INFO EVENTS-->
 <entry key="update_infoevents">update events set name_event= ?, description_event=?, start_event=?, end_event=?,type_event=?,ticket_price=?,seats_available=?,seats_total=?,id_place=? WHERE id_event = ?</entry>
 
+<<<<<<< HEAD
 <!--UPDATE INFO EVENTS-->
 <entry key="update_seats_event_inc">update events set seats_available = seats_available+1  WHERE id_event = ?</entry>
 
 <!--UPDATE INFO EVENTS-->
 <entry key="update_seats_event_dec">update events set seats_available = seats_available-1  WHERE id_event = ?</entry>
+=======
+<!--UPDATE REST SEATSAVAILABLE EVENTS-->
+<entry key="update_rest_seats_events">update events set seats_available=seats_available-1  WHERE id_event = ?</entry>
+
+<!--UPDATE SUM SEATSAVAILABLE EVENTS-->
+<entry key="update_sum_seats_events">update events set seats_available=seats_available+1  WHERE id_event = ?</entry>
+>>>>>>> FucionalidadEventSignUp
 
 <!--UPDATE INFO PLACES-->
 <entry key="update_infoplaces">update places set id_type_place=?, name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, zone=?, image=?, is_building=? WHERE id_place = ?</entry>
@@ -131,7 +147,7 @@
 <entry key="deleteEvent_event">delete from events_users where id_event=?</entry>
 
 <!--DELETE EVENTS_USERS, SEARCH: id_event and id_user-->
-<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?</entry>
+<entry key='unRegisterVisitorToEvent'>DELETE FROM events_users WHERE id_event = ? AND id_user = ?</entry>
 
 <!--INSERTS-->
 
