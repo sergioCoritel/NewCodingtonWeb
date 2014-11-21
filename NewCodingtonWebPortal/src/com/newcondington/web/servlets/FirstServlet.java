@@ -34,22 +34,18 @@ public class FirstServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		         
+	         
 		try {
-			DAOManager daoManager = new DAOManager();
-			
-//			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
-//			System.out.println("ListMuseumEvents:");
-//			for(int i=0; i<eventList.size();i++){
-//				System.out.println(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
-//			}
-//			daoManager.closeConnectionWithCommit();
-//			
-//			
+			DAOManager daoManager = new DAOManager(request.getServletContext());
 			PrintWriter out= response.getWriter();
 			out.print("ESTO FUNCIONAAAA");
+			ArrayList<Event> eventList = daoManager.getEventDAO().showMuseumEvents();
+			out.print("ListMuseumEvents:");
+			for(int i=0; i<eventList.size();i++){
+				out.print(eventList.get(i).getEventName()+ " en lugar ("+eventList.get(i).getPlace().getName() + ")" );
+			}
 			out.print(daoManager.getConnection());
-			
+			daoManager.closeConnectionWithCommit();		
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());
 			

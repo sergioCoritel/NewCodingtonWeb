@@ -17,13 +17,15 @@ public class UserDAO implements IUserDAO{
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 	DAOManager manager = null;
+	private DatabaseHelper databaseHelper;
 
 	/**
 	 * Constructor
 	 * @param connection
 	 */
-	public UserDAO(Connection connection) {
+	public UserDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
+		this.databaseHelper = databaseHelper;
 	}
 
 
@@ -34,7 +36,7 @@ public class UserDAO implements IUserDAO{
 
 		try{		
 		
-			String sql  = DatabaseHelper.getQuery("selec_login");
+			String sql  = databaseHelper.getQuery("selec_login");
 			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, u.getUserName());
@@ -92,7 +94,7 @@ public class UserDAO implements IUserDAO{
 		
 			//connection = CodingtonConnectToDB.createConnection();
 			
-			String sql  = DatabaseHelper.getQuery("change_info");	              
+			String sql  = databaseHelper.getQuery("change_info");	              
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getFirstName());
 			statement.setString(2, u.getLastName());
@@ -145,7 +147,7 @@ public class UserDAO implements IUserDAO{
 
 			//connection = CodingtonConnectToDB.createConnection();
 			//connection.setAutoCommit(false);
-			String sql  = DatabaseHelper.getQuery("change_pass");
+			String sql  = databaseHelper.getQuery("change_pass");
 			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, new_pass);
@@ -202,7 +204,7 @@ public class UserDAO implements IUserDAO{
 			//connection = CodingtonConnectToDB.createConnection();
 			//connection.setAutoCommit(false);
 			
-			String sql  = DatabaseHelper.getQuery("isAcountExists");	              
+			String sql  = databaseHelper.getQuery("isAcountExists");	              
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getUserName());
 			statement.setString(2, u.getEmail());
@@ -218,7 +220,7 @@ public class UserDAO implements IUserDAO{
 			}
 
 
-			sql  = DatabaseHelper.getQuery("registerUser");	              
+			sql  = databaseHelper.getQuery("registerUser");	              
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, u.getUserName());
 			statement.setString(2, u.getPassword());

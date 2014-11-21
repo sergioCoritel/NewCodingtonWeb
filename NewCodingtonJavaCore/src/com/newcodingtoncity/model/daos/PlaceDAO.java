@@ -39,14 +39,16 @@ public class PlaceDAO implements IPlaceDAO {
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+	private DatabaseHelper databaseHelper;
 
-	public PlaceDAO(Connection connection) {
+	public PlaceDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
+		this.databaseHelper = databaseHelper;
 	}
 	
 
 	public ArrayList<Museum> showMuseums() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_museum"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_museum"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Museum> placeList = new ArrayList<Museum>();
@@ -59,7 +61,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Zoo> showZoos() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_zoo"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_zoo"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Zoo> placeList = new ArrayList<Zoo>();
@@ -72,7 +74,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Park> showParks() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_park"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_park"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Park> placeList = new ArrayList<Park>();
@@ -85,7 +87,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Theater> showTheaters() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_theater"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_theater"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Theater> placeList = new ArrayList<Theater>();
@@ -99,7 +101,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Stadium> showStadiums() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_stadium"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_stadium"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<Stadium> placeList = new ArrayList<Stadium>();
@@ -112,7 +114,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<LargeBusiness> showLargeBusiness() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_large_business"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_large_business"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<LargeBusiness> placeList = new ArrayList<LargeBusiness>();
@@ -126,7 +128,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<TouristAttraction> showTouristAttractions() throws ClassNotFoundException,SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_tourist_attraction"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_tourist_attraction"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<TouristAttraction> placeList = new ArrayList<TouristAttraction>();
@@ -140,7 +142,7 @@ public class PlaceDAO implements IPlaceDAO {
 
 	public ArrayList<TraditionalMarket> showTraditionalMarkets() throws ClassNotFoundException,
 	SQLException, IOException {
-		statement = connection.prepareStatement(DatabaseHelper.getQuery("place_traditional_market"));
+		statement = connection.prepareStatement(databaseHelper.getQuery("place_traditional_market"));
 
 		resultSet = statement.executeQuery();
 		ArrayList<TraditionalMarket> placeList = new ArrayList<TraditionalMarket>();
@@ -156,7 +158,7 @@ public class PlaceDAO implements IPlaceDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("insert_places"),Statement.RETURN_GENERATED_KEYS);
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("insert_places"),Statement.RETURN_GENERATED_KEYS);
 			String secondQuery = getSecondQuery(typeOfPlace);
 			preparedStatement.setInt(1,typeOfPlace);
 			preparedStatement.setString(2,place.getName());
@@ -190,27 +192,27 @@ public class PlaceDAO implements IPlaceDAO {
 		String secondSqlQuery = "";
 		switch (typeOfPlace) {
 		case LargeBusiness.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case Museum.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case Park.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case Stadium.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case Theater.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case TouristAttraction.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 		case TraditionalMarket.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 		case Zoo.ID_TYPE_OF_PLACE:
-			secondSqlQuery = DatabaseHelper.getQuery("insert_large_business");
+			secondSqlQuery = databaseHelper.getQuery("insert_large_business");
 			break;
 
 		default:
@@ -224,7 +226,7 @@ public class PlaceDAO implements IPlaceDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("delete_places"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("delete_places"));
 		    preparedStatement.setInt(1, placeId);	 
 		    affectedRows = preparedStatement.executeUpdate();   
 		} catch(SQLException ex) {
@@ -241,7 +243,7 @@ public class PlaceDAO implements IPlaceDAO {
 
 //		if (VACIO) {
 			connection = CodingtonConnectToDB.createConnection();
-			String ins = DatabaseHelper.getQuery("insert_image");
+			String ins = databaseHelper.getQuery("insert_image");
 			statement = connection.prepareStatement(ins);
 
 			statement.setBlob(1, fin, tam);
@@ -251,7 +253,7 @@ public class PlaceDAO implements IPlaceDAO {
 
 //		else {
 			connection = CodingtonConnectToDB.createConnection();
-			String upd = DatabaseHelper.getQuery("update_image");
+			String upd = databaseHelper.getQuery("update_image");
 			statement = connection.prepareStatement(upd);
 
 			statement.setBlob(1, fin, tam);
@@ -267,7 +269,7 @@ public class PlaceDAO implements IPlaceDAO {
 		int affectedRows = 0;	
 		PreparedStatement preparedStatement = null;			 			
 		try {
-			preparedStatement = connection.prepareStatement(DatabaseHelper.getQuery("update_infoplaces"));
+			preparedStatement = connection.prepareStatement(databaseHelper.getQuery("update_infoplaces"));
 			preparedStatement.setInt(1,typeOfPlace);
 			preparedStatement.setString(2,place.getName());
 			preparedStatement.setInt(3,place.getCapacity());

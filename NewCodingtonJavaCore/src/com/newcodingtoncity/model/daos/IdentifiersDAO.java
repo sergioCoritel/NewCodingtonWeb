@@ -15,9 +15,11 @@ public class IdentifiersDAO implements IIdentifiersDAO{
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+	private DatabaseHelper databaseHelper;
 
-	public IdentifiersDAO(Connection connection) {
+	public IdentifiersDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
+		this.databaseHelper = databaseHelper;
 	}
 
 	/**
@@ -33,7 +35,7 @@ public class IdentifiersDAO implements IIdentifiersDAO{
 
 		try {
 			
-			String sql  = DatabaseHelper.getQuery("FALTA LA QUERY");
+			String sql  = databaseHelper.getQuery("FALTA LA QUERY");
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, classname);
 			resultSet = statement.executeQuery();
