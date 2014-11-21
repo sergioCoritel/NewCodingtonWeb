@@ -58,6 +58,7 @@ h2 {
 width: 75%;
 min-width: 700px;
 margin: 0 auto;
+margin-top: 26px;
 position: relative;
 z-index: 5;
 background-color: #f3f3f3;
