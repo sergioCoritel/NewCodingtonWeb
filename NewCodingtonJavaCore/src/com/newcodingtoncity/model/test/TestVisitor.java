@@ -1,12 +1,16 @@
 package com.newcodingtoncity.model.test;
 
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import junit.framework.TestCase;
 
+import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
 import com.newcodingtoncity.model.exceptions.DomainException;
+import com.newcodingtoncity.model.services.UserService;
 
 
 public class TestVisitor extends TestCase {
@@ -451,23 +455,85 @@ public class TestVisitor extends TestCase {
 		fail("Not yet implemented");
 	}
 	
-	
-	@Test
-	public void testLogin() {
-		fail("Not yet implemented");
-	}
-	
-	
-	@Test
-	public void testUpdatePassword() {
-		fail("Not yet implemented");
-	}
-	
-	
-	@Test
-	public void testUpdateInfo() {
-		fail("Not yet implemented");
-	}
-	
 	*/
+	@Test
+	public void testLogin() throws SQLException, ClassNotFoundException {
+
+		UserService user_service = new UserService();
+		User user = new Visitor();
+
+		int reg=0;
+
+		user.setUserName("Gominolaa");
+		user.setPassword("1234567890");
+
+		reg = user_service.login(user);
+		
+		assertEquals(user.getUserId(), reg);
+
+	}
+	
+	
+	@Test
+	public void testUpdatePassword() throws SQLException, ClassNotFoundException {
+		
+		UserService user_service = new UserService();
+		User user = new Visitor();
+
+		boolean reg = false;
+		String new_pass="1234";
+
+		user.setUserId(5);
+		user.setUserName("Gominola");
+		//user.setPassword("1234567890");
+
+		reg = user_service.updatePassword(user, new_pass);
+		
+		assertTrue(reg);
+	}
+	
+	
+	@Test
+	public void testUpdateInfo() throws SQLException, ClassNotFoundException {
+
+		UserService user_service = new UserService();
+		User user = new Visitor();
+
+		boolean inf=false;
+		
+		user.setUserId(24);
+		user.setAddress("C/ Soria");
+		
+		inf = user_service.updateInfo(user);
+		
+		assertTrue(inf);
+		
+	}
+	
+	
+	@Test
+	public void testRegister() throws SQLException, ClassNotFoundException {
+
+		UserService user_service = new UserService();
+		User user = new Visitor();
+
+		boolean reg=false;
+		
+		user.setUserName("MiguelAngel");
+		user.setPassword("1234567890");
+		user.setFirstName("Miguel Angel");
+		user.setLastName("Moreno");
+		user.setDni("70.082.648-S");
+		user.setEmail("miguelangel@gmail.com");
+		user.setPhoneNumber("0034665871333");
+		user.setAddress("C/ Fuente vieja 6");
+		user.setEsAdmin(false);
+		
+		reg = user_service.registerNewVisitor(user);
+		
+		assertTrue(reg);
+		
+	}
+	
+	
 }
