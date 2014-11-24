@@ -55,7 +55,6 @@ public class ServletLogin extends HttpServlet {
 	}
 
 	protected void doProccess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-		HttpSession sesion = request.getSession();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String route = getServletContext().getRealPath("");
@@ -76,22 +75,18 @@ public class ServletLogin extends HttpServlet {
 		}		
 
 		else{
+			HttpSession sesion = request.getSession();
 			sesion.setAttribute("username", u.getUserName());
 			sesion.setAttribute("id_user", u.getUserId());
 			sesion.setAttribute("isAdmin", u.getIsAdmin());
+			
 			if(u.getIsAdmin()){
 				response.sendRedirect("/NewCodingtonWebPortal/home.html");
 			}
+			
 			else{
 				response.sendRedirect("/NewCodingtonWebPortal/homeadm.html");
 			}
-		}		
-		//
-		
-		//SI NO EXISTE REDIRECCIONO
-
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WebContent/login.jsp");
-		//response.sendRedirect("/NewCodingtonWebPortal/login.jsp");
-	    
+		}  
 	}
 }

@@ -8,6 +8,5 @@
 </head>
 <body>
 <h1>User registered</h1>
-<b><%= request.getParameter("campoUsername")%></b>
 </body>
 </html>

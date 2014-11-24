@@ -2,7 +2,7 @@
 var ie = (document.all);// variable que usaremos para ver si el navegador es internet explorer.
 
 function valida_envia(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el botón.
-	limpiar();//llama a la función limpiar
+	//limpiar();//llama a la función limpiar
 	var oblig=true;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
 		var array=[formulario.campoNombre,formulario.campoApellidos,
