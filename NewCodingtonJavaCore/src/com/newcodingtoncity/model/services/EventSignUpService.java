@@ -7,8 +7,9 @@ import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.EventSignUp;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
+import com.newcodingtoncity.model.interfaces.services.IEventSignUpService;
 
-public class EventSignUpService {
+public class EventSignUpService implements IEventSignUpService{
 
 	public boolean registerVisitorForNewEvent(EventSignUp eventSignUpSession){
 		DAOManager manager = null;
