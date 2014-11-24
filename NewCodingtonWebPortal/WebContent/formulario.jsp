@@ -40,7 +40,7 @@
         <h2>Registration form</h2>
 
 
-        <form method="post"  action="formuser" onsubmit="return valida_envia(this);" name="formulario" enctype="multipart/form-data" >
+        <form method="post"  action="formuser" onsubmit="return valida_envia(this);" name="formulario" >
 
        <!-- Espacio para marcar error de campos obligatorios-->
         <p id="error"> </p>
