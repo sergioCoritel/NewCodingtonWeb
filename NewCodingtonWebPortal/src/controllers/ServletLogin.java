@@ -81,11 +81,11 @@ public class ServletLogin extends HttpServlet {
 			sesion.setAttribute("isAdmin", u.getIsAdmin());
 			
 			if(u.getIsAdmin()){
-				response.sendRedirect("/NewCodingtonWebPortal/home.html");
+				response.sendRedirect("/NewCodingtonWebPortal/home.jsp");
 			}
 			
 			else{
-				response.sendRedirect("/NewCodingtonWebPortal/homeadm.html");
+				response.sendRedirect("/NewCodingtonWebPortal/home.jsp");
 			}
 		}  
 	}

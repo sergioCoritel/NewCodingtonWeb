@@ -1,27 +1,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-      <title>Update event</title>
+      <title>Create event</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
+      <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
       <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
 <div id="wrapper">
-   <div id="logo">
+  <div id="logo">
         <img src="images/logo.png" class="logo-icon">
   </div>
 
   <div id="rightTopMenuContainer">
       <ul class="rightTopMenu">
         <li id="leftTab">&nbsp;</li>
-        <li><a href="event.html" class="active">home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="create_event.html">Add event</a></li>
-        <li><a href="create_place.html">Add place</a></li>
+        <li><a href="event.jsp" class="active">home</a></li>
+        <li><a href="about.jsp">About</a></li>
+        <li><a href="profile.jsp">Profile</a></li>
+        <li><a href="create_event.jsp">Add event</a></li>
+        <li><a href="create_place.jsp">Add place</a></li>
         <li class="last"><a href="logout">Logout</a></li>
         <li id="rightTab">&nbsp;</li>
         <div class="clear"></div>
@@ -53,7 +53,7 @@
 <!-- Contenedor -->
 <div id="contenedor">
 
-        <h2>UPDATE EVENT</h2>
+        <h2>CREATE EVENT</h2>
 
 
         <form method="post"  action="" onsubmit="return valida_envia(this);" name="formulario" enctype="multipart/form-data" >
