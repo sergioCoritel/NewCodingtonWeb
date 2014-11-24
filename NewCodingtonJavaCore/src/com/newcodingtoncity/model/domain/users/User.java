@@ -20,7 +20,7 @@ public abstract class User {
 	private String email;
 	private String phoneNumber;
 	private String address;
-	protected static boolean esAdmin;
+	private boolean isAdmin;
 	
 	
 	/**
@@ -49,7 +49,7 @@ public abstract class User {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
-		User.esAdmin = esAdmin;
+		this.isAdmin = esAdmin;
 	}
 	
 	
@@ -66,7 +66,7 @@ public abstract class User {
 		this.email = "";
 		this.phoneNumber = "";
 		this.address = "";
-		User.esAdmin = false;
+		this.isAdmin = false;
 	}
 	
 	
@@ -265,30 +265,13 @@ public abstract class User {
 		else
 			throw new DomainException("Format Address incorrect (digits between 1 to 30)");
 	}
-	
-	
-	/* falta devovler generar y devovler una sesion en lugar de un boolean*/
-	
-	/**
-	 * 
-	 * @return esAdmin
-	 */
-	public boolean isEsAdmin() {
-		return esAdmin;
+		
+	public boolean getIsAdmin() {
+		return isAdmin;
 	}
 
-	/**
-	 * 
-	 * @param esAdmin
-	 */
-	public void setEsAdmin(boolean esAdmin) {
-		User.esAdmin = esAdmin;
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
-	
-	
-	public abstract void viewEvents();
-	
-	public abstract void searchEvent();
-
-
 }

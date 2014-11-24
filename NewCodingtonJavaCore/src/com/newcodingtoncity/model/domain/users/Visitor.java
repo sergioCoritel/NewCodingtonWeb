@@ -4,37 +4,12 @@ public class Visitor extends User {
 
 	public Visitor(int userId, String userName, String password,
 			String firstName, String lastName, String dni, String email,
-			String phoneNumber, String address) {
+			String phoneNumber, String address, boolean isAdmin) {
 		super(userId, userName, password, firstName, lastName, dni, email, phoneNumber,
-				address, esAdmin);
+				address, isAdmin);
 	}
 
 	public Visitor() {
 		
 	}
-
-	public boolean registerNewVisitor(){
-		return true;
-	}
-	
-	public boolean registerForNewEvent(){
-		return true;
-	}
-	
-	public boolean unregistreForEvent(){
-		return true;
-	}
-	
-	
-	@Override
-	public void viewEvents() {
-		
-	}
-
-	@Override
-	public void searchEvent() {
-		
-		
-	}
-
 }
