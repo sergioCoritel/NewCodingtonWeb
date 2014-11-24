@@ -1,9 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es">
 <head>
-      <title>Zoo</title>
+      <title>New Codington Portal</title>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="estilos_event.css"> <!--Enlazo la hoja de estilos externa-->
+      <link rel="stylesheet" type="text/css" href="css/estilos_event.css"> <!--Enlazo la hoja de estilos externa-->
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
 </head>
@@ -13,7 +13,7 @@
   <div id="logo">
         <img src="images/logo.png" class="logo-icon">
   </div>
-  <div id="title">Zoo</div>
+  <div id="title">Título de sección</div>
   <div class="clear"></div>  
 
    <div id="LeftMenu">
@@ -21,44 +21,44 @@
         
 		  <div class="categoria">
             <img src="images/bussiness.png" class="ca-icon">
-            <a href="large_business.html">LARGE BUSINESS</a>
+            <a href="">LARGE BUSSINESS</a>
           </div>
 		
 		  <div class="categoria">
             <img src="images/museum.png" class="ca-icon">
-            <a href="museum.html">MUSEUM</a>
+            <a href="">MUSEUM</a>
           </div>
 
           <div class="categoria">
             <img src="images/stadium.png" class="ca-icon">
-            <a href="stadium.html">STADIUM</a>
+            <a href="">STADIUM</a>
           </div>
 
           <div class="categoria">
             <img src="images/theater.png" class="ca-icon">
-            <a href="theater.html">THEATER</a>
+            <a href="">THEATER</a>
           </div>
        
 	    <div class="headerMenu" >SOUTH TOWER</div>    
         
 		  <div class="categoria">
             <img src="images/park.png" class="ca-icon">
-            <a href="park.html">PARK</a>
+            <a href="">PARK</a>
           </div>
         
 		  <div class="categoria">
             <img src="images/tourist.png" class="ca-icon">
-            <a href="tourist_attraction.html">TOURIST ATTRACTION</a>
+            <a href="">TOURIST ATTRACTION</a>
           </div>
 		
 		  <div class="categoria">
             <img src="images/market.png" class="ca-icon">
-            <a href="traditional_market.html">TRADITIONAL MARKET</a>
+            <a href="">TRADITIONAL MARKET</a>
           </div>
 	   
 	      <div class="categoria">
             <img src="images/zoo_.png" class="ca-icon">
-            <a href="zoo.html">ZOO</a>
+            <a href="">ZOO</a>
           </div>
         
         <div class="clear"></div>
@@ -67,10 +67,10 @@
    <div id="rightTopMenuContainer">
       <ul class="rightTopMenu">
         <li id="leftTab">&nbsp;</li>
-        <li><a href="home.html" class="active">home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li class="last"><a href="">Logout</a></li>
+        <li><a href="event.jsp" class="active">home</a></li>
+        <li><a href="about.jsp">About</a></li>
+        <li><a href="profile.jsp">Profile</a></li>
+        <li class="last"><a href="logout">Logout</a></li>
         <li id="rightTab">&nbsp;</li>
         <div class="clear"></div>
       </ul>

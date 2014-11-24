@@ -4,7 +4,7 @@
       <title>Registration form</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="estilos.css"> <!--Enlazo la hoja de estilos externa-->
+      <link rel="stylesheet" type="text/css" href="css/estilos.css"> <!--Enlazo la hoja de estilos externa-->
       <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 

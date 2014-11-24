@@ -1,27 +1,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-      <title>Create place</title>
+      <title>Update event</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
+      <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
       <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
 <div id="wrapper">
-  <div id="logo">
+   <div id="logo">
         <img src="images/logo.png" class="logo-icon">
   </div>
 
   <div id="rightTopMenuContainer">
       <ul class="rightTopMenu">
         <li id="leftTab">&nbsp;</li>
-        <li><a href="event.html" class="active">home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="create_event.html">Add event</a></li>
-        <li><a href="create_place.html">Add place</a></li>
+        <li><a href="event.jsp" class="active">home</a></li>
+        <li><a href="about.jsp">About</a></li>
+        <li><a href="profile.jsp">Profile</a></li>
+        <li><a href="create_event.jsp">Add event</a></li>
+        <li><a href="create_place.jsp">Add place</a></li>
         <li class="last"><a href="logout">Logout</a></li>
         <li id="rightTab">&nbsp;</li>
         <div class="clear"></div>
@@ -53,7 +53,7 @@
 <!-- Contenedor -->
 <div id="contenedor">
 
-        <h2>CREATE PLACE</h2>
+        <h2>UPDATE EVENT</h2>
 
 
         <form method="post"  action="" onsubmit="return valida_envia(this);" name="formulario" enctype="multipart/form-data" >
@@ -61,29 +61,27 @@
        <!-- Espacio para marcar error de campos obligatorios-->
         <p id="error"> </p>
 
-        <!-- 1 Caja:Name -->
+        <!-- 1 Caja:nombre -->
         <div class="caja">
 
-                <label class="titulo">Place Name<span class="requerido" required>*</span></label> <!--Titulo caja-->
+                <label class="titulo">Event Name<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
                 <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
-                      <input class="requerido" required id="campoName" name="campoName" value="" /><br>
+                      <input class="requerido" required id="campoNombre" name="campoNombre" value="" /><br>
                     </span>
-
-                    <span class="error" id="errorName"></span> <!--Espacio para indicar el error de esta caja-->
 
                     <div class="clear"></div> <!--Para limpiar el float-->
                 </div>
 
         
         </div>
-        <!-- Fin de 1 Caja:Name -->
+        <!-- Fin de 1 Caja:nombre -->
 
         <!-- 2 Caja:Descripcion -->
         <div class="caja" >
 
-            <label class="titulo">Place Description<span class="requerido" required>*</span></label> <!--Titulo caja-->
+            <label class="titulo">Event Description<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
             <div>
                 <span class="izquierda"><!--input y etiqueta de input caja-->
@@ -100,25 +98,7 @@
         </div>
         <!-- Fin de 2 Caja:Descripcion -->
 
-        <!-- 3 Caja:Capacity-->
-        <div class="caja">
-
-              <label class="titulo" >Capacity<span class="requerido" required>*</span></label> <!--Titulo caja-->
-
-              <div>
-                  <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <input id="campoCapacity" name="campoCapacity" value="" /><br>
-                  </span>
-
-                  <span class="error" id="errorCapacity"></span> <!--Espacio para indicar el error de esta caja-->
-
-                  <div class="clear"></div> <!--Para limpiar el float-->
-              </div>
-
-        </div>
-        <!-- Fin de 3 Caja:Capacity-->
-
-        <!-- 4 Caja:Start-->
+        <!-- 3 Caja:Start-->
         <div class="caja">
 
               <label class="titulo" >Start Time<span class="requerido" required>*</span></label> <!--Titulo caja-->
@@ -136,9 +116,9 @@
             
 
         </div>
-        <!-- Fin de 4 Caja:Start-->
+        <!-- Fin de 3 Caja:Start-->
 
-        <!-- 5 Caja:End-->
+        <!-- 4 Caja:End-->
         <div class="caja">
 
               <label class="titulo" >End Time<span class="requerido" required>*</span></label> <!--Titulo caja-->
@@ -154,21 +134,21 @@
 
           
         </div>
-        <!-- Fin de 5 Caja:End-->
+        <!-- Fin de 4 Caja:End-->
 
   
 
-        <!-- 6 Caja:Image-->
+        <!-- 5 Caja:Type-->
         <div class="caja">
 
-              <label class="titulo">Image<span class="requerido" required>*</span></label> <!--Titulo caja-->
+              <label class="titulo">Event Type<span class="requerido" required>*</span></label> <!--Titulo caja-->
 
               <div>
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="campoImage" name="campoImage" value="" /><br>
+                    <input id="campoType" name="campoType" value="" /><br>
                   </span>
 
-                  <span class="error" id="errorImage"></span> <!--Espacio para indicar el error de esta caja-->
+                  <span class="error" id="errorType"></span> <!--Espacio para indicar el error de esta caja-->
 
                   <div class="clear"></div> <!--Para limpiar el float-->
               </div>
@@ -176,9 +156,47 @@
       
 
         </div>
-        <!-- Fin de 5 Caja:Image-->
+        <!-- Fin de 5 Caja:Type-->
 		
-		
+		<!-- 6 Caja:Price -->
+        <div class="caja">
+
+              <label class="titulo">Ticket Price<span class="requerido" required>*</span></label> <!--Titulo caja-->
+
+              <div>
+			  
+                  <span class="izquierda">  <!--input y etiqueta de input caja-->
+                    <input id="campoPrice" name="campoPrice" value="" /><br>
+                  </span>
+
+                  <span class="error" id="errorPrice"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
+              </div>
+
+           
+
+        </div>
+        <!--Fin de 6 Caja:Price -->
+
+        <!-- 7 Caja:Seats-->
+        <div class="caja" >
+              <label class="titulo" >Total Seats<span class="requerido" required>*</span></label> <!--Titulo caja-->
+
+              <div>
+
+                  <span class="izquierda"> <!--input y etiqueta de input caja-->
+                    <input id="campoSeats" name="campoSeats" value="" /><br>
+                  </span>
+
+
+                  <span class="error" id="errorSeats"></span> <!--Espacio para indicar el error de esta caja-->
+
+                  <div class="clear"></div> <!--Para limpiar el float-->
+              </div>
+
+        </div>
+        <!--Fin de 7 Caja:Seats -->
 
         <!-- Boton de enviar-->
         <div class="botones">
