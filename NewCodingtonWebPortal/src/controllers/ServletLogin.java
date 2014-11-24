@@ -80,10 +80,10 @@ public class ServletLogin extends HttpServlet {
 			sesion.setAttribute("id_user", u.getUserId());
 			sesion.setAttribute("isAdmin", u.getIsAdmin());
 			if(u.getIsAdmin()){
-				response.sendRedirect("/NewCodingtonWebPortal/loggedAdmin.jsp");
+				response.sendRedirect("/NewCodingtonWebPortal/home.html");
 			}
 			else{
-				response.sendRedirect("/NewCodingtonWebPortal/logged.jsp");
+				response.sendRedirect("/NewCodingtonWebPortal/homeadm.html");
 			}
 		}		
 		//
