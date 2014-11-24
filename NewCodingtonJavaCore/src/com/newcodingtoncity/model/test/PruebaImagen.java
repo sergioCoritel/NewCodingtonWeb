@@ -25,7 +25,7 @@ public class PruebaImagen {
 	 */
 	public static void main(String[] args) throws SQLException, IOException {
 		// TODO Auto-generated method stub
-		Connection conection = (Connection) CodingtonConnectToDB.createConnection();
+/*		Connection conection = (Connection) CodingtonConnectToDB.createConnection();
 		PlaceDAO place = new PlaceDAO(conection);
 		File image = new File("images/museum.jpg");
 		place.changeImage(2, image);
@@ -42,5 +42,5 @@ public class PruebaImagen {
 		}
 		
 		System.out.println("FIN");
-	}
+	*/}
 }

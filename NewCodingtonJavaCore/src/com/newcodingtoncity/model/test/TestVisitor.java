@@ -32,7 +32,7 @@ public class TestVisitor extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		visitor = new Visitor(USER_ID, USERNAME, PASWORD, FIRST_NAME, LASTNAME,
-				DNI, EMAIL, PHONE_NUMBER, ADDRESS);
+				DNI, EMAIL, PHONE_NUMBER, ADDRESS, false);
 	}
 	
 	@After
@@ -527,7 +527,7 @@ public class TestVisitor extends TestCase {
 		user.setEmail("miguelangel@gmail.com");
 		user.setPhoneNumber("0034665871333");
 		user.setAddress("C/ Fuente vieja 6");
-		user.setEsAdmin(false);
+		user.setIsAdmin(false);
 		
 		reg = user_service.registerNewVisitor(user);
 		

@@ -1,6 +1,9 @@
 package com.newcodingtoncity.model.services;
 
 import java.sql.SQLException;
+
+import javax.servlet.ServletContext;
+
 import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.exceptions.DAOException;
@@ -12,6 +15,7 @@ public class UserService implements IUserService{
 
 
 	//private Connection connection = null;
+	private ServletContext context = null;
 	
 	
 	/**
@@ -20,6 +24,9 @@ public class UserService implements IUserService{
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
+	
+	
+	
 	public int login(User user) throws SQLException, ClassNotFoundException{
 		
 		int userId = 0;
@@ -28,13 +35,9 @@ public class UserService implements IUserService{
 		
 		try {
 			
-			manager = new DAOManager();
+			manager = new DAOManager(context);
 			userDAO = manager.getUserDAO();
 			userId = userDAO.loginDAO(user);
-
-			if(userId==0) {
-				throw new ServiceException("Username or Password incorrect");
-			}
 
 			manager.closeConnectionWithCommit();
 			
@@ -47,10 +50,18 @@ public class UserService implements IUserService{
 			throw new ServiceException("Error in data base.", e);
 
 		}
-
+		
+		user.setUserId(userId);
 		return userId;
 	}
 
+	public ServletContext getContext() {
+		return context;
+	}
+
+	public void setContext(ServletContext context) {
+		this.context = context;
+	}
 
 	/**
 	 * 
@@ -67,7 +78,7 @@ public class UserService implements IUserService{
 
 		try {
 			
-			manager = new DAOManager();
+			manager = new DAOManager(context);
 			userDAO = manager.getUserDAO();
 			pass = userDAO.updatePasswordDAO(user, new_pass);
 
@@ -112,7 +123,7 @@ public class UserService implements IUserService{
 
 		try {
 
-			manager = new DAOManager();
+			manager = new DAOManager(context);
 			userDAO = manager.getUserDAO();    
 			affectedRows = userDAO.updateInfoDAO(user);
 
@@ -155,7 +166,7 @@ public class UserService implements IUserService{
 
 
 		try {
-			manager = new DAOManager();	    
+			manager = new DAOManager(context);	    
 			userDAO = manager.getUserDAO();
 
 			reg = userDAO.registerNewVisitorDAO(user);

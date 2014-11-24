@@ -81,7 +81,7 @@
 <entry key="place_zoo">SELECT places.*, zoo.* FROM places,zoo WHERE places.id_place=zoo.id_place</entry>
 
 
-<entry key="selec_login">select id_user from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
+<entry key="selec_login">select * from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
 
 <!--USER, LOGIN FILTER: EMAIL_USERNAME-->
 <entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>

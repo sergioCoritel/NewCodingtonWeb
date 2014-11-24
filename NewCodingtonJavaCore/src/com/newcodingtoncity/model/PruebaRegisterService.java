@@ -28,7 +28,7 @@ public class PruebaRegisterService {
 		user.setEmail("lau@gmail.com");
 		user.setPhoneNumber("0034665871333");
 		user.setAddress("C/ Los Morales");
-		user.setEsAdmin(false);
+		user.setIsAdmin(false);
 		
 		reg = user_service.registerNewVisitor(user);
 		

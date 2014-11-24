@@ -44,14 +44,16 @@ public class UserDAO implements IUserDAO{
 
 			resultSet = statement.executeQuery();
 
-			while (resultSet.next()){
-				userId = resultSet.getInt(1);
+			while(resultSet.next()){
+				userId = resultSet.getInt("id_user");
+				if(resultSet.getInt("is_admin") == 1){
+					u.setIsAdmin(true);
+					}
+				u.setUserId(userId);
 			}
-
-			u.setUserId(userId);
-	
+			
 		}catch (Exception ee) {
-			System.out.println(" updateInfoDAO 1: "+ ee.getMessage());
+			System.out.println(" loginDAO 1: "+ ee.getMessage());
 			return userId;
 
 	
