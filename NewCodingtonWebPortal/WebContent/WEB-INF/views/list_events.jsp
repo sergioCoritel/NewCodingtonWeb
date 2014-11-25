@@ -89,12 +89,14 @@
         <ul class="event">
            
            <c:forEach items="${events}" var="event">            
-             <li>
-              <a href="#"><div class = "event-image">
-              <img src="images/event_museum.jpg"></a>
+            
+            <li>
+              <a href="#"> <div class="event-image"> <img src="images/event_museum.jpg"></div></a>
+              <div class="event-body">
               <a class="event-title" href="#">${event.eventName}</a><br>
-              <a href=""> ${event.description}</a>
-            </li>           
+              <a class="event-description" href="">${event.description} </a> 
+              </div>
+		        </li>         
           </c:forEach>             
           
             
