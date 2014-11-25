@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es">
 <head>
@@ -73,8 +72,7 @@
 				<li><a href="home.html" class="active">home</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a href="profile.html">Profile</a></li>
-				<li class="last"><a href="">Logout
-				 <%
+				<li class="last"><a href="">Logout <%
    					 out.println(session.getAttribute("username"));
 				%>
 				</a></li>
