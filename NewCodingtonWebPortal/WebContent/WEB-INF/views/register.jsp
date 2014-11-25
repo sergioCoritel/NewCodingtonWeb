@@ -1,46 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
       <title>Registration form</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="css/estilos.css"> <!--Enlazo la hoja de estilos externa-->
-      <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
+      <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
+      <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
 <div id="wrapper">
-  <h1 id="webname">New<br><span>Codington</span></h1>
-<!--
-  <div id="LeftMenu">
-             
-        <div class="categoria">
-          <a href="controlador.php?cat=7">MUSEOS</a>
-        </div>
+  <div id="logo">
+        <img src="images/logo.png" class="logo-icon">
+  </div>
 
-             <div class="categoria">
-          <a href="controlador.php?cat=7">MUSEOS</a>
-        </div>
-             <div class="categoria">
-          <a href="controlador.php?cat=7">MUSEOS</a>
-        </div>
-             <div class="categoria">
-          <a href="controlador.php?cat=7">MUSEOS</a>
-        </div>
-             <div class="categoria">
-          <a href="controlador.php?cat=7">MUSEOS</a>
-        </div>
-        -->
-       
-        <div id="clear"></div>
-</div>
 <!-- Contenedor -->
 <div id="contenedor">
 
-        <h2>Registration form</h2>
+        <h2>REGISTRATION FORM</h2>
 
 
-        <form method="post"  action="formuser" onsubmit="return valida_envia(this);" name="formulario" >
+        <form method="post"  action="" onsubmit="return valida_envia(this);" name="formulario" enctype="multipart/form-data" >
 
        <!-- Espacio para marcar error de campos obligatorios-->
         <p id="error"> </p>
@@ -52,7 +34,7 @@
 
                 <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
-                      <input class="requerido" required id="campoNombre" name="campoNombre" value="" /><br>
+                      <input class="requerido"  id="campoNombre" name="campoNombre" value="" required/><br>
                       <label>First Name</label>
                     </span>
 
@@ -91,7 +73,7 @@
         <!-- 4 Caja:Direccion-->
         <div class="caja">
 
-              <label class="titulo" >Address</span></label> <!--Titulo caja-->
+              <label class="titulo" >Address</label> <!--Titulo caja-->
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
@@ -186,7 +168,7 @@
 
         <!-- Boton de enviar-->
         <div class="botones">
-                <input id="alta" type="submit" value="Validate &rarr" formaction="formuser"/>
+                <input id="alta" type="submit" value="Validate &rarr;"/>
         </div>
         <!-- Fin de Boton de enviar-->
 

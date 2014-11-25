@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import sun.font.CreatedFontTracker;
 
 import com.mysql.jdbc.Connection;
 import com.newcodingtoncity.model.daos.PlaceDAO;
