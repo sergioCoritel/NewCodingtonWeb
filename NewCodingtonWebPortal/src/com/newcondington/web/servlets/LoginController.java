@@ -33,7 +33,8 @@ public class LoginController  implements IController  {
 		u.setPassword(password);
 
 			if(userservice.login(u) == 0){
-				 urlDispatcher = "WEB-INF/views/welcome.jsp";
+				 request.setAttribute("error", "Login incorrecto.");
+				 urlDispatcher = "index.jsp";
 			}		
 
 			else{
@@ -44,7 +45,6 @@ public class LoginController  implements IController  {
 					 urlDispatcher = "WEB-INF/views/welcome.jsp";
 				}
 				else{
-					request.setAttribute("error", "Login incorrecto.");
 					 urlDispatcher = "WEB-INF/views/welcome.jsp";
 				}
 			}

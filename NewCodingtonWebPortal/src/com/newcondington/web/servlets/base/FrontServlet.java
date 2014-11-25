@@ -51,11 +51,7 @@ public class FrontServlet extends HttpServlet {
     }
 
     private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-    System.out.println("SERVLET PATH: "+request.getServletPath());
 	String action = request.getServletPath();
-	System.out.println("SERVLET PATH: "+request.getServletPath());
-	System.out.println("CONTEXT PATH:  "+request.getContextPath());
-	System.out.println("ACTION:"+action);
 	String urlDispatcher = controllers.get(action).process(request, response);	
 	RequestDispatcher requestDispatcher = request.getRequestDispatcher(urlDispatcher);
 	

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es">
 <head>
@@ -70,7 +73,11 @@
         <li><a href="event.html" class="active">home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="profile.html">Profile</a></li>
-        <li class="last"><a href="">Logout</a></li>
+       <li class="last"><a href="">Logout
+				 <%
+   					 out.println(session.getAttribute("username"));
+				%>
+			</a></li>
         <li id="rightTab">&nbsp;</li>
         <div class="clear"></div>
       </ul>
@@ -83,7 +90,8 @@
            
            <c:forEach items="${events}" var="event">            
              <li>
-              <a href="#"><div class = "event-image"> <img src="images/event_museum.jpg"></div></a>
+              <a href="#"><div class = "event-image">
+              <img src="images/event_museum.jpg"></a>
               <a class="event-title" href="#">${event.duration}</a><br>
               <a href=""> ${event.description}</a>
             </li>           
