@@ -111,7 +111,7 @@ img.ca-icon{
   min-width:500px;
   top: 0;
   right: 0;
-  background: url(images/tab_b.png) repeat-x 0 0;
+  background: url(../images/tab_b.png) repeat-x 0 0;
 
   z-index: 999;
 }
@@ -140,10 +140,10 @@ line-height: 15px;
 list-style: none;
 padding: 10px 0;
 height: 42px;
-background: url(images/tab_m.png) repeat-x 0 0;
+background: url(../images/tab_m.png) repeat-x 0 0;
 }
 #rightTab {
-background: url(images/tab_r.png) no-repeat left 0;
+background: url(../images/tab_r.png) no-repeat left 0;
 height: 42px;
 width: 30px;
 padding: 0;
@@ -152,7 +152,7 @@ display: block;
 float: left;
 }
 #leftTab{
-  background: url(images/tab_l.png) no-repeat left 0;
+  background: url(../images/tab_l.png) no-repeat left 0;
 height: 42px;
 width: 30px;
 padding: 0;
