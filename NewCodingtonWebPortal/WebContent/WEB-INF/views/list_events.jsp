@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <html lang="es">
 <head>
       <title>New Codington Portal</title>
@@ -92,7 +92,7 @@
              <li>
               <a href="#"><div class = "event-image">
               <img src="images/event_museum.jpg"></a>
-              <a class="event-title" href="#">${event.duration}</a><br>
+              <a class="event-title" href="#">${event.eventName}</a><br>
               <a href=""> ${event.description}</a>
             </li>           
           </c:forEach>             
