@@ -16,7 +16,7 @@ public class LogoutController  implements IController  {
 
 		HttpSession sesion = request.getSession(true);
         sesion.invalidate();
-		String urlDispatcher = "WEB-INF/views/welcome.jsp";
+		String urlDispatcher = "index.jsp";
 		return urlDispatcher;
 	}
 }

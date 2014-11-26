@@ -24,43 +24,44 @@
 
 			<div class="categoria">
 				<img src="images/bussiness.png" class="ca-icon"> <a
-					href="list_events.do">LARGE BUSSINESS</a>
+					href="list_events.do?type=business">LARGE BUSSINESS</a>
 			</div>
 
 			<div class="categoria">
 				<img src="images/museum.png" class="ca-icon"> <a
-					href="museum.html">MUSEUM</a>
+					href="list_events.do?type=museum">MUSEUM</a>
 			</div>
 
 			<div class="categoria">
 				<img src="images/stadium.png" class="ca-icon"> <a
-					href="stadium.html">STADIUM</a>
+					href="list_events.do?type=stadium">STADIUM</a>
 			</div>
 
 			<div class="categoria">
 				<img src="images/theater.png" class="ca-icon"> <a
-					href="theater.html">THEATER</a>
+					href="list_events.do?type=theater">THEATER</a>
 			</div>
 
 			<div class="headerMenu">SOUTH TOWER</div>
 
 			<div class="categoria">
 				<img src="images/park.png" class="ca-icon"> <a
-					href="park.html">PARK</a>
+					href="list_events.do?type=park">PARK</a>
 			</div>
 
 			<div class="categoria">
 				<img src="images/tourist.png" class="ca-icon"> <a
-					href="tourist_attraction.html">TOURIST ATTRACTION</a>
+					href="list_events.do?type=tourist">TOURIST ATTRACTION</a>
 			</div>
 
 			<div class="categoria">
 				<img src="images/market.png" class="ca-icon"> <a
-					href="traditional_market.html">TRADITIONAL MARKET</a>
+					href="list_events.do?type=market">TRADITIONAL MARKET</a>
 			</div>
 
 			<div class="categoria">
-				<img src="images/zoo_.png" class="ca-icon"> <a href="zoo.html">ZOO</a>
+				<img src="images/zoo_.png" class="ca-icon"> 
+				<a href="list_events.do?type=zoo">ZOO</a>
 			</div>
 
 			<div class="clear"></div>
@@ -72,7 +73,7 @@
 				<li><a href="home.html" class="active">home</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a href="profile.html">Profile</a></li>
-				<li class="last"><a href="">Logout <%
+				<li class="last"><a href="logout.do">Logout <%
    					 out.println(session.getAttribute("username"));
 				%>
 				</a></li>
