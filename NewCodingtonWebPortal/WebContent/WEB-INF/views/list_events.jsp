@@ -92,10 +92,10 @@
            <c:forEach items="${events}" var="event">            
             
             <li>
-              <a href="#"> <div class="event-image"> <img src="images/event_museum.jpg"></div></a>
+              <a href="show_event.do?id=${event.eventId}"> <div class="event-image"> <img src="images/event_museum.jpg"></div></a>
               <div class="event-body">
-              <a class="event-title" href="#">${event.eventName}</a><br>
-              <a class="event-description" href="">${event.description} </a> 
+              <a class="event-title" href="show_event.do?id=${event.eventId}">${event.eventName}</a><br>
+              <a class="event-description" href="show_event.do?id=${event.eventId}">${event.description} </a> 
               </div>
 		        </li>         
           </c:forEach>             

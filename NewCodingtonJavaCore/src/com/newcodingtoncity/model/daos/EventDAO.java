@@ -98,11 +98,13 @@ public class EventDAO implements IEventDAO {
 	
 
 	public Event showEventById (int id) throws ClassNotFoundException, SQLException, IOException{
-
 		statement = connection.prepareStatement(databaseHelper.getQuery("eventbyid"));
 		statement.setInt(1,id);
 		resultSet = statement.executeQuery();
-		Event event = EventMapper.map(resultSet);
+		Event event = new Event();
+		while (resultSet.next()) {
+			event = EventMapper.map(resultSet);
+		}
 		resultSet.close();
 		return event;
 	}
