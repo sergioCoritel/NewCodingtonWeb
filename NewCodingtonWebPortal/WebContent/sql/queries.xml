@@ -76,7 +76,7 @@
 <entry key="selec_login">select id_user, is_admin from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
 
 <!--USER, LOGIN FILTER: EMAIL_USERNAME-->
-<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
+<entry key="isAcountExists">SELECT id_user FROM users WHERE email LIKE ? OR username LIKE ?</entry>
 
 <!-- EVENT_USER, FILTER: id_event and id_user-->
 <entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_user = ?</entry>

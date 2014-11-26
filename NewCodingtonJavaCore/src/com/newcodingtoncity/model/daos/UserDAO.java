@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.newcodingtoncity.model.domain.users.User;
-import com.newcodingtoncity.model.exceptions.DAOException;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
@@ -208,8 +206,8 @@ public class UserDAO implements IUserDAO{
 			
 			String sql  = databaseHelper.getQuery("isAcountExists");	              
 			statement = connection.prepareStatement(sql);
-			statement.setString(1, u.getUserName());
-			statement.setString(2, u.getEmail());
+			statement.setString(1, u.getEmail());
+			statement.setString(2, u.getUserName());
 			resultSet = statement.executeQuery();
 
 			while (resultSet.next()){
@@ -217,24 +215,22 @@ public class UserDAO implements IUserDAO{
 			}
 
 			/*If userId != 0, there is a user registered with this acount*/
-			if(userId!=0){
-				throw new DAOException("Acount Exists: Username or email is registrared in date base");
+			if(userId==0){
+			
+				sql  = databaseHelper.getQuery("registerUser");	              
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, u.getUserName());
+				statement.setString(2, u.getPassword());
+				statement.setString(3, u.getFirstName());
+				statement.setString(4, u.getLastName());
+				statement.setString(5, u.getDni());
+				statement.setString(6, u.getEmail());
+				statement.setString(7, u.getPhoneNumber());
+				statement.setString(8, u.getAddress());
+				statement.setInt(9, 0);
+	
+				affectedRows = statement.executeUpdate(); 
 			}
-
-
-			sql  = databaseHelper.getQuery("registerUser");	              
-			statement = connection.prepareStatement(sql);
-			statement.setString(1, u.getUserName());
-			statement.setString(2, u.getPassword());
-			statement.setString(3, u.getFirstName());
-			statement.setString(4, u.getLastName());
-			statement.setString(5, u.getDni());
-			statement.setString(6, u.getEmail());
-			statement.setString(7, u.getPhoneNumber());
-			statement.setString(8, u.getAddress());
-			statement.setInt(9, 0);
-
-			affectedRows = statement.executeUpdate(); 
 
 		}catch (Exception ee) {
 			System.out.println(" registerNewVisitorDAO 1: "+ ee.getMessage());

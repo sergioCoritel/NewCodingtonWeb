@@ -1,9 +1,6 @@
 package com.newcondington.web.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,25 +13,25 @@ import com.newcondington.web.servlets.base.IController;
 
 public class LoginController  implements IController  {
 
-    @Override
-    public String process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    	String urlDispatcher = null; 
-    	try{
-    	HttpSession sesion = request.getSession();
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		User u = new Visitor();
-		UserService userservice = new UserService();
-		ServletContext context = request.getServletContext();
-		
-		userservice.setContext(context);
-		
-		u.setUserName(username);
-		u.setPassword(password);
+	@Override
+	public String process(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String urlDispatcher = null; 
+		try{
+			HttpSession sesion = request.getSession();
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			User u = new Visitor();
+			UserService userservice = new UserService();
+			ServletContext context = request.getServletContext();
+
+			userservice.setContext(context);
+
+			u.setUserName(username);
+			u.setPassword(password);
 
 			if(userservice.login(u) == 0){
-				 request.setAttribute("error", "Login incorrecto.");
-				 urlDispatcher = "index.jsp";
+				request.setAttribute("error", "Login incorrecto.");
+				urlDispatcher = "index.jsp";
 			}		
 
 			else{
@@ -42,16 +39,16 @@ public class LoginController  implements IController  {
 				sesion.setAttribute("id_user", u.getUserId());
 				sesion.setAttribute("isAdmin", u.getIsAdmin());
 				if(u.getIsAdmin()){
-					 urlDispatcher = "WEB-INF/views/welcome.jsp";
+					urlDispatcher = "WEB-INF/views/welcome.jsp";
 				}
 				else{
-					 urlDispatcher = "WEB-INF/views/welcome.jsp";
+					urlDispatcher = "WEB-INF/views/welcome.jsp";
 				}
 			}
 		} catch (Exception e) {
 			request.setAttribute("error", "Login incorrecto.");
-			 urlDispatcher = "index.jsp";
+			urlDispatcher = "index.jsp";
 		}		
-    	return urlDispatcher;
-    }
+		return urlDispatcher;
+	}
 }
