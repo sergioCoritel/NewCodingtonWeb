@@ -1,0 +1,105 @@
+/*---------------------------------EVENTS--------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (1, 'Conference', 'Conference to discuss global warming', '2014-12-01 10:00', '2014-12-01 14:00', 'Informative', 12, 150, 150, 1);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (2, 'Conference', 'Lecture given by experts from Accenture on New Technologies', '2014-12-04 16:00', '2014-12-04 20:00', 'Informative', 15, 250, 250, 1);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (3, 'Exposure V Century', 'Exhibition of paintings and sculptures from the V century historical', '2014-12-01 9:00', '2014-12-01 21:00', 'Informative', 5, 450, 450, 2);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (4, 'Exposure Duchy Alba', 'Exhibition heritage of the Dukes of Alba', '2014-12-15 9:00', '2014-12-15 21:00', 'Informative', 8, 300, 300, 2);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (5, 'Show', 'Children\'s performance', '2014-12-09 11:00', '2014-12-09 13:00', 'Entertainment', 2, 85, 85, 3);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (6, 'Circus', 'Circus in the campaign, for Miliki', '2014-12-21 7:00', '2014-12-21 18:30', 'Entertainment', 4, 115, 115, 3);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (7, 'Rugby', 'Match between the teams Codington-Springfield', '2014-12-15 21:00', '2014-12-15 23:00', 'Sports', 35, 45000, 45000, 4);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (8, 'Charity match', 'harity match between stars of the city to raise funds for the fight against cancer', '2014-11-29 17:00', '2014-11-29 19:00', 'Sports', 15, 45000, 45000, 4);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (9, 'Musical', 'Lion King Musical', '2014-12-08 22:00', '2014-12-08 23:30', 'Entertainment', 25, 165, 165, 5);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (10, 'Concert', 'Raphael Concert', '2014-12-01 22:00', '2014-12-01 23:45', 'Entertainment', 30, 250, 250, 5);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (11, 'Offer new attraction', '10% discount on our new attraction', '2014-12-13 10:00', '2014-12-03 11:30', 'Entertainment', 8, 30, 30, 6);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (12, 'Visit castle', 'Guided tour of the castle of our city', '2014-12-28 17:00', '2014-12-28 18:30', 'Entretenimiento', 10, 50, 50, 6);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (13, 'Selling handicrafts', 'Many traders gather to sell cheeses and artisan producer', '2014-12-29 18:00', '2014-12-29 22:30', 'Commerce', 5, 250, 250, 7);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (14, 'Talk about mushrooms', 'Talk to an expert on mushrooms', '2014-12-06 12:00', '2014-12-06 13:00', 'Informative', 2, 100, 100, 7);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (15, 'Show', 'Great show with dolphins', '2014-12-22 12:00', '2014-12-22 13:30', 'Animation', 6, 150, 150, 8);
+INSERT INTO `newcodington`.`events` (`id_event`, `name_event`, `description_event`, `start_event`, `end_event`, `type_event`, `ticket_price`, `seats_available`, `seats_total`, `id_place`) VALUES (16, 'Show', 'Tanzania experts Wranglers leave us speechless', '2014-12-26 18:00', '2014-12-26 20:00', 'Animation', 15, 185, 185, 8);
+
+
+/*---------------------------------USER--------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (1, 'admin_agus', 'password', 'Agustin', 'San Miguel', '89.789.246-Y', 'agus@accenture.com', '0034666555440', 'Street Red, 4, 5ºC', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (2, 'admin_bea', 'password', 'Beatriz', 'De Miguel', '97.631.465-F', 'bea@accenture.com', '0034666555441', 'Street Blue, 2, 2ºA', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (3, 'admin_esther', 'password', 'Esther', 'Guerrero', '23.474.870-N', 'esther@accenture.com', '0034666555442', 'Street Green, 1, 4ºC', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (4, 'admin_juan', 'password', 'Juan', 'Soria', '57.446.679-Q', 'juan@accenture.com', '0034666555443', 'Street Black, 3, 5ºB', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (5, 'admin_juanma', 'password', 'Juan Manuel', 'Garcia', '71.298.438-W', 'juanma@accenture.com', '0034666555444', 'Street Pink, 13, 8ºA', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (6, 'admin_marlon', 'password', 'Marlon', 'Salcedo', '30.609.941-T', 'marlon@accenture.com', '0034666555446', 'Street Purple, 4, 3ºC', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (7, 'admin_pedro', 'password', 'Pedro', 'Alonso', '3.925.629-N', 'pedro@accenture.com', '0034666555447', 'Street Yellow, 45, 1ºD', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (8, 'admin_sergio', 'password', 'Sergio', 'Andres', '69.143.552-D', 'sergio@accenture.com', '0034666555448', 'Street White, 10, 2ºA', 1);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (9, 'rodolfo', 'password', 'Rodolfo', 'Benito', '53.620.470-H', 'rodolf@gmail.com', '0036111222333', 'Castellana, 43, 1ºA', 0);
+INSERT INTO `newcodington`.`users` (`id_user`, `username`, `password`, `firstname`, `lastname`, `dni`, `email`, `phone_number`, `address`, `is_admin`) VALUES (10, 'alber0090', 'password', 'Alberto', 'Lopez', '42.161.821-S', 'albert@hotmail.com', '0034699888777', 'C/Santander, 45, 2ªE', 0);
+
+
+/*---------------------------------EVENTS_USER-------------------------------------------------------------------------------------///*/
+
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (1, 1, 1);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (2, 2, 1);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (3, 3, 2);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (4, 4, 3);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (5, 5, 3);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (6, 6, 4);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (7, 7, 5);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (8, 8, 5);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (9, 9, 6);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (10, 10, 6);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (11, 11, 7);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (12, 12, 8);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (13, 13, 8);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (14, 14, 9);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (15, 15, 10);
+INSERT INTO `newcodington`.`events_users` (`id_events_users`, `id_event`, `id_user`) VALUES (16, 16, 10);
+
+
+/*---------------------------------PLACES-------------------------------------------------------------------------------------///*/
+
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (1,1,'Torres Kio',450,'Place to work, meetings and conferences','2014-01-01 07:30:00','2014-12-31 22:00:00','NORTH',NULL,1);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (2,2,'Museo del Prado',250,'Museum with a variety of art and historical works','2014-01-01 09:00:00','2014-12-31 22:00:00','NORTH',NULL,1);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (3,3,'El Retiro',650,'Nice park for peace of mind','2014-01-01 06:00:00','2014-12-31 00:00:00','SOUTH',NULL,0);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (4,4,'Santiago Bernabeu',85000,'Large-capacity stadium','2014-01-01 09:00:00','2014-12-31 00:00:00','NORTH',NULL,1);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (5,5,'Teatro Alhambra',550,'Theatre where you can see different actions','2014-01-01 10:00:00','2014-12-31 23:30:00','NORTH',NULL,1);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (6,6,'Portaventura',14000,'Complex with many attractions and great fun','2014-01-01 08:00:00','2014-12-31 23:00:00','SOUTH',NULL,0);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (7,7,'Mercado San Miguel',125,'Market where you can make your purchases','2014-01-01 08:00:00','2014-12-31 21:45:00','SOUTH',NULL,0);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (8,8,'Cabarceno',2500,'Zoo where many varieties of animals are','2014-01-01 09:00:00','2014-12-31 22:30:00','SOUTH',NULL,0);
+INSERT INTO `places` (`id_place`,`id_type_place`,`name_place`,`capacity`,`description_place`,`start_time`,`end_time`,`zone`,`image`,`is_building`) VALUES (9,2,'Museo Thyssen',400,'Museum with a variety of art and historical works','2014-01-01 09:00:00','2014-12-31 22:00:00','NORTH',NULL,1);
+
+
+/*---------------------------------MUSEUM-------------------------------------------------------------------------------------///*/
+
+INSERT INTO `museum` VALUES (2),(17);
+
+
+/*---------------------------------LARGE_BUSINESS-----------------------------------------------------------------------------///*/
+
+INSERT INTO `large_business` VALUES (1);
+
+
+/*---------------------------------PARK--------------------------------------------------------------------------------------///*/
+
+INSERT INTO `park` VALUES (3);
+
+
+/*---------------------------------STADIUM------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `stadium` VALUES (4);
+
+
+/*---------------------------------THEATER------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `theater` VALUES (5);
+
+
+/*---------------------------------TOURIST_ATTRACTION------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `tourist_attraction` VALUES (6);
+
+
+/*---------------------------------TRADITIONAL_MARKET------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `traditional_market` VALUES (7);
+
+
+/*---------------------------------ZOO------------------------------------------------------------------------------------------///*/
+
+INSERT INTO `zoo` VALUES (8);
