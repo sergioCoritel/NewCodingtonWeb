@@ -8,6 +8,8 @@
 <!-- ALL EVENTS AND PLACES-->
 <entry key="alleventsandplaces">SELECT events.*,places.* FROM events,places WHERE events.id_place = places.id_place ORDER BY events.id_event</entry>
 
+<entry key="eventbyid">SELECT events.*,places.* FROM events,places WHERE events.id_event= ? AND events.id_place = places.id_place</entry>
+
 
 <!-- ALL EVENTS MUSEUM-->
 <entry key="museum">SELECT events.*, places.*, museum.* FROM events, places, museum WHERE events.id_place = places.id_place AND places.id_place=museum.id_place</entry>

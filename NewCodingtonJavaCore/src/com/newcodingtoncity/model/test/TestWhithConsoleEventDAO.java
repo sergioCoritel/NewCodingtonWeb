@@ -16,6 +16,7 @@ public class TestWhithConsoleEventDAO {
 //		testUpdateSeatsEventInc(daoManager);
 //		testUpdateSeatsEventDec(daoManager);
 //		testDeleteEvent(daoManager);
+		testEventId(daoManager);
 //		testListMuseumEvents(daoManager);
 //		testListZooEvents(daoManager);
 //		testListMuseumEvents(daoManager);
@@ -27,6 +28,14 @@ public class TestWhithConsoleEventDAO {
 //		testListTouristAttractionEvents(daoManager);
 //		testListTraditionalMarketEvents(daoManager);
 		daoManager.closeConnectionWithCommit();
+	}
+
+	private static void testEventId(DAOManager daoManager) {
+		 try {
+			Event event = daoManager.getEventDAO().showEventById(3);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static Event getFakeMuseumEvent(){
