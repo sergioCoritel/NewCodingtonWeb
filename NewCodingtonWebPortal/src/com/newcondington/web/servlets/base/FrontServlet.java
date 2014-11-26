@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.newcondington.web.servlets.ListEventsController;
-import com.newcondington.web.servlets.WelcomeController;
 import com.newcondington.web.servlets.LoginController;
+import com.newcondington.web.servlets.LogoutController;
 import com.newcondington.web.servlets.RegisterController;
+import com.newcondington.web.servlets.WelcomeController;
 
 @WebServlet("/FrontServlet")
 public class FrontServlet extends HttpServlet {
@@ -33,6 +34,7 @@ public class FrontServlet extends HttpServlet {
 	controllers.put("/welcome.do", new WelcomeController());
 	controllers.put("/login.do", new LoginController());
 	controllers.put("/list_events.do", new ListEventsController());
+	controllers.put("/logout.do", new LogoutController());
     }
 
     
