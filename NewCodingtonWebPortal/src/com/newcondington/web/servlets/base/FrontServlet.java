@@ -1,6 +1,7 @@
 package com.newcondington.web.servlets.base;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,10 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.newcondington.web.servlets.ValidateRegisterController;
 import com.newcondington.web.servlets.ListEventsController;
 import com.newcondington.web.servlets.LoginController;
 import com.newcondington.web.servlets.LogoutController;
 import com.newcondington.web.servlets.RegisterController;
+
+import com.newcondington.web.servlets.RegisterToEventController;
+import com.newcondington.web.servlets.ShowEventController;
+
 import com.newcondington.web.servlets.WelcomeController;
 
 @WebServlet("/FrontServlet")
@@ -31,10 +37,16 @@ public class FrontServlet extends HttpServlet {
         
 	super();  
 	controllers.put("/register.do", new RegisterController());
+	controllers.put("/validate_register.do", new ValidateRegisterController());
 	controllers.put("/welcome.do", new WelcomeController());
 	controllers.put("/login.do", new LoginController());
 	controllers.put("/list_events.do", new ListEventsController());
+
 	controllers.put("/logout.do", new LogoutController());
+
+	controllers.put("/show_event.do", new ShowEventController());
+	controllers.put("/register_to_event.do", new RegisterToEventController());
+
     }
 
     
@@ -49,10 +61,18 @@ public class FrontServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	doProcess(request, response);
+	try {
+		doProcess(request, response);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     }
 
-    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+    private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {		
 	String action = request.getServletPath();
 	String urlDispatcher = controllers.get(action).process(request, response);	
 	RequestDispatcher requestDispatcher = request.getRequestDispatcher(urlDispatcher);
@@ -67,6 +87,14 @@ public class FrontServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	doProcess(request, response);
+	try {
+		doProcess(request, response);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     }
 }

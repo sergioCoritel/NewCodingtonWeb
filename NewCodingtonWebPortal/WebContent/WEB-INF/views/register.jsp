@@ -24,6 +24,7 @@
 
         <form method="post"  action="" onsubmit="return valida_envia(this);" name="formulario">
 
+
        <!-- Espacio para marcar error de campos obligatorios-->
         <p id="error"> </p>
 

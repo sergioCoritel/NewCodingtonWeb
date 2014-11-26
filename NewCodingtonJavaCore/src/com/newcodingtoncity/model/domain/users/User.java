@@ -192,10 +192,10 @@ public abstract class User {
 	 * @param the new dni
 	 */
 	public void setDni(String dni){
-		if(ValidateUser.validateSetDNI(dni))
+//		if(ValidateUser.validateSetDNI(dni))
 			this.dni = dni;
-		else
-			throw new DomainException("DNI NO VALID (must be in the form XX.XXX.XXX-X, or DNI badly inserted)");
+//		else
+//			throw new DomainException("DNI NO VALID (must be in the form XX.XXX.XXX-X, or DNI badly inserted)");
 	}
 	
 	

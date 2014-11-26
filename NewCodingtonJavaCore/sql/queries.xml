@@ -84,7 +84,7 @@
 <entry key="selec_login">select * from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
 
 <!--USER, LOGIN FILTER: EMAIL_USERNAME-->
-<entry key="isAcountExists">SELECT id_user FROM users WHERE email= ? OR username = ?</entry>
+<entry key="isAcountExists">SELECT id_user FROM users WHERE email LIKE ? OR username LIKE ?</entry>
 
 <!-- EVENT_USER, FILTER: id_event and id_user-->
 <entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_user = ?</entry>
@@ -144,7 +144,7 @@
 <!--INSERTS-->
 
 <!--INSERTS USERS-->
-<entry key="registerUser">insert into users values (null,?,?,?,?,?,?,?,?,?)</entry>
+<entry key="registerUser">insert into users values (?,?,?,?,?,?,?,?,?)</entry>
 
 <!--INSERTS EVENTS_USERS-->
 <entry key="registerVisitorToEvent">insert into events_users values (null, ?, ?)</entry>
