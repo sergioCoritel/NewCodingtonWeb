@@ -89,52 +89,61 @@
 
 		<!-- Contenedor -->
 		<div id="contenedor">
+<img class="event-large-image" alt="" src="http://agilisenergy.com/tinseltown/wp-content/uploads/2013/01/building-icon-free-analysis.png">
+			<ul>
+				<li>
+					<p class="text-profile">Name</p>
+					<div class="profile">${event.eventName}</div>
+				</li>
 
-			<ul class="event">
-					<li>
-						<p class="text-profile">Name</p>
-						<div class="profile">${event.eventName}</div>
-					</li>
+				<li>
+					<p class="text-profile">Description</p>
+					<div class="profile">${event.description}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Description</p>
-						<div class="profile">${event.description}</div>
-					</li>
+				<li>
+					<p class="text-profile">Start</p>
+					<div class="profile">${event.start}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Start</p>
-						<div class="profile">${event.start}</div>
-					</li>
+				<li>
+					<p class="text-profile">End</p>
+					<div class="profile">${event.end}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">End</p>
-						<div class="profile">${event.end}</div>
-					</li>
+				<li>
+					<p class="text-profile">Type</p>
+					<div class="profile">${event.eventType}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Type</p>
-						<div class="profile">${event.eventType}</div>
-					</li>
+				<li>
+					<p class="text-profile">Ticket Price</p>
+					<div class="profile">${event.ticketPrice}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Ticket Price</p>
-						<div class="profile">${event.ticketPrice}</div>
-					</li>
+				<li>
+					<p class="text-profile">Available Seats</p>
+					<div class="profile">${event.seatsAvailable}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Available Seats</p>
-						<div class="profile">${event.seatsAvailable}</div>
-					</li>
+				<li>
+					<p class="text-profile">Total Seats</p>
+					<div class="profile">${event.seatsTotal}</div>
+				</li>
 
-					<li>
-						<p class="text-profile">Total Seats</p>
-						<div class="profile">${event.seatsTotal}</div>
-					</li>
-
-					<li><a href="show_place.html"><p class="text-profile">Place</p></a>
-						<div class="profile"></div></li>
-					</li>
+				<li><p class="text-profile">Place</p>
+					<div class="profile">${event.place.name}</div></li>
+				</li>
+				<li><p class="text-profile">Place description</p>
+					<div class="profile">${event.place.placeDescription}</div></li>
+				</li>
+			
 			</ul>
+			
+			<div class="button">Register</div>
+
+			<div class="button">Unregister</div>
+
 		</div>
 		<!-- Fin de  Contenedor -->
 
