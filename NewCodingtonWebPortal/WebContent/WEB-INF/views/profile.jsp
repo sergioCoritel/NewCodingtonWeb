@@ -16,65 +16,69 @@
   <div id="title">Profile</div>
   <div class="clear"></div>  
 
-   <div id="LeftMenu">
-        <div class="headerMenu" >NORTH TOWER</div>    
-        
-		   <div class="categoria">
-            <img src="images/bussiness.png" class="ca-icon">
-            <a href="large_business.jsp">LARGE BUSINESS</a>
-          </div>
-		
-		  <div class="categoria">
-            <img src="images/museum.png" class="ca-icon">
-            <a href="museum.jsp">MUSEUM</a>
-          </div>
+		<div id="LeftMenu">
+			<div class="headerMenu">NORTH TOWER</div>
 
-          <div class="categoria">
-            <img src="images/stadium.png" class="ca-icon">
-            <a href="stadium.jsp">STADIUM</a>
-          </div>
+			<div class="categoria">
+				<img src="images/bussiness.png" class="ca-icon"> <a
+					href="list_events.do?type=business">LARGE BUSSINESS</a>
+			</div>
 
-          <div class="categoria">
-            <img src="images/theater.png" class="ca-icon">
-            <a href="theater.jsp">THEATER</a>
-          </div>
-       
-	    <div class="headerMenu" >SOUTH TOWER</div>    
-        
-		  <div class="categoria">
-            <img src="images/park.png" class="ca-icon">
-            <a href="park.jsp">PARK</a>
-          </div>
-        
-		  <div class="categoria">
-            <img src="images/tourist.png" class="ca-icon">
-            <a href="tourist_attraction.jsp">TOURIST ATTRACTION</a>
-          </div>
-		
-		  <div class="categoria">
-            <img src="images/market.png" class="ca-icon">
-            <a href="traditional_market.jsp">TRADITIONAL MARKET</a>
-          </div>
-	   
-	      <div class="categoria">
-            <img src="images/zoo_.png" class="ca-icon">
-            <a href="zoo.jsp">ZOO</a>
-          </div>
-        
-        <div class="clear"></div>
-   </div>
+			<div class="categoria">
+				<img src="images/museum.png" class="ca-icon"> <a
+					href="list_events.do?type=museum">MUSEUM</a>
+			</div>
+
+			<div class="categoria">
+				<img src="images/stadium.png" class="ca-icon"> <a
+					href="list_events.do?type=stadium">STADIUM</a>
+			</div>
+
+			<div class="categoria">
+				<img src="images/theater.png" class="ca-icon"> <a
+					href="list_events.do?type=theater">THEATER</a>
+			</div>
+
+			<div class="headerMenu">SOUTH TOWER</div>
+
+			<div class="categoria">
+				<img src="images/park.png" class="ca-icon"> <a
+					href="list_events.do?type=park">PARK</a>
+			</div>
+
+			<div class="categoria">
+				<img src="images/tourist.png" class="ca-icon"> <a
+					href="list_events.do?type=tourist">TOURIST ATTRACTION</a>
+			</div>
+
+			<div class="categoria">
+				<img src="images/market.png" class="ca-icon"> <a
+					href="list_events.do?type=market">TRADITIONAL MARKET</a>
+			</div>
+
+			<div class="categoria">
+				<img src="images/zoo_.png" class="ca-icon"> 
+				<a href="list_events.do?type=zoo">ZOO</a>
+			</div>
+
+			<div class="clear"></div>
+		</div>
   
-   <div id="rightTopMenuContainer">
-      <ul class="rightTopMenu">
-        <li id="leftTab">&nbsp;</li>
-        <li><a href="home.jsp" class="active">home</a></li>
-        <li><a href="about.jsp">About</a></li>
-        <li><a href="profile.jsp">Profile</a></li>
-        <li class="last"><a href="logout">Logout</a></li>
-        <li id="rightTab">&nbsp;</li>
-        <div class="clear"></div>
-      </ul>
-   </div>
+		<div id="rightTopMenuContainer">
+			<ul class="rightTopMenu">
+				<li id="leftTab">&nbsp;</li>
+				<li><a href="welcome.do" class="active">home</a></li>
+				<li><a href="about.do">About</a></li>
+				<li><a href="profile.do">Profile</a></li>
+				<li class="last"><a href="lo
+				gout.do">Logout <%
+   					 out.println(session.getAttribute("username"));
+				%>
+				</a></li>
+				<li id="rightTab">&nbsp;</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
 
    <!-- Contenedor -->
    <div id="contenedor">
@@ -83,33 +87,49 @@
 	   
 	   <ul class="event">
 	   
-	        <li>
-	          <a class="event-title" href="#">User Name</a><br>
-			  <h3>User Name</h3>
-            </li>
+	        <li>  
+			         <p class = "text-profile">User Name</p>
+               <div class = "profile">
+               </div>
+          </li>
 		   
-            <li>
-              <a class="event-title" href="#">First and Last Name</a><br>
-		    </li> 
+          <li>
+               <p class = "text-profile">First Name</p>
+               <div class = "profile">
+               </div>
+		      </li> 
 
-            <li>
-              <a  class="event-title" href="#"> DNI</a><br>
-			</li> 
+          <li>  
+               <p class = "text-profile">Last Name</p>
+               <div class = "profile">
+               </div>
+          </li>
+		  
+		   <li>  
+			         <p class = "text-profile">DNI</p>
+               <div class = "profile">
+               </div>
+          </li>
 
-            <li>
-              <a class="event-title" href="#">Address</a><br>
-			</li> 
+          <li>  
+               <p class = "text-profile">Address</p>
+               <div class = "profile">
+               </div>
+          </li>
 
-            <li>
-              <a class="event-title" href="#">Phone Number</a><br>
-			</li> 
+          <li>  
+               <p class = "text-profile">Phone Number</p>
+               <div class = "profile">
+               </div>
+          </li>
 
-            <li>
-              <a class="event-title" href="#">Mail</a><br>
-              
-		    </li> 
+          <li>  
+               <p class = "text-profile">Mail</p>
+               <div class = "profile">
+               </div>
+          </li>
 			
-        </ul>     
+      </ul>     
         
    </div><!-- Fin de  Contenedor -->
         

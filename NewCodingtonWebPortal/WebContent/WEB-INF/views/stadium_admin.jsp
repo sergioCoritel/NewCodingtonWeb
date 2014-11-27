@@ -72,7 +72,10 @@
         <li><a href="profile_admin.jsp">Profile</a></li>
 		<li><a href="create_event.jsp">Add event</a></li>
         <li><a href="create_place.jsp">Add place</a></li>
-        <li class="last"><a href="logout">Logout</a></li>
+        <li class="last"><a href="">Logout <%
+   					 out.println(session.getAttribute("username"));
+				%>
+				</a></li>
         <li id="rightTab">&nbsp;</li>
         <div class="clear"></div>
       </ul>
