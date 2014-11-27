@@ -69,7 +69,7 @@
 				<li id="leftTab">&nbsp;</li>
 				<li><a href="welcome.do" class="active">home</a></li>
 				<li><a href="about.do">About</a></li>
-				<li><a href="WEB-INF/views/profile.jsp">Profile</a></li>
+				<li><a href="profile.do">Profile</a></li>
 				<li class="last"><a href="lo
 				gout.do">Logout <%
    					 out.println(session.getAttribute("username"));

@@ -68,21 +68,21 @@
 		</div>
   
   
-   <div id="rightTopMenuContainer">
-      <ul class="rightTopMenu">
-        <li id="leftTab">&nbsp;</li>
-        <li><a href="welcome.do" class="active">home</a></li>
-        <li><a href="about.do">About</a></li>
-        <li><a href="profile.jsp">Profile</a></li>
-       <li class="last"><a href="logout.do">Logout
-				 <%
+		<div id="rightTopMenuContainer">
+			<ul class="rightTopMenu">
+				<li id="leftTab">&nbsp;</li>
+				<li><a href="welcome.do" class="active">home</a></li>
+				<li><a href="about.do">About</a></li>
+				<li><a href="profile.do">Profile</a></li>
+				<li class="last"><a href="lo
+				gout.do">Logout <%
    					 out.println(session.getAttribute("username"));
 				%>
-			</a></li>
-        <li id="rightTab">&nbsp;</li>
-        <div class="clear"></div>
-      </ul>
-   </div>
+				</a></li>
+				<li id="rightTab">&nbsp;</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
 
    <!-- Contenedor -->
    <div id="contenedor">

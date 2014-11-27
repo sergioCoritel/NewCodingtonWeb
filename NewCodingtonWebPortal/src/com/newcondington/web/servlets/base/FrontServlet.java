@@ -16,6 +16,7 @@ import com.newcondington.web.servlets.AboutController;
 import com.newcondington.web.servlets.ListEventsController;
 import com.newcondington.web.servlets.LoginController;
 import com.newcondington.web.servlets.LogoutController;
+import com.newcondington.web.servlets.ProfileController;
 import com.newcondington.web.servlets.RegisterController;
 import com.newcondington.web.servlets.RegisterToEventController;
 import com.newcondington.web.servlets.ShowEventController;
@@ -45,6 +46,7 @@ public class FrontServlet extends HttpServlet {
 	controllers.put("/logout.do", new LogoutController());
 	controllers.put("/show_event.do", new ShowEventController());
 	controllers.put("/register_to_event.do", new RegisterToEventController());
+	controllers.put("/profile.do", new ProfileController());
 }
 	
     @Override
