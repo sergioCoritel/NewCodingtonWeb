@@ -42,7 +42,7 @@ public class LoginController  implements IController  {
 				sesion.setAttribute("id_user", u.getUserId());
 				sesion.setAttribute("isAdmin", u.getIsAdmin());
 				if(u.getIsAdmin()){
-					 urlDispatcher = "WEB-INF/views/welcome.jsp";
+					 urlDispatcher = "WEB-INF/views/welcome_admin.jsp";
 				}
 				else{
 					 urlDispatcher = "WEB-INF/views/welcome.jsp";
