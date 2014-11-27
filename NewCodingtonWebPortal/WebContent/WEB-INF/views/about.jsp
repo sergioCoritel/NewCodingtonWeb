@@ -1,14 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="es">
 <head>
-<title>Home</title>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/estilos_home.css">
-<!--Enlazo la hoja de estilos externa-->
-<link rel="icon" type="image/ico" href="favicon.ico" />
-<script type="text/javascript" src="javascript/comprueba.js"></script>
-<!--Enlazo el script externo-->
+      <title>About</title>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="css/estilos_event.css"> <!--Enlazo la hoja de estilos externa-->
+	  <link rel="icon" type="image/ico" href="favicon.ico"/>
+      <script type="text/javascript" src="comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
@@ -73,7 +70,8 @@
 				<li><a href="welcome.do" class="active">home</a></li>
 				<li><a href="about.do">About</a></li>
 				<li><a href="WEB-INF/views/profile.jsp">Profile</a></li>
-				<li class="last"><a href="logout.do">Logout <%
+				<li class="last"><a href="lo
+				gout.do">Logout <%
    					 out.println(session.getAttribute("username"));
 				%>
 				</a></li>
@@ -82,17 +80,42 @@
 			</ul>
 		</div>
 
-		<!-- Contenedor -->
-		<div id="contenedor">
+   <!-- Contenedor -->
+   <div id="contenedor">
+       
+        <ul class="event">
+           
+            <li>
+              <div class = "about">
+              <h2>About New Codington</h2>
+               <p>  New Condington City is a new city built in the south of New Codignton Country. This city has two parts: north and south. There are four different types of places in each part. In the north, large business, museum, stadium and theater; while in the south, park, zoo, tourist atracttion and traditional market.<br>
+			   In this website, we can register and unregister in any type of events that occurs in any place. <br>
+			   For any suggestion or question, please contact with us. </p> 
+              </div>
+		    </li> 
 
-			<h1>Welcome to the website of New Codington</h1>
-
-			<img src="images/home.png" />
-
-		</div>
-		<!-- Fin de  Contenedor -->
-
-	</div>
+            <li>
+              <div class = "about">
+              <h2>About Creators' Web</h2>
+              <p>  Website created by :
+                <ol class = "names">
+			               <li>Alonso Jiménez, Pedro</li>
+                     <li>Andrés García, Sergio </li>
+                     <li>De Miguel Pérez, Beatriz</li>
+                     <li>García Pérez, Juan Manuel</li>
+                     <li>Guerrero Santana,Esther</li>
+                     <li>Salcedo Ortiz, Marloon</li>
+                     <li>Sanmiguel, Agustín</li>
+					           <li>Soria Gallego, Juan</li>
+                </ol>
+              </p> 
+              </div>
+			</li>
+			
+        </ul>     
+   </div><!-- Fin de  Contenedor -->
+        
+</div>
 
 </body>
 </html>

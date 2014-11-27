@@ -71,9 +71,9 @@
    <div id="rightTopMenuContainer">
       <ul class="rightTopMenu">
         <li id="leftTab">&nbsp;</li>
-        <li><a href="event.html" class="active">home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="profile.html">Profile</a></li>
+        <li><a href="welcome.do" class="active">home</a></li>
+        <li><a href="about.do">About</a></li>
+        <li><a href="profile.jsp">Profile</a></li>
        <li class="last"><a href="logout.do">Logout
 				 <%
    					 out.println(session.getAttribute("username"));

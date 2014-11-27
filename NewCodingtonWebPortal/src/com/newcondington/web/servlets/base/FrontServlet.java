@@ -12,6 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.newcondington.web.servlets.AboutController;
+import com.newcondington.web.servlets.ListEventsController;
+import com.newcondington.web.servlets.LoginController;
+import com.newcondington.web.servlets.LogoutController;
+import com.newcondington.web.servlets.RegisterController;
+import com.newcondington.web.servlets.RegisterToEventController;
+import com.newcondington.web.servlets.ShowEventController;
+import com.newcondington.web.servlets.ValidateRegisterController;
+import com.newcondington.web.servlets.WelcomeController;
+
 @WebServlet("/FrontServlet")
 public class FrontServlet extends HttpServlet {
 	
@@ -30,11 +40,13 @@ public class FrontServlet extends HttpServlet {
 	controllers.put("/welcome.do", new WelcomeController());
 	controllers.put("/login.do", new LoginController());
 	controllers.put("/list_events.do", new ListEventsController());
-
+	controllers.put("/logout.do", new LogoutController());
+	controllers.put("/about.do", new AboutController());
 	controllers.put("/logout.do", new LogoutController());
 	controllers.put("/show_event.do", new ShowEventController());
 	controllers.put("/register_to_event.do", new RegisterToEventController());
-    
+}
+	
     @Override
     public void init() throws ServletException {
 	super.init();
