@@ -1,9 +1,11 @@
-package es.codington.model.mappers;
+package com.newcodingtoncity.model.mappers;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
+
+
 
 public class TraditionalMarketMapper {
 

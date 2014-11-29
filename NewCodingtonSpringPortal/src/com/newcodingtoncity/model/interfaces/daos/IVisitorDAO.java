@@ -1,4 +1,4 @@
-package es.codington.model.interfaces.daos;
+package com.newcodingtoncity.model.interfaces.daos;
 
 
 public interface IVisitorDAO {

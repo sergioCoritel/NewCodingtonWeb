@@ -1,12 +1,15 @@
-package es.codington.model.daos;
+package com.newcodingtoncity.model.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
+
+
 
 public class UserDAO implements IUserDAO{
 

@@ -1,10 +1,12 @@
-package es.codington.model.interfaces.daos;
+package com.newcodingtoncity.model.interfaces.daos;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.newcodingtoncity.model.domain.Event;
+
+
 
 public interface IEventDAO {
 	

@@ -1,4 +1,4 @@
-package es.codington.model.services;
+package com.newcodingtoncity.model.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.EventSignUp;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
 import com.newcodingtoncity.model.interfaces.services.IEventSignUpService;
+
+
 
 public class EventSignUpService implements IEventSignUpService{
 

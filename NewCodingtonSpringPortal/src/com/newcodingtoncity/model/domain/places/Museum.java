@@ -1,4 +1,4 @@
-package es.codington.model.domain.places;
+package com.newcodingtoncity.model.domain.places;
 
 import java.io.File;
 

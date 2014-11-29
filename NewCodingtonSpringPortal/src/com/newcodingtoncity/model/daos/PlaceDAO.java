@@ -1,4 +1,4 @@
-package es.codington.model.daos;
+package com.newcodingtoncity.model.daos;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
@@ -30,7 +31,6 @@ import com.newcodingtoncity.model.mappers.TheaterMapper;
 import com.newcodingtoncity.model.mappers.TouristAttractionMapper;
 import com.newcodingtoncity.model.mappers.TraditionalMarketMapper;
 import com.newcodingtoncity.model.mappers.ZooMapper;
-import com.mysql.jdbc.Statement;
 
 
 public class PlaceDAO implements IPlaceDAO {
