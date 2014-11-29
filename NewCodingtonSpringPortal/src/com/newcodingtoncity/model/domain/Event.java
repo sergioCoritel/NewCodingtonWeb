@@ -1,8 +1,8 @@
-package es.codington.model.domain;
+package com.newcodingtoncity.model.domain;
 
 import com.newcodingtoncity.model.domain.places.Place;
 import com.newcodingtoncity.model.exceptions.DomainException;
-import com.newcodingtoncity.model.test.ValidateEvent;
+import com.newcodingtoncity.model.validators.ValidateEvent;
 
 
 /**

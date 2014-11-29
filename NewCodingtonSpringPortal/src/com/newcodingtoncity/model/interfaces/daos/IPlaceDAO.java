@@ -1,4 +1,4 @@
-package es.codington.model.interfaces.daos;
+package com.newcodingtoncity.model.interfaces.daos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +15,8 @@ import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
+
+
 
 public interface IPlaceDAO {
 	

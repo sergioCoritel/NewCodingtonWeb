@@ -1,4 +1,4 @@
-package es.codington.model.helper;
+package com.newcodingtoncity.model.helper;
 
 import java.io.File;
 import java.io.FileInputStream;

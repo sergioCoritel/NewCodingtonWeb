@@ -1,7 +1,7 @@
-package es.codington.model.domain.users;
+package com.newcodingtoncity.model.domain.users;
 
-import com.newcodingtoncity.model.test.ValidateUser;
 import com.newcodingtoncity.model.exceptions.DomainException;
+import com.newcodingtoncity.model.validators.ValidateUser;
 
 
 /**

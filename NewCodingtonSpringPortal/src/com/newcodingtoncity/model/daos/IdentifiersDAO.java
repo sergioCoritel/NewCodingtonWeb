@@ -1,4 +1,4 @@
-package es.codington.model.daos;
+package com.newcodingtoncity.model.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
+
 
 public class IdentifiersDAO implements IIdentifiersDAO{
 

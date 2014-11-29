@@ -1,4 +1,4 @@
-package es.codington.model.domain;
+package com.newcodingtoncity.model.domain;
 
 public class EventSignUp {
 	

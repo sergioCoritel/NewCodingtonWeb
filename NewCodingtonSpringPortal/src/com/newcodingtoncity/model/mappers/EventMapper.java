@@ -1,4 +1,4 @@
-package es.codington.model.mappers;
+package com.newcodingtoncity.model.mappers;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -13,6 +13,7 @@ import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
+
 
 public class EventMapper {
 

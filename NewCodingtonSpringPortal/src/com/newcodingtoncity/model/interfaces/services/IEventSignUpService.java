@@ -1,9 +1,11 @@
-package es.codington.model.interfaces.services;
+package com.newcodingtoncity.model.interfaces.services;
 
 import java.util.List;
 
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.EventSignUp;
+
+
 
 public interface IEventSignUpService {
 	

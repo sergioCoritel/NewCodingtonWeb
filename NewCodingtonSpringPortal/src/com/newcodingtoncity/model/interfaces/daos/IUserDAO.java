@@ -1,6 +1,7 @@
-package es.codington.model.interfaces.daos;
+package com.newcodingtoncity.model.interfaces.daos;
 
 import java.sql.SQLException;
+
 import com.newcodingtoncity.model.domain.users.User;
 
 public interface IUserDAO {

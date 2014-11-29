@@ -1,4 +1,4 @@
-package es.codington.model.exceptions;
+package com.newcodingtoncity.model.exceptions;
 
 /**
  * Class to represent exceptions  will be launched in the Services layer

@@ -1,7 +1,7 @@
-package es.codington.model.exceptions;
+package com.newcodingtoncity.model.exceptions;
 
 /**
- * Clase que representan las excepciones que serán lanzadas en la capa de DAOs
+ * Clase que representan las excepciones que serï¿½n lanzadas en la capa de DAOs
  *
  */
 @SuppressWarnings("serial")

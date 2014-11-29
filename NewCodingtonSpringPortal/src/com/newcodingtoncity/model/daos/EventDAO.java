@@ -1,4 +1,4 @@
-package es.codington.model.daos;
+package com.newcodingtoncity.model.daos;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,6 +11,7 @@ import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.mappers.EventMapper;
+
 
 
 

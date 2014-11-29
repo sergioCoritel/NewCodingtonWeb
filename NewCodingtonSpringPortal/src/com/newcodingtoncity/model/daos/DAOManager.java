@@ -1,4 +1,4 @@
-package es.codington.model.daos;
+package com.newcodingtoncity.model.daos;
 
 import java.sql.Connection;
 

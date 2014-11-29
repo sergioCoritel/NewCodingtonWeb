@@ -1,4 +1,4 @@
-package es.codington.model.domain.users;
+package com.newcodingtoncity.model.domain.users;
 
 public class Visitor extends User {
 
