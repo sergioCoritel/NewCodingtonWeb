@@ -1,13 +1,16 @@
 package com.newcodingtoncity.model.mappers;
 
-import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
 
-public class LargeBusinessMapper {
+public class LargeBusinessMapper implements RowMapper<LargeBusiness>{
 
-	public static LargeBusiness map(ResultSet resultSet) throws IOException{
+	@Override
+	public LargeBusiness mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		LargeBusiness largeBusiness = new LargeBusiness();
 		PlaceMapper.map(resultSet, largeBusiness);
 		return largeBusiness;

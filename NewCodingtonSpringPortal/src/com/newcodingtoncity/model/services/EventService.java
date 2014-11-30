@@ -1,9 +1,14 @@
 package com.newcodingtoncity.model.services;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.Event;
@@ -12,170 +17,58 @@ import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 
 
 public class EventService {
-	private ServletContext context = null;
-	
-	public EventService(ServletContext context){
-		this.context = context;
+	private IEventDAO eventDAO;
+
+	public EventService(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(  "beans.xml");  
+		DAOManager daoManager = (DAOManager) ctx.getBean("daoManager");
+		this.eventDAO = daoManager.getEventDAO();
 	}
 
-	public List<Event> getAllEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> allEvents = new ArrayList<Event>();
+	public List<Event> getAllEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showAllEvents();
 
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();	
-			allEvents = eventDAO.showAllEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return allEvents;		
 	}
 
-	public Event getEventById(int id_event){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		Event event = null;
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			event = eventDAO.showEventById(id_event);
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return event;
+	public Event getEventById(int id_event) throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showEventById(id_event);
 	}
 
-	public List<Event> getLargeBusinessEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> largeBusinessEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			largeBusinessEvents = eventDAO.showLargeBusinessEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return largeBusinessEvents;
+	public List<Event> getLargeBusinessEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showLargeBusinessEvents();
+
 	}
-	
-	public List<Event> getMuseumEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> museumEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			museumEvents = eventDAO.showMuseumEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return museumEvents;
+
+	public List<Event> getMuseumEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showMuseumEvents();
 	}
-	
-	public List<Event> getParkEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> parkEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			parkEvents = eventDAO.showParkEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return parkEvents;
+
+	public List<Event> getParkEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showParkEvents();
 	}
-	
-	public List<Event> getStadiumEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> stadiumEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			stadiumEvents = eventDAO.showStadiumEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return stadiumEvents;
+
+	public List<Event> getStadiumEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showStadiumEvents();
+
 	}
-	
-	public List<Event> getTheaterEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> theaterEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			theaterEvents = eventDAO.showTheaterEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return theaterEvents;
+
+	public List<Event> getTheaterEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showTheaterEvents();
+
 	}
-	
-	public List<Event> getTouristAttractionEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> touristAttractionEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			touristAttractionEvents = eventDAO.showTouristAttractionEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return touristAttractionEvents;
+
+	public List<Event> getTouristAttractionEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showTouristAttractionEvents();
+
 	}
-	
-	public List<Event> getTraditionalMarketEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> traditionalMarketEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			traditionalMarketEvents = eventDAO.showTraditionalMarketEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return traditionalMarketEvents;
+
+	public List<Event> getTraditionalMarketEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showTraditionalMarketEvents();
+
 	}
-	
-	public List<Event> getZooEvents(){
-		DAOManager manager = null;
-		IEventDAO eventDAO = null;
-		List<Event> zooEvents = new ArrayList<Event>();
-		try {
-			manager = new DAOManager(context);
-			eventDAO = manager.getEventDAO();
-			zooEvents = eventDAO.showZooEvents();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}
-		return zooEvents;
+
+	public List<Event> getZooEvents() throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.showZooEvents();
+
 	}
 }

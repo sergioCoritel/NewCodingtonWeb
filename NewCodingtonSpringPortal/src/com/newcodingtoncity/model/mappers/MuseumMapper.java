@@ -1,14 +1,17 @@
 package com.newcodingtoncity.model.mappers;
 
-import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.newcodingtoncity.model.domain.places.Museum;
 
 
-public class MuseumMapper {
+public class MuseumMapper implements RowMapper<Museum>{
 
-	public static Museum map(ResultSet resultSet) throws IOException{
+	@Override
+	public Museum mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		Museum museum = new Museum();
 		PlaceMapper.map(resultSet, museum);
 		return museum;

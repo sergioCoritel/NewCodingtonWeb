@@ -1,15 +1,20 @@
 package com.newcodingtoncity.model.mappers;
 
-import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 
 
 
-public class TraditionalMarketMapper {
+public class TraditionalMarketMapper implements RowMapper<TraditionalMarket>{
 
-	public static TraditionalMarket map(ResultSet resultSet) throws IOException{
+
+	@Override
+	public TraditionalMarket mapRow(ResultSet resultSet, int numRow)
+			throws SQLException {
 		TraditionalMarket traditionalMarket = new TraditionalMarket();
 		PlaceMapper.map(resultSet, traditionalMarket);
 		return traditionalMarket;
