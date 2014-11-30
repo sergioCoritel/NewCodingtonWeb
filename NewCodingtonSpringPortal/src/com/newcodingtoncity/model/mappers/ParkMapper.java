@@ -1,14 +1,17 @@
 package com.newcodingtoncity.model.mappers;
 
-import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.newcodingtoncity.model.domain.places.Park;
 
 
-public class ParkMapper {
+public class ParkMapper implements RowMapper<Park> {
 
-	public static Park map(ResultSet resultSet) throws IOException{
+	@Override
+	public Park mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		Park park = new Park();
 		PlaceMapper.map(resultSet, park);
 		return park;

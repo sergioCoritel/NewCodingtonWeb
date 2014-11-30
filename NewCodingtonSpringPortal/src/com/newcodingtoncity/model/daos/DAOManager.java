@@ -1,100 +1,87 @@
 package com.newcodingtoncity.model.daos;
 
-import java.sql.Connection;
+import java.util.Properties;
 
-import javax.servlet.ServletContext;
+import javax.sql.DataSource;
 
-import com.newcodingtoncity.model.helper.CodingtonConnectToDB;
-import com.newcodingtoncity.model.helper.DatabaseHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
 import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
 import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
-
 public class DAOManager {
 
-	private Connection connection;
-	private ServletContext context;
-	public DatabaseHelper databaseHelper;
+	private DataSource dataSource;
+	private Properties queryProperties;
+	private JdbcTemplate jdbcTemplate; 
 
 
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public DAOManager(ServletContext context) {		
-		connection  = CodingtonConnectToDB.createConnection();
-		this.context = context;
-		this.databaseHelper = new DatabaseHelper(context);
-	}
-	public DAOManager() {		
-		connection  = CodingtonConnectToDB.createConnectionWithoutDataSource();	
-		this.context = null;
-		this.databaseHelper = new DatabaseHelper(null);
+	public void setQueryProperties(Properties queryProperties) {
+		this.queryProperties = queryProperties;
 	}
 
 
-	public DatabaseHelper getDatabaseHelper() {
-		return databaseHelper;
-	}
-	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate){  
+		this.jdbcTemplate = jdbcTemplate;  
+	}  
+
+	public void setDataSource(DataSource dataSource) {  
+		this.jdbcTemplate = new JdbcTemplate(dataSource);  
+	}  
+
+	public JdbcTemplate getTemplate(){  
+		return jdbcTemplate;  
+
+	}  
+
+
 	/**
 	 * Return an instance of IEventDAO
 	 * @return
 	 */
-	public IEventDAO getEventDAO() {		 	
-		return new EventDAO(connection, databaseHelper);				 			
-	}		 	
-
-	/**
-	 * Return an instance of IVisitorDAO
-	 * 
-	 * @return IVisitorDAO
-	 */
-	public IUserDAO getUserDAO() {
-		return new UserDAO(connection,databaseHelper);	
-	}
-	
-	public IPlaceDAO getPlaceDAO() {
-		return new PlaceDAO(connection, databaseHelper);				
-	}
-
-	/**
-	 * Return an instance of IEventSignUpDAO
-	 * 
-	 * @return IEventSignUpDAO
-	 */
-	public IEventSignUpDAO getEventSignUpDAO() {
-		return new EventSignUpDAO(connection, databaseHelper);		
-	}
+	 public IEventDAO getEventDAO() {		 	
+		 return new EventDAO(jdbcTemplate,queryProperties);				 			
+	 }		 	
 
 
-	/**
-	 * Return an instance of IIdentifiersDAO
-	 * 
-	 * @return ISequencerDAO
-	 */
-	public IIdentifiersDAO getIdentifiersDAO() {
-		return new IdentifiersDAO(connection, databaseHelper);		
-	}
-
-
-	public void closeConnectionWithCommit() {
-	
-			CodingtonConnectToDB.commit(connection);
-			CodingtonConnectToDB.closeConnection(connection);
-		
-	}
-
-	public void closeConnectionWithRollback() {
-
-			CodingtonConnectToDB.rollback(connection);
-			CodingtonConnectToDB.closeConnection(connection);
-		
-	}
+	 public IPlaceDAO getPlaceDAO() {
+		 return new PlaceDAO(jdbcTemplate,queryProperties);				
+	 }
+	 //
+	 //	/**
+	 //	 * Return an instance of IVisitorDAO
+	 //	 * 
+	 //	 * @return IVisitorDAO
+	 //	 */
+	 //	public IUserDAO getUserDAO() {
+	 //		return new UserDAO();	
+	 //	}
+	 //	
+	 //	/**
+	 //	 * Return an instance of IEventSignUpDAO
+	 //	 * 
+	 //	 * @return IEventSignUpDAO
+	 //	 */
+	 //	public IEventSignUpDAO getEventSignUpDAO() {
+	 //		return new EventSignUpDAO();		
+	 //	}
+	 //
+	 //
+	 //	/**
+	 //	 * Return an instance of IIdentifiersDAO
+	 //	 * 
+	 //	 * @return ISequencerDAO
+	 //	 */
+	 //	public IIdentifiersDAO getIdentifiersDAO() {
+	 //		return new IdentifiersDAO();		
+	 //	}
+	 //
 
 
 

@@ -1,8 +1,13 @@
 package com.newcodingtoncity.model.services;
 
 import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newcodingtoncity.model.daos.DAOManager;
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
@@ -14,204 +19,78 @@ import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
+import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.services.IPlaceService;
 
 public class PlaceService implements IPlaceService{
-	
-	public List<LargeBusiness> getLargeBusiness(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<LargeBusiness> largeBusiness = new ArrayList<LargeBusiness>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			largeBusiness = placeDAO.showLargeBusiness();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return largeBusiness;		
+	private IPlaceDAO placeDAO;
+
+	public PlaceService(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(  "beans.xml");  
+		DAOManager daoManager = (DAOManager) ctx.getBean("daoManager");
+		this.placeDAO = daoManager.getPlaceDAO();
 	}
-	
-	public List<Museum> getMuseums(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<Museum> museums = new ArrayList<Museum>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			museums = placeDAO.showMuseums();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return museums;		
+	public List<LargeBusiness> getLargeBusiness() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showLargeBusiness();
+
 	}
-	
-	public List<Park> getParks(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<Park> parks = new ArrayList<Park>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			parks = placeDAO.showParks();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return parks;		
+
+	public List<Museum> getMuseums() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showMuseums();
+
 	}
-	
-	public List<Stadium> getStadiums(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<Stadium> stadiums = new ArrayList<Stadium>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			stadiums = placeDAO.showStadiums();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return stadiums;		
+
+	public List<Park> getParks() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showParks();
+
 	}
-	
-	public List<Theater> getTheaters(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<Theater> theaters = new ArrayList<Theater>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			theaters = placeDAO.showTheaters();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return theaters;		
+
+	public List<Stadium> getStadiums() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showStadiums();
+
 	}
-	
-	public List<TouristAttraction> getTouristAttractions(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<TouristAttraction> touristAttractions = new ArrayList<TouristAttraction>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			touristAttractions = placeDAO.showTouristAttractions();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return touristAttractions;		
+
+	public List<Theater> getTheaters() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showTheaters();
+
 	}
-	
-	public List<TraditionalMarket> getTraditionalMarkets(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<TraditionalMarket> traditionalMarkets = new ArrayList<TraditionalMarket>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			traditionalMarkets = placeDAO.showTraditionalMarkets();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return traditionalMarkets;		
+
+	public List<TouristAttraction> getTouristAttractions() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showTouristAttractions();
+
 	}
-	
-	public List<Zoo> getZoos(){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		List<Zoo> zoos = new ArrayList<Zoo>();
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			zoos = placeDAO.showZoos();
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return zoos;		
+
+	public List<TraditionalMarket> getTraditionalMarkets() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showTraditionalMarkets();
+
 	}
-	
+
+	public List<Zoo> getZoos() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showZoos();
+
+	}
+
 	public int insertPlace(Place place,int typeOfPlace){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		int affectedRows = 0;
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			affectedRows = placeDAO.insertPlace(place, typeOfPlace);
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return affectedRows;		
+		return placeDAO.insertPlace(place, typeOfPlace);
+
 	}
-	
+
 	public int deletePlace(int placeId){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		int affectedRows = 0;
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			affectedRows = placeDAO.deletePlace(placeId);
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return affectedRows;		
+		return placeDAO.deletePlace(placeId);
+
 	}
-	
-	public int updatePlace(Place place,int typeOfPlace){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
-		int affectedRows = 0;
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			affectedRows = placeDAO.updatePlace(place, typeOfPlace);
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}	
-		return affectedRows;		
+
+	public int updatePlace(Place place,int typeOfPlace) throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.updatePlace(place, typeOfPlace);
+
 	}
-	
-	public void changeImage(int id, File image){
-		DAOManager manager = null;
-		IPlaceDAO placeDAO = null;
+	@Override
+	public void changeImage(int id, File image) throws ClassNotFoundException,
+			SQLException, IOException {
+//		return placeDAO.changeImage(id, image);
 		
-		try {
-			manager = new DAOManager();
-			placeDAO = manager.getPlaceDAO();	
-			placeDAO.changeImage(id, image);
-			manager.closeConnectionWithCommit();
-		} catch (Exception e) {
-			manager.closeConnectionWithRollback();
-			e.printStackTrace();
-		}			
 	}
-	
-	
-	
-	
+
 
 }

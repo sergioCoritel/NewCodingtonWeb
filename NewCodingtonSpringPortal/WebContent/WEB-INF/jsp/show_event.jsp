@@ -72,9 +72,9 @@
 
 			</ul>
 
-			<div class="button">Register</div>
+			<div class="button"><a href="register_event.html?id=${event.eventId}">Register</a></div>
 
-			<div class="button">Unregister</div>
+			<div class="button"><a href="unregister_event.html?id=${event.eventId}">Unregister</a></div>
 
 		</div>
 		<!-- Fin de  Contenedor -->

@@ -1,8 +1,9 @@
 package com.newcodingtoncity.model.mappers;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
 
 import com.newcodingtoncity.model.domain.Event;
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
@@ -14,12 +15,11 @@ import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
 
+public class EventMapper implements RowMapper<Event>{
 
-public class EventMapper {
-
-	public static Event map(ResultSet resultSet) throws IOException{
+	@Override
+	public Event mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		Event event = new Event();
-		try {
 			event.setEventId(resultSet.getInt("id_event"));
 			event.setEventName(resultSet.getString("name_event"));
 			event.setDescription(resultSet.getString("description_event"));
@@ -32,36 +32,34 @@ public class EventMapper {
 			switch (resultSet.getInt("id_type_place")) {
 			case LargeBusiness.ID_TYPE_OF_PLACE:
 
-				event.setPlace(LargeBusinessMapper.map(resultSet));
+				event.setPlace(new LargeBusinessMapper().mapRow(resultSet, numRow));
 				break;
 			case Museum.ID_TYPE_OF_PLACE:
-				event.setPlace(MuseumMapper.map(resultSet));
+				event.setPlace(new MuseumMapper().mapRow(resultSet, numRow));
 				break;
 			case Park.ID_TYPE_OF_PLACE:
-				event.setPlace(ParkMapper.map(resultSet));
+				event.setPlace(new ParkMapper().mapRow(resultSet, numRow));
 				break;
 			case Stadium.ID_TYPE_OF_PLACE:
-				event.setPlace(StadiumMapper.map(resultSet));
+				event.setPlace(new StadiumMapper().mapRow(resultSet, numRow));
 				break;
 			case Theater.ID_TYPE_OF_PLACE:
-				event.setPlace(TheaterMapper.map(resultSet));
+				event.setPlace(new TheaterMapper().mapRow(resultSet, numRow));
 				break;
 			case TouristAttraction.ID_TYPE_OF_PLACE:
-				event.setPlace(TouristAttractionMapper.map(resultSet));
+				event.setPlace(new TouristAttractionMapper().mapRow(resultSet, numRow));
 				break;
 			case TraditionalMarket.ID_TYPE_OF_PLACE:
-				event.setPlace(TraditionalMarketMapper.map(resultSet));
+				event.setPlace(new TraditionalMarketMapper().mapRow(resultSet, numRow));
 				break;
 			case Zoo.ID_TYPE_OF_PLACE:
-				event.setPlace(ZooMapper.map(resultSet));
+				event.setPlace(new ZooMapper().mapRow(resultSet, numRow));
 				break;
 
 			default:
 				break;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		return event;
 	}
 
