@@ -13,7 +13,7 @@ public interface IUserDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int loginDAO(User u) throws SQLException, ClassNotFoundException;
+	public User loginDAO(User u) throws SQLException, ClassNotFoundException;
 	
 	/**
 	 * 

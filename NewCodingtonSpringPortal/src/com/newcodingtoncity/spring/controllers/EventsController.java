@@ -74,4 +74,14 @@ public class EventsController{
 	public String unRegisterEventController() {
 		return "show_event";
 	}
+	
+	@RequestMapping(value = "/create_event.htm")
+	public String newEventController() {
+		return "handle_event";
+	}
+	
+	@RequestMapping(value = "/update_event.htm")
+	public String updateEventController() {
+		return "handle_event";
+	}
 }

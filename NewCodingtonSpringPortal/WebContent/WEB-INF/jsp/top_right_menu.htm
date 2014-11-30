@@ -1,12 +1,14 @@
 <div id="rightTopMenuContainer">
 	<ul class="rightTopMenu">
 		<li id="leftTab">&nbsp;</li>
-		<li><a href="welcome.do" class="active">home</a></li>
-		<li><a href="about.do">About</a></li>
-		<li><a href="profile.do">Profile</a></li>
-		<li class="last"><a href="lo
-				gout.do">Logout <%
-				out.println(session.getAttribute("username")); %> </a></li>
+		<li><a href="welcome.htm" class="active">home</a></li>
+		<li><a href="about.htm">About</a></li>
+		<li><a href="profile.htm">Profile</a></li>
+		<c:if test="${sessionScope.user.isAdmin}">
+			<li><a href="create_event.htm">Add event</a></li>
+			<li><a href="create_place.htm">Add place</a></li>
+		</c:if>
+		<li class="last"><a href="logout.htm">Logout ${sessionScope.user.userName}</a></li>
 		<li id="rightTab">&nbsp;</li>
 		<div class="clear"></div>
 	</ul>

@@ -42,10 +42,10 @@
 						<h2>About Creators' Web</h2>
 						<p>Website created by :
 						<ol class="names">
-							<li>Alonso Jim√©nez, Pedro</li>
-							<li>Andr√©s Garc√≠a, Sergio</li>
+							<li>Alonso Jimenez, Pedro</li>
+							<li>AndrÈs GarcÌ≠a, Sergio</li>
 							<li>De Miguel P√©rez, Beatriz</li>
-							<li>Garc√≠a P√©rez, Juan Manuel</li>
+							<li>GarcÌa PÈrez, Juan Manuel</li>
 							<li>Guerrero Santana,Esther</li>
 							<li>Salcedo Ortiz, Marloon</li>
 							<li>Sanmiguel, Agust√≠n</li>

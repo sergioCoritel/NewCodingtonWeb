@@ -14,7 +14,7 @@ public interface IUserService {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int login(User u) throws SQLException, ClassNotFoundException;
+	public User login(User u) throws SQLException, ClassNotFoundException;
 	
 	
 	/**
