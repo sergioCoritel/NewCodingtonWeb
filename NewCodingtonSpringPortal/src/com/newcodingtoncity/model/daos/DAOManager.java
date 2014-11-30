@@ -53,15 +53,15 @@ public class DAOManager {
 	 public IPlaceDAO getPlaceDAO() {
 		 return new PlaceDAO(jdbcTemplate,queryProperties);				
 	 }
-	 //
-	 //	/**
-	 //	 * Return an instance of IVisitorDAO
-	 //	 * 
-	 //	 * @return IVisitorDAO
-	 //	 */
-	 //	public IUserDAO getUserDAO() {
-	 //		return new UserDAO();	
-	 //	}
+	 
+	 	/**
+	 	 * Return an instance of IVisitorDAO
+	 	 * 
+	 	 * @return IVisitorDAO
+	 	 */
+	 	public IUserDAO getUserDAO() {
+	 		return new UserDAO(jdbcTemplate, queryProperties);	
+	 	}
 	 //	
 	 //	/**
 	 //	 * Return an instance of IEventSignUpDAO

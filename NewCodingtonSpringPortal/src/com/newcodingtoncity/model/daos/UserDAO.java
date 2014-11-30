@@ -1,274 +1,121 @@
 package com.newcodingtoncity.model.daos;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import com.newcodingtoncity.model.domain.users.User;
-import com.newcodingtoncity.model.helper.DatabaseHelper;
+import com.newcodingtoncity.model.domain.users.Visitor;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
+import com.newcodingtoncity.model.mappers.VisitorMapper;
 
 
 
 public class UserDAO implements IUserDAO{
 
-	// JDBC API classes for data persistence
-	private Connection connection = null;
-	private PreparedStatement statement = null;
-	private ResultSet resultSet = null;
-	DAOManager manager = null;
-	private DatabaseHelper databaseHelper;
 
-	/**
-	 * Constructor
-	 * @param connection
-	 */
-	public UserDAO(Connection connection, DatabaseHelper databaseHelper) {
-		this.connection = connection;
-		this.databaseHelper = databaseHelper;
-	}
+	private JdbcTemplate jdbcTemplateObject;
+	private Properties queryProperties;
 
+	public UserDAO(JdbcTemplate jdbcTemplateObject,Properties queryProperties ) {
+		this.jdbcTemplateObject = jdbcTemplateObject;
+		this.queryProperties = queryProperties;
+	} 
 
 	@Override
-	public int loginDAO(User u) throws SQLException, ClassNotFoundException{
-
-		int userId = 0;		
-
-		try{		
-		
-			String sql  = databaseHelper.getQuery("selec_login");
-			statement = connection.prepareStatement(sql);
-
-			statement.setString(1, u.getUserName());
-			statement.setString(2, u.getPassword());
-
-			resultSet = statement.executeQuery();
-
-			while(resultSet.next()){
-				userId = resultSet.getInt("id_user");
-				if(resultSet.getInt("is_admin") == 1){
-					u.setIsAdmin(true);
-					}
-				u.setUserId(userId);
+	public User loginDAO(final User u) throws SQLException, ClassNotFoundException{	
+		List<Visitor> users =  jdbcTemplateObject.query(queryProperties.getProperty("selec_login"),new PreparedStatementSetter(){
+			@Override
+			public void setValues(PreparedStatement statement)
+					throws SQLException {
+				statement.setString(1, u.getUserName());
+				statement.setString(2, u.getPassword());
 			}
-			
-		}catch (Exception ee) {
-			System.out.println(" loginDAO 1: "+ ee.getMessage());
-			return userId;
-
-	
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close(); 
-					resultSet = null;
-				}
-				if (statement != null) {
-					statement.close(); 
-					statement = null;
-				}
-
-				/*if (connection != null) {
-					manager.closeConnectionWithCommit();
-					connection = null;
-				}*/
-				
-			}catch (Exception ee) {
-				System.out.println(" loginDAO: "+ ee.getMessage());
-				return userId;
-			}
-
-		} 
-
-		return userId;
-
+		}, new VisitorMapper());
+		return users.get(0);
 	}	
 
 
-
-	
 	@Override
-	public int updateInfoDAO(User u) throws SQLException, ClassNotFoundException{
+	public int updateInfoDAO(final User u) throws SQLException, ClassNotFoundException{
 
-		int affectedRows = 0;
-
-		try{
-		
-			//connection = CodingtonConnectToDB.createConnection();
-			
-			String sql  = databaseHelper.getQuery("change_info");	              
-			statement = connection.prepareStatement(sql);
-			statement.setString(1, u.getFirstName());
-			statement.setString(2, u.getLastName());
-			statement.setString(3, u.getDni());
-			statement.setString(4, u.getEmail());
-			statement.setString(5, u.getPhoneNumber());
-			statement.setString(6, u.getAddress());
-			statement.setInt(7, u.getUserId());
-			affectedRows = statement.executeUpdate(); 
-
-		}catch (Exception ee) {
-			System.out.println(" updateInfoDAO 1: "+ ee.getMessage());
-			return affectedRows;
-
-		}finally {
-
-			try {
-
-				if (resultSet != null) {
-					resultSet.close(); 
-					resultSet = null;
-				}
-				if (statement != null) {
-					statement.close(); 
-					statement = null;
-				}
-				
-				/*if (connection != null) {
-					manager.closeConnectionWithCommit();
-					connection = null;
-				}*/
-
-			}catch (Exception ee) {
-				System.out.println(" updateInfoDAO 2: "+ ee.getMessage());
-				return affectedRows;
+		int affectedRows = 0;	
+		affectedRows = jdbcTemplateObject.update(queryProperties.getProperty("change_info"), 
+				new PreparedStatementSetter(){
+			@Override
+			public void setValues(PreparedStatement statement)
+					throws SQLException {
+				statement.setString(1, u.getFirstName());
+				statement.setString(2, u.getLastName());
+				statement.setString(3, u.getDni());
+				statement.setString(4, u.getEmail());
+				statement.setString(5, u.getPhoneNumber());
+				statement.setString(6, u.getAddress());
+				statement.setInt(7, u.getUserId());
 			}
-		}
+		});
 
 		return affectedRows;
 	}  
-	
-	
+
+
 
 	@Override
-	public boolean updatePasswordDAO(User u, String new_pass) throws SQLException, ClassNotFoundException {
+	public boolean updatePasswordDAO(final User u, final String new_pass) throws SQLException, ClassNotFoundException {
+		int affectedRows = 0;	
+		affectedRows = jdbcTemplateObject.update(queryProperties.getProperty("change_pass"), 
+				new PreparedStatementSetter(){
+			@Override
+			public void setValues(PreparedStatement statement)
+					throws SQLException {
+				statement.setString(1, new_pass);
+				statement.setInt(2, u.getUserId());
+			}
+		});
+		return affectedRows == 1;
+	}
+
+
+
+	@Override
+	public boolean registerNewVisitorDAO(final User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
-
-		try{
-
-			//connection = CodingtonConnectToDB.createConnection();
-			//connection.setAutoCommit(false);
-			String sql  = databaseHelper.getQuery("change_pass");
-			statement = connection.prepareStatement(sql);
-
-			statement.setString(1, new_pass);
-			statement.setInt(2, u.getUserId());
-
-			affectedRows = statement.executeUpdate();
-
-		}catch (Exception ee) {
-			System.out.println(" updatePasswordDAO 1: "+ ee.getMessage());
-			return false;
-
-		}finally {
-
-			try {
-
-				if (resultSet != null) {
-					resultSet.close(); 
-					resultSet = null;
-				}
-				if (statement != null) {
-					statement.close(); 
-					statement = null;
-				}
-
-				/*if (connection != null) {
-					manager.closeConnectionWithCommit();
-					connection = null;
-				}*/
-				
-			}catch (Exception ee) {
-				System.out.println(" updatePasswordDAO 2: "+ ee.getMessage());
-				return false;
+		int countUsersFound = jdbcTemplateObject.queryForInt(queryProperties.getProperty("isAcountExists"), 
+				new PreparedStatementSetter(){
+			@Override
+			public void setValues(PreparedStatement statement)
+					throws SQLException {
+				statement.setString(1, u.getEmail());
+				statement.setString(2, u.getUserName());
 			}
-		}
+		});
 
-		if(affectedRows==1){
-			return true;
-		}
-		else{
-			return false;
-		}
+		if(countUsersFound == 0){	
+			affectedRows = jdbcTemplateObject.update(queryProperties.getProperty("registerUser"), 
+					new PreparedStatementSetter(){
+				@Override
+				public void setValues(PreparedStatement statement)
+						throws SQLException {
+					statement.setString(1, u.getUserName());
+					statement.setString(2, u.getPassword());
+					statement.setString(3, u.getFirstName());
+					statement.setString(4, u.getLastName());
+					statement.setString(5, u.getDni());
+					statement.setString(6, u.getEmail());
+					statement.setString(7, u.getPhoneNumber());
+					statement.setString(8, u.getAddress());
+					statement.setInt(9, 0);
+				}
+			});
 
+			return affectedRows == 1;
+		}
+		return false;
 	}
-	
-	
-
-	@Override
-	public boolean registerNewVisitorDAO(User u) throws SQLException, ClassNotFoundException{
-
-		int affectedRows = 0, userId=0;
-
-		try{
-
-			//connection = CodingtonConnectToDB.createConnection();
-			//connection.setAutoCommit(false);
-			
-			String sql  = databaseHelper.getQuery("isAcountExists");	              
-			statement = connection.prepareStatement(sql);
-			statement.setString(1, u.getEmail());
-			statement.setString(2, u.getUserName());
-			resultSet = statement.executeQuery();
-
-			while (resultSet.next()){
-				userId = resultSet.getInt(1);
-			}
-
-			/*If userId != 0, there is a user registered with this acount*/
-			if(userId==0){
-			
-				sql  = databaseHelper.getQuery("registerUser");	              
-				statement = connection.prepareStatement(sql);
-				statement.setString(1, u.getUserName());
-				statement.setString(2, u.getPassword());
-				statement.setString(3, u.getFirstName());
-				statement.setString(4, u.getLastName());
-				statement.setString(5, u.getDni());
-				statement.setString(6, u.getEmail());
-				statement.setString(7, u.getPhoneNumber());
-				statement.setString(8, u.getAddress());
-				statement.setInt(9, 0);
-	
-				affectedRows = statement.executeUpdate(); 
-			}
-
-		}catch (Exception ee) {
-			System.out.println(" registerNewVisitorDAO 1: "+ ee.getMessage());
-			return false;
-
-		}finally {
-
-			try {
-
-				if (resultSet != null) {
-					resultSet.close(); 
-					resultSet = null;
-				}
-				if (statement != null) {
-					statement.close(); 
-					statement = null;
-				}
-
-				/*if (connection != null) {
-					manager.closeConnectionWithCommit();
-					connection = null;
-				}*/
-
-			}catch (Exception ee) {
-				System.out.println(" registerNewVisitorDAO 2: "+ ee.getMessage());
-				return false;
-			}
-		}
-
-		if(affectedRows!=0){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-
 }

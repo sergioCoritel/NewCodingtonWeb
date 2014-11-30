@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -10,7 +10,8 @@
 <link rel="icon" type="image/ico" href="favicon.ico" />
 
 <!--STYLESHEETS-->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/login.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/css/login.css" />" />
 
 <!--SCRIPTS-->
 <script type="text/javascript"
@@ -62,9 +63,11 @@
 				<span>Enter your Login</span>
 				<!--END DESCRIPTION-->
 				<c:if test="${requestScope.error ne null}">
-					<span class="messageError">"${requestScope.error}"</span>
+					<h6 class="messageError">${requestScope.error}</h6>
 				</c:if>
 			</div>
+
+
 			<!--END HEADER-->
 
 			<!--CONTENT-->
@@ -84,7 +87,7 @@
 			<div class="footer">
 				<!--LOGIN BUTTON-->
 				<input type="submit" name="submit" value="Login" class="button"
-					formaction="welcome.htm" />
+					formaction="login.htm" />
 				<!--END LOGIN BUTTON-->
 				<!--REGISTER BUTTON-->
 				<a class="register" href="register.htm"> Register </a>
