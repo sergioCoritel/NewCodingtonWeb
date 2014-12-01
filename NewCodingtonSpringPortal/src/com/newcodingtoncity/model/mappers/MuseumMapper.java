@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,7 +14,12 @@ public class MuseumMapper implements RowMapper<Museum>{
 	@Override
 	public Museum mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		Museum museum = new Museum();
-		PlaceMapper.map(resultSet, museum);
+		try {
+			PlaceMapper.map(resultSet, museum);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return museum;
 	}
 
