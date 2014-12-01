@@ -1,6 +1,7 @@
 package com.newcodingtoncity.spring.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +49,28 @@ public class UsersController{
 		return "index";
 	}
 
+	@RequestMapping(value = "/profile.htm")
+	public String profileController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+		try {
+			
+			User userSelected = new Visitor();
+			userSelected = (User) request.getSession().getAttribute("user");
+			UserService userservice = new UserService();
+			User userFound = userservice.login(userSelected);
+				if(userFound == null){
+					request.setAttribute("error", "Profile incorrecto.");
+					return "welcome";
+				}		
+
+				else{
+					request.getSession().setAttribute("user", userFound);
+					return "profile";
+				}
+			} catch (Exception e) {
+				request.setAttribute("error", "Login incorrecto."+ e.getMessage());
+				return "welcome";
+			}
+	}
 
 	@RequestMapping(value = "/register.htm")
 	public String registerController() {
@@ -99,6 +122,92 @@ public class UsersController{
 			return "index";
 		}
 
+	}
+
+
+			/*	else{
+					request.getSession().setAttribute("user", userFound);
+					return "profile";
+				}
+			} catch (Exception e) {
+				request.setAttribute("error", "Login incorrecto."+ e.getMessage());
+				return "welcome";
+			}
+		
+	}*/
+	
+	@RequestMapping(value = "/change_info.htm")
+	public String change_infoController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+		
+		return "change_info";
+	}
+	
+	@RequestMapping(value = "/change_pass.htm")
+	public String change_passController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+		
+		return "change_password";
+	}
+	
+	@RequestMapping(value = "/update_info_user.htm")
+	public String update_info_userController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+		
+		boolean result_update=false;
+		try {
+			
+			User userUpdated = new Visitor();
+			userUpdated.setFirstName(request.getParameter("campoNombre"));
+			userUpdated.setLastName(request.getParameter("campoApellidos"));
+			userUpdated.setDni(request.getParameter("campoDNI"));
+			userUpdated.setAddress(request.getParameter("campoDomicilio"));
+			userUpdated.setPhoneNumber(request.getParameter("campoTelefono"));
+			userUpdated.setEmail(request.getParameter("campoMail"));
+			userUpdated.setUserId(Integer.parseInt(request.getParameter("id")));
+			UserService userservice = new UserService();
+			result_update = userservice.updateInfo(userUpdated);
+				if(result_update == false){
+					request.setAttribute("error", "Update Info incorrecto.");
+					return "change_info";
+				}		
+
+				else{
+					return "redirect:/profile.htm";
+				}
+			
+		} catch (Exception e) {
+			request.setAttribute("error", "Update Infor incorrecto."+ e.getMessage());
+			return "change_info";
+		}
+		
+	}
+	
+	@RequestMapping(value = "/update_pass_user.htm")
+	public String update_pass_userController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+		
+		boolean result_update=false;
+		try {
+			
+			User userpassUpdated = new Visitor();
+			userpassUpdated.setUserId(Integer.parseInt(request.getParameter("id")));
+			String nw_pass = request.getParameter("campoPassword");
+			UserService userservice = new UserService();
+			result_update = userservice.updatePassword(userpassUpdated, nw_pass);
+				if(result_update == false){
+					request.setAttribute("error", "Update Pass incorrecto.");
+					return "change_password";
+				}		
+
+				else{
+					return "redirect:/profile.htm";
+				}
+
+			
+			
+			
+		} catch (Exception e) {
+			request.setAttribute("error", "Update Pass incorrecto."+ e.getMessage());
+			return "change_password";
+		}
+			
 	}
 
 }
