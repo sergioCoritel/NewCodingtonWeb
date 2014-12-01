@@ -39,16 +39,20 @@
 
 				<li>
 					<div class="about">
+						<center><p>
+							Copyright © <a href="http://accenture.com">Coritel</a>
+						</p>
+						</center>
 						<h2>About Creators' Web</h2>
 						<p>Website created by :
 						<ol class="names">
-							<li>Alonso Jimenez, Pedro</li>
-							<li>Andrés Garcí­a, Sergio</li>
-							<li>De Miguel PÃ©rez, Beatriz</li>
+							<li>Alonso Jiménez, Pedro</li>
+							<li>Andrés García, Sergio</li>
+							<li>De Miguel Pérez, Beatriz</li>
 							<li>García Pérez, Juan Manuel</li>
 							<li>Guerrero Santana,Esther</li>
 							<li>Salcedo Ortiz, Marloon</li>
-							<li>Sanmiguel, AgustÃ­n</li>
+							<li>Andrés Sanmiguel, Agustín</li>
 							<li>Soria Gallego, Juan</li>
 						</ol>
 						</p>
