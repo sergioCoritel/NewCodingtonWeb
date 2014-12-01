@@ -60,16 +60,6 @@ public class EventsController{
 		modelAndView.addObject("event", findEvent);
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/register_event.htm")
-	public String registerEventController() {
-		return "show_event";
-	}
-
-	@RequestMapping(value = "/unregister_event.htm")
-	public String unRegisterEventController() {
-		return "show_event";
-	}
 	
 	@RequestMapping(value = "/create_event.htm")
 	public String newEventController() {
@@ -86,8 +76,6 @@ public class EventsController{
 		int id = Integer.parseInt(request.getParameter("id"));
 		EventService eventService = new EventService();	
 		eventService.deleteEvent(id);
-		//EventService eventService = new EventService();	
-		//eventService.deleteEvent(eventId);
 		return "welcome";
 	}
 }
