@@ -4,13 +4,14 @@ var ie = (document.all);// variable que usaremos para ver si el navegador es int
 function valida_envia(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el botón.
 	//limpiar();//llama a la función limpiar
 	var oblig=true;
+	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
-		var array=[formulario.campoNombre,formulario.campoApellidos,
+		array=[formulario.campoNombre,formulario.campoApellidos,
 		           formulario.campoDNI,formulario.campoMail,formulario.campoUsername,formulario.campoPassword,formulario.campoComprobarPassword];
 
 	}else{//Si es otro navegador, declaramos el siguiente array
 
-		var array=new Array(campoNombre,campoApellidos,
+		array=new Array(campoNombre,campoApellidos,
 				campoDNI,campoMail,campoUsername,campoPassword,campoComprobarPassword);
 	}
 	for (var i = 0;i<array.length; i++) {//Comprueba si algún campo obligatorio está vacío.
@@ -27,9 +28,9 @@ function valida_envia(formulario){//funcion que comprueba todos los aspectos req
 		comp[2]=validarMail(formulario.campoMail.value);//Llamo a la función que comprueba el Mail.
 		comp[4]=validarPassword(formulario.campoPassword.value,formulario.campoComprobarPassword.value);//Llamo a la función que comprueba la contraseña.
 		//el formulario se envia si se valida todo bien
-		j=0;
+		var j=0;
 		for (var i=0;i<comp.length;i++){
-			if(comp[i]==false){ var j=j+1;}
+			if(comp[i]==false){ j=j+1;}
 		}
 		if (j>0) {// Si algún campo es incorrecto.
 			resumen();
@@ -177,12 +178,6 @@ function validarDNI(dni) {
 	}
 }
 
-
-
-
-
-
-}
 
 
 function validarMail(valor) {
