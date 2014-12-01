@@ -1,6 +1,6 @@
 <jsp:directive.include file="imports_header.jsp" />
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="es-ES">
 <head>
       <title>Registration form</title>
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
