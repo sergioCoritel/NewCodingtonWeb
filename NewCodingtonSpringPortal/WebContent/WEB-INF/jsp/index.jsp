@@ -3,43 +3,44 @@
 <html lang="es-ES">
 <head>
 
-<!--META-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Login Form</title>
-<link rel="icon" type="image/ico" href="favicon.ico" />
-
-<!--STYLESHEETS-->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/login.css" />" />
-
-<!--SCRIPTS-->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-<!--Slider-in icons-->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".username").focus(function() {
-			$(".user-icon").css("left", "-48px");
-		});
-		$(".username").blur(function() {
-			$(".user-icon").css("left", "0px");
-		});
-
-		$(".password").focus(function() {
-			$(".pass-icon").css("left", "-48px");
-		});
-		$(".password").blur(function() {
-			$(".pass-icon").css("left", "0px");
-		});
-	});
-</script>
+		<!--META-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Login Form</title>
+		<link rel="icon" type="image/ico" href="favicon.ico" />
+		
+		<!--STYLESHEETS-->
+		<link rel="stylesheet" type="text/css"
+			href="<c:url value="/css/login.css" />" />
+		
+		<!--SCRIPTS-->
+		<script type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js">
+		</script>
+		<!--Slider-in icons-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".username").focus(function() {
+					$(".user-icon").css("left", "-48px");
+				});
+				$(".username").blur(function() {
+					$(".user-icon").css("left", "0px");
+				});
+		
+				$(".password").focus(function() {
+					$(".pass-icon").css("left", "-48px");
+				});
+				$(".password").blur(function() {
+					$(".pass-icon").css("left", "0px");
+				});
+			});
+		</script>
 
 </head>
 <body>
 	<header>
-	<div id="logo">
-		<img src="images/logo.png" class="logo-icon">
-	</div>
+		<div id="logo">
+			<img src="images/logo.png" class="logo-icon">
+		</div>
 	</header>
 
 	<!--WRAPPER-->
