@@ -4,14 +4,10 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.interfaces.daos.IEventSignUpDAO;
-import com.newcodingtoncity.model.interfaces.daos.IIdentifiersDAO;
 import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.daos.IUserDAO;
 
@@ -45,43 +41,33 @@ public class DAOManager {
 	 * Return an instance of IEventDAO
 	 * @return
 	 */
-	 public IEventDAO getEventDAO() {		 	
-		 return new EventDAO(jdbcTemplate,queryProperties);				 			
-	 }		 	
+	public IEventDAO getEventDAO() {		 	
+		return new EventDAO(jdbcTemplate,queryProperties);				 			
+	}		 	
 
 
-	 public IPlaceDAO getPlaceDAO() {
-		 return new PlaceDAO(jdbcTemplate,queryProperties);				
-	 }
-	 
-	 	/**
-	 	 * Return an instance of IVisitorDAO
-	 	 * 
-	 	 * @return IVisitorDAO
-	 	 */
-	 	public IUserDAO getUserDAO() {
-	 		return new UserDAO(jdbcTemplate, queryProperties);	
-	 	}
-	 //	
-	 //	/**
-	 //	 * Return an instance of IEventSignUpDAO
-	 //	 * 
-	 //	 * @return IEventSignUpDAO
-	 //	 */
-	 //	public IEventSignUpDAO getEventSignUpDAO() {
-	 //		return new EventSignUpDAO();		
-	 //	}
-	 //
-	 //
-	 //	/**
-	 //	 * Return an instance of IIdentifiersDAO
-	 //	 * 
-	 //	 * @return ISequencerDAO
-	 //	 */
-	 //	public IIdentifiersDAO getIdentifiersDAO() {
-	 //		return new IdentifiersDAO();		
-	 //	}
-	 //
+	public IPlaceDAO getPlaceDAO() {
+		return new PlaceDAO(jdbcTemplate,queryProperties);				
+	}
+
+	/**
+	 * Return an instance of IVisitorDAO
+	 * 
+	 * @return IVisitorDAO
+	 */
+	public IUserDAO getUserDAO() {
+		return new UserDAO(jdbcTemplate, queryProperties);	
+	}
+
+	/**
+	 * Return an instance of IEventSignUpDAO
+	 * 
+	 * @return IEventSignUpDAO
+	 */
+	public IEventSignUpDAO getEventSignUpDAO() {
+		return new EventSignUpDAO(jdbcTemplate, queryProperties);		
+	}
+
 
 
 

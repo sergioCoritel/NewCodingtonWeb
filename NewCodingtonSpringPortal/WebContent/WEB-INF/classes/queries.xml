@@ -9,6 +9,7 @@
 
 <entry key="eventbyid">SELECT events.*,places.* FROM events,places WHERE events.id_event= ? AND events.id_place = places.id_place</entry>
 
+<entry key="seats_available_event"> SELECT seats_available FROM events WHERE id_event = ?</entry>
 
 <!-- ALL EVENTS MUSEUM-->
 <entry key="museum">SELECT events.*, places.*, museum.* FROM events, places, museum WHERE events.id_place = places.id_place AND places.id_place=museum.id_place</entry>
@@ -34,14 +35,13 @@
 <!-- ALL EVENTS TRADITIONALMARKET-->
 <entry key="traditional_market">SELECT events.*, places.*, traditional_market.* FROM events, places, traditional_market WHERE events.id_place = places.id_place AND places.id_place=traditional_market.id_place</entry>
 
-<!--ALL USER EVENTS-->
-<entry key="eventsusers">SELECT * FROM events_users</entry>
 
 <!--1 USER EVENTS, FILTER:USERS-->
 <entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_user = ?</entry>
 
-<!--1 EVENTS USER,  FILTER:EVENTS-->
-<entry key="eventsusers1">SELECT * FROM events_users WHERE events_users.id_event = ?</entry>
+<!--ALL EVENTS OF ONE USER-->
+<entry key="events_of_one_user">SELECT events.*,places.* FROM events,places WHERE events.id_place=places.id_place AND id_event IN (SELECT id_event FROM events_users WHERE id_user=?)</entry>
+
 
 <!--ALL USERS-->
 <entry key="allusers">SELECT * FROM users</entry>
@@ -80,13 +80,13 @@
 <entry key="isAcountExists">SELECT COUNT(id_user) FROM users WHERE email LIKE ? OR username LIKE ?</entry>
 
 <!-- EVENT_USER, FILTER: id_event and id_user-->
-<entry key='IsRegisteredToEvent'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ? AND id_user = ?</entry>
+<entry key='IsRegisteredToEvent'>SELECT * FROM events_users WHERE id_event = ? AND id_user = ?</entry>
 
 <!-- EVENT_USER, FILTER: id_event-->
-<entry key='register_event'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_event = ?</entry>
+<entry key='register_event'>SELECT * FROM events_users WHERE id_event = ?</entry>
 
 <!-- EVENT_USER, FILTER: id_user-->
-<entry key='register_user'>SELECT id_events_users, id_event, id_user FROM events_users WHERE id_user = ?</entry>
+<entry key='register_user'>SELECT * FROM events_users WHERE id_user = ?</entry>
 
 <!--UPDATES-->
 
