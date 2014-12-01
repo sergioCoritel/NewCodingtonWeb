@@ -137,8 +137,6 @@
                   <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
               </div>
 
-           
-
         </div>
         <!--Fin de 3 caja -->
 
