@@ -58,17 +58,17 @@ public class ValidateRegisterController  implements IController  {
 				if(created) {
 					//urlDispatcher = "index.jsp";
 					urlDispatcher = "WEB-INF/views/welcome.jsp";
-					request.setAttribute("OK", "User registered successeful.");
+					request.setAttribute("ok", "User registered successeful.");
 
 				} else {
 					urlDispatcher = "WEB-INF/views/register.jsp";
-					request.setAttribute("ERROR", "User was not registered, try it later.");
+					request.setAttribute("error", "User was not registered, try it later.");
 
 				}
 
 			} else {
 				urlDispatcher = "WEB-INF/views/register.jsp";
-				request.setAttribute("ERROR", "Passwords are not equals.");
+				request.setAttribute("error", "Passwords are not equals.");
 
 			}		
 

@@ -313,6 +313,10 @@ FOOTER
 	bottom: -1px;
 }
 
+.messageOk{
+	color:green;
+}
+
 .messageError{
 	color:red;
 }
