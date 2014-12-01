@@ -12,7 +12,11 @@ import com.newcodingtoncity.model.helper.DatabaseHelper;
 import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.mappers.EventMapper;
 
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 public class EventDAO implements IEventDAO {
 
@@ -22,7 +26,7 @@ public class EventDAO implements IEventDAO {
 	private ResultSet resultSet = null;
 	private DatabaseHelper databaseHelper;
 
-	public EventDAO(Connection connection, DatabaseHelper databaseHelper) {
+	public EventDAO(Connection connection, DatabaseHelper databaseHelper,DriverManagerDataSource d) {
 		this.connection = connection;
 		this.databaseHelper = databaseHelper;
 	}
