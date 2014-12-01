@@ -15,7 +15,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
         <property name="url" value="jdbc:mysql://localhost:3306/newcodington" />  
         <property name="username" value="root" />  
-        <property name="password" value="root" />  
+        <property name="password" value="abcd1234" />  
     </bean>  
 
 	<util:properties id="queryProperties" location="classpath:queries.xml" />
