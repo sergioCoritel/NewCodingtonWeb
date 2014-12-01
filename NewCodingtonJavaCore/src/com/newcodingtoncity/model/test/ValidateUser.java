@@ -9,8 +9,8 @@ import com.newcodingtoncity.model.exceptions.DomainException;
 
 
 public class ValidateUser {
-	
-	
+
+
 	/**
 	 * Validate userName
 	 * @param userName
@@ -22,8 +22,8 @@ public class ValidateUser {
 			checkUserName = true;
 		return checkUserName;
 	}
-	
-	
+
+
 	/**
 	 * Busca espacios en blanco en una cadena. Si los encuentra devuelve true
 	 * @return
@@ -40,8 +40,8 @@ public class ValidateUser {
 		}
 		return checkSpaces;
 	}
-	
-	
+
+
 	/**
 	 * Validate firstName, lastName and address
 	 * @param string
@@ -53,8 +53,8 @@ public class ValidateUser {
 			checkString = true;
 		return checkString;
 	}
-	
-	
+
+
 	/**
 	 * Validate password
 	 * @param password
@@ -66,8 +66,8 @@ public class ValidateUser {
 			checkPassword = true;
 		return checkPassword;
 	}
-	
-	
+
+
 	/**
 	 * Validate setDNI
 	 * @param dni
@@ -77,22 +77,22 @@ public class ValidateUser {
 		Pattern pattern;
 		Matcher matcher = null;
 		boolean checkDniCorrect = false;
-		
+
 		if (dni != null){
 			pattern = Pattern.compile("\\d{2}.\\d{3}.\\d{3}-[[a-hA-H]||[j-nJ-N]||[p-tP-T]||[v-zV-Z]]");
 			matcher = pattern.matcher(dni);
-			
+
 			if (matcher.matches()) {					//Structure DNI correct
 				int numericDni = convertDni(dni);
 				String letter = letterDNI(numericDni);
 				if(letter.charAt(8) == Character.toUpperCase(dni.charAt(11)))		//Compara las letras de la conversion (mod23) con la del Dni introducido (la convertimos a mayusculas)
 					checkDniCorrect = true;
-				}
 			}
+		}
 		return checkDniCorrect;
 	}
-	
-	
+
+
 	/**
 	 * Convierte StringDni con puntos a IntDni sin puntos
 	 * @param dni
@@ -100,27 +100,27 @@ public class ValidateUser {
 	 */
 	public static int convertDni(String dni){
 		String dniNumeric = "";
-	
+
 		for(int i=0; i<=9; i++){
 			if(dni.charAt(i) != '.'){
 				dniNumeric += dni.charAt(i);
 			}
-		 }
+		}
 		return Integer.parseInt(dniNumeric);
-	  }
-	
-	
-	  /**
-	   * Devuelve un NIF completo a partir de un DNI. Es decir, añade la letra del NIF
-	   * @param dni dni al que se quiere añadir la letra del NIF
-	   * @return NIF completo.
-	   */ 
+	}
+
+
+	/**
+	 * Devuelve un NIF completo a partir de un DNI. Es decir, añade la letra del NIF
+	 * @param dni dni al que se quiere añadir la letra del NIF
+	 * @return NIF completo.
+	 */ 
 	public static String letterDNI(int dni) {
 		String NIF_STRING_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";
-	    return String.valueOf(dni) + NIF_STRING_ASOCIATION.charAt(dni % 23);
-	  }
-	
-	
+		return String.valueOf(dni) + NIF_STRING_ASOCIATION.charAt(dni % 23);
+	}
+
+
 	/**
 	 * Validate setPhoneNumber
 	 * @param phoneNumber
@@ -130,17 +130,17 @@ public class ValidateUser {
 		Pattern pattern;
 		Matcher matcher = null;
 		boolean checkphoneNumberCorrect = false;
-		
+
 		if (phoneNumber != null){
 			pattern = Pattern.compile("[0]{2}[0-9]{8,18}");
 			matcher = pattern.matcher(phoneNumber);
 			if (matcher.matches())
 				checkphoneNumberCorrect = true;
-			}
+		}
 		return checkphoneNumberCorrect;
 	}
-	
-	
+
+
 	/**
 	 * Validate setEmail
 	 * @param email
@@ -150,44 +150,44 @@ public class ValidateUser {
 		Pattern pattern;
 		Matcher matcher = null;
 		boolean checkphoneEmailCorrect = false;
-		
+
 		if (email != null){
 			pattern = Pattern.compile("[[a-zA-Z]||[0-9]||[._-]]{1,45}@[[a-zA-Z]||[0-9]]{1,45}.[[a-zA-Z]||[0-9]]{2,4}");
 			matcher = pattern.matcher(email);
 			if (matcher.matches() && email.length() < 45)			//Tiene que cumplir el patron y que su tamaño sea menor de 45
 				checkphoneEmailCorrect = true;
-			}
+		}
 		return checkphoneEmailCorrect;
 	}
-	
-	
+
+
 	public void validateViewEvents() {
 		fail("Not yet implemented");
 	}
-	
-	
+
+
 	public void validateSearchEvent() {
 		fail("Not yet implemented");
 	}
-	
-	
+
+
 	public void validateVisitor() {
 		fail("Not yet implemented");
 	}
-	
-	
+
+
 	public void validateRegisterNewVisitor() {
 		fail("Not yet implemented");
 	}
-	
-	
+
+
 	public void validateRegisterForNewEvent() {
 		fail("Not yet implemented");
 	}
-	
-	
+
+
 	public void validateUnregistreForEvent() {
 		fail("Not yet implemented");
 	}
-	
+
 }

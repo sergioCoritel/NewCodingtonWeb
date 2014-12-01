@@ -77,7 +77,7 @@
 <entry key="selec_login">select * from users where username = ? and password =?<!--USER, LOGIN FILTER: USERNAME_PASS--></entry>
 
 <!--USER, LOGIN FILTER: EMAIL_USERNAME-->
-<entry key="isAcountExists">SELECT COUNT(id_user) FROM users WHERE email LIKE ? OR username LIKE ?</entry>
+<entry key="isAcountExists">SELECT * FROM users WHERE email LIKE ? OR username LIKE ? OR dni LIKE ?</entry>
 
 <!-- EVENT_USER, FILTER: id_event and id_user-->
 <entry key='IsRegisteredToEvent'>SELECT * FROM events_users WHERE id_event = ? AND id_user = ?</entry>

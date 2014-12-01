@@ -65,6 +65,9 @@
 				<c:if test="${requestScope.error ne null}">
 					<h6 class="messageError">${requestScope.error}</h6>
 				</c:if>
+				<c:if test="${requestScope.ok ne null}">
+					<h6 class="messageOk">${requestScope.ok}</h6>
+				</c:if>
 			</div>
 
 

@@ -6,6 +6,7 @@
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
+	
       <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
@@ -19,9 +20,8 @@
 <div id="contenedor">
 
         <h2>REGISTRATION FORM</h2>
-
-
-        <form method="post"  action="validate_register.do" onsubmit="return valida_envia(this);" name="formulario">
+        
+        <form method="post"  action="validate_register.htm" onsubmit="return valida_envia(this);" name="formulario">
 
 
        <!-- Espacio para marcar error de campos obligatorios-->
@@ -169,6 +169,13 @@
                 <input id="alta" type="submit" value="Validate &rarr;"/>
         </div>
         <!-- Fin de Boton de enviar-->
+        
+         <!-- Boton de enviar-->
+        <div class="botones">
+                <a href="index.jsp" ><input id="atras" type="submit" value="Back"/> </a>
+        </div>
+        <!-- Fin de Boton de enviar-->
+        
 
         </form>
 

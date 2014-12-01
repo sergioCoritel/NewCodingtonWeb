@@ -2,7 +2,6 @@ package com.newcodingtoncity.model.daos;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -86,17 +85,20 @@ public class UserDAO implements IUserDAO{
 	public boolean registerNewVisitorDAO(final User u) throws SQLException, ClassNotFoundException{
 
 		int affectedRows = 0;
-		int countUsersFound = jdbcTemplateObject.queryForInt(queryProperties.getProperty("isAcountExists"), 
+
+		List<Visitor> users = jdbcTemplateObject.query(queryProperties.getProperty("isAcountExists"), 
 				new PreparedStatementSetter(){
 			@Override
 			public void setValues(PreparedStatement statement)
 					throws SQLException {
 				statement.setString(1, u.getEmail());
 				statement.setString(2, u.getUserName());
+				statement.setString(3, u.getDni());
 			}
-		});
-
-		if(countUsersFound == 0){	
+			
+		}, new VisitorMapper());
+		
+		if(users.size() == 0){	
 			affectedRows = jdbcTemplateObject.update(queryProperties.getProperty("registerUser"), 
 					new PreparedStatementSetter(){
 				@Override
