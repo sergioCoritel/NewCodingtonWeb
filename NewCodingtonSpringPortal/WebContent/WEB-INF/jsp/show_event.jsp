@@ -63,18 +63,23 @@
 				</li>
 
 				<li><p class="text-profile">Place</p>
-					<div class="profile">${event.place.name}</div></li>
+					<div class="profile">${event.place.name}</div>
 				</li>
 				<li><p class="text-profile">Place description</p>
-					<div class="profile">${event.place.placeDescription}</div></li>
+					<div class="profile">${event.place.placeDescription}</div>
 				</li>
 
 			</ul>
-
-			<div class="button"><a href="register_event.html?id=${event.eventId}">Register</a></div>
-
-			<div class="button"><a href="unregister_event.html?id=${event.eventId}">Unregister</a></div>
-
+			
+			<c:if test="${!sessionScope.user.isAdmin}">
+				<div class="button"><a href="register_event.htm?id=${event.eventId}">Register</a></div>
+				<div class="button"><a href="unregister_event.htm?id=${event.eventId}">Unregister</a></div>
+			</c:if>
+			
+			<c:if test="${sessionScope.user.isAdmin}">
+				<div class="button"><a href="update_event.htm?id=${event.eventId}">Update</a></div>
+				<div class="button"><a href="delete_event.htm?id=${event.eventId}">Delete</a></div>
+			</c:if>
 		</div>
 		<!-- Fin de  Contenedor -->
 
