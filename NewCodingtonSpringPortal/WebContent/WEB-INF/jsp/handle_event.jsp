@@ -1,9 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:directive.include file="imports_header.jsp" />
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
-<html lang="es">
+<!DOCTYPE HTML>
+<html lang="es-ES">
 <head>
 <title>New Codington Portal</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
