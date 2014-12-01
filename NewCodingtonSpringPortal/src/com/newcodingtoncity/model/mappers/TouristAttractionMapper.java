@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,7 +17,12 @@ public class TouristAttractionMapper implements RowMapper<TouristAttraction>{
 	public TouristAttraction mapRow(ResultSet resultSet, int numRow)
 			throws SQLException {
 		TouristAttraction touristAttraction = new TouristAttraction();
-		PlaceMapper.map(resultSet, touristAttraction);
+		try {
+			PlaceMapper.map(resultSet, touristAttraction);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return touristAttraction;
 	}
 

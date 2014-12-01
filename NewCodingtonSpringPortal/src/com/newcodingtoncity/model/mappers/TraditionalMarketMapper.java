@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,7 +17,12 @@ public class TraditionalMarketMapper implements RowMapper<TraditionalMarket>{
 	public TraditionalMarket mapRow(ResultSet resultSet, int numRow)
 			throws SQLException {
 		TraditionalMarket traditionalMarket = new TraditionalMarket();
-		PlaceMapper.map(resultSet, traditionalMarket);
+		try {
+			PlaceMapper.map(resultSet, traditionalMarket);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return traditionalMarket;
 	}
 

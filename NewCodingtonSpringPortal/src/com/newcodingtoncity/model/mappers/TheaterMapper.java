@@ -1,5 +1,6 @@
 package com.newcodingtoncity.model.mappers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,7 +14,12 @@ public class TheaterMapper implements RowMapper<Theater>{
 	@Override
 	public Theater mapRow(ResultSet resultSet, int numRow) throws SQLException {
 		Theater theater = new Theater();
-		PlaceMapper.map(resultSet, theater);
+		try {
+			PlaceMapper.map(resultSet, theater);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return theater;
 	}
 

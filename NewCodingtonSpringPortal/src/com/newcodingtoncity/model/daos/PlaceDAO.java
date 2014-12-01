@@ -108,13 +108,21 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public int insertPlace(final Place place,final int typeOfPlace) {
-		int affectedRows = 0;	
+		int affectedRows = 0;
 		GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 		affectedRows = jdbcTemplateObject.update(queryProperties.getProperty("update_infoplaces"), 
 				 new PreparedStatementSetter(){
 				@Override
 				public void setValues(PreparedStatement preparedStatement)
 						throws SQLException {
+					FileInputStream fin = null;
+					try {
+						fin = new FileInputStream(place.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					int tam = (int) place.getImage().length();
 					preparedStatement.setInt(1,typeOfPlace);
 					preparedStatement.setString(2,place.getName());
 					preparedStatement.setInt(3,place.getCapacity());
@@ -122,9 +130,8 @@ public class PlaceDAO implements IPlaceDAO {
 					preparedStatement.setString(5,place.getStart());
 					preparedStatement.setString(6,place.getEnd());
 					preparedStatement.setString(7,place.getZone().name());
-					//HAY QUE CAMBIAR LO DE LA IMAGEN!!!!!!!!!!!!!!!!
-					preparedStatement.setInt(8,11);
-					preparedStatement.setBoolean(9,false);
+					preparedStatement.setBlob(1, fin, tam);
+					preparedStatement.setBoolean(9, false);
 				}	
 			},keyHolder);		 
 		int lastInsertedId =  keyHolder.getKey().intValue();
@@ -209,6 +216,14 @@ public class PlaceDAO implements IPlaceDAO {
 				@Override
 				public void setValues(PreparedStatement preparedStatement)
 						throws SQLException {
+					FileInputStream fin = null;
+					try {
+						fin = new FileInputStream(place.getImage());
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					int tam = (int) place.getImage().length();
 					preparedStatement.setInt(1,typeOfPlace);
 					preparedStatement.setString(2,place.getName());
 					preparedStatement.setInt(3,place.getCapacity());
@@ -216,7 +231,6 @@ public class PlaceDAO implements IPlaceDAO {
 					preparedStatement.setString(5,place.getStart());
 					preparedStatement.setString(6,place.getEnd());
 					preparedStatement.setString(7,place.getZone().name());
-					//HAY QUE CAMBIAR LO DE LA IMAGEN!!!!!!!!!!!!!!!!
 					preparedStatement.setInt(8,11);
 					preparedStatement.setBoolean(9,false);
 					preparedStatement.setInt(10,place.getId());
