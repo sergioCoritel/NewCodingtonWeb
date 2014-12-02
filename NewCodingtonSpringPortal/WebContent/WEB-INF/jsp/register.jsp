@@ -19,6 +19,10 @@
 <!-- Contenedor -->
 <div id="contenedor">
 
+        <div class="botonBack">
+                <a href="index.htm" >Back</a>
+        </div>
+
         <h2>REGISTRATION FORM</h2>
         
         <form method="post"  action="validate_register.htm" onsubmit="return valida_envia(this);" name="formulario">
@@ -57,7 +61,7 @@
 
             <div>
                 <span class="izquierda"><!--input y etiqueta de input caja-->
-                  <input id="campoDNI" name="campoDNI" value="" /><br>
+                  <input id="campoDNI" name="campoDNI" value="" required/><br>
                 </span>
                 
                 <span class="error" id="errorDNI"></span> <!--Espacio para indicar el error de esta caja-->
@@ -77,7 +81,7 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <input id="campoDomicilio" name="campoDomicilio" value="" /><br>
+                    <input id="campoDomicilio" name="campoDomicilio" value="" required/><br>
                     <label>Street, number, floor, door</label>
                   </span>
               </div>
@@ -94,7 +98,7 @@
 
               <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
-                       <input id="campoTelefono" name="campoTelefono" value="" /><br>
+                       <input id="campoTelefono" name="campoTelefono" value="" required/><br>
                        <label>Ex: 00+Code Country+Number. 0034925224018</label>
                     </span>
                   <span class="error" id="errorTelefono"></span> <!--Espacio para indicar el error de esta caja-->
@@ -113,7 +117,7 @@
 
               <div>
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="campoMail" name="campoMail" value="" /><br>
+                    <input id="campoMail" name="campoMail" value="" required/><br>
                   </span>
                   <span class="error" id="errorMail"></span> <!--Espacio para indicar el error de esta caja-->
               </div>
@@ -131,7 +135,7 @@
               <div>
 			  
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="campoUsername" name="campoUsername" type="username" value="" /><br>
+                    <input id="campoUsername" name="campoUsername" type="username" value="" required/><br>
                   </span>
 
                   <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
@@ -147,12 +151,12 @@
               <div>
 
                   <span class="izquierda"> <!--input y etiqueta de input caja-->
-                    <input id="campoPassword" name="campoPassword" type="password" value="" /><br>
+                    <input id="campoPassword" name="campoPassword" type="password" value="" required/><br>
                     <label>Password</label>
                   </span>
 
                   <span class="derecha">  <!--input y etiqueta de input caja-->
-                    <input id="campoComprobarPassword" name="campoComprobarPassword" type="password" value="" /><br>
+                    <input id="campoComprobarPassword" name="campoComprobarPassword" type="password" value="" required/><br>
                     <label >Repeat Password</label>
                   </span>
 
@@ -169,13 +173,7 @@
                 <input id="alta" type="submit" value="Validate &rarr;"/>
         </div>
         <!-- Fin de Boton de enviar-->
-        
-         <!-- Boton de enviar-->
-        <div class="botones">
-                <a href="index.jsp" ><input id="atras" type="submit" value="Back"/> </a>
-        </div>
-        <!-- Fin de Boton de enviar-->
-        
+
 
         </form>
 

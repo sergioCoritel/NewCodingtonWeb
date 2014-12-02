@@ -39,7 +39,6 @@ public class SessionFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		String action = ((HttpServletRequest) request).getServletPath();
-		System.out.println("ACTIONN:"+action);
 		User user = (User) session.getAttribute("user");
 
 		boolean login = action.equals("/index.htm");
