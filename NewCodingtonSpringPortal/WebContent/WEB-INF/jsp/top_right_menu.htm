@@ -2,6 +2,9 @@
 	<ul class="rightTopMenu">
 		<li id="leftTab">&nbsp;</li>
 		<li><a href="about.htm">About</a></li>
+		<c:if test="${!sessionScope.user.isAdmin}">
+		    <li><a href="myevents.htm">My Events</a></li>
+		</c:if>
 		<li><a href="profile.htm">Profile</a></li>
 		<c:if test="${sessionScope.user.isAdmin}">
 			<li><a href="create_event.htm">Add event</a></li>
