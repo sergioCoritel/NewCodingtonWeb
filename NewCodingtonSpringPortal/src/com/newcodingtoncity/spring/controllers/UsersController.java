@@ -2,6 +2,7 @@ package com.newcodingtoncity.spring.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,9 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.newcodingtoncity.model.domain.Event;
+import com.newcodingtoncity.model.domain.EventSignUp;
 import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.domain.users.Visitor;
+import com.newcodingtoncity.model.services.EventSignUpService;
 import com.newcodingtoncity.model.services.UserService;
 
 
@@ -208,6 +213,21 @@ public class UsersController{
 			return "change_password";
 		}
 			
+	}
+	
+	@RequestMapping(value = "/myevents.htm")
+	public ModelAndView listMyEventsController(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		ModelAndView modelAndView = new ModelAndView();
+		//int eventId = Integer.parseInt(request.getParameter("id"));
+		User user = (User) request.getSession().getAttribute("user");
+		//EventSignUp eventSignUp = new EventSignUp(eventId,user.getUserId());
+		EventSignUp eventSignUp = new EventSignUp(0,user.getUserId());
+		EventSignUpService eventSignUpService = new EventSignUpService();
+		ArrayList<Event> myEvents = new ArrayList<Event>();
+		myEvents = (ArrayList<Event>) eventSignUpService.getAllEventsForOneUser(eventSignUp);
+		modelAndView.addObject("myevents", myEvents);
+		modelAndView.setViewName("myevents");
+		return modelAndView;
 	}
 
 }
