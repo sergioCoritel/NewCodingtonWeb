@@ -132,7 +132,7 @@
 <entry key="deleteEvent_event">delete from events_users where id_event=?</entry>
 
 <!--DELETE EVENTS_USERS, SEARCH: id_event and id_user-->
-<entry key='unRegisterVisitorToEvent'>DELETE FROM id_events_users WHERE id_event = ? AND id_user = ?</entry>
+<entry key='unRegisterVisitorToEvent'>DELETE FROM events_users WHERE id_event = ? AND id_user = ?</entry>
 
 <!--INSERTS-->
 

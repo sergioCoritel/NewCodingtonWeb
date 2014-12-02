@@ -48,11 +48,11 @@
 						<ol class="names">
 							<li>Alonso Jiménez, Pedro</li>
 							<li>Andrés García, Sergio</li>
+							<li>Andrés Sanmiguel, Agustín</li>
 							<li>De Miguel Pérez, Beatriz</li>
 							<li>García Pérez, Juan Manuel</li>
 							<li>Guerrero Santana,Esther</li>
 							<li>Salcedo Ortiz, Marloon</li>
-							<li>Andrés Sanmiguel, Agustín</li>
 							<li>Soria Gallego, Juan</li>
 						</ol>
 						</p>
