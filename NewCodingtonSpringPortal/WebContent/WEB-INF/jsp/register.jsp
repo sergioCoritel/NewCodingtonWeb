@@ -22,6 +22,9 @@
         <div class="botonBack">
                 <a href="index.htm" >Back</a>
         </div>
+        <c:if test="${requestScope.error ne null}">
+					<h6 class="messageError">${requestScope.error}</h6>
+				</c:if>
 
         <h2>REGISTRATION FORM</h2>
         

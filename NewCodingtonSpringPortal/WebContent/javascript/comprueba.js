@@ -112,16 +112,15 @@ function validarDNI(valor) {
 	dni = dni.replace(".", "");
 	dni = dni.replace("-", "");
 	if(expresion_regular_dni.test (valor) == true){
-		alert(dni);//Si se cumple la expresión regular, comprueba si la letra es correcta.
-//		numero = dni.substr(0,dni.length-1); //Extrae parte del string desde el caracter cero hasta el tamaño-1.
-//		letra = dni.substr(dni.length-1,1);//Extrae parte del string desde el penultimo caracter hasta el ultimo,es dcir, el ultimo que es la letra.
-//		numero = numero % 23; //Divide el numero entre 23 y sale la posicion del caracter de la letra dentro del conjuto de letras que hay.	letras='TRWAGMYFPDXBNJZSQVHLCKET';
-//		letras=letras.substring(numero,numero+1); 
-//		if (letras!=letra) {
-//			var elemento = document.getElementById("errorDNI");
-//			elemento.innerHTML ="*DNI wrong , the letter of the NIF does not correspond.";
-//			return (false);
-//		}
+		numero = dni.substr(0,dni.length-1); //Extrae parte del string desde el caracter cero hasta el tamaño-1.
+		letra = dni.substr(dni.length-1,1);//Extrae parte del string desde el penultimo caracter hasta el ultimo,es dcir, el ultimo que es la letra.
+		numero = numero % 23; //Divide el numero entre 23 y sale la posicion del caracter de la letra dentro del conjuto de letras que hay.	letras='TRWAGMYFPDXBNJZSQVHLCKET';
+		letras=letras.substring(numero,numero+1); 
+		if (letras!=letra) {
+			var elemento = document.getElementById("errorDNI");
+			elemento.innerHTML ="*DNI wrong , the letter of the NIF does not correspond.";
+			return (false);
+		}
 	}else{//Si no cumple la expresión regular, sale el mensaje de error.
 		var elemento = document.getElementById("errorDNI");
 		elemento.innerHTML ="*DNI wrong , invalid format.";

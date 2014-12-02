@@ -85,7 +85,7 @@ public class UsersController{
 
 	@RequestMapping(value = "/validate_register.htm")
 	public String validaterRegisterController(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+	
 		boolean created = false;
 
 		try {
@@ -117,7 +117,7 @@ public class UsersController{
 		} catch (Exception e) {
 			System.out.println("ERROR: "+e.getMessage());
 			request.setAttribute("error", "Unexpected error.");
-			return "index";
+			return "register";
 		}
 
 	}
@@ -211,9 +211,7 @@ public class UsersController{
 	@RequestMapping(value = "/myevents.htm")
 	public ModelAndView listMyEventsController(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		ModelAndView modelAndView = new ModelAndView();
-		//int eventId = Integer.parseInt(request.getParameter("id"));
 		User user = (User) request.getSession().getAttribute("user");
-		//EventSignUp eventSignUp = new EventSignUp(eventId,user.getUserId());
 		EventSignUp eventSignUp = new EventSignUp(0,user.getUserId());
 		EventSignUpService eventSignUpService = new EventSignUpService();
 		ArrayList<Event> myEvents = new ArrayList<Event>();
