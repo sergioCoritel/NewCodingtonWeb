@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.newcodingtoncity.model.domain.Event;
@@ -132,17 +133,19 @@ public class EventsController{
 		eventInserted.setStart(request.getParameter("start"));
 		eventInserted.setEnd(request.getParameter("end"));
 		eventInserted.setEventType(request.getParameter("eventType"));
-		eventInserted.setTicketPrice(Integer.parseInt(request.getParameter("ticketPrice")));
-		eventInserted.setSeatsAvailable(Integer.parseInt(request.getParameter("seatsAvailable")));
-		eventInserted.setSeatsTotal(Integer.parseInt(request.getParameter("seatsAvailable")));
+		//System.out.println("ASIENTOS: "+request.getParameter("seatsAvailable"));
+		eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
+		eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
+		eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
 		Place place = new Museum();
-		place.setId(Integer.parseInt(request.getParameter("place")));
+		place.setId(Integer.valueOf(request.getParameter("place")));
+		eventInserted.setPlace(place); 
 		
-//		if(new EventService().insertEvent(eventInserted) == 1){
-//			request.setAttribute("ok", "Created event succesfully.");
-//		}else{
-//			request.setAttribute("error", "Unexpeted error creating event, please try again.");
-//		}
+		if(new EventService().insertEvent(eventInserted) == 1){
+			request.setAttribute("ok", "Created event succesfully.");
+		}else{
+			request.setAttribute("error", "Unexpeted error creating event, please try again.");
+		}
 		
 		return "handle_event";
 	}

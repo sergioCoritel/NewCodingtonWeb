@@ -7,26 +7,23 @@
 <link rel="stylesheet" type="text/css" href="css/estilos_event.css">
 <!--Enlazo la hoja de estilos externa-->
 <link rel="icon" type="image/ico" href="favicon.ico" />
-<script type="text/javascript" src="javascript/comprueba.js"></script>
 <!--Enlazo el script externo-->
 </head>
 
 <body>
 	<div id="wrapper">
-		<c:if test="${requestScope.error ne null}">
-			<h6 class="messageError">${requestScope.error}</h6>
-		</c:if>
-		<c:if test="${requestScope.ok ne null}">
-			<h6 class="messageOk">${requestScope.ok}</h6>
-		</c:if>
-
-
+		
 		<jsp:directive.include file="left_menu.htm" />
 		<jsp:directive.include file="top_right_menu.htm" />
 		<!-- Contenedor -->
 		<div id="contenedor">
-			<form method="post" action="new_event.htm"
-				onsubmit="return valida_envia(this);" name="formulario">
+			<form method="post" action="new_event.htm">
+				<c:if test="${requestScope.error ne null}">
+			<h6 class="messageError">${requestScope.error}</h6>
+		</c:if>
+		<c:if test="${requestScope.ok ne null}">
+			<h6 class="messageError">${requestScope.ok}</h6>
+		</c:if>
 				<ul>
 					<li>
 						<p class="text-profile">Name</p> <input id="name" name="name"
@@ -55,12 +52,12 @@
 
 					<li>
 						<p class="text-profile">Ticket Price</p> <input id="ticketPrice"
-						name="ticketPrice" type="text" value="${event.ticketPrice}" />
+						name="ticketPrice" type="number" value="${event.ticketPrice}" />
 					</li>
 
 					<li>
 						<p class="text-profile">Available Seats</p> <input
-						id="seatsAvailable" name="seatsAvailable" type="text"
+						id="seatsAvailable" name="seatsAvailable" type="number"
 						value="${event.seatsAvailable}" />
 					</li>
 
@@ -110,22 +107,17 @@
 							</c:forEach>
 					</Select>
 					</li>
-
-				</ul>
-
-
-				<!-- Boton de enviar-->
-				<div class="botones">
-					<div class="button">
-						<a href="new_event.htm">Create</a>
-					</div>
-				</div>
-				<!-- Fin de Boton de enviar-->
-
-			</form>
-
+					<br>
+							<div class="button">
+							<input id="alta" type="submit" value="Create" />
+							</div>
 		</div>
-		
-		
+
+		</ul>
+
+		</form>
+
+	</div>
+	</div>
 </body>
 </html>

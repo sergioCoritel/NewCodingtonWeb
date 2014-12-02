@@ -77,11 +77,14 @@ public class EventService implements IEventService{
 	@Override
 	public List<Event> getZooEvents() throws ClassNotFoundException, SQLException, IOException{
 		return eventDAO.showZooEvents();
-
 	}
 	
 	@Override
 	public int deleteEvent(int eventId){
 		return eventDAO.deleteEvent(eventId);
+	}
+	
+	public int insertEvent(Event insertEvent){
+		return eventDAO.insertEvent(insertEvent);
 	}
 }
