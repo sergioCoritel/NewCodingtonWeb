@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(12) DEFAULT NULL,
-  `password` varchar(15) DEFAULT NULL,
+  `password` varchar(300) DEFAULT NULL,
   `firstname` varchar(30) DEFAULT NULL,
   `lastname` varchar(30) DEFAULT NULL,
   `dni` varchar(15) DEFAULT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin1','password1','admin user1','lastname user1','73118304Q','usuario1@dominio.com','666666666','addressuser1',1),(2,'user2','passowrd2','user2 name','lastname user2','77777777Q','usuario2@dominio.com','666888888','address user2',0),(3,'user3','password3','user3name','lastname user3','88888888Q','usario3@dominio.com','666666666','address user3',0);
+INSERT INTO `users` VALUES (1,'admin1','password1','admin user1','lastname user1','73118304Q','usuario1@dominio.com','666666666','addressuser1',1),(2,'username2','password2','user2 name','lastname user2','77777777Q','usuario2@dominio.com','666888888','address user2',0),(3,'username3','password3','user3name','lastname user3','88888888Q','usario3@dominio.com','666666666','address user3',0),(4,'cap_ame','12345','pablo','motos','12363','pmotos58@gmail.com','3131313','calle siempre viva 45',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-17  7:46:37
+-- Dump completed on 2014-12-02  4:03:51

@@ -37,7 +37,7 @@ CREATE TABLE `events` (
   `id_place` int(11) NOT NULL,
   PRIMARY KEY (`id_event`),
   KEY `fk_events_places1` (`id_place`),
-  CONSTRAINT `fk_events_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`)
+  CONSTRAINT `fk_events_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-17  7:46:41
+-- Dump completed on 2014-12-02  4:04:05
