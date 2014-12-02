@@ -38,13 +38,15 @@ public class SessionFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		String action = ((HttpServletRequest) request).getServletPath();	
+		String action = ((HttpServletRequest) request).getServletPath();
+		System.out.println("ACTIONN:"+action);
 		User user = (User) session.getAttribute("user");
 
 		boolean login = action.equals("/index.htm");
+		boolean validate_login = action.equals("/login.htm");
 		boolean register = action.equals("/register.htm");
 
-		if (user == null && !login && !register) {
+		if (user == null && !login && !register && !validate_login) {
 			((HttpServletResponse) response).sendRedirect("index.htm");
 
 		} else {
