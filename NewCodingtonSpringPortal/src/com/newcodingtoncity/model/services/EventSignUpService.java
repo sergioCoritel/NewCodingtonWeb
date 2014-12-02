@@ -57,4 +57,8 @@ public class EventSignUpService implements IEventSignUpService{
 	public List<Event> getAllEventsForOneUser(EventSignUp eventSignUp) throws SQLException{
 		return eventSignUpDAO.viewEventsOfUserDAO(eventSignUp);
 	}
+	
+	public boolean IsRegisteredToEvent(final EventSignUp e){
+		return eventSignUpDAO.IsRegisteredToEvent(e);
+	}
 }

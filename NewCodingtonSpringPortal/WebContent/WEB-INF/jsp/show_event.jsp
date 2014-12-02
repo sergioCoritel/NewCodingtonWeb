@@ -72,8 +72,12 @@
 			</ul>
 			
 			<c:if test="${!sessionScope.user.isAdmin}">
+				<c:if test="${!isRegister}">
 				<div class="button"><a href="register_event.htm?id=${event.eventId}">Register</a></div>
+				</c:if>
+				<c:if test="${isRegister}">
 				<div class="button"><a href="unregister_event.htm?id=${event.eventId}">Unregister</a></div>
+				</c:if>
 			</c:if>
 			
 			<c:if test="${sessionScope.user.isAdmin}">

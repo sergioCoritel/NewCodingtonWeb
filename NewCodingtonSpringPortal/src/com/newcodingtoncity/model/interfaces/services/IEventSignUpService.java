@@ -13,4 +13,6 @@ public interface IEventSignUpService {
 	public boolean unregisterVisitorForEvent(EventSignUp eventSignUpSession);
 
 	public List<Event> getAllEventsForOneUser(EventSignUp eventSignUp) throws SQLException;
+	
+	public boolean IsRegisteredToEvent(final EventSignUp e);
 }

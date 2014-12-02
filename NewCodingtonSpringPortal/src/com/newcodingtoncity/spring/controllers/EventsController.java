@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.newcodingtoncity.model.domain.Event;
+import com.newcodingtoncity.model.domain.EventSignUp;
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
 import com.newcodingtoncity.model.domain.places.Museum;
 import com.newcodingtoncity.model.domain.places.Park;
@@ -19,9 +20,10 @@ import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
+import com.newcodingtoncity.model.domain.users.User;
 import com.newcodingtoncity.model.interfaces.services.IPlaceService;
-
 import com.newcodingtoncity.model.services.EventService;
+import com.newcodingtoncity.model.services.EventSignUpService;
 import com.newcodingtoncity.model.services.PlaceService;
 
 @Controller
@@ -70,6 +72,11 @@ public class EventsController{
 		EventService eventService = new EventService();	
 		Event findEvent = eventService.getEventById(id);
 		modelAndView.addObject("event", findEvent);
+		User user = (User) request.getSession().getAttribute("user");
+		EventSignUp eventSignUp = new EventSignUp(id,user.getUserId());
+		EventSignUpService eventSignUpService = new EventSignUpService();
+		boolean isRegister = eventSignUpService.IsRegisteredToEvent(eventSignUp);
+		modelAndView.addObject("isRegister",isRegister);
 		return modelAndView;
 	}
 	
