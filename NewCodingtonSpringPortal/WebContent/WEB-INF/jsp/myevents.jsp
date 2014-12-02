@@ -20,7 +20,7 @@
        
         <ul class="event">
            
-           <c:forEach items="${events}" var="event">            
+           <c:forEach items="${myevents}" var="event">            
             
             <li>
               <a href="show_event.htm?id=${event.eventId}"> <div class="event-image"> <img src="images/event_museum.jpg"></div></a>
