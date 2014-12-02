@@ -25,6 +25,7 @@ public class EventMapper implements RowMapper<Event>{
 			event.setDescription(resultSet.getString("description_event"));
 			event.setStart(resultSet.getString("start_event"));
 			event.setEnd(resultSet.getString("end_event"));
+			event.setEventType(resultSet.getString("type_event"));
 			event.setTicketPrice(resultSet.getInt("ticket_price"));
 			event.setSeatsAvailable(resultSet.getInt("seats_available"));
 			event.setSeatsTotal(resultSet.getInt("seats_total"));
