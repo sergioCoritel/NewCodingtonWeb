@@ -36,7 +36,7 @@ public class UsersController{
 				return "welcome";
 			}
 		} catch (Exception e) {
-			System.out.println("ERROR: "+e.getMessage());
+			request.setAttribute("error", "Login incorrecto.");
 			return "index";
 		}
 

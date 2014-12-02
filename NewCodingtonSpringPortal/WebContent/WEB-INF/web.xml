@@ -20,18 +20,10 @@
 		<filter-class>com.newcodingtoncity.spring.filters.SessionFilter</filter-class>
 	</filter>
 
-
 	<filter-mapping>
 		<filter-name>SessionFilter</filter-name>
 		<url-pattern>*.htm</url-pattern>
 	</filter-mapping>
-
-
-
-	<!--  <filter-mapping>
-		<filter-name>SessionFilter</filter-name>
-		<url-pattern>*.htm</url-pattern>
-	</filter-mapping> !-->
 
 
 </web-app>
