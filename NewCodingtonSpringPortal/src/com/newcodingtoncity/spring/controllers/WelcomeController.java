@@ -17,5 +17,4 @@ public class WelcomeController{
 	public String welcomeController() {
 		return "welcome";
 	}
-
 }
