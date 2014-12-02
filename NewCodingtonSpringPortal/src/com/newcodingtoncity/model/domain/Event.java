@@ -73,10 +73,7 @@ public class Event {
 	 * @param the new eventName
 	 */
 	public void setEventName(String eventName) {
-		if(ValidateEvent.validateString(eventName))
 			this.eventName = eventName;
-		else
-			throw new DomainException("EventName NO VALID: username lengh must be between 1 and 45");
 	}
 	
 	
@@ -95,10 +92,7 @@ public class Event {
 	 * @param the new description
 	 */
 	public void setDescription(String description) {
-		if(ValidateEvent.validateString(description))
 			this.description = description;
-		else
-			throw new DomainException("Description NO VALID: description lengh must be between 1 and 45");
 	}
 	
 	
