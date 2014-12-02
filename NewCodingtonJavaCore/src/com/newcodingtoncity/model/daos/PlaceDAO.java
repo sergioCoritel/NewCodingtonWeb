@@ -40,6 +40,10 @@ public class PlaceDAO implements IPlaceDAO {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 	private DatabaseHelper databaseHelper;
+	
+	public PlaceDAO(Connection connection) {
+	this.connection = connection;
+	}
 
 	public PlaceDAO(Connection connection, DatabaseHelper databaseHelper) {
 		this.connection = connection;
