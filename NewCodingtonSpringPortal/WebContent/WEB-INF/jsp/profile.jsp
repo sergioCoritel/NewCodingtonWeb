@@ -68,9 +68,9 @@
 			
       </ul>
       
-      <div class="button"><a href="change_info.htm?id=${sessionScope.user.userId}">Edit profile</a></div>
+      <div><a class="button" href="change_info.htm?id=${sessionScope.user.userId}">Edit profile</a></div>
 
-	  <div class="button"><a href="change_pass.htm?id=${sessionScope.user.userId}">Change password</a></div>     
+	  <div><a class="button" href="change_pass.htm?id=${sessionScope.user.userId}">Change password</a></div>     
         
    </div>
    <!-- Fin de  Contenedor -->

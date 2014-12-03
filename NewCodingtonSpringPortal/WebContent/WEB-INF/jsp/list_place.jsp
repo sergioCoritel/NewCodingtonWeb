@@ -17,105 +17,73 @@
 
    <!-- Contenedor -->
    <div id="contenedor">
-       <a class="button" href="handle_place.htm">Add place</a>
-        <ul class="place">
+       <a class="button" href="handle_place.htm"><img class="ca-icon" alt="" src="images/add_list.png"> Add place</a>
+        <ul>
            
            <h2>Large business</h2>
            <c:forEach items="${business}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=1"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=1">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=1">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=1"><img class="ca-icon" src="images/bussiness.png">${place.name}-${place.placeDescription} </a> 
+		    </li>         
           </c:forEach>   
           
           
           <h2>Museums</h2>
           <c:forEach items="${museum}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=2"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=2">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=2">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=2"><img class="ca-icon" src="images/museum.png">${place.name}-${place.placeDescription} </a> 
+		    </li>          
           </c:forEach>  
           
           <h2>Stadiums</h2>
            <c:forEach items="${stadium}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=3"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=3">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=3">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=3"><img class="ca-icon" src="images/stadium.png">${place.name}-${place.placeDescription} </a> 
+		    </li>          
           </c:forEach>  
           
           
           <h2>Theaters</h2>
          <c:forEach items="${theater}" var="place">            
-            
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=4"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=4">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=4">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+         	 <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=4"><img class="ca-icon" src="images/theater.png">${place.name}-${place.placeDescription} </a> 
+		    </li>    
+                  
           </c:forEach>  
           
           <h2>Parks</h2>
         <c:forEach items="${park}" var="place">            
-            
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=5"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=5">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=5">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=5"><img class="ca-icon" src="images/park.png">${place.name}-${place.placeDescription} </a> 
+		    </li>  
+                  
           </c:forEach>  
           
           <h2>Tourist Attraction</h2>
           <c:forEach items="${tourist}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=6"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=6">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=6">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=6"><img class="ca-icon" src="images/tourist.png">${place.name}-${place.placeDescription} </a> 
+		    </li>        
           </c:forEach>  
           
           <h2>Traditional Market</h2>
            <c:forEach items="${market}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=7"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=7">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=7">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+             <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=7"><img class="ca-icon" src="images/market.png">${place.name}-${place.placeDescription} </a> 
+		    </li>        
           </c:forEach>  
           
           <h2>Zoos</h2>
           <c:forEach items="${zoo}" var="place">            
             
-            <li>
-              <a href="show_place.htm?id=${place.id}&type_place=8"> <div class="place-image"> <img src="images/place_museum.jpg"></div></a>
-              <div class="place-body">
-              <a class="place-title" href="show_place.htm?id=${place.id}&type_place=8">${place.name}</a><br>
-              <a class="place-description" href="show_place.htm?id=${place.id}&type_place=8">${place.placeDescription} </a> 
-              </div>
-		        </li>         
+            <li class="show">
+              <a class="title" href="show_place.htm?id=${place.id}&type_place=8"><img class="ca-icon" src="images/zoo_.png">${place.name}-${place.placeDescription} </a> 
+		    </li>         
           </c:forEach>  
           
             
