@@ -20,7 +20,7 @@ public class EventsSignUpController {
 		EventSignUp eventSignUp = new EventSignUp(eventId,user.getUserId());
 		EventSignUpService eventSignUpService = new EventSignUpService();
 		eventSignUpService.registerVisitorForNewEvent(eventSignUp);
-		return "redirect:myevents.htm";
+		return "welcome";
 	}
 
 	@RequestMapping(value = "/unregister_event.htm")
@@ -29,8 +29,8 @@ public class EventsSignUpController {
 		User user = (User) request.getSession().getAttribute("user");
 		EventSignUp eventSignUp = new EventSignUp(eventId,user.getUserId());
 		EventSignUpService eventSignUpService = new EventSignUpService();
-		eventSignUpService.unregisterVisitorForEvent(eventSignUp);
-		return "redirect:myevents.htm";
+		eventSignUpService.unregisterVisitorForEvent(eventSignUp);	
+		return "welcome";
 	}
 
 }

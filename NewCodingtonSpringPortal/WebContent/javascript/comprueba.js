@@ -1,8 +1,8 @@
 
 var ie = (document.all);// variable que usaremos para ver si el navegador es internet explorer.
 
-function valida_envia(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el bot贸n.
-	limpiar();//llama a la funci髇 limpiar
+function valida_envia(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el bot贸n.	
+
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
@@ -31,11 +31,10 @@ function valida_envia(formulario){//funcion que comprueba todos los aspectos req
 		var j=0;
 		for (var i=0;i<comp.length;i++){
 			if(comp[i]==false){ j=j+1;}
-		}
+		}		
 		if (j>0) {// Si algun campo es incorrecto.
 			return false;
-		}else{//Si todos los campos son correctos, llamamos a la funci贸n resumen.
-			formulario.submit();
+		}else{//Si todos los campos son correctos, llamamos a la funci贸n resumen.*/		
 			return true;
 		}
 
@@ -47,6 +46,7 @@ function valida_envia(formulario){//funcion que comprueba todos los aspectos req
 }
 
 function limpiar(){
+	alert ("limpiar");
 	if (ie) {//Al no ser "getElementsByClassName" compatible con Explorer, se utiliza su equivalente, que nos selecciona todos los elementos con clase "error".
 		var elementos = document.querySelectorAll(".error");
 	}else{//El resto de navegadores si soportan la funci贸n "getElementsByClassName".
@@ -95,7 +95,7 @@ function validarUsername(valor) {
 
 	}
 	else{//Si no cumple la longitud requerida
-		elemento.innerHTML ="*The Username must be less than 120 characters";
+		elemento.innerHTML ="* The Username must be less than 120 characters";
 		return (false);
 	}
 } 
@@ -118,12 +118,12 @@ function validarDNI(valor) {
 		letras=letras.substring(numero,numero+1); 
 		if (letras!=letra) {
 			var elemento = document.getElementById("errorDNI");
-			elemento.innerHTML ="*DNI wrong , the letter of the NIF does not correspond.";
+			elemento.innerHTML ="* DNI wrong , the letter of the NIF does not correspond.";
 			return (false);
 		}
 	}else{//Si no cumple la expresi贸n regular, sale el mensaje de error.
 		var elemento = document.getElementById("errorDNI");
-		elemento.innerHTML ="*DNI wrong , invalid format.";
+		elemento.innerHTML ="* DNI wrong , invalid format.";
 		return false;
 	}
 	return true;
@@ -138,7 +138,7 @@ function validarMail(valor) {
 	}
 	else{//Si no cumple la expresi贸n regular, aparece el mensaje de error.
 		var elemento = document.getElementById("errorMail");
-		elemento.innerHTML ="*Wrong Mail: example@example.com";
+		elemento.innerHTML ="* Wrong Mail: example@example.com";
 		return (false);
 	}
 } 
@@ -148,7 +148,7 @@ function validarPassword(pass1,pass2) {
 	if (expresionRegular.test(pass1)){// Comprueba que tenga entre 6 y 10 d铆gitos.
 		if(pass1!=pass2){//Si no son iguales, sale el mensaje de error indicando que son diferentes.
 			var elemento = document.getElementById("errorPassword");
-			elemento.innerHTML ="*Passwords are different.";
+			elemento.innerHTML ="* Passwords are different.";
 			return (false);
 		}else{
 			return (true);
@@ -157,8 +157,7 @@ function validarPassword(pass1,pass2) {
 	}
 	else{//Si no cumple la longitud requerida
 		var elemento = document.getElementById("errorPassword");
-		elemento.innerHTML ="*The password must be between 6 and 10 characters.";
+		elemento.innerHTML ="* The password must be between 6 and 10 characters.";
 		return (false);
 	}
 } 
-

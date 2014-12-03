@@ -19,7 +19,7 @@
 <!-- Contenedor -->
 <div id="contenedor">
 
-        <div class="botonBack">
+       <div class="botonBack">
                 <a href="index.htm" >Back</a>
         </div>
         <c:if test="${requestScope.error ne null}">
@@ -28,7 +28,7 @@
 
         <h2>REGISTRATION FORM</h2>
         
-        <form method="post"  action="validate_register.htm" onsubmit="return valida_envia(this);" name="formulario">
+        <form name="formulario" method="post" action="validate_register.htm" onsubmit="return valida_envia(this);">
 
 
        <!-- Espacio para marcar error de campos obligatorios-->
@@ -65,6 +65,7 @@
             <div>
                 <span class="izquierda"><!--input y etiqueta de input caja-->
                   <input id="campoDNI" name="campoDNI" value="" required/><br>
+                  <label>Ex: XX.XXX.XXX-L</label>
                 </span>
                 
                 <span class="error" id="errorDNI"></span> <!--Espacio para indicar el error de esta caja-->
@@ -84,7 +85,7 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <input id="campoDomicilio" name="campoDomicilio" value="" required/><br>
+                    <input id="campoDomicilio" name="campoDomicilio" value=""/><br>
                     <label>Street, number, floor, door</label>
                   </span>
               </div>
@@ -101,7 +102,7 @@
 
               <div>
                     <span class="izquierda">  <!--input y etiqueta de input caja-->
-                       <input id="campoTelefono" name="campoTelefono" value="" required/><br>
+                       <input id="campoTelefono" name="campoTelefono" value="" /><br>
                        <label>Ex: 00+Code Country+Number. 0034925224018</label>
                     </span>
                   <span class="error" id="errorTelefono"></span> <!--Espacio para indicar el error de esta caja-->
