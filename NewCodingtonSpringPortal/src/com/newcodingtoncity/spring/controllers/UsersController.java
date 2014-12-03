@@ -87,12 +87,10 @@ public class UsersController{
 	public String validaterRegisterController(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
 		boolean created = false;
-
 		try {
 
 			UserService userservice = new UserService();
 			User user = new Visitor();
-
 			user.setFirstName(request.getParameter("campoNombre"));
 			user.setLastName(request.getParameter("campoApellidos"));
 			user.setDni(request.getParameter("campoDNI"));
@@ -204,8 +202,8 @@ public class UsersController{
 		EventSignUpService eventSignUpService = new EventSignUpService();
 		ArrayList<Event> myEvents = new ArrayList<Event>();
 		myEvents = (ArrayList<Event>) eventSignUpService.getAllEventsForOneUser(eventSignUp);
-		modelAndView.addObject("events", myEvents);
-		modelAndView.setViewName("list_events");
+		modelAndView.addObject("myevents", myEvents);
+		modelAndView.setViewName("myevents");
 		return modelAndView;
 	}
 

@@ -44,8 +44,9 @@ public class SessionFilter implements Filter {
 		boolean login = action.equals("/index.htm");
 		boolean validate_login = action.equals("/login.htm");
 		boolean register = action.equals("/register.htm");
+		boolean registerValidation = action.equals("/validate_register.htm");
 
-		if (user == null && !login && !register && !validate_login) {
+		if (user == null && !login && !register && !validate_login && !registerValidation) {
 			((HttpServletResponse) response).sendRedirect("index.htm");
 
 		} else {
