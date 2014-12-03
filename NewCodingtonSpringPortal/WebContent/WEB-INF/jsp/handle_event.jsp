@@ -55,11 +55,11 @@
 						name="ticketPrice" type="number" value="${event.ticketPrice}" />
 					</li>
 
-					<li>
-						<p class="text-profile">Available Seats</p> <input
-						id="seatsAvailable" name="seatsAvailable" type="number"
+					<!--<li>-->
+						<!--<p class="text-profile">Available Seats</p>--> 
+						<input id="seatsAvailable" name="seatsAvailable" type="hidden"
 						value="${event.seatsAvailable}" />
-					</li>
+					<!--</li>-->
 
 					<li>
 						<p class="text-profile">Place</p> <Select id="place" name="place">
@@ -85,7 +85,7 @@
 							<option disabled="">Park</option>
 							<c:forEach items="${park}" var="place">
 								<option value="${place.id}"
-									<c:if test="${place.id == event.place.id}">
+								<c:if test="${place.id == event.place.id}">
 									selected = "selected"
 								</c:if>
 								>
