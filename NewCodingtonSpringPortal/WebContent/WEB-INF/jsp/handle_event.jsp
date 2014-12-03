@@ -139,7 +139,7 @@
 					</Select>
 					</li>
 					<br>
-						<div class="button">
+						<div>
 							<input id="alta" type="submit" value="${requestScope.action}" />
 						</div>
 		</div>

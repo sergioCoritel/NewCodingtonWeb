@@ -21,52 +21,58 @@
 		<div id="contenedor">
 			<img class="event-large-image" alt=""
 				src=${event.place.image}>
+					<h4>${event.eventName}</h4>
 			<ul>
-				<li>
-					<p class="text-profile">Name</p>
-					<div class="profile">${event.eventName}</div>
+			
+				<li class="show">
+					<p class="text-profile">Description:
+					<span>${event.description}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Description</p>
-					<div class="profile">${event.description}</div>
+				<li class="show">
+					<p class="text-profile">Start:
+					<span>${event.start}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Start</p>
-					<div class="profile">${event.start}</div>
+				<li class="show">
+					<p class="text-profile">End:
+					<span>${event.end}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">End</p>
-					<div class="profile">${event.end}</div>
+				<li class="show">
+					<p class="text-profile">Type:
+					<span>${event.eventType}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Type</p>
-					<div class="profile">${event.eventType}</div>
+				<li class="show">
+					<p class="text-profile">Ticket Price:
+					<span>${event.ticketPrice}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Ticket Price</p>
-					<div class="profile">${event.ticketPrice}</div>
+				<li class="show">
+					<p class="text-profile">Available Seats:
+					<span>${event.seatsAvailable}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Available Seats</p>
-					<div class="profile">${event.seatsAvailable}</div>
+				<li class="show">
+					<p class="text-profile">Total Seats:
+					<span>${event.seatsTotal}</span>
+					</p>
 				</li>
 
-				<li>
-					<p class="text-profile">Total Seats</p>
-					<div class="profile">${event.seatsTotal}</div>
+				<li class="show"><p class="text-profile">Place:
+					<span>${event.place.name}</span>
+					</p>
 				</li>
-
-				<li><p class="text-profile">Place</p>
-					<div class="profile">${event.place.name}</div>
-				</li>
-				<li><p class="text-profile">Place description</p>
-					<div class="profile">${event.place.placeDescription}</div>
+				<li class="show"><p class="text-profile">Place description:
+					<span>${event.place.placeDescription}</span>
+					</p>
 				</li>
 
 			</ul>
@@ -81,8 +87,8 @@
 			</c:if>
 			
 			<c:if test="${sessionScope.user.isAdmin}">
-				<div class="button"><a href="formupdate_event.htm?id=${event.eventId}">Update</a></div>
-				<div class="button"><a href="delete_event.htm?id=${event.eventId}">Delete</a></div>
+				<div><a class="button" href="formupdate_event.htm?id=${event.eventId}"><img class="ca-icon" alt="" src="images/edit_list.png">Update</a></div>
+				<div><a class="button" href="delete_event.htm?id=${event.eventId}"><img class="ca-icon" alt="" src="images/delete_list.png">Delete</a></div>
 			</c:if>
 		</div>
 		<!-- Fin de  Contenedor -->

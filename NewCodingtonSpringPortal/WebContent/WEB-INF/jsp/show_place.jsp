@@ -23,37 +23,37 @@
 			<img class="event-large-image" alt=""
 				src="http://agilisenergy.com/tinseltown/wp-content/uploads/2013/01/building-icon-free-analysis.png">
 			<ul>
-				<li>
+				<li class="show">
 					<p class="text-profile">Name</p>
 					<div class="profile">${place.name}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">Capacity</p>
 					<div class="profile">${place.capacity}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">Place Description</p>
 					<div class="profile">${place.placeDescription}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">start</p>
 					<div class="profile">${place.start}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">End</p>
 					<div class="profile">${place.end}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">Zone</p>
 					<div class="profile">${place.zone}</div>
 				</li>
 
-				<li>
+				<li class="show">
 					<p class="text-profile">Image</p>
 					<div class="profile">${place.image}</div>
 				</li>
@@ -62,8 +62,8 @@
 			</ul>
 			
 			<c:if test="${sessionScope.user.isAdmin}">
-				<div class="button"><a href="update_place.htm?id=${place.id}&type=${place.placeType}">Update</a></div>
-				<div class="button"><a href="delete_place.htm?id=${place.id}">Delete</a></div>
+				<div class="button"><a href="update_place.htm?id=${place.id}&type=${place.placeType}"><img class="ca-icon" alt="" src="images/edit_list.png">Update</a></div>
+				<div class="button"><a href="delete_place.htm?id=${place.id}"><img class="ca-icon" alt="" src="images/delete_list.png">Delete</a></div>
 			</c:if>
 		</div>
 		<!-- Fin de  Contenedor -->

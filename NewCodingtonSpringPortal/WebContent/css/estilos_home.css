@@ -1,4 +1,4 @@
-/*--------------------Indico los estilos básicos-------------------*/
+/*--------------------Indico los estilos bï¿½sicos-------------------*/
 body {
 	min-width: 884px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
@@ -244,5 +244,21 @@ ul.rightTopMenu {
 	width: 60px;
 	height: 60px;
 	float: left;
+}
+
+h6.messageOk {
+	padding: 10px 40px;
+	text-align: left;
+	margin-left: 30px;
+	color: green;
+	background: url(../images/ok.gif) center left no-repeat !important;
+}
+
+h6.messageError {
+	padding: 10px 40px;
+	text-align: left;
+	margin-left: 30px;
+	color: red;
+	background: url(../images/error.gif) center left no-repeat !important;
 }
 /* CSS Document */
