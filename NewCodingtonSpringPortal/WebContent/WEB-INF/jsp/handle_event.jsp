@@ -17,13 +17,13 @@
 		<jsp:directive.include file="top_right_menu.htm" />
 		<!-- Contenedor -->
 		<div id="contenedor">
-			<form method="post" action="new_event.htm">
-				<c:if test="${requestScope.error ne null}">
-			<h6 class="messageError">${requestScope.error}</h6>
-		</c:if>
-		<c:if test="${requestScope.ok ne null}">
-			<h6 class="messageError">${requestScope.ok}</h6>
-		</c:if>
+			<form method="post" action="${requestScope.action}_event.htm?id=${event.eventId}">
+			<c:if test="${requestScope.error ne null}">
+				<h6 class="messageError">${requestScope.error}</h6>
+			</c:if>
+			<c:if test="${requestScope.ok ne null}">
+				<h6 class="messageError">${requestScope.ok}</h6>
+			</c:if>
 				<ul>
 					<li>
 						<p class="text-profile">Name</p> <input id="name" name="name"
@@ -63,54 +63,85 @@
 
 					<li>
 						<p class="text-profile">Place</p> <Select id="place" name="place">
-							<option value="" id="placeVacio" selected="selected"
-								title="Select a feed"></option>
 							<option title="" disabled="">Large Bussiness</option>
 							<c:forEach items="${largeBusiness}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}" 
+								
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Museum</option>
 							<c:forEach items="${museum}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Park</option>
 							<c:forEach items="${park}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+									<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Stadium</option>
 							<c:forEach items="${stadium}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Theater</option>
 							<c:forEach items="${theater}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Tourist Attraction</option>
 							<c:forEach items="${touristAttraction}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Traditional Market</option>
 							<c:forEach items="${traditionalMarket}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+								<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 							<option disabled="">Zoo</option>
 							<c:forEach items="${zoo}" var="place">
-								<option value="${place.id}">
+								<option value="${place.id}"
+									<c:if test="${place.id == event.place.id}">
+									selected = "selected"
+								</c:if>
+								>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${place.name}</option>
 							</c:forEach>
 					</Select>
 					</li>
 					<br>
-							<div class="button">
-							<input id="alta" type="submit" value="Create" />
-							</div>
+						<div class="button">
+							<input id="alta" type="submit" value="${requestScope.action}" />
+						</div>
 		</div>
 
 		</ul>

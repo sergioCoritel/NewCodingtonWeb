@@ -20,7 +20,7 @@
 		<!-- Contenedor -->
 		<div id="contenedor">
 			<img class="event-large-image" alt=""
-				src="http://agilisenergy.com/tinseltown/wp-content/uploads/2013/01/building-icon-free-analysis.png">
+				src=${event.place.image}>
 			<ul>
 				<li>
 					<p class="text-profile">Name</p>
@@ -81,7 +81,7 @@
 			</c:if>
 			
 			<c:if test="${sessionScope.user.isAdmin}">
-				<div class="button"><a href="update_event.htm?id=${event.eventId}">Update</a></div>
+				<div class="button"><a href="formupdate_event.htm?id=${event.eventId}">Update</a></div>
 				<div class="button"><a href="delete_event.htm?id=${event.eventId}">Delete</a></div>
 			</c:if>
 		</div>

@@ -1,5 +1,7 @@
 package com.newcodingtoncity.spring.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,7 @@ import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
 import com.newcodingtoncity.model.domain.users.User;
+import com.newcodingtoncity.model.interfaces.services.IEventService;
 import com.newcodingtoncity.model.interfaces.services.IPlaceService;
 import com.newcodingtoncity.model.services.EventService;
 import com.newcodingtoncity.model.services.EventSignUpService;
@@ -81,6 +84,11 @@ public class EventsController{
 	}
 	
 	@RequestMapping(value = "/create_event.htm")
+	public ModelAndView precreateEventController(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return createEventController(request,response);
+	}
+	
+	
 	public ModelAndView createEventController(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ModelAndView modelAndView = new ModelAndView();	
@@ -119,6 +127,7 @@ public class EventsController{
 		modelAndView.addObject("touristAttraction", touristAttractions);
 		modelAndView.addObject("traditionalMarket", traditionalMarkets);
 		modelAndView.addObject("zoo", zoos);
+		request.setAttribute("action", "new");
 		modelAndView.setViewName("handle_event");
 		return modelAndView;
 	}
@@ -132,7 +141,6 @@ public class EventsController{
 		eventInserted.setStart(request.getParameter("start"));
 		eventInserted.setEnd(request.getParameter("end"));
 		eventInserted.setEventType(request.getParameter("eventType"));
-		//System.out.println("ASIENTOS: "+request.getParameter("seatsAvailable"));
 		eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
 		eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
 		eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
@@ -145,13 +153,49 @@ public class EventsController{
 		}else{
 			request.setAttribute("error", "Unexpeted error creating event, please try again.");
 		}
-		
+		request.setAttribute("action", "new");
 		return "handle_event";
 	}
 
+	@RequestMapping(value = "/formupdate_event.htm")
+	public ModelAndView formupdateEventController(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		String idEvent = request.getParameter("id");
+		int identifevent = Integer.parseInt(idEvent);
+		IEventService eventService = new EventService();
+		Event event = eventService.getEventById(identifevent);
+		modelAndView = createEventController(request,response);
+		modelAndView.addObject("event", event);
+		request.setAttribute("action", "update");
+		modelAndView.setViewName("handle_event");
+		return modelAndView;
+	}
+	
+	
 	@RequestMapping(value = "/update_event.htm")
-	public String updateEventController() {
+	public String updateEventController(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
+		Event eventInserted = new Event();
+		eventInserted.setEventId(Integer.parseInt(request.getParameter("id")));
+		eventInserted.setEventName(request.getParameter("name"));
+		eventInserted.setDescription(request.getParameter("description"));
+		eventInserted.setStart(request.getParameter("start"));
+		eventInserted.setEnd(request.getParameter("end"));
+		eventInserted.setEventType(request.getParameter("eventType"));
+		eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
+		eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
+		eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
+		Place place = new Museum();
+		place.setId(Integer.valueOf(request.getParameter("place")));
+		eventInserted.setPlace(place); 
+		
+		if(new EventService().updateEvent(eventInserted) == 1){
+			request.setAttribute("ok", "Update event succesfully.");
+		}else{
+			request.setAttribute("error", "Unexpeted error updating event, please try again.");
+		}
+		request.setAttribute("action", "update");
 		return "handle_event";
+		
 	}
 	
 	@RequestMapping(value = "/delete_event.htm")
