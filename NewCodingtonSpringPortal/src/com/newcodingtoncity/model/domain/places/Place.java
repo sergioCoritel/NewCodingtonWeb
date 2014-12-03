@@ -18,6 +18,7 @@ public abstract class Place {
 	public enum Zone{NORTH, SOUTH};
 	private Zone zone;
 	private File image;
+	private int placeType;
 
 	
 	/**
@@ -110,6 +111,14 @@ public abstract class Place {
 
 	public void setImage(File image) {
 		this.image = image;
+	}
+
+	public int getPlaceType() {
+		return placeType;
+	}
+
+	public void setPlaceType(int type) {
+		this.placeType = type;
 	}
 
 

@@ -27,7 +27,8 @@ public interface IPlaceService {
 	public List<Zoo> getZoos() throws ClassNotFoundException, SQLException, IOException;
 	public int insertPlace(Place place,int typeOfPlace) throws ClassNotFoundException, SQLException, IOException;
 	public int deletePlace(int placeId) throws ClassNotFoundException, SQLException, IOException;
-	public int updatePlace(Place place,int typeOfPlace) throws ClassNotFoundException, SQLException, IOException;
+	public int updatePlace(Place place) throws ClassNotFoundException, SQLException, IOException;
 	public void changeImage(int id, File image) throws ClassNotFoundException, SQLException, IOException;
+	Place getPlaceById(int id_place, int placeType) throws ClassNotFoundException, SQLException, IOException;
 
 }

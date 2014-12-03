@@ -19,7 +19,6 @@ import com.newcodingtoncity.model.domain.places.Theater;
 import com.newcodingtoncity.model.domain.places.TouristAttraction;
 import com.newcodingtoncity.model.domain.places.TraditionalMarket;
 import com.newcodingtoncity.model.domain.places.Zoo;
-import com.newcodingtoncity.model.interfaces.daos.IEventDAO;
 import com.newcodingtoncity.model.interfaces.daos.IPlaceDAO;
 import com.newcodingtoncity.model.interfaces.services.IPlaceService;
 
@@ -31,6 +30,16 @@ public class PlaceService implements IPlaceService{
 		DAOManager daoManager = (DAOManager) ctx.getBean("daoManager");
 		this.placeDAO = daoManager.getPlaceDAO();
 	}
+	
+	public List<Museum> getAllPlace() throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showAllPlace();
+	}
+	
+	@Override
+	public Place getPlaceById(int id_place, int typePlace) throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.showPlaceById(id_place,typePlace);
+	}
+	
 	public List<LargeBusiness> getLargeBusiness() throws ClassNotFoundException, SQLException, IOException{
 		return placeDAO.showLargeBusiness();
 
@@ -81,8 +90,8 @@ public class PlaceService implements IPlaceService{
 
 	}
 
-	public int updatePlace(Place place,int typeOfPlace) throws ClassNotFoundException, SQLException, IOException{
-		return placeDAO.updatePlace(place, typeOfPlace);
+	public int updatePlace(Place place) throws ClassNotFoundException, SQLException, IOException{
+		return placeDAO.updatePlace(place);
 
 	}
 	@Override

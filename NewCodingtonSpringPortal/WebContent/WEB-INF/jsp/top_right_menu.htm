@@ -8,7 +8,7 @@
 		<li><a href="profile.htm">Profile</a></li>
 		<c:if test="${sessionScope.user.isAdmin}">
 			<li><a href="create_event.htm">Add event</a></li>
-			<li><a href="create_place.htm">Add place</a></li>
+			<li><a href="list_place.htm">Handle place</a></li>
 		</c:if>
 		<li class="last"><a href="logout.htm">Logout ${sessionScope.user.userName}</a></li>
 		<li id="rightTab">&nbsp;</li>
