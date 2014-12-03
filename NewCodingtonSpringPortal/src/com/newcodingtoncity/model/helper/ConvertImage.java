@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class ConvertImage {
 
 	public static File blobToImage(Blob image, int id) throws SQLException, IOException{
-		File image_deserialized = new File("images/" + id + ".jpg");
+		File image_deserialized = new File("/images/" + id + ".jpg");
 		
 		
 		InputStream is = image.getBinaryStream();  

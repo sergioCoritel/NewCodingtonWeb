@@ -87,4 +87,8 @@ public class EventService implements IEventService{
 	public int insertEvent(Event insertEvent){
 		return eventDAO.insertEvent(insertEvent);
 	}
+	
+	public int updateEvent(Event insertEvent) throws ClassNotFoundException, SQLException, IOException{
+		return eventDAO.updateEvent(insertEvent);
+	}
 }
