@@ -22,7 +22,15 @@
 		<div id="contenedor">
 
 			<h1>Welcome to the website of New Codington</h1>
-
+			
+                <c:if test="${requestScope.error ne null}">
+					<h6 class="messageError">${requestScope.error}</h6>
+				</c:if>
+				
+				<c:if test="${requestScope.ok ne null}">
+					<h6 class="messageOk">${requestScope.ok}</h6>
+				</c:if>
+				
 			<img src="images/home.png" />
 
 		</div>

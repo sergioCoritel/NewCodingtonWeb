@@ -9,6 +9,8 @@
 
 <entry key="eventbyid">SELECT events.*,places.* FROM events,places WHERE events.id_event= ? AND events.id_place = places.id_place</entry>
 
+<entry key="placebyid">SELECT * FROM places WHERE id_place = ?</entry>
+
 <entry key="seats_available_event"> SELECT seats_available FROM events WHERE id_event = ?</entry>
 
 <!-- ALL EVENTS MUSEUM-->
@@ -106,7 +108,7 @@
 <entry key="update_seats_event_dec">update events set seats_available = seats_available-1  WHERE id_event = ?</entry>
 
 <!--UPDATE INFO PLACES-->
-<entry key="update_infoplaces">update places set id_type_place=?, name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, zone=?, image=?, is_building=? WHERE id_place = ?</entry>
+<entry key="update_infoplaces">update places set  name_place=?, capacity=?, description_place=?, start_time=?, end_time=?, image=? WHERE id_place = ?</entry>
 
 <!--UPDATE PLACES IMAGE-->
 <entry key="update_image">UPDATE places SET image = ? "+" WHERE placeId = ?</entry>
@@ -152,7 +154,7 @@
 <entry key="insert_zoo">insert into zoo values (?)</entry>
 
 <!--INSERTS MUSEUM-->
-<entry key="insert_museum">insert into zoo values (?)</entry>
+<entry key="insert_museum">insert into museum values (?)</entry>
 
 <!--INSERTS LARGE_BUSINESS-->
 <entry key="insert_large_business">insert into large_business values (?)</entry>

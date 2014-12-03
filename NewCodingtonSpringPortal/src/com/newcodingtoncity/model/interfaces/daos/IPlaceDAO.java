@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
 import com.newcodingtoncity.model.domain.places.Museum;
@@ -31,5 +32,7 @@ public interface IPlaceDAO {
 	public int insertPlace(Place place, int typeOfPlace);
 	public int deletePlace(int placeId) ;
 	public void changeImage(int id, File image) throws FileNotFoundException, SQLException;
-	public int updatePlace(Place place, int typeOfPlace) throws ClassNotFoundException, SQLException, IOException;
+	public int updatePlace(Place place) throws ClassNotFoundException, SQLException, IOException;
+	public Place showPlaceById(int id_place, int typeOfPlace) ;
+	public List<Museum> showAllPlace() throws ClassNotFoundException, SQLException, IOException;
 }
