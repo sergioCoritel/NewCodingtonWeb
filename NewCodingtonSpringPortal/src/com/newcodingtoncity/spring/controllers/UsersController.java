@@ -92,7 +92,6 @@ public class UsersController{
 
 			UserService userservice = new UserService();
 			User user = new Visitor();
-			String confirm_password = request.getParameter("campoComprobarPassword");
 
 			user.setFirstName(request.getParameter("campoNombre"));
 			user.setLastName(request.getParameter("campoApellidos"));
@@ -122,17 +121,6 @@ public class UsersController{
 
 	}
 
-
-	/*	else{
-					request.getSession().setAttribute("user", userFound);
-					return "profile";
-				}
-			} catch (Exception e) {
-				request.setAttribute("error", "Login incorrecto."+ e.getMessage());
-				return "welcome";
-			}
-
-	}*/
 
 	@RequestMapping(value = "/change_info.htm")
 	public String change_infoController(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
