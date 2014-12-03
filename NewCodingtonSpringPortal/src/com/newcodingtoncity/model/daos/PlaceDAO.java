@@ -69,7 +69,7 @@ public class PlaceDAO implements IPlaceDAO {
 	}
 
 	public ArrayList<Park> showParks() throws ClassNotFoundException,SQLException, IOException {
-		ArrayList<Park> placeList =  (ArrayList<Park>) jdbcTemplateObject.query(queryProperties.getProperty("place_zoo"), 
+		ArrayList<Park> placeList =  (ArrayList<Park>) jdbcTemplateObject.query(queryProperties.getProperty("place_park"), 
                 new ParkMapper());
 		return placeList;	
 	}

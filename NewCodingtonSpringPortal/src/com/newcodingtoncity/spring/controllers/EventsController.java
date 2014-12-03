@@ -101,8 +101,8 @@ public class EventsController{
 		ArrayList<Museum> museum = new ArrayList<Museum>();
 		museum = (ArrayList<Museum>) placeService.getMuseums();
 		
-		ArrayList<Park> parks = new ArrayList<Park>();
-		parks = (ArrayList<Park>) placeService.getParks();
+		ArrayList<Park> park = new ArrayList<Park>();
+		park = (ArrayList<Park>) placeService.getParks();
 		
 		ArrayList<Stadium> stadiums= new ArrayList<Stadium>();
 		stadiums = (ArrayList<Stadium>) placeService.getStadiums();
@@ -121,7 +121,7 @@ public class EventsController{
 		
 		modelAndView.addObject("largeBusiness", largeBusiness);
 		modelAndView.addObject("museum", museum);
-		modelAndView.addObject("parks", parks);
+		modelAndView.addObject("park", park);
 		modelAndView.addObject("stadium", stadiums);
 		modelAndView.addObject("theater", theaters);
 		modelAndView.addObject("touristAttraction", touristAttractions);
@@ -194,7 +194,7 @@ public class EventsController{
 			request.setAttribute("error", "Unexpeted error updating event, please try again.");
 		}
 		request.setAttribute("action", "update");
-		return "handle_event";
+		return "welcome";
 		
 	}
 	
