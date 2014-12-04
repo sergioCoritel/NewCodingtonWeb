@@ -38,7 +38,7 @@ CREATE TABLE `events` (
   PRIMARY KEY (`id_event`),
   KEY `fk_events_places1` (`id_place`),
   CONSTRAINT `fk_events_places1` FOREIGN KEY (`id_place`) REFERENCES `places` (`id_place`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'Evento 1','desc evento1','2014-02-01 00:00:00','2014-02-01 00:00:00','1',20,30,30,1),(2,'Evento2','desc evento2','2014-02-01 00:00:00','2014-02-01 00:00:00','1',30,40,40,2),(3,'Evento3','desc evento3','2014-02-01 00:00:00','2014-02-01 00:00:00','1',24,24,24,3),(4,'Evento4','desc evento4','2014-02-01 00:00:00','2014-02-01 00:00:00','1',4,66,66,4),(5,'Evento5','desc evento5','2014-02-01 00:00:00','2014-02-01 00:00:00','1',3,22,22,5),(6,'Evento6','desc evento6','2014-02-01 00:00:00','2014-02-01 00:00:00','1',2,22,22,6),(7,'Evento7','desc evento7','2014-02-01 00:00:00','2014-02-01 00:00:00','1',33,99,99,7),(8,'Evento8','desc evento8','2014-02-01 00:00:00','2014-02-01 00:00:00','1',1,98,98,8),(9,'Evento9','desc evento9','2014-02-01 00:00:00','2014-02-01 00:00:00','1',11,11,11,1),(10,'Evento10','desc evento10','2014-02-01 00:00:00','2014-02-01 00:00:00','1',111,111,111,9),(11,'Evento11','desc evento11','2014-02-01 00:00:00','2014-02-01 00:00:00','1',1,11,11,3),(12,'Evento12','desc evento12','2014-02-01 00:00:00','2014-02-01 00:00:00','1',2,2,2,4),(13,'Evento13','desc evento13','2014-02-01 00:00:00','2014-02-01 00:00:00','1',44,44,44,5),(14,'Evento14','desc evento14','2014-02-01 00:00:00','2014-02-01 00:00:00','1',877,88,88,6),(15,'Evento15','desc evento15','2014-02-01 00:00:00','2014-02-01 00:00:00','1',33,33,33,7),(16,'Evento 16','desc evento16','2014-02-01 00:00:00','2014-02-01 00:00:00','1',11,11,11,8);
+INSERT INTO `events` VALUES (1,'Big Data conference','Big data is an all encompassing term for any collection of data sets so large and complex that it becomes difficult to process them using traditional data processing applications','2014-12-03 05:39:00','2014-12-23 05:39:00','Conference',31,301,300,1),(2,'Life and work of Goya','Guided by the work and life of Goya','2014-02-01 00:00:00','2014-02-01 00:00:00','Exhibition of paintings',25,100,100,2),(3,'E-commerce platform conference','Deliver relevant, immersive experiences to every customer at every stage of the purchase journey across every channel, including the mobile web and apps.','2014-02-01 00:00:00','2014-02-01 00:00:00','adsfads',20,100,100,1),(4,'Guided tour Santiago Bernabeu','Visit the Santiago Bernabeu Stadium in Madrid with an entrance, and explore the iconic stadium of football club Real Madrid at your own pace.','2014-02-01 00:00:00','2014-02-01 00:00:00','Deportes',17,66,66,4),(5,'life and work of Picasso','Guided by the work and life of Goya','2014-02-01 00:00:00','2014-02-01 00:00:00','Exhibition of paintings ',5,40,40,2),(6,'Port aventura ','Park of attractions','2014-02-01 00:00:00','2014-02-01 00:00:00','Entertainment',25,22,22,6),(7,'The Rastro market',NULL,'2014-12-09 08:00:00','2014-12-16 16:00:00','Entertainment',33,99,99,7),(9,'Young Entrepreneurs','Conference talented young entrepreneurs with business.','2014-05-18 10:00:00','2014-05-18 18:00:00','Conference',0,60,60,1),(10,'Evento10','desc evento10','2014-02-01 00:00:00','2014-02-01 00:00:00','1',111,111,111,9),(11,'The Retiro','Guided tour of the lung of Madrid','2014-02-01 00:00:00','2014-02-01 00:00:00','Culture',3,30,30,3),(12,'Atletico de Madrid - Real Betis Balompie','Cup quarter-finals of the Copa del Rey','2014-02-01 00:00:00','2014-02-01 00:00:00','Sports2',205,60000,60000,4),(13,'The Lion King 2','Musical inspired by the movie disney','2014-02-01 00:00:00','2014-02-01 00:00:00','Entretainmen',75,50000,50000,5),(21,'Bear','Show of bears','2014-02-01 00:00:00','2014-02-01 00:00:00','Entertainment',30,40,40,8);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-02  4:04:05
+-- Dump completed on 2014-12-04  6:13:58

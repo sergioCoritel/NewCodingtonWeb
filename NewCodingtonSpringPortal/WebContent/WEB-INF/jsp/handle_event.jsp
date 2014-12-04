@@ -19,12 +19,14 @@
 		<!-- Contenedor -->
 		<div id="contenedor">
 			<form method="post" action="${requestScope.action}_event.htm?id=${event.eventId}">
+			
 			<c:if test="${requestScope.error ne null}">
 				<h6 class="messageError">${requestScope.error}</h6>
 			</c:if>
 			<c:if test="${requestScope.ok ne null}">
 				<h6 class="messageOk">${requestScope.ok}</h6>
 			</c:if>
+			
 				<ul>
 					<li>
 						<p class="text-profile">Name</p> <input id="name" name="name"
