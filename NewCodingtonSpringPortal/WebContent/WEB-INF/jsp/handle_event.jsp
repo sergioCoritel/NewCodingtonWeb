@@ -33,7 +33,7 @@
 
 					<li>
 						<p class="text-profile">Description</p> 
-						<textarea name="campoDescription" rows="3" cols="50" >${event.description}</textarea>
+						<textarea name="description" rows="3" cols="50" >${event.description}</textarea>
 					</li>
 
 					<li>
