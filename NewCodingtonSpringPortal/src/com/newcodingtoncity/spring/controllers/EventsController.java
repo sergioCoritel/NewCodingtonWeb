@@ -135,26 +135,35 @@ public class EventsController{
 	@RequestMapping(value = "/new_event.htm")
 	public String newEventController(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		Event eventInserted = new Event();
-		eventInserted.setEventName(request.getParameter("name"));
-		eventInserted.setDescription(request.getParameter("description"));
-		eventInserted.setStart(request.getParameter("start"));
-		eventInserted.setEnd(request.getParameter("end"));
-		eventInserted.setEventType(request.getParameter("eventType"));
-		eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
-		eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
-		eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
-		Place place = new Museum();
-		place.setId(Integer.valueOf(request.getParameter("place")));
-		eventInserted.setPlace(place); 
-		
-		if(new EventService().insertEvent(eventInserted) == 1){
-			request.setAttribute("ok", "Created event succesfully.");
-		}else{
+		try{
+			Event eventInserted = new Event();
+			eventInserted.setEventName(request.getParameter("name"));
+			eventInserted.setDescription(request.getParameter("description"));
+			eventInserted.setStart(request.getParameter("start"));
+			eventInserted.setEnd(request.getParameter("end"));
+			eventInserted.setEventType(request.getParameter("eventType"));
+			eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
+			eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
+			eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
+			Place place = new Museum();
+			place.setId(Integer.valueOf(request.getParameter("place")));
+			eventInserted.setPlace(place); 
+			
+			if(new EventService().insertEvent(eventInserted) == 1){
+				request.setAttribute("ok", "Created event succesfully.");
+			}else{
+				request.setAttribute("error", "Unexpeted error creating event, please try again.");
+			}
+			request.setAttribute("action", "new");
+			return "welcome";
+			
+			
+		}catch(Exception e){
 			request.setAttribute("error", "Unexpeted error creating event, please try again.");
+			return "welcome";
 		}
-		//request.setAttribute("action", "new");
-		return "welcome";
+
+	
 	}
 
 	@RequestMapping(value = "/formupdate_event.htm")
@@ -206,15 +215,23 @@ public class EventsController{
 	
 	@RequestMapping(value = "/delete_event.htm")
 	public String deleteEventController(HttpServletRequest request, HttpServletResponse response) {	
-		int id = Integer.parseInt(request.getParameter("id"));
-		EventService eventService = new EventService();	
-		int rows = eventService.deleteEvent(id);
-		if(rows == 1){
-			request.setAttribute("ok", "Delete event succesfully.");
-		}else{
+		try{
+			int id = Integer.parseInt(request.getParameter("id"));
+			EventService eventService = new EventService();	
+			int rows = eventService.deleteEvent(id);
+			if(rows == 1){
+				request.setAttribute("ok", "Delete event succesfully.");
+			}else{
+				request.setAttribute("error", "Unexpeted error deleting event, please try again.");
+			}
+			request.setAttribute("action", "update");
+			return "welcome";
+			
+		}catch(Exception e){
 			request.setAttribute("error", "Unexpeted error deleting event, please try again.");
+			return "welcome";
 		}
-		request.setAttribute("action", "update");
-		return "welcome";
+		
+		
 	}
 }

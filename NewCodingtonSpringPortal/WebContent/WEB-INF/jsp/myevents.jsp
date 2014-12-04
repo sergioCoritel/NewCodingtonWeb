@@ -19,7 +19,7 @@
    <div id="contenedor">
        
         <ul class="event">
-           
+           <p class="text-profile">My Events</p>
            <c:forEach items="${myevents}" var="event">            
             
             <li>
