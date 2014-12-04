@@ -6,7 +6,7 @@
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
-      <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
+      <script type="text/javascript" src="javascript/comprobar_update_info.js"></script><!--Enlazo el script externo-->
 </head>
 <body>
 <div id="wrapper">
@@ -20,7 +20,7 @@
         <h2>UPDATE FORM</h2>
 
 
-        <form method="post"  action="update_info_user.htm?id=${sessionScope.user.userId}" name="formulario">
+        <form method="post"  action="update_info_user.htm?id=${sessionScope.user.userId}" name="formulario" onsubmit="return valida_info(this);">
 
 
        <!-- Espacio para marcar error de campos obligatorios-->
@@ -124,7 +124,7 @@
 				      
         <!-- Boton de enviar-->
         <div class="botones">
-                <input id="alta" type="submit" value="Update &rarr;"/>
+                <input id="update_info" type="submit" value="Update &rarr;"/>
         </div>
         <!-- Fin de Boton de enviar-->
 
