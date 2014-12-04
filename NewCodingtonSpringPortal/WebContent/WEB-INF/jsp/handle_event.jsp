@@ -5,6 +5,7 @@
 <title>New Codington Portal</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/estilos_event.css">
+ <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
 <!--Enlazo la hoja de estilos externa-->
 <link rel="icon" type="image/ico" href="favicon.ico" />
 <!--Enlazo el script externo-->
@@ -36,12 +37,12 @@
 					</li>
 
 					<li>
-						<p class="text-profile">Start</p> <input id="start" name="start"
+						<p class="text-profile">Start</p> <input id="datetimepicker_mask" name="start"
 						type="text" value="${event.start}" />
 					</li>
 
 					<li>
-						<p class="text-profile">End</p> <input id="end" name="end"
+						<p class="text-profile">End</p> <input id="datetimepicker_mask2" name="end"
 						type="text" value="${event.end}" />
 					</li>
 
@@ -147,6 +148,8 @@
 		</ul>
 
 		</form>
+		
+		<jsp:directive.include file="datepicker.html" />
 
 	</div>
 	</div>
