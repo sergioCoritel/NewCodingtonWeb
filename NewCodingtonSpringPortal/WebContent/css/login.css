@@ -85,18 +85,18 @@ header{
 	top: 50%;
 	margin-left: -300px;
 	margin-top: -300px;
-	
-	/* Fallback */ 
+	/* 
+	Fallback 
 	background-image: url(../images/gradient2.png); 
 	background-repeat: no-repeat; 
 	
-	/* CSS3 Gradient */
+	CSS3 Gradient
 	
 	background: -webkit-gradient(radial, 0% 0%, 0% 100%, from(rgba(213,246,255,1)), to(rgba(213,246,255,0)));
 	background: -webkit-radial-gradient(50% 50%, 40% 40%, rgba(0, 0, 0, 1), rgba(213,246,255,0));
 	background: -moz-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
 	background: -ms-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background: -o-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
+	background: -o-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0)); */
 }
 
 

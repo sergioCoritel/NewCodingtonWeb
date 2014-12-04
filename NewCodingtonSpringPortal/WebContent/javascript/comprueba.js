@@ -95,6 +95,7 @@ function validarUsername(valor) {
 
 	}
 	else{//Si no cumple la longitud requerida
+		var elemento = document.getElementById("errorUsername");
 		elemento.innerHTML ="* The Username must be less than 120 characters";
 		return (false);
 	}
