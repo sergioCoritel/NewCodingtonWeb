@@ -22,8 +22,14 @@
        
 	   <img src="images/profile.png" class="data-prof">
 	   
-	   <ul class="event">
+	   <c:if test="${requestScope.error ne null}">
+			<h6 class="messageError">${requestScope.error}</h6>
+		</c:if>
+		<c:if test="${requestScope.ok ne null}">
+			<h6 class="messageOk">${requestScope.ok}</h6>
+		</c:if>
 	   
+	   <ul class="event">
 	        <li>  
 			         <p class = "text-profile">User Name</p>
                <div class = "profile">${sessionScope.user.userName}

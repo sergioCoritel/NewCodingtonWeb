@@ -23,7 +23,7 @@
 				<h6 class="messageError">${requestScope.error}</h6>
 			</c:if>
 			<c:if test="${requestScope.ok ne null}">
-				<h6 class="messageError">${requestScope.ok}</h6>
+				<h6 class="messageOk">${requestScope.ok}</h6>
 			</c:if>
 				<ul>
 					<li>
@@ -56,11 +56,20 @@
 						name="ticketPrice" type="number" value="${event.ticketPrice}" />
 					</li>
 
-					<!--<li>-->
-						<!--<p class="text-profile">Available Seats</p>--> 
-						<input id="seatsAvailable" name="seatsAvailable" type="hidden"
+					<li>
+						<c:if test="${requestScope.action !='update'}">
+							<p class="text-profile">Available Seats</p> 
+						</c:if>
+						<input id="seatsAvailable" name="seatsAvailable" 
+						
+						
+						<c:if test="${requestScope.action=='update'}">
+								type="hidden"
+						</c:if>
+			
+						
 						value="${event.seatsAvailable}" />
-					<!--</li>-->
+					</li>
 
 					<li>
 						<p class="text-profile">Place</p> <Select id="place" name="place">

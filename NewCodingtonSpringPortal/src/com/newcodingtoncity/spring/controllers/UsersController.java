@@ -32,16 +32,17 @@ public class UsersController{
 			UserService userservice = new UserService();
 			User userFound = userservice.login(userInserted);
 			if(userFound == null){
-				request.setAttribute("error", "Login incorrecto.");
+				request.setAttribute("error", "Login incorrect.");
 				return "index";
 			}		
 
 			else{
 				request.getSession().setAttribute("user", userFound);
+				//request.setAttribute("ok", "");
 				return "welcome";
 			}
 		} catch (Exception e) {
-			request.setAttribute("error", "Login incorrecto.");
+			request.setAttribute("error", "Login incorrect.");
 			return "index";
 		}
 
@@ -63,7 +64,7 @@ public class UsersController{
 			UserService userservice = new UserService();
 			User userFound = userservice.login(userSelected);
 			if(userFound == null){
-				request.setAttribute("error", "Profile incorrecto.");
+				request.setAttribute("error", "Profile incorrect.");
 				return "welcome";
 			}		
 
@@ -149,16 +150,17 @@ public class UsersController{
 			UserService userservice = new UserService();
 			result_update = userservice.updateInfo(userUpdated);
 			if(result_update == false){
-				request.setAttribute("error", "Update Info incorrecto.");
+				request.setAttribute("error", "Update Info incorrect.");
 				return "change_info";
 			}		
 
 			else{
+				request.setAttribute("ok", "Profile update succesfully");
 				return "redirect:/profile.htm";
 			}
 
 		} catch (Exception e) {
-			request.setAttribute("error", "Update Infor incorrecto."+ e.getMessage());
+			request.setAttribute("error", "Update Infor incorrect."+ e.getMessage());
 			return "change_info";
 		}
 
@@ -176,19 +178,20 @@ public class UsersController{
 			UserService userservice = new UserService();
 			result_update = userservice.updatePassword(userpassUpdated, nw_pass);
 			if(result_update == false){
-				request.setAttribute("error", "Update Pass incorrecto.");
+				request.setAttribute("error", "Update Pass incorrect.");
 				return "change_password";
 			}		
 
 			else{
-				return "redirect:/profile.htm";
+				request.setAttribute("ok", "Pass updated, loggin again.");
+				return "redirect:/login.htm";
 			}
 
 
 
 
 		} catch (Exception e) {
-			request.setAttribute("error", "Update Pass incorrecto."+ e.getMessage());
+			request.setAttribute("error", "Update Pass incorrect."+ e.getMessage());
 			return "change_password";
 		}
 

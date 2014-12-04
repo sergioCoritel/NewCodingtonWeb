@@ -202,7 +202,13 @@ public class EventsController{
 	public String deleteEventController(HttpServletRequest request, HttpServletResponse response) {	
 		int id = Integer.parseInt(request.getParameter("id"));
 		EventService eventService = new EventService();	
-		eventService.deleteEvent(id);
+		int rows = eventService.deleteEvent(id);
+		if(rows == 1){
+			request.setAttribute("ok", "Delete event succesfully.");
+		}else{
+			request.setAttribute("error", "Unexpeted error deleting event, please try again.");
+		}
+		request.setAttribute("action", "update");
 		return "welcome";
 	}
 }
