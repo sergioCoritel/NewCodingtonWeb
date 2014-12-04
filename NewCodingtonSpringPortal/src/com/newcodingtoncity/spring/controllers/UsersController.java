@@ -202,8 +202,8 @@ public class UsersController{
 		EventSignUpService eventSignUpService = new EventSignUpService();
 		ArrayList<Event> myEvents = new ArrayList<Event>();
 		myEvents = (ArrayList<Event>) eventSignUpService.getAllEventsForOneUser(eventSignUp);
-		modelAndView.addObject("myevents", myEvents);
-		modelAndView.setViewName("myevents");
+		modelAndView.addObject("events", myEvents);
+		modelAndView.setViewName("list_events");
 		return modelAndView;
 	}
 

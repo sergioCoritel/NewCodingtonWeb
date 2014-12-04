@@ -85,7 +85,7 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <input id="placeDescription" name="placeDescription" value="${place.placeDescription}" /><br>
+                    <textarea name="campoDescription" rows="3" cols="50" >${place.description}</textarea>
                   </span>
               </div>
 
