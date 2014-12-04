@@ -93,7 +93,7 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <textarea name="placeDescription" rows="3" cols="50" >${place.description}</textarea>
+                    <textarea name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
                   </span>
               </div>
 

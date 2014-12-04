@@ -153,8 +153,8 @@ public class EventsController{
 		}else{
 			request.setAttribute("error", "Unexpeted error creating event, please try again.");
 		}
-		request.setAttribute("action", "new");
-		return "handle_event";
+		//request.setAttribute("action", "new");
+		return "welcome";
 	}
 
 	@RequestMapping(value = "/formupdate_event.htm")
@@ -194,7 +194,7 @@ public class EventsController{
 			}else{
 				request.setAttribute("error", "Unexpeted error updating event, please try again.");
 			}
-			request.setAttribute("action", "update");
+			//request.setAttribute("action", "update");
 			return "welcome";
 			
 		}catch(Exception e){
