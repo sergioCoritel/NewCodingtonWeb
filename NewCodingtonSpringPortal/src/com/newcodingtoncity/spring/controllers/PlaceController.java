@@ -3,15 +3,12 @@ package com.newcodingtoncity.spring.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.newcodingtoncity.model.domain.places.LargeBusiness;
@@ -99,7 +96,7 @@ public class PlaceController{
 			}
 
 		}catch(Exception e){
-			request.setAttribute("error", "Place bad introduced."+ e.getMessage());
+			request.setAttribute("error", "Place bad introduced, please try again.");
 			return "handle_place";
 		}
 
@@ -120,36 +117,50 @@ public class PlaceController{
 
 	@RequestMapping(value = "/edit_place.htm")
 	public String updatePlaceController(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		Place placeCreated = new Museum();
-		placeCreated.setId(id);
-		placeCreated.setName(request.getParameter("placeName"));
-		placeCreated.setPlaceDescription(request.getParameter("placeDescription"));
-		placeCreated.setCapacity(Integer.parseInt(request.getParameter("placeCapacity")));
-		placeCreated.setStart(request.getParameter("placeStart"));
-		placeCreated.setEnd(request.getParameter("placeEnd"));
-		PlaceService placeService = new PlaceService();	
-		int affectedRows = placeService.updatePlace(placeCreated);
-		if(affectedRows == 1){
-			request.setAttribute("ok", "Place uppdated successfully.");
-		}else{
-			request.setAttribute("error", "Unexpected error updating place.");
+		try{
+			int id = Integer.parseInt(request.getParameter("id"));
+			Place placeCreated = new Museum();
+			placeCreated.setId(id);
+			placeCreated.setName(request.getParameter("placeName"));
+			placeCreated.setPlaceDescription(request.getParameter("placeDescription"));
+			placeCreated.setCapacity(Integer.parseInt(request.getParameter("placeCapacity")));
+			placeCreated.setStart(request.getParameter("placeStart"));
+			placeCreated.setEnd(request.getParameter("placeEnd"));
+			PlaceService placeService = new PlaceService();	
+			int affectedRows = placeService.updatePlace(placeCreated);
+			if(affectedRows == 1){
+				request.setAttribute("ok", "Place uppdated successfully.");
+			}else{
+				request.setAttribute("error", "Unexpected error updating place.");
+			}
+			return "welcome";
+		}catch(Exception e){
+			request.setAttribute("error", "Place bad uppdated, please try again.");
+			return "welcome";
 		}
-		return "welcome";
+		
+		
 	}
 
 
 	@RequestMapping(value = "/delete_place.htm")
 	public String deletePlaceController(HttpServletRequest request, HttpServletResponse response) {	
-		int id = Integer.parseInt(request.getParameter("id"));
-		PlaceService placeService = new PlaceService();	
-		int affectedRows = placeService.deletePlace(id);
-		if(affectedRows == 1){
-			request.setAttribute("ok", "Place deleted successfully.");
-		}else{
-			request.setAttribute("error", "Unexpected error deleting place.");
+		try{
+			int id = Integer.parseInt(request.getParameter("id"));
+			PlaceService placeService = new PlaceService();	
+			int affectedRows = placeService.deletePlace(id);
+			if(affectedRows == 1){
+				request.setAttribute("ok", "Place deleted successfully.");
+			}else{
+				request.setAttribute("error", "Unexpected error deleting place, please try again.");
+			}
+			return "welcome";
+			
+		}catch(Exception e){
+			request.setAttribute("error", "Place bad deleted, please try again.");
+			return "welcome";
 		}
-		return "welcome";
+
 	}
 
 

@@ -18,38 +18,63 @@ public class DAOManager {
 	private JdbcTemplate jdbcTemplate; 
 
 
+	/**
+	 * 
+	 * @param queryProperties
+	 */
 	public void setQueryProperties(Properties queryProperties) {
 		this.queryProperties = queryProperties;
 	}
 
 
+	/**
+	 * 
+	 * @param jdbcTemplate
+	 */
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate){  
 		this.jdbcTemplate = jdbcTemplate;  
 	}  
 
+	
+	/**
+	 * 
+	 * @param dataSource
+	 */
 	public void setDataSource(DataSource dataSource) {  
 		this.jdbcTemplate = new JdbcTemplate(dataSource);  
 	}  
-
+	
+	
+	/**
+	 * Return an instance of JdbcTemplate
+	 * 
+	 * @return JdbcTemplate
+	 */
 	public JdbcTemplate getTemplate(){  
 		return jdbcTemplate;  
-
 	}  
 
 
 	/**
 	 * Return an instance of IEventDAO
-	 * @return
+	 * 
+	 * @return EventDAO
 	 */
 	public IEventDAO getEventDAO() {		 	
 		return new EventDAO(jdbcTemplate,queryProperties);				 			
 	}		 	
 
 
+	/**
+	 * Return an instance of IPlaceDAO
+	 * 
+	 * @return IPlaceDAO
+	 */
 	public IPlaceDAO getPlaceDAO() {
 		return new PlaceDAO(jdbcTemplate,queryProperties);				
 	}
 
+	
 	/**
 	 * Return an instance of IVisitorDAO
 	 * 
@@ -59,6 +84,7 @@ public class DAOManager {
 		return new UserDAO(jdbcTemplate, queryProperties);	
 	}
 
+	
 	/**
 	 * Return an instance of IEventSignUpDAO
 	 * 

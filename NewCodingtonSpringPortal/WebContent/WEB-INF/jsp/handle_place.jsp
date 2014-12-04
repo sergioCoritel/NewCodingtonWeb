@@ -23,6 +23,14 @@
 
         <h2>${requestScope.section} place</h2>
         
+                <c:if test="${requestScope.error ne null}">
+					<h6 class="messageError">${requestScope.error}</h6>
+				</c:if>
+				
+				<c:if test="${requestScope.ok ne null}">
+					<h6 class="messageOk">${requestScope.ok}</h6>
+				</c:if>
+        
         <form method="post"  action="${requestScope.section}_place.htm?id=${place.id}" onsubmit="return valida_envia(this);" name="formulario">
 
 
@@ -168,10 +176,6 @@
 
         </div>
         <!--Fin de 7 Caja:Image -->
-
-
-
-
 
 
 

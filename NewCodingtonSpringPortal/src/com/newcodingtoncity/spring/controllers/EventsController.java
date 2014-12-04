@@ -174,27 +174,33 @@ public class EventsController{
 	
 	@RequestMapping(value = "/update_event.htm")
 	public String updateEventController(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
-		Event eventInserted = new Event();
-		eventInserted.setEventId(Integer.parseInt(request.getParameter("id")));
-		eventInserted.setEventName(request.getParameter("name"));
-		eventInserted.setDescription(request.getParameter("description"));
-		eventInserted.setStart(request.getParameter("start"));
-		eventInserted.setEnd(request.getParameter("end"));
-		eventInserted.setEventType(request.getParameter("eventType"));
-		eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
-		eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
-		eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
-		Place place = new Museum();
-		place.setId(Integer.valueOf(request.getParameter("place")));
-		eventInserted.setPlace(place); 
-		
-		if(new EventService().updateEvent(eventInserted) == 1){
-			request.setAttribute("ok", "Update event succesfully.");
-		}else{
-			request.setAttribute("error", "Unexpeted error updating event, please try again.");
+		try{
+			Event eventInserted = new Event();
+			eventInserted.setEventId(Integer.parseInt(request.getParameter("id")));
+			eventInserted.setEventName(request.getParameter("name"));
+			eventInserted.setDescription(request.getParameter("description"));
+			eventInserted.setStart(request.getParameter("start"));
+			eventInserted.setEnd(request.getParameter("end"));
+			eventInserted.setEventType(request.getParameter("eventType"));
+			eventInserted.setTicketPrice(Integer.valueOf(request.getParameter("ticketPrice")));
+			eventInserted.setSeatsAvailable(Integer.valueOf(request.getParameter("seatsAvailable")));
+			eventInserted.setSeatsTotal(Integer.valueOf(request.getParameter("seatsAvailable")));
+			Place place = new Museum();
+			place.setId(Integer.valueOf(request.getParameter("place")));
+			eventInserted.setPlace(place); 
+			
+			if(new EventService().updateEvent(eventInserted) == 1){
+				request.setAttribute("ok", "Update event succesfully.");
+			}else{
+				request.setAttribute("error", "Unexpeted error updating event, please try again.");
+			}
+			request.setAttribute("action", "update");
+			return "welcome";
+			
+		}catch(Exception e){
+			request.setAttribute("error", "Event bad uppdated, please try again.");
+			return "welcome";
 		}
-		request.setAttribute("action", "update");
-		return "welcome";
 		
 	}
 	
