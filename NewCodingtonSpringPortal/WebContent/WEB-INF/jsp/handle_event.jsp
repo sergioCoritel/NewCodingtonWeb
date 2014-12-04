@@ -32,8 +32,8 @@
 					</li>
 
 					<li>
-						<p class="text-profile">Description</p> <input id="description"
-						name="description" type="text" value="${event.description}" />
+						<p class="text-profile">Description</p> 
+						<textarea name="campoDescription" rows="3" cols="50" >${event.description}</textarea>
 					</li>
 
 					<li>
