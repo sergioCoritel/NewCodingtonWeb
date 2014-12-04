@@ -6,8 +6,10 @@
 	  <link rel="icon" type="image/ico" href="favicon.ico"/>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" type="text/css" href="css/estilos_form.css"> <!--Enlazo la hoja de estilos externa-->
-	
-      <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
+	 <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
+     
+     
+     <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
@@ -117,7 +119,7 @@
 
               <div>
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="placeStart" name="placeStart" value="${place.start}" /><br>
+                    <input id="datetimepicker_mask" name="placeStart" value="${place.start}" /><br>
                   </span>
                   <span class="error" id="errorStart"></span> <!--Espacio para indicar el error de esta caja-->
               </div>
@@ -135,7 +137,7 @@
               <div>
 			  
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
-                    <input id="placeEnd" name="placeEnd" type="username" value="${place.end}" /><br>
+                    <input id="datetimepicker_mask2" name="placeEnd" type="username" value="${place.end}" /><br>
                   </span>
 
                   <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
@@ -181,6 +183,8 @@
         
 
         </form>
+        
+<jsp:directive.include file="datepicker.html" />
 
 </div>
 </div><!-- Fin de  Contenedor -->
