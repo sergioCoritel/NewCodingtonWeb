@@ -2,17 +2,17 @@
 var ie = (document.all);// variable que usaremos para ver si el navegador es internet explorer.
 
 function validate_event(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el botón.	
-
+	limpiar();
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
 		array=[formulario.name,formulario.description,
-		       formulario.start,formulario.end,formulario.eventType,formulario.ticketPrice,formulario.seatsAvailable];
+		      formulario.eventType,formulario.ticketPrice,formulario.seatsAvailable];
 
 	}else{//Si es otro navegador, declaramos el siguiente array
 
 		array=new Array(name,description,
-				start,end,eventType,ticketPrice,seatsAvailable);
+				eventType,ticketPrice,seatsAvailable);
 	}
 	for (var i = 0;i<array.length; i++) {//Comprueba si algún campo obligatorio está vacío.
 		aux=EstaVacio(array[i]);
@@ -24,12 +24,11 @@ function validate_event(formulario){//funcion que comprueba todos los aspectos r
 		var comp=new Array();
 		comp[0]=validarSeats(formulario.seatsAvailable.value);//Llamo a la función que comprueba el número.
 		comp[1]=validarName(formulario.name.value);//Llamo a la función que comprueba Username.
-		comp[2]=validarStartEnd(formulario.start.value);//Llamo a la función que comprueba el DNI.
-		comp[3]=validarDescription(formulario.description.value);//Llamo a la función que comprueba el Mail.
-		comp[4]=validarEventType(formulario.eventType.value);//Llamo a la función que comprueba la contraseña.
-		comp[5]=validarticketPrice(formulario.ticketPrice.value);
-		comp[6]=validarStartEnd(formulario.end.value);
-		//el formulario se envia si se valida todo bien
+		
+		comp[2]=validarDescription(formulario.description.value);//Llamo a la función que comprueba el Mail.
+		comp[3]=validarEventType(formulario.eventType.value);//Llamo a la función que comprueba la contraseña.
+		comp[4]=validarticketPrice(formulario.ticketPrice.value);
+	
 		var j=0;
 		for (var i=0;i<comp.length;i++){
 			if(comp[i]==false){ j=j+1;}
@@ -48,7 +47,6 @@ function validate_event(formulario){//funcion que comprueba todos los aspectos r
 }
 
 function limpiar(){
-	alert ("limpiar");
 	if (ie) {//Al no ser "getElementsByClassName" compatible con Explorer, se utiliza su equivalente, que nos selecciona todos los elementos con clase "error".
 		var elementos = document.querySelectorAll(".error");
 	}else{//El resto de navegadores si soportan la función "getElementsByClassName".
@@ -60,7 +58,6 @@ function limpiar(){
 		elementos[i].innerHTML ="";
 
 	}
-	document.getElementById("error").innerHTML="";//Hace lo mismo que el bucle anterior pero con el elemento de id="error".
 	var inputs=document.getElementsByTagName("input");//El color del borde del recuadro de los diferentes inputs se pone en gris.
 	for(i=0;i<inputs.length;i++){
 		inputs[i].style.borderColor="#808080";

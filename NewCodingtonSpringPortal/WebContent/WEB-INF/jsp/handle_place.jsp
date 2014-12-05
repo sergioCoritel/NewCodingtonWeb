@@ -76,7 +76,7 @@
                   <input id="placeName" name="placeName" value="${place.name}" /><br>
                 </span>
                 
-                <span class="error" id="errorDNI"></span> <!--Espacio para indicar el error de esta caja-->
+                <span class="error" id="errorName"></span> <!--Espacio para indicar el error de esta caja-->
 
                 <div class="clear"></div> <!--Para limpiar el float-->
             </div>
@@ -94,7 +94,7 @@
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
                     <textarea id="placeDescription" name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
-
+ 						<span class="error" id="errorDescription"></span>
                   </span>
               </div>
 
@@ -130,8 +130,7 @@
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
                     <input id="datetimepicker_mask" name="placeStart" value="${place.start}" /><br>
                   </span>
-                  <span class="error" id="errorStart"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+               </div>
 
       
 
@@ -149,8 +148,7 @@
                     <input id="datetimepicker_mask2" name="placeEnd" type="username" value="${place.end}" /><br>
                   </span>
 
-                  <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+                     </div>
 
            
 
@@ -170,8 +168,7 @@
                     <input id="placeImage" name="placeImage" type="file" value="" /><br>
                   </span>
 
-                  <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+             </div>
 
            
 

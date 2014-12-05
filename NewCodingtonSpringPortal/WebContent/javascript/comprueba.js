@@ -2,7 +2,7 @@
 var ie = (document.all);// variable que usaremos para ver si el navegador es internet explorer.
 
 function valida_envia(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el botón.	
-
+	limpiar();
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
@@ -46,7 +46,6 @@ function valida_envia(formulario){//funcion que comprueba todos los aspectos req
 }
 
 function limpiar(){
-	alert ("limpiar");
 	if (ie) {//Al no ser "getElementsByClassName" compatible con Explorer, se utiliza su equivalente, que nos selecciona todos los elementos con clase "error".
 		var elementos = document.querySelectorAll(".error");
 	}else{//El resto de navegadores si soportan la función "getElementsByClassName".

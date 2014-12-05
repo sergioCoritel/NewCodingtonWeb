@@ -2,7 +2,7 @@
 var ie = (document.all);// variable que usaremos para ver si el navegador es internet explorer.
 
 function validate_place(formulario){//funcion que comprueba todos los aspectos requeridos en el ejercicio y se ejecuta al pulsar el botón.	
-
+	limpiar();
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
@@ -43,7 +43,6 @@ function validate_place(formulario){//funcion que comprueba todos los aspectos r
 }
 
 function limpiar(){
-	alert ("limpiar");
 	if (ie) {//Al no ser "getElementsByClassName" compatible con Explorer, se utiliza su equivalente, que nos selecciona todos los elementos con clase "error".
 		var elementos = document.querySelectorAll(".error");
 	}else{//El resto de navegadores si soportan la función "getElementsByClassName".
@@ -55,7 +54,6 @@ function limpiar(){
 		elementos[i].innerHTML ="";
 
 	}
-	document.getElementById("error").innerHTML="";//Hace lo mismo que el bucle anterior pero con el elemento de id="error".
 	var inputs=document.getElementsByTagName("input");//El color del borde del recuadro de los diferentes inputs se pone en gris.
 	for(i=0;i<inputs.length;i++){
 		inputs[i].style.borderColor="#808080";
