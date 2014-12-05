@@ -9,7 +9,7 @@
 	 <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
      
      
-     <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
+     <script type="text/javascript" src="javascript/places_validation.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 					<h6 class="messageOk">${requestScope.ok}</h6>
 				</c:if>
         
-        <form method="post"  action="${requestScope.section}_place.htm?id=${place.id}" onsubmit="return valida_envia(this);" name="formulario">
+        <form method="post"  action="${requestScope.section}_place.htm?id=${place.id}" onsubmit="return validate_place(this);" name="formulario">
 
 
        <!-- Espacio para marcar error de campos obligatorios-->
@@ -76,7 +76,7 @@
                   <input id="placeName" name="placeName" value="${place.name}" /><br>
                 </span>
                 
-                <span class="error" id="errorDNI"></span> <!--Espacio para indicar el error de esta caja-->
+                <span class="error" id="errorName"></span> <!--Espacio para indicar el error de esta caja-->
 
                 <div class="clear"></div> <!--Para limpiar el float-->
             </div>
@@ -93,7 +93,8 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <textarea name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
+                    <textarea id="placeDescription" name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
+ 						<span class="error" id="errorDescription"></span>
                   </span>
               </div>
 
@@ -129,8 +130,7 @@
                   <span class="izquierda">  <!--input y etiqueta de input caja-->
                     <input id="datetimepicker_mask" name="placeStart" value="${place.start}" /><br>
                   </span>
-                  <span class="error" id="errorStart"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+               </div>
 
       
 
@@ -148,8 +148,7 @@
                     <input id="datetimepicker_mask2" name="placeEnd" type="username" value="${place.end}" /><br>
                   </span>
 
-                  <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+                     </div>
 
            
 
@@ -169,8 +168,7 @@
                     <input id="placeImage" name="placeImage" type="file" value="" /><br>
                   </span>
 
-                  <span class="error" id="errorUsername"></span> <!--Espacio para indicar el error de esta caja-->
-              </div>
+             </div>
 
            
 
