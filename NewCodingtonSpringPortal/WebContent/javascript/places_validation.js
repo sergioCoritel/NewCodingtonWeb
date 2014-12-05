@@ -6,12 +6,12 @@ function validate_place(formulario){//funcion que comprueba todos los aspectos r
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
-		array=[formulario.placeName,formulario.placeDescripcion,
-		       formulario.capacity];
+		array=[formulario.placeName,formulario.placeDescription,
+		       formulario.placeCapacity];
 
 	}else{//Si es otro navegador, declaramos el siguiente array
 
-		array=new Array(placeName,placeDescripcion,capacity);
+		array=new Array(placeName,placeDescription,placeCapacity);
 	}
 	for (var i = 0;i<array.length; i++) {//Comprueba si algún campo obligatorio está vacío.
 		aux=EstaVacio(array[i]);
@@ -21,9 +21,9 @@ function validate_place(formulario){//funcion que comprueba todos los aspectos r
 	}
 	if(oblig){//Si no hay campos obligatorios vacíos
 		var comp=new Array();
-		comp[0]=validarDescripcion(formulario.placeDescripcion.value);//Llamo a la función que comprueba el número.
+		comp[0]=validarDescription(formulario.placeDescription.value);//Llamo a la función que comprueba el número.
 		comp[1]=validarName(formulario.placeName.value);//Llamo a la función que comprueba Username.
-		comp[2]=validarCapacity(formulario.capacity.value);//Llamo a la función que comprueba el DNI.	
+		comp[2]=validarCapacity(formulario.placeCapacity.value);//Llamo a la función que comprueba el DNI.	
 		//el formulario se envia si se valida todo bien
 		var j=0;
 		for (var i=0;i<comp.length;i++){
@@ -91,7 +91,7 @@ function validarDescription(valor) {
 
 	}
 	else{//Si no cumple la longitud requerida
-		var elemento = document.getElementById("errorDescripcion");
+		var elemento = document.getElementById("errorDescription");
 		elemento.innerHTML ="* The description must be less than 250 characters and more than 10";
 		return (false);
 	}

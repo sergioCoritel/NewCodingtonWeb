@@ -6,12 +6,12 @@ function validate_event(formulario){//funcion que comprueba todos los aspectos r
 	var oblig=true;
 	var array = null;
 	if(ie){//Si el navegador es internet explorer,declaramos este array.
-		array=[formulario.name,formulario.descripcion,
+		array=[formulario.name,formulario.description,
 		       formulario.start,formulario.end,formulario.eventType,formulario.ticketPrice,formulario.seatsAvailable];
 
 	}else{//Si es otro navegador, declaramos el siguiente array
 
-		array=new Array(name,descripcion,
+		array=new Array(name,description,
 				start,end,eventType,ticketPrice,seatsAvailable);
 	}
 	for (var i = 0;i<array.length; i++) {//Comprueba si algún campo obligatorio está vacío.
@@ -22,13 +22,13 @@ function validate_event(formulario){//funcion que comprueba todos los aspectos r
 	}
 	if(oblig){//Si no hay campos obligatorios vacíos
 		var comp=new Array();
-		comp[0]=validarSeats(formulario.campoTelefono.value);//Llamo a la función que comprueba el número.
-		comp[1]=validarName(formulario.campoUsername.value);//Llamo a la función que comprueba Username.
-		comp[2]=validarStartEnd(formulario.campoDNI.value);//Llamo a la función que comprueba el DNI.
-		comp[3]=validarDescription(formulario.campoMail.value);//Llamo a la función que comprueba el Mail.
-		comp[4]=validarEventType(formulario.campoPassword.value,formulario.campoComprobarPassword.value);//Llamo a la función que comprueba la contraseña.
-		comp[5]=validarticketPrice(formulario.campoPassword.value,formulario.campoComprobarPassword.value);
-
+		comp[0]=validarSeats(formulario.seatsAvailable.value);//Llamo a la función que comprueba el número.
+		comp[1]=validarName(formulario.name.value);//Llamo a la función que comprueba Username.
+		comp[2]=validarStartEnd(formulario.start.value);//Llamo a la función que comprueba el DNI.
+		comp[3]=validarDescription(formulario.description.value);//Llamo a la función que comprueba el Mail.
+		comp[4]=validarEventType(formulario.eventType.value);//Llamo a la función que comprueba la contraseña.
+		comp[5]=validarticketPrice(formulario.ticketPrice.value);
+		comp[6]=validarStartEnd(formulario.end.value);
 		//el formulario se envia si se valida todo bien
 		var j=0;
 		for (var i=0;i<comp.length;i++){
@@ -41,8 +41,8 @@ function validate_event(formulario){//funcion que comprueba todos los aspectos r
 		}
 
 	}else{//Si algún campo obligatorio está vacío, aparece la frase de error que indica la obligación de rellenar todos los campos.
-		var elemento = document.getElementById("error");
-		elemento.innerHTML ="Enter required fields marked *.";
+		/*var elemento = document.getElementById("error");
+		elemento.innerHTML ="Enter required fields marked *.";*/
 		return false;
 	}
 }
@@ -96,7 +96,7 @@ function validarDescription(valor) {
 
 	}
 	else{//Si no cumple la longitud requerida
-		var elemento = document.getElementById("errorDescripcion");
+		var elemento = document.getElementById("errorDescription");
 		elemento.innerHTML ="* The description must be less than 250 characters and more than 10";
 		return (false);
 	}

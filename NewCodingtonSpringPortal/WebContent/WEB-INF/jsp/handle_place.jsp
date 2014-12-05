@@ -9,7 +9,7 @@
 	 <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
      
      
-     <script type="text/javascript" src="javascript/comprueba.js"></script><!--Enlazo el script externo-->
+     <script type="text/javascript" src="javascript/places_validation.js"></script><!--Enlazo el script externo-->
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 					<h6 class="messageOk">${requestScope.ok}</h6>
 				</c:if>
         
-        <form method="post"  action="${requestScope.section}_place.htm?id=${place.id}" onsubmit="return valida_envia(this);" name="formulario">
+        <form method="post"  action="${requestScope.section}_place.htm?id=${place.id}" onsubmit="return validate_place(this);" name="formulario">
 
 
        <!-- Espacio para marcar error de campos obligatorios-->
@@ -93,7 +93,8 @@
 
               <div>
                   <span class="izquierda" >  <!--input y etiqueta de input caja-->
-                    <textarea name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
+                    <textarea id="placeDescription" name="placeDescription" rows="3" cols="50" >${place.placeDescription}</textarea>
+
                   </span>
               </div>
 

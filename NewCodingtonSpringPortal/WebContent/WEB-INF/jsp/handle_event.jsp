@@ -22,7 +22,7 @@
 
 			<form method="post" name="formulario"
 				action="${requestScope.action}_event.htm?id=${event.eventId}"
-				onsubmit="return valida_envia(this);">
+				onsubmit="return validate_event(this);">
 
 				<!-- Espacio para marcar error de campos obligatorios
 				<p id="error"></p>-->
@@ -43,7 +43,7 @@
 					<li>
 
 						<p class="text-profile">Description</p> 
-						<textarea name="description" rows="3" cols="50" >${event.description}</textarea>
+						<textarea id="description" name="description" rows="3" cols="50" >${event.description}</textarea>
 						<span class="error" id="errorDescription"></span>
 
 					</li>
